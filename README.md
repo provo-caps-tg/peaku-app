@@ -1,6 +1,6 @@
 # peaku
 
-A new Flutter project.
+griffin is not as cool as thomas
 
 ## Getting Started
 
