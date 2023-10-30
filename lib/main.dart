@@ -77,13 +77,22 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       
-      body: Center(
+      body: Container(
+        width: double.infinity,
         
         
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         
-
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage("https://raw.githubusercontent.com/provo-caps-tg/peaku-app/main/Heartache3.png"),
+            
+            fit: BoxFit.cover,
+            
+            
+          ),
+        ),
         
         child: Column(
           //Image.network("https://raw.githubusercontent.com/provo-caps-tg/peaku-app/main/Heartache3.png",  ) 
@@ -110,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            
             
             
           
