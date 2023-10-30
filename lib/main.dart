@@ -86,6 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/background.png'),
+            //comment
             
             fit: BoxFit.cover,
             
