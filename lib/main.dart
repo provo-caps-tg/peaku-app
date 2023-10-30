@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutte Demo Home Page'),
+      
     );
   }
 }
@@ -54,6 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+  @override
+
 
   @override
   Widget build(BuildContext context) {
@@ -73,14 +76,17 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-
+      
       body: Center(
         
         
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
+        
+
+        
         child: Column(
-          
+          //Image.network("https://raw.githubusercontent.com/provo-caps-tg/peaku-app/main/Heartache3.png",  ) 
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -104,11 +110,13 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            Image.network("https://raw.githubusercontent.com/provo-caps-tg/peaku-app/main/Heartache3.png",  ) 
+            
+            
           
           ],
 
         ),
+        
        
       ),
       floatingActionButton: FloatingActionButton(
