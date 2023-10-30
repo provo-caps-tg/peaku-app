@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
         
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage("https://raw.githubusercontent.com/provo-caps-tg/peaku-app/main/Heartache3.png"),
+            image: AssetImage('images/background.png'),
             
             fit: BoxFit.cover,
             
