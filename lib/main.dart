@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PeakU',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 5, 116, 62)),
         useMaterial3: true,
         
       ),
@@ -49,6 +49,34 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
     
           ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Flutter Demo Second Page"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+            child: Text("Go back"),
+            onPressed: () {
+              Navigator.pop(context);
+            }
         ),
       ),
     );
