@@ -44,20 +44,12 @@ class _MyHomePageState extends State<MyHomePage> {
             fit: BoxFit.cover,
           ),
         ),
-        
         child: const Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            
-            
-            
-          
+    
           ],
-
         ),
-        
-       
       ),
     );
   }
