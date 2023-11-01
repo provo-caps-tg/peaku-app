@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PeakU',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 198, 145, 11)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 5, 116, 62)),
         useMaterial3: true,
       ),
       home: const LoginPage(),
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-        
+                
               ],
             ),
           ),
