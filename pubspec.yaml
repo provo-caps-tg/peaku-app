@@ -22,8 +22,15 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+  fonts:
+    - family: Barlow
+      fonts:
+        - asset: assets/fonts/Barlow/Barlow-ExtraBold.ttf
   assets:
     - assets/images/background.png
     - assets/images/logo.png
     - assets/images/logoimg.png
     - assets/images/logotxt.png
+    
+   
+    

@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PeakU',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 5, 116, 62)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 255, 115, 0)),
         useMaterial3: true,
       ),
       home: const LoginPage(),
@@ -72,6 +72,7 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
 
@@ -84,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
 
       ),
       body: Container(
-        
+        //background
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -93,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         child: Padding(
-          
+          //White exterior box
           padding: const EdgeInsets.all(20),
           child: Container(
             decoration: BoxDecoration(
@@ -106,12 +107,17 @@ class _LoginPageState extends State<LoginPage> {
             child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               
-              
+              //Start of children
               children: <Widget>[ 
                 Image(
                   image: AssetImage('assets/images/logoimg.png'),
+                  fit: BoxFit.fitWidth,
                 ),
-                Text('Hello World',),
+                Positioned(
+                  top: 245,
+                  left: 43,
+                  child: Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextField(
@@ -130,7 +136,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                   ),
                   
-                )
+                ),
+                
             ],
               
             ),
