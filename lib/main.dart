@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PeakU',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 5, 116, 62)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 198, 145, 11)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'PeakU'),
+      home: const LoginPage(),
       
     );
   }
@@ -80,15 +80,65 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Demo Second Page"),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+
       ),
-      body: Center(
-        child: ElevatedButton(
-            child: Text("Go back"),
-            onPressed: () {
-              Navigator.pop(context);
-            }
+      body: Container(
+        
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.png'),
+            fit: BoxFit.cover,
+          ),
         ),
+        child: Padding(
+          
+          padding: const EdgeInsets.all(20),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.white,
+              ),
+              color: Colors.white,
+              borderRadius: const BorderRadius.all(Radius.circular(29))
+            ),
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              
+              
+              children: <Widget>[ 
+                Image(
+                  image: AssetImage('assets/images/logoimg.png'),
+                ),
+                Text('Hello World',),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: 'Enter your username',
+                      ),
+                  )  
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: UnderlineInputBorder(),
+                        labelText: 'Enter your Password',
+                      ),
+                  ),
+                  
+                )
+            ],
+              
+            ),
+            
+          ),
+          
+        ),
+        
       ),
     );
   }
