@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
@@ -11,10 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PeakU',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 5, 116, 62)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 5, 116, 62)),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home: const MyHomePage(title: 'Hello',),
       
     );
   }
@@ -51,12 +53,38 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.white,
               ),
               color: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(29))
-            ),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              borderRadius: const BorderRadius.all(Radius.circular(29)),),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-        
+                const Align(
+                  alignment: Alignment.center,
+                  child: Image(
+                    image: AssetImage('assets/images/logo.png'),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: TextButton(
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
+                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const LoginPage())); 
+                          },
+                          child: const Text('Get Started'),
+                      )
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
