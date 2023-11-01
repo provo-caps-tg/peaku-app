@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-        
       ),
       home: const MyHomePage(title: 'PeakU'),
       
@@ -44,11 +43,23 @@ class _MyHomePageState extends State<MyHomePage> {
             fit: BoxFit.cover,
           ),
         ),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-    
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.white,
+              ),
+              color: Colors.white,
+              borderRadius: const BorderRadius.all(Radius.circular(29))
+            ),
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+        
+              ],
+            ),
+          ),
         ),
       ),
     );
