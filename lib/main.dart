@@ -170,6 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                         border: UnderlineInputBorder(),
                         labelText: 'Enter your Password',
                       ),
+                    obscureText: true,
                   ),
                   
                 ),
