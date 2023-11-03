@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PeakU',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 255, 115, 0)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 5, 116, 62)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Hi', ),
+      home: const MyHomePage(title: 'Hello',),
       
     );
   }
@@ -51,12 +51,38 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.white,
               ),
               color: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(29))
-            ),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                
+              borderRadius: const BorderRadius.all(Radius.circular(29)),),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Align(
+                  alignment: Alignment.center,
+                  child: Image(
+                    image: AssetImage('assets/images/logo.png'),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: TextButton(
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
+                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const LoginPage())); 
+                          },
+                          child: const Text('Get Started'),
+                      )
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -97,6 +123,7 @@ class _LoginPageState extends State<LoginPage> {
           //White exterior box
           padding: const EdgeInsets.all(20),
           child: Container(
+            
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.white,
@@ -107,21 +134,34 @@ class _LoginPageState extends State<LoginPage> {
             child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
               
+              
               //Start of children
               children: <Widget>[ 
+                
                 Image(
                   image: AssetImage('assets/images/logoimg.png'),
                   fit: BoxFit.fitWidth,
                 ),
-                Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: UnderlineInputBorder(),
-                        labelText: 'Enter your username',
-                      ),
-                  )  
+                Align(
+                  alignment: Alignment(-.95,1),
+                  child: Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: UnderlineInputBorder(),
+                          labelText: 'Enter your username',
+                        ),
+                    )  
+                  ),
+                ),
+                Align(
+                  alignment: Alignment(-.95,1),
+                  child: Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
