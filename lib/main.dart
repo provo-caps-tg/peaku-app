@@ -147,9 +147,9 @@ class _LoginPageState extends State<LoginPage> {
                   child: Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                 ),
                 Align(
-                  alignment: Alignment.bottomCenter,
+                  alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
                     
                     child: TextField(
                       decoration: InputDecoration(
@@ -168,11 +168,12 @@ class _LoginPageState extends State<LoginPage> {
                   child: TextField(
                     decoration: InputDecoration(
                         border: UnderlineInputBorder(),
-                        labelText: 'Enter your Password',
+                        labelText: 'Enter your password',
                       ),
                   ),
                   
                 ),
+                
                 
             ],
               
