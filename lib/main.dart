@@ -61,10 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     image: AssetImage('assets/images/logo.png'),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
+                /*
+                Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.only(top:10, bottom: 0, left:20, right: 20),
                     child: SizedBox(
                       width: double.infinity,
                       height: 50,
@@ -83,6 +83,53 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
+                */
+                /*
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:10, bottom: 0, left:20, right: 20),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: TextButton(
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 15, 49, 86)),
+                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const LoginPage())); 
+                          },
+                          child: const Text('Get Started'),
+                      )
+                    ),
+                  ),
+                ),
+                */
+                
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:10, bottom: 10, left:20, right: 20),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 20,
+                      child: TextButton(
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
+                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const LoginPage())); 
+                          },
+                          child: const Text('Get Started'),
+                      )
+                    ),
+                  ),
+                ),
+                
               ],
             ),
           ),
