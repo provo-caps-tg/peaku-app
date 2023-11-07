@@ -55,65 +55,22 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Align(
+                const Expanded(
+                child: Align(
                   alignment: Alignment.center,
                   child: Image(
                     image: AssetImage('assets/images/logo.png'),
                   ),
                 ),
-                /*
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top:10, bottom: 0, left:20, right: 20),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: TextButton(
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
-                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const LoginPage())); 
-                          },
-                          child: const Text('Get Started'),
-                      )
-                    ),
-                  ),
                 ),
-                */
-                /*
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top:10, bottom: 0, left:20, right: 20),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: TextButton(
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 15, 49, 86)),
-                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const LoginPage())); 
-                          },
-                          child: const Text('Get Started'),
-                      )
-                    ),
-                  ),
-                ),
-                */
                 
-                Expanded(
-                  child: Padding(
+                
+                
+                  Padding(
                     padding: const EdgeInsets.only(top:10, bottom: 10, left:20, right: 20),
                     child: SizedBox(
                       width: double.infinity,
-                      height: 20,
+                      height: 50,
                       child: TextButton(
                           style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
@@ -128,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       )
                     ),
                   ),
-                ),
+                
                 
               ],
             ),
@@ -184,10 +141,9 @@ class _LoginPageState extends State<LoginPage> {
               
               //Start of children
               children: <Widget>[ 
-                
                 const Image(
-                  image: AssetImage('assets/images/logoimg.png'),
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.scaleDown,
+                  image: AssetImage('assets/images/logo.png'),
                 ),
                 const Align(
                   alignment: Alignment(-.95,1),
@@ -227,7 +183,11 @@ class _LoginPageState extends State<LoginPage> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
+                          },
                     style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
                               backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
@@ -239,6 +199,62 @@ class _LoginPageState extends State<LoginPage> {
                 
                 
                 
+            ],
+              
+            ),
+            
+          ),
+          
+        ),
+        
+      ),
+    );
+  }
+}
+
+
+class DailyQuestionPage extends StatefulWidget {
+  const DailyQuestionPage({Key? key}) : super(key: key);
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _DailyQuestionPage createState() => _DailyQuestionPage();
+}
+
+class _DailyQuestionPage extends State<DailyQuestionPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+
+      ),
+      body: Container(
+        //background
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          //White exterior box
+          padding: const EdgeInsets.all(20),
+          child: Container(
+            
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.white,
+              ),
+              color: Colors.white,
+              borderRadius: const BorderRadius.all(Radius.circular(29))
+            ),
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              //Start of children
+              children: <Widget>[ 
+              
             ],
               
             ),
