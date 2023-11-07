@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PeakU',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 250, 125, 0)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 250, 125, 0)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Hello',),
@@ -174,7 +174,22 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   
                 ),
-                ElevatedButton(onPressed: () {}, child: Text("Login"))
+                Padding(
+                padding: const EdgeInsets.all(20),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
+                              backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                            ),
+                    child: const Text("Login"),
+                    )
+                ),
+                )
+                
                 
                 
             ],
