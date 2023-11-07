@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PeakU',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 5, 116, 62)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 250, 125, 0)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Hello',),
@@ -178,25 +178,25 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(29))
             ),
-            child: const Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               
               
               //Start of children
               children: <Widget>[ 
                 
-                Image(
+                const Image(
                   image: AssetImage('assets/images/logoimg.png'),
                   fit: BoxFit.fitWidth,
                 ),
-                Align(
+                const Align(
                   alignment: Alignment(-.95,1),
                   child: Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
+                const Align(
+                  alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
                     
                     child: TextField(
                       decoration: InputDecoration(
@@ -206,21 +206,38 @@ class _LoginPageState extends State<LoginPage> {
                     )  
                   ),
                 ),
-                Align(
+                const Align(
                   alignment: Alignment(-.95,1),
                   child: Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                 ),
-                Padding(
+                const Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextField(
                     decoration: InputDecoration(
                         border: UnderlineInputBorder(),
-                        labelText: 'Enter your Password',
+                        labelText: 'Enter your password',
                       ),
                     obscureText: true,
                   ),
                   
                 ),
+                Padding(
+                padding: const EdgeInsets.all(20),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
+                              backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                            ),
+                    child: const Text("Login"),
+                    )
+                ),
+                )
+                
+                
                 
             ],
               
