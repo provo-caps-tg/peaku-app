@@ -30,6 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -55,14 +56,14 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Expanded(
-                child: Align(
+                
+                const Align(
                   alignment: Alignment.center,
                   child: Image(
                     image: AssetImage('assets/images/logo.png'),
                   ),
                 ),
-                ),
+                
                 
                 
                 
@@ -110,6 +111,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
 
@@ -117,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         //background
         width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/background.png'),
@@ -127,7 +130,8 @@ class _LoginPageState extends State<LoginPage> {
           //White exterior box
           padding: const EdgeInsets.all(20),
           child: Container(
-            
+            width: double.infinity,
+            height: double.infinity,
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.white,
@@ -135,16 +139,18 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(29))
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: ListView(
+              scrollDirection: Axis.vertical,
               
               
               //Start of children
               children: <Widget>[ 
+                
                 const Image(
-                  fit: BoxFit.scaleDown,
+                  fit: BoxFit.contain,
                   image: AssetImage('assets/images/logo.png'),
                 ),
+               
                 const Align(
                   alignment: Alignment(-.95,1),
                   child: Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
@@ -166,7 +172,8 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: Alignment(-.95,1),
                   child: Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                 ),
-                const Padding(
+                const Expanded(child: 
+                Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                   child: TextField(
                     decoration: InputDecoration(
@@ -177,12 +184,13 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   
                 ),
+                ),
                 Padding(
                 padding: const EdgeInsets.all(20),
                 child: SizedBox(
                   width: double.infinity,
                   height: 50,
-                  child: ElevatedButton(
+                  child:  ElevatedButton(
                     onPressed: () {
                             Navigator.push(
                               context,
@@ -194,6 +202,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                     child: const Text("Login"),
                     )
+                  
                 ),
                 )
                 
