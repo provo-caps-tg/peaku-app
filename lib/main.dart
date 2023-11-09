@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -32,7 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
@@ -56,38 +59,39 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                
-                const Align(
-                  alignment: Alignment.center,
-                  child: Image(
-                    image: AssetImage('assets/images/logo.png'),
-                  ),
-                ),
-                
-                
-                
-                
-                  Padding(
-                    padding: const EdgeInsets.only(top:10, bottom: 10, left:20, right: 20),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: TextButton(
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
-                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => const LoginPage())); 
-                          },
-                          child: const Text('Get Started'),
-                      )
+                const Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Image(
+                      image: AssetImage('assets/images/logo.png'),
                     ),
                   ),
-                
-                
+                ),
+                const Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    'bruh'
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top:10, bottom: 10, left:20, right: 20),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: TextButton(
+                        style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
+                          backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const LoginPage())); 
+                        },
+                        child: const Text('Get Started'),
+                    )
+                  ),
+                ),
               ],
             ),
           ),
@@ -108,10 +112,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
 
@@ -147,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[ 
                 
                 const Image(
-                  fit: BoxFit.contain,
+                  fit: BoxFit.scaleDown,
                   image: AssetImage('assets/images/logo.png'),
                 ),
                
