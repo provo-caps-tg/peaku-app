@@ -144,8 +144,8 @@ class _LoginPageState extends State<LoginPage> {
               color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(29))
             ),
-            child: ListView(
-              scrollDirection: Axis.vertical,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               
               
               //Start of children
