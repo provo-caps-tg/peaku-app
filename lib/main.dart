@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
+
 }
+Color orange = const Color.fromARGB(255, 232, 105, 0);
+Color blue = Color.fromARGB(255, 15, 49, 86);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -58,18 +61,42 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Expanded(
+                Expanded(
                   child: Align(
                     alignment: Alignment.center,
-                    child: Image(
-                      image: AssetImage('assets/images/logo.png'),
+                    child: Container(
+                      transform: Matrix4.translationValues(0.0, 100.0, 0.0),
+                      child: const Image(
+                        image: AssetImage('assets/images/logo.png'),
+                      ),
                     ),
                   ),
                 ),
-                const Align(
-                  alignment: Alignment.topCenter,
-                  child: Text(
-                    'bruh'
+                Expanded(
+                  child: Container(
+                    transform: Matrix4.translationValues(0.0, 60.0, 0.0),
+                    child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top:10, bottom: 0, left:20, right: 20),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: const Color.fromARGB(255, 15, 49, 86), 
+                          side: const BorderSide(color: Color.fromARGB(255, 15, 49, 86), width: 2),
+                          backgroundColor: Colors.white,
+                          
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const LoginPage())); 
+                        },
+                        child: const Text('Login', style: TextStyle(fontSize: 23)),
+                    )
                   ),
                 ),
                 Padding(
@@ -85,9 +112,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const LoginPage())); 
+                            MaterialPageRoute(builder: (context) => const AboutUs())); 
                         },
-                        child: const Text('Get Started'),
+                        child: const Text('Get Started', style: TextStyle(fontSize: 23)),
                     )
                   ),
                 ),
@@ -280,7 +307,6 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
       ),
       body: Container(
         width: double.infinity,
@@ -310,6 +336,64 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class AboutUs extends StatefulWidget {
+  const AboutUs({Key? key}) : super(key: key);
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _AboutUs createState() => _AboutUs();
+}
+
+class _AboutUs extends State<AboutUs> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary,),
+      body: Container(
+        //background
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          //White exterior box
+          padding: const EdgeInsets.all(20),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.white,
+              ),
+              color: Colors.white,
+              borderRadius: const BorderRadius.all(Radius.circular(29))
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: Column(
+                children: <Widget>[ 
+                  const Image(
+                    fit: BoxFit.scaleDown,
+                    image: AssetImage('assets/images/logo.png'),
+                  ),
+                  Container(
+                    transform: Matrix4.translationValues(0.0, -30.0, 0.0),
+                    child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                  ),
+                ]
+              ),
+            ),
+          ),
+        ),
+      )
     );
   }
 }
