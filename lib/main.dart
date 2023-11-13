@@ -197,9 +197,11 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                   child:  ElevatedButton(
                     onPressed: () {
+                            if (_formKey.currentState!.validate()) {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
+                              MaterialPageRoute(builder: (context) => const LoginForm())); 
+                            }
                           },
                     style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
@@ -226,6 +228,44 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
+
+
+//Form Validation Class starts here
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
+
+  @override
+  LoginFormState createState() {
+    return LoginFormState();
+  }
+}
+
+class LoginFormState extends State<LoginForm> {
+  final _formKey = GlobalKey<FormState>();
+  @override
+  
+  Widget build(BuildContext context) {
+    // Build a Form widget using the _formKey created above.
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: <Widget>[
+          // Add TextFormFields and ElevatedButton here.
+          TextFormField
+          (
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please eneter some text';
+              } 
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+}
+//Form Validation class ends here
 
 class DailyQuestionPage extends StatefulWidget {
   const DailyQuestionPage({Key? key}) : super(key: key);
