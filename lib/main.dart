@@ -113,6 +113,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 final emailController = TextEditingController();
 final passController = TextEditingController();
+
   @override
   void dispose() {
     emailController.dispose();
@@ -123,6 +124,8 @@ final passController = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
+    final _emailKey = GlobalKey<FormState>();
+    final _passKey = GlobalKey<FormState>();
     return Scaffold(
       
       resizeToAvoidBottomInset: false,
@@ -162,40 +165,63 @@ final passController = TextEditingController();
                     fit: BoxFit.scaleDown,
                     image: AssetImage('assets/images/logo.png'),
                   ),
-                  const Align(
-                    alignment: Alignment(-.95,1),
-                    child: Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                      child: TextField(
-                        decoration: const InputDecoration(
-                            border: UnderlineInputBorder(),
-                            labelText: 'Enter your username',
+                  Form(key: _emailKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                       const Align(
+                          alignment: Alignment.bottomLeft,
+                            child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                            child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                           ),
-                        controller: emailController,
-                      )  
-                    ),
-                  ),
-                  const Align(
-                    alignment: Alignment(-.95,1),
-                    child: Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                      child: TextField(
-                        decoration: const InputDecoration(
-                            border: UnderlineInputBorder(),
-                            labelText: 'Enter your password',
-                          ),
-                        obscureText: true,
-                        controller: passController,
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                              child: TextFormField(
+                                decoration: const InputDecoration(labelText: 'Enter your email here'),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter some text.';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                         ),
+                        ],
                       ),
-                      
                     ),
+                  Form(key: _passKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                       const Align(
+                          alignment: Alignment.bottomLeft,
+                            child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                            child:  Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                              child: TextFormField(
+                                decoration: const InputDecoration(labelText: 'Enter your password here'),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter some text.';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                         ),
+                        ],
+                      ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20),
@@ -204,9 +230,16 @@ final passController = TextEditingController();
                       height: 50,
                       child:  ElevatedButton(
                         onPressed: () {
+                          
+                          if ((_emailKey.currentState!.validate()) && (_passKey.currentState!.validate())){
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
+                          }
+                          else {
+                            
+                          }
+                          
                               },
                         style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
