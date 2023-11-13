@@ -111,7 +111,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
+final emailController = TextEditingController();
+final passController = TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    passController.dispose();
+    super.dispose();
+  }
 
   
   @override
@@ -159,16 +166,16 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: Alignment(-.95,1),
                     child: Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                      
+                      padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
                       child: TextField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             border: UnderlineInputBorder(),
                             labelText: 'Enter your username',
                           ),
+                        controller: emailController,
                       )  
                     ),
                   ),
@@ -176,16 +183,16 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: Alignment(-.95,1),
                     child: Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                   ),
-                  const Expanded(
+                  Expanded(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                       child: TextField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             border: UnderlineInputBorder(),
                             labelText: 'Enter your password',
                           ),
                         obscureText: true,
-             
+                        controller: passController,
                       ),
                       
                     ),
@@ -197,12 +204,10 @@ class _LoginPageState extends State<LoginPage> {
                       height: 50,
                       child:  ElevatedButton(
                         onPressed: () {
-                             
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
-                              
-                        },
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
+                              },
                         style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
                                   backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
