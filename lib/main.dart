@@ -4,7 +4,7 @@ void main() {
 
 }
 Color orange = const Color.fromARGB(255, 232, 105, 0);
-Color blue = Color.fromARGB(255, 15, 49, 86);
+Color blue = const Color.fromARGB(255, 15, 49, 86);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PeakU',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 250, 125, 0)),
+        colorScheme: ColorScheme.fromSeed(seedColor: orange),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Hello',),
@@ -37,9 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        backgroundColor: orange,
       ),
       body: Container(
         width: double.infinity,
@@ -157,7 +155,7 @@ final passController = TextEditingController();
       
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: orange,
 
       ),
       body: Container(
@@ -303,7 +301,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: orange,
       ),
       body: Container(
         width: double.infinity,
@@ -349,7 +347,9 @@ class _AboutUs extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary,),
+      appBar: AppBar(
+        backgroundColor: orange,
+      ),
       body: Container(
         //background
         width: double.infinity,
@@ -362,7 +362,7 @@ class _AboutUs extends State<AboutUs> {
         ),
         child: Padding(
           //White exterior box
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 20),
           child: Container(
             width: double.infinity,
             height: double.infinity,
@@ -384,6 +384,10 @@ class _AboutUs extends State<AboutUs> {
                   Container(
                     transform: Matrix4.translationValues(0.0, -30.0, 0.0),
                     child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top:10, bottom: 10),
+                    child: Text("Let's set up an account.", style: TextStyle(fontSize: 25, color: blue)),
                   ),
                 ]
               ),
