@@ -136,6 +136,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+static final GlobalKey<FormState> emailKey = GlobalKey<FormState>();
+static final GlobalKey<FormState> passKey = GlobalKey<FormState>();
 final emailController = TextEditingController();
 final passController = TextEditingController();
 
@@ -149,8 +151,6 @@ final passController = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
-    final _emailKey = GlobalKey<FormState>();
-    final _passKey = GlobalKey<FormState>();
     return Scaffold(
       
       resizeToAvoidBottomInset: false,
@@ -190,7 +190,7 @@ final passController = TextEditingController();
                     fit: BoxFit.scaleDown,
                     image: AssetImage('assets/images/logo.png'),
                   ),
-                  Form(key: _emailKey,
+                  Form(key: emailKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -219,7 +219,7 @@ final passController = TextEditingController();
                         ],
                       ),
                     ),
-                  Form(key: _passKey,
+                  Form(key: passKey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -256,7 +256,7 @@ final passController = TextEditingController();
                       child:  ElevatedButton(
                         onPressed: () {
                           
-                          if ((_emailKey.currentState!.validate()) && (_passKey.currentState!.validate())){
+                          if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
