@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Container(
                     transform: Matrix4.translationValues(0.0, 60.0, 0.0),
-                    child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                    child: Text('Relationships Elevated', style: TextStyle( fontWeight: FontWeight.bold, fontSize: 30, color: blue, fontFamily: 'Barlow')),
                   ),
                 ),
                 Padding(
@@ -196,7 +196,7 @@ final passController = TextEditingController();
                           alignment: Alignment.bottomLeft,
                             child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                            child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                            child:  Text('Email', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                           ),
                         ),
                         Align(
@@ -225,7 +225,7 @@ final passController = TextEditingController();
                           alignment: Alignment.bottomLeft,
                             child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                            child:  Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                            child:  Text('Password', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                           ),
                         ),
                         Align(
@@ -233,6 +233,9 @@ final passController = TextEditingController();
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
                               child: TextFormField(
+                                obscureText: true,
+                                enableSuggestions: false,
+                                autocorrect: false,
                                 decoration: const InputDecoration(labelText: 'Enter your password here'),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -305,7 +308,7 @@ final passController = TextEditingController();
 
 
 
-
+//Daily Question Page
 
 class DailyQuestionPage extends StatefulWidget {
   const DailyQuestionPage({Key? key}) : super(key: key);
@@ -348,7 +351,21 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   //Start of children
                   children: <Widget>[ 
-                  
+                                  Image(
+                    fit: BoxFit.scaleDown,
+                    image: AssetImage('assets/images/logo.png'),
+                  ),
+                Text(
+                  'Daily Question',
+                  style: TextStyle(height: 0,fontSize: 40, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                ),
+                Padding(
+                padding: EdgeInsets.symmetric( vertical: 2.0),
+                child: Text(
+                    'Lorem ipsum placeholder text',
+                   style: TextStyle(height: 0,fontSize: 40,  fontFamily: 'Barlow', color: Color.fromRGBO(169, 169, 169, 1)),
+                ),
+                ),
                   ],
                 ),
               ),
@@ -375,7 +392,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
           ),
         ),
           ],
-        ),
+      ),
       ),
     );
   }
@@ -421,159 +438,134 @@ class _AboutUs extends State<AboutUs> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Stack(
-          children: [
-            Padding(
-              //White exterior box
-              padding: const EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 20),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.white,
-                  ),
-                  color: Colors.white,
-                  borderRadius: const BorderRadius.all(Radius.circular(29))
-                ),
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: <Widget>[ 
-                        const Image(
-                          fit: BoxFit.scaleDown,
-                          image: AssetImage('assets/images/logo.png'),
-                        ),
-                        Container(
-                          transform: Matrix4.translationValues(0.0, -35.0, 0.0),
-                          child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top:0, bottom: 10),
-                          child: Text("Our Mission", style: TextStyle(fontSize: 24, color: blue, fontFamily: 'Barlow')),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top:10, bottom: 20),
-                          child: Text(
-                            "PeakU's Mission is to mitigate domestic, and dating violence by empowering teens and young adults to build and connect to their sense of self through educational resources, workshops, and community partnerships.",
-                            style: TextStyle(fontSize: 20, color: blue,),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      Padding(
-                          padding: const EdgeInsets.only(top:10, bottom: 10),
-                          child: Text("Let's set up an account.", style: TextStyle(fontSize: 25, color: blue)),
-                        ),
-                        Form(
-                          key: emailKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                          const Align(
-                              alignment: Alignment.bottomLeft,
-                                child: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                  child: TextFormField(
-                                    decoration: const InputDecoration(labelText: 'Enter your email here'),
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please enter a valid email.';
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                ),
-                            ),
-                            ],
-                          ),
-                        ),
-                        Form(
-                          key: passKey,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                  child:  Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.topCenter,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                  child: TextFormField(
-                                    decoration: const InputDecoration(labelText: 'Enter your password here'),
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {return 'Please enter a password';}
-                                      return null;
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child:  ElevatedButton(
-                              onPressed: () {
-                                if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
-                                }
-                              },
-                              style: ButtonStyle(
-                                foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
-                                backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
-                              ),
-                              child: const Text("Login"),
-                            )
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8, top: 8),
+        child: Padding(
+          //White exterior box
+          padding: const EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 20),
           child: Container(
+            width: double.infinity,
+            height: double.infinity,
             decoration: BoxDecoration(
-              color: orange,
-              borderRadius: BorderRadius.circular(13),
+              border: Border.all(
+                color: Colors.white,
+              ),
+              color: Colors.white,
+              borderRadius: const BorderRadius.all(Radius.circular(29))
             ),
-            child: IconTheme(
-              data: const IconThemeData(
-              color: Colors.white),
-              child: IconButton(
-                onPressed:() {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyHomePage()), );
-                    }, 
-                icon: const Icon(Icons.arrow_back)
+            child: Padding(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[ 
+                    const Image(
+                      fit: BoxFit.scaleDown,
+                      image: AssetImage('assets/images/logo.png'),
+                    ),
+                    Container(
+                      transform: Matrix4.translationValues(0.0, -35.0, 0.0),
+                      child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top:0, bottom: 10),
+                      child: Text("Our Mission", style: TextStyle(fontSize: 24, color: blue, fontFamily: 'Barlow')),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top:10, bottom: 20),
+                      child: Text(
+                        "PeakU's Mission is to mitigate domestic, and dating violence by empowering teens and young adults to build and connect to their sense of self through educational resources, workshops, and community partnerships.",
+                         style: TextStyle(fontSize: 20, color: blue,),
+                         textAlign: TextAlign.center,
+                      ),
+                    ),
+                   Padding(
+                      padding: const EdgeInsets.only(top:10, bottom: 10),
+                      child: Text("Let's set up an account.", style: TextStyle(fontSize: 25, color: blue)),
+                    ),
+                    Form(
+                      key: emailKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                       const Align(
+                          alignment: Alignment.bottomLeft,
+                            child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                            child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                              child: TextFormField(
+                                decoration: const InputDecoration(labelText: 'Enter your email here'),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter a valid email.';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                         ),
+                        ],
+                      ),
+                    ),
+                    Form(
+                      key: passKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                              child:  Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                              child: TextFormField(
+                                decoration: const InputDecoration(labelText: 'Enter your password here'),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {return 'Please enter a password';}
+                                  return null;
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child:  ElevatedButton(
+                          onPressed: () {
+                            if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
+                            }
+                          },
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
+                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                          ),
+                          child: const Text("Login"),
+                        )
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
         ),
-          ],
-        ),
-      ),
+      )
     );
   }
 }
