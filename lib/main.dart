@@ -426,6 +426,8 @@ class _AboutUs extends State<AboutUs> {
   static final GlobalKey<FormState> passKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passController = TextEditingController();
+  
+  get children => null;
 
     @override
     void dispose() {
@@ -453,7 +455,9 @@ class _AboutUs extends State<AboutUs> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Padding(
+        child: Stack(
+          children: [
+        Padding(
           //White exterior box
           padding: const EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 20),
           child: Container(
@@ -580,6 +584,29 @@ class _AboutUs extends State<AboutUs> {
               ),
             ),
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, top: 8),
+          child: Container(
+            decoration: BoxDecoration(
+              color: orange,
+              borderRadius: BorderRadius.circular(13),
+            ),
+            child: IconTheme(
+              data: const IconThemeData(
+              color: Colors.white),
+              child: IconButton(
+                onPressed:() {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyHomePage()), );
+                    }, 
+                icon: const Icon(Icons.arrow_back)
+              ),
+            ),
+          ),
+        ),
+          ],
         ),
       )
     );
