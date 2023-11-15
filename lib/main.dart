@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-void main() {
-  runApp(const MyApp());
-
-}
+void main() {runApp(const MyApp());}
 Color orange = const Color.fromARGB(255, 232, 105, 0);
 Color blue = const Color.fromARGB(255, 15, 49, 86);
 
@@ -17,15 +14,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: orange),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Hello',),
+      home: const MyHomePage(),
       
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
   @override
   State<MyHomePage> createState() => _MyHomePageState();}
 
@@ -89,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           
                         ),
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => const LoginPage())); 
                         },
@@ -108,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
                         ),
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => const AboutUs())); 
                         },
@@ -155,7 +151,7 @@ final passController = TextEditingController();
       
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: orange, foregroundColor: Colors.white,
+        backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3,
 
       ),
       body: Container(
@@ -168,7 +164,9 @@ final passController = TextEditingController();
             fit: BoxFit.cover,
           ),
         ),
-        child: Padding(
+        child: Stack(
+          children: [
+        Padding(
           //White exterior box
           padding: const EdgeInsets.all(20),
           child: Container(
@@ -259,7 +257,7 @@ final passController = TextEditingController();
                       child:  ElevatedButton(
                         onPressed: () {
                           if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
                           }
@@ -276,6 +274,29 @@ final passController = TextEditingController();
               ),
             ),
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, top: 8),
+          child: Container(
+            decoration: BoxDecoration(
+              color: orange,
+              borderRadius: BorderRadius.circular(13),
+            ),
+            child: IconTheme(
+              data: const IconThemeData(
+              color: Colors.white),
+              child: IconButton(
+                onPressed:() {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyHomePage()), );
+                    }, 
+                icon: const Icon(Icons.arrow_back)
+              ),
+            ),
+          ),
+        ),
+          ],
         ),
       )
     );
@@ -300,7 +321,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: orange, foregroundColor: Colors.white
+        backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3
       ),
       body: Container(
         width: double.infinity,
@@ -311,22 +332,26 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.white,
-              ),
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(29))
-            ),
-            child: Padding(
+        child: Stack(
+          children: [
+        Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white,
+                  ),
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(29))
+                ),
+                            child: Padding(
               padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: SingleChildScrollView(
+              child: const SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  //Start of children for the Daily Question Page
+                  //Start of children
                   children: <Widget>[ 
                     const Image(
                         fit: BoxFit.scaleDown,
@@ -355,12 +380,36 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                     ),
                   ],
                 ),
+              ),
+            ),
+              ),
+        ),
+              
+        Padding(
+          padding: const EdgeInsets.only(left: 8, top: 8),
+          child: Container(
+            decoration: BoxDecoration(
+              color: orange,
+              borderRadius: BorderRadius.circular(13),
+            ),
+            child: IconTheme(
+              data: const IconThemeData(
+              color: Colors.white),
+              child: IconButton(
+                onPressed:() {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()), );
+                    }, 
+                icon: const Icon(Icons.arrow_back)
+              ),
             ),
           ),
         ),
+          ],
       ),
-     ),
-   );
+      ),
+    );
   }
 }
 
@@ -392,7 +441,7 @@ class _AboutUs extends State<AboutUs> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: orange,foregroundColor: Colors.white
+        backgroundColor: orange,foregroundColor: Colors.white,toolbarHeight: 3,
       ),
       body: Container(
         //background
@@ -429,11 +478,11 @@ class _AboutUs extends State<AboutUs> {
                     ),
                     Container(
                       transform: Matrix4.translationValues(0.0, -35.0, 0.0),
-                      child: Text('Relationships Elevated', style: TextStyle( fontWeight: FontWeight.bold, fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                      child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top:0, bottom: 10),
-                      child: Text("Our Mission", style: TextStyle( fontWeight: FontWeight.bold, fontSize: 24, color: blue, fontFamily: 'Barlow')),
+                      child: Text("Our Mission", style: TextStyle(fontSize: 24, color: blue, fontFamily: 'Barlow')),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top:10, bottom: 20),
@@ -456,7 +505,7 @@ class _AboutUs extends State<AboutUs> {
                           alignment: Alignment.bottomLeft,
                             child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                            child:  Text('Email', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                            child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                           ),
                         ),
                         Align(
@@ -486,7 +535,7 @@ class _AboutUs extends State<AboutUs> {
                             alignment: Alignment.bottomLeft,
                             child: Padding(
                               padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                              child:  Text('Password', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                              child:  Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                             ),
                           ),
                           Align(
