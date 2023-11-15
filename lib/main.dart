@@ -198,7 +198,7 @@ final passController = TextEditingController();
                           alignment: Alignment.bottomLeft,
                             child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                            child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                            child:  Text('Email', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                           ),
                         ),
                         Align(
@@ -227,7 +227,7 @@ final passController = TextEditingController();
                           alignment: Alignment.bottomLeft,
                             child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                            child:  Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                            child:  Text('Password', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                           ),
                         ),
                         Align(
@@ -235,6 +235,9 @@ final passController = TextEditingController();
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
                               child: TextFormField(
+                                obscureText: true,
+                                enableSuggestions: false,
+                                autocorrect: false,
                                 decoration: const InputDecoration(labelText: 'Enter your password here'),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -286,7 +289,7 @@ final passController = TextEditingController();
 
 
 
-
+//Daily Question Page
 
 class DailyQuestionPage extends StatefulWidget {
   const DailyQuestionPage({Key? key}) : super(key: key);
@@ -323,9 +326,23 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
             ),
             child: const Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              //Start of children
+              //Start of children for the Daily Question Page
               children: <Widget>[ 
-              
+                Image(
+                    fit: BoxFit.scaleDown,
+                    image: AssetImage('assets/images/logo.png'),
+                  ),
+                Text(
+                  'Daily Question',
+                  style: TextStyle(height: 0,fontSize: 40, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                ),
+                Padding(
+                padding: EdgeInsets.symmetric( vertical: 2.0),
+                child: Text(
+                    'Lorem ipsum placeholder text',
+                   style: TextStyle(height: 0,fontSize: 40,  fontFamily: 'Barlow', color: Color.fromRGBO(169, 169, 169, 1)),
+                ),
+                ),
               ],
             ),
           ),
