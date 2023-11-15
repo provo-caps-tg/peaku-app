@@ -337,17 +337,20 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                       style: TextStyle(height: 0,fontSize: 40, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
                     ),
                     const Padding(
-                      padding: EdgeInsets.symmetric( vertical: 16.0, horizontal: 16,),
+                      padding: EdgeInsets.symmetric( vertical: 40.0, horizontal: 16,),
                       child: Text(
                         'Are you the same as you were 2 years ago?  5 years ago?  What has changed, if anything?',
                         textAlign: TextAlign.center,
-                        style: TextStyle(height: 0,fontSize: 20,  fontFamily: 'Barlow', color: Color.fromRGBO(169, 169, 169, 1)),
+                        style: TextStyle(height: 0,fontSize: 20,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
                       child: TextFormField(
-                        
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Answer question here'
+                        ),
                       ),
                     ),
                   ],
