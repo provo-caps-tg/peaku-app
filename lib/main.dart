@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   child: Container(
                     transform: Matrix4.translationValues(0.0, 60.0, 0.0),
-                    child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                    child: Text('Relationships Elevated', style: TextStyle( fontWeight: FontWeight.bold, fontSize: 30, color: blue, fontFamily: 'Barlow')),
                   ),
                 ),
                 Padding(
@@ -414,11 +414,11 @@ class _AboutUs extends State<AboutUs> {
                     ),
                     Container(
                       transform: Matrix4.translationValues(0.0, -35.0, 0.0),
-                      child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                      child: Text('Relationships Elevated', style: TextStyle( fontWeight: FontWeight.bold, fontSize: 30, color: blue, fontFamily: 'Barlow')),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top:0, bottom: 10),
-                      child: Text("Our Mission", style: TextStyle(fontSize: 24, color: blue, fontFamily: 'Barlow')),
+                      child: Text("Our Mission", style: TextStyle( fontWeight: FontWeight.bold, fontSize: 24, color: blue, fontFamily: 'Barlow')),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top:10, bottom: 20),
@@ -441,7 +441,7 @@ class _AboutUs extends State<AboutUs> {
                           alignment: Alignment.bottomLeft,
                             child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                            child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                            child:  Text('Email', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                           ),
                         ),
                         Align(
@@ -471,7 +471,7 @@ class _AboutUs extends State<AboutUs> {
                             alignment: Alignment.bottomLeft,
                             child: Padding(
                               padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                              child:  Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                              child:  Text('Password', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
                             ),
                           ),
                           Align(
