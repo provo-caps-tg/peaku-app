@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: orange,
+        backgroundColor: orange, toolbarHeight: 3,
       ),
       body: Container(
         width: double.infinity,
@@ -155,7 +155,7 @@ final passController = TextEditingController();
       
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: orange,
+        backgroundColor: orange, foregroundColor: Colors.white,
 
       ),
       body: Container(
@@ -261,9 +261,7 @@ final passController = TextEditingController();
                                   context,
                                   MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
                           }
-                          else {
-                            
-                          }
+
                           
                               },
                         style: ButtonStyle(
@@ -301,7 +299,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: orange,
+        backgroundColor: orange, foregroundColor: Colors.white
       ),
       body: Container(
         width: double.infinity,
@@ -311,24 +309,28 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
             fit: BoxFit.cover,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.white,
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white,
+                  ),
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(29))
+                ),
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  //Start of children
+                  children: <Widget>[ 
+                  
+                  ],
+                ),
               ),
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(29))
             ),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              //Start of children
-              children: <Widget>[ 
-              
-              ],
-            ),
-          ),
+          ],
         ),
       ),
     );
@@ -344,11 +346,26 @@ class AboutUs extends StatefulWidget {
 }
 
 class _AboutUs extends State<AboutUs> {
+  static final GlobalKey<FormState> emailKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> passKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
+
+    @override
+    void dispose() {
+      emailController.dispose();
+      passController.dispose();
+      super.dispose();
+    }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: orange,
+        backgroundColor: orange,foregroundColor: Colors.white
       ),
       body: Container(
         //background
@@ -375,21 +392,114 @@ class _AboutUs extends State<AboutUs> {
             ),
             child: Padding(
               padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: Column(
-                children: <Widget>[ 
-                  const Image(
-                    fit: BoxFit.scaleDown,
-                    image: AssetImage('assets/images/logo.png'),
-                  ),
-                  Container(
-                    transform: Matrix4.translationValues(0.0, -30.0, 0.0),
-                    child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:10, bottom: 10),
-                    child: Text("Let's set up an account.", style: TextStyle(fontSize: 25, color: blue)),
-                  ),
-                ]
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[ 
+                    const Image(
+                      fit: BoxFit.scaleDown,
+                      image: AssetImage('assets/images/logo.png'),
+                    ),
+                    Container(
+                      transform: Matrix4.translationValues(0.0, -35.0, 0.0),
+                      child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top:0, bottom: 10),
+                      child: Text("Our Mission", style: TextStyle(fontSize: 24, color: blue, fontFamily: 'Barlow')),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top:10, bottom: 20),
+                      child: Text(
+                        "PeakU's Mission is to mitigate domestic, and dating violence by empowering teens and young adults to build and connect to their sense of self through educational resources, workshops, and community partnerships.",
+                         style: TextStyle(fontSize: 20, color: blue,),
+                         textAlign: TextAlign.center,
+                      ),
+                    ),
+                   Padding(
+                      padding: const EdgeInsets.only(top:10, bottom: 10),
+                      child: Text("Let's set up an account.", style: TextStyle(fontSize: 25, color: blue)),
+                    ),
+                    Form(
+                      key: emailKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                       const Align(
+                          alignment: Alignment.bottomLeft,
+                            child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                            child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                              child: TextFormField(
+                                decoration: const InputDecoration(labelText: 'Enter your email here'),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Please enter a valid email.';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                         ),
+                        ],
+                      ),
+                    ),
+                    Form(
+                      key: passKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                              child:  Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                              child: TextFormField(
+                                decoration: const InputDecoration(labelText: 'Enter your password here'),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {return 'Please enter a password';}
+                                  return null;
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child:  ElevatedButton(
+                          onPressed: () {
+                            if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
+                            }
+                          },
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
+                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                          ),
+                          child: const Text("Login"),
+                        )
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
