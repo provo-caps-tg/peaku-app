@@ -256,15 +256,12 @@ final passController = TextEditingController();
                       height: 50,
                       child:  ElevatedButton(
                         onPressed: () {
-                          
                           if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
                           }
-
-                          
-                              },
+                        },
                         style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
                                   backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
@@ -322,11 +319,13 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3
       ),
       body: Container(
         width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/background.png'),
@@ -347,7 +346,10 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                   color: Colors.white,
                   borderRadius: const BorderRadius.all(Radius.circular(29))
                 ),
-                child: const Column(
+                            child: Padding(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: const SingleChildScrollView(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   //Start of children
                   children: <Widget>[ 
@@ -370,6 +372,9 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                 ),
               ),
             ),
+              ),
+        ),
+              
         Padding(
           padding: const EdgeInsets.only(left: 8, top: 8),
           child: Container(
@@ -451,6 +456,7 @@ class _AboutUs extends State<AboutUs> {
               color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(29))
             ),
+            //HERE IS THE PADDING THING I NEED
             child: Padding(
               padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
               child: SingleChildScrollView(
