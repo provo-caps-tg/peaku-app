@@ -348,7 +348,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                 ),
                             child: Padding(
               padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: const SingleChildScrollView(
+              child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   //Start of children
