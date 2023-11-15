@@ -258,15 +258,12 @@ final passController = TextEditingController();
                       height: 50,
                       child:  ElevatedButton(
                         onPressed: () {
-                          
                           if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
                           }
-
-                          
-                              },
+                        },
                         style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
                                   backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
@@ -301,11 +298,13 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: orange, foregroundColor: Colors.white
       ),
       body: Container(
         width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/background.png'),
@@ -322,31 +321,43 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
               color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(29))
             ),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              //Start of children for the Daily Question Page
-              children: <Widget>[ 
-                Image(
-                    fit: BoxFit.scaleDown,
-                    image: AssetImage('assets/images/logo.png'),
-                  ),
-                Text(
-                  'Daily Question',
-                  style: TextStyle(height: 0,fontSize: 40, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  //Start of children for the Daily Question Page
+                  children: <Widget>[ 
+                    const Image(
+                        fit: BoxFit.scaleDown,
+                        image: AssetImage('assets/images/logo.png'),
+                      ),
+                    const Text(
+                      'Daily Question',
+                      style: TextStyle(height: 0,fontSize: 40, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric( vertical: 16.0, horizontal: 16,),
+                      child: Text(
+                        'Are you the same as you were 2 years ago?  5 years ago?  What has changed, if anything?',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(height: 0,fontSize: 20,  fontFamily: 'Barlow', color: Color.fromRGBO(169, 169, 169, 1)),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+                      child: TextFormField(
+                        
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                padding: EdgeInsets.symmetric( vertical: 2.0),
-                child: Text(
-                    'Lorem ipsum placeholder text',
-                   style: TextStyle(height: 0,fontSize: 40,  fontFamily: 'Barlow', color: Color.fromRGBO(169, 169, 169, 1)),
-                ),
-                ),
-              ],
             ),
           ),
         ),
       ),
-    );
+     ),
+   );
   }
 }
 
@@ -403,6 +414,7 @@ class _AboutUs extends State<AboutUs> {
               color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(29))
             ),
+            //HERE IS THE PADDING THING I NEED
             child: Padding(
               padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
               child: SingleChildScrollView(
