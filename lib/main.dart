@@ -539,7 +539,9 @@ class _AboutUs extends State<AboutUs> {
                             alignment: Alignment.bottomLeft,
                             child: Padding(
                               padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                              child:  Text('Password', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                              child:  Text('Password', 
+                              style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                              ),
                             ),
                           ),
                           Align(
@@ -547,7 +549,8 @@ class _AboutUs extends State<AboutUs> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
                               child: TextFormField(
-                                decoration: const InputDecoration(labelText: 'Enter your password here'),
+                                obscureText: true,
+                                decoration: const InputDecoration(labelText: 'Create a password here'),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {return 'Please enter a password';}
                                   return null;
@@ -566,7 +569,7 @@ class _AboutUs extends State<AboutUs> {
                         child:  ElevatedButton(
                           onPressed: () {
                             if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
                             }
