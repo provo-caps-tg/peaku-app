@@ -311,8 +311,28 @@ class DailyQuestionPage extends StatefulWidget {
 }
 
 class _DailyQuestionPage extends State<DailyQuestionPage> {
+  bool light = true;
   @override
+
   Widget build(BuildContext context) {
+    final MaterialStateProperty<Color?> trackColor =
+      MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.selected)) {
+            return orange;
+          }
+          return null;
+        },
+      );
+    final MaterialStateProperty<Icon?> thumbIcon =
+      MaterialStateProperty.resolveWith<Icon?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.selected)) {
+            return const Icon(Icons.check);
+          }
+          return const Icon(Icons.close);
+        },
+      );
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -372,6 +392,16 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               labelText: 'Answer question here'
                             ),
                           ),
+                        ),
+                        Switch(
+                          value: light,
+                          thumbIcon: thumbIcon,
+                          onChanged: (bool value) {
+                            setState(() {
+                              light = value;
+                            }
+                          );
+                         }
                         ),
                       ],
                     ),
