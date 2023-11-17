@@ -410,12 +410,15 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                           fit: BoxFit.scaleDown,
                           image: AssetImage('assets/images/logo.png'),
                         ),
-                        const Text(
-                          'Daily Question',
-                          style: TextStyle(height: 0,fontSize: 40, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                        Container(
+                          transform: Matrix4.translationValues(0.0, -35.0, 0.0),
+                          child: const Text(
+                            'Daily Question',
+                            style: TextStyle(height: 0,fontSize: 40, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                          ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.symmetric( vertical: 40.0, horizontal: 16,),
+                          padding: EdgeInsets.only(top:00, bottom: 30, left: 16, right: 16),
                           child: Text(
                             'Are you the same as you were 2 years ago?  5 years ago?  What has changed, if anything?',
                             textAlign: TextAlign.center,
@@ -562,14 +565,14 @@ class _AboutUs extends State<AboutUs> {
                         ),
                         Container(
                           transform: Matrix4.translationValues(0.0, -35.0, 0.0),
-                          child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                          child: Text('Relationships Elevated', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: blue, fontFamily: 'Barlow')),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top:0, bottom: 10),
-                          child: Text("Our Mission", style: TextStyle(fontSize: 24, color: blue, fontFamily: 'Barlow')),
+                          child: Text("Our Mission", style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top:10, bottom: 20),
+                          padding: const EdgeInsets.only(top:10, bottom: 20, left: 16, right: 16),
                           child: Text(
                             "PeakU's Mission is to mitigate domestic, and dating violence by empowering teens and young adults to build and connect to their sense of self through educational resources, workshops, and community partnerships.",
                             style: TextStyle(fontSize: 20, color: blue,),
