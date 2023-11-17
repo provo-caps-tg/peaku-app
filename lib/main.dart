@@ -187,6 +187,13 @@ final passController = TextEditingController();
                         fit: BoxFit.scaleDown,
                         image: AssetImage('assets/images/logo.png'),
                       ),
+                      Container(
+                        transform: Matrix4.translationValues(0.0, -35.0, 0.0),
+                        child: Text(
+                          'Relationships Elevated', 
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: blue, fontFamily: 'Barlow'),
+                          textAlign: TextAlign.center,),
+                      ),
                       Form(key: emailKey,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -248,39 +255,12 @@ final passController = TextEditingController();
                           ],
                         ),
                       ),
-                                              /*
-                      child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: const Color.fromARGB(255, 15, 49, 86), 
-                          side: const BorderSide(color: Color.fromARGB(255, 15, 49, 86), width: 2),
-                          backgroundColor: Colors.white,
-                        ),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const LoginPage())); 
-                        },
-                        child: const Text('Login', style: TextStyle(fontSize: 23)),
-                      )
-                      child: TextButton(
-                        style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
-                          backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
-                        ),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const AboutUs())); 
-                        },
-                        child: const Text('Get Started', style: TextStyle(fontSize: 23)),
-                      )
-                    */
                       Padding(
                         padding: const EdgeInsets.all(20),
                         child: SizedBox(
                           width: double.infinity,
                           height: 50,
-                          child:  ElevatedButton(
+                          child:  OutlinedButton(
                             onPressed: () {
                               if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
                                     Navigator.pushReplacement(
@@ -288,14 +268,41 @@ final passController = TextEditingController();
                                       MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
                               }
                             },
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: blue, 
+                              side: BorderSide(color: blue, width: 2),
+                              backgroundColor: Colors.white,
+                            ),
+                            child: const Text("Login", style: TextStyle(fontSize: 23)),
+                          )
+                        ),
+                      ),
+                      Container(
+                        transform: Matrix4.translationValues(0.0, 30, 0.0),
+                        child: const Text(
+                          "Don't have an account?", 
+                          style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20, color: Color.fromARGB(255, 96, 96, 96), fontFamily: 'Barlow'),
+                          textAlign: TextAlign.center,),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left:20, right:20, top:40),
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child:  ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const AboutUs())); 
+                            },
                             style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                               backgroundColor: MaterialStateProperty.all<Color>(orange),
                             ),
-                            child: const Text("Login"),
+                            child: const Text("Create Account", style: TextStyle(fontSize: 23)),
                           )
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -487,8 +494,6 @@ class _AboutUs extends State<AboutUs> {
     super.dispose();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -558,7 +563,7 @@ class _AboutUs extends State<AboutUs> {
                                 alignment: Alignment.bottomLeft,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                  child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: blue),),
+                                  child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: blue, fontWeight: FontWeight.bold),),
                                 ),
                               ),
                               Align(
@@ -589,7 +594,7 @@ class _AboutUs extends State<AboutUs> {
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
                                   child:  Text('Password', 
-                                  style: TextStyle(fontFamily: 'Barlow', color: blue),
+                                  style: TextStyle(fontFamily: 'Barlow', color: blue, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ),
