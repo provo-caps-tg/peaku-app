@@ -431,17 +431,23 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                             ),
                           ),
                         ),
-                        /*Padding(
+                        Padding(
                           padding: const EdgeInsets.all(20),
                           child: Container(
                             width: double.infinity,
-                            height: double.infinity,
-                            decoration: const BoxDecoration(
-
-                              borderRadius: BorderRadius.all(Radius.circular(29))
+                            height: 50,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: blue,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(20))
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Text('test'),
                             ),
                           ),
-                        )*/
+                        ),
                         SizedBox(
                           height: 60,
                           child: FittedBox(
