@@ -1,8 +1,12 @@
+//ignore_for_file:library_private_types_in_public_api
 import 'package:flutter/material.dart';
-// ignore_for_file: library_private_types_in_public_api
 void main() {runApp(const MyApp());}
 Color orange = const Color.fromARGB(255, 232, 105, 0);
 Color blue = const Color.fromARGB(255, 15, 49, 86);
+// ignore: prefer_const_constructors
+Color nonConstOrange = Color.fromARGB(255, 232, 105, 0);
+// ignore: prefer_const_constructors
+Color nonConstblue = Color.fromARGB(255, 15, 49, 86);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -29,7 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -79,10 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 50,
                     child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
-                          foregroundColor: const Color.fromARGB(255, 15, 49, 86), 
-                          side: const BorderSide(color: Color.fromARGB(255, 15, 49, 86), width: 2),
+                          foregroundColor: blue, 
+                          side: BorderSide(color: blue, width: 2),
                           backgroundColor: Colors.white,
-                          
                         ),
                         onPressed: () {
                           Navigator.pushReplacement(
@@ -100,8 +102,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 50,
                     child: TextButton(
                         style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
-                          backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          backgroundColor: MaterialStateProperty.all<Color>(orange),
                         ),
                         onPressed: () {
                           Navigator.pushReplacement(
@@ -127,7 +129,6 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
 
@@ -190,11 +191,11 @@ final passController = TextEditingController();
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            const Align(
+                            Align(
                               alignment: Alignment.bottomLeft,
                                 child: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                child:  Text('Email', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                                padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                child:  Text('Email', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: blue),),
                               ),
                             ),
                             Align(
@@ -219,11 +220,11 @@ final passController = TextEditingController();
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                          const Align(
+                            Align(
                               alignment: Alignment.bottomLeft,
                                 child: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                child:  Text('Password', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                                padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                child:  Text('Password', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: blue),),
                               ),
                             ),
                             Align(
@@ -247,6 +248,33 @@ final passController = TextEditingController();
                           ],
                         ),
                       ),
+                                              /*
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: const Color.fromARGB(255, 15, 49, 86), 
+                          side: const BorderSide(color: Color.fromARGB(255, 15, 49, 86), width: 2),
+                          backgroundColor: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const LoginPage())); 
+                        },
+                        child: const Text('Login', style: TextStyle(fontSize: 23)),
+                      )
+                      child: TextButton(
+                        style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
+                          backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const AboutUs())); 
+                        },
+                        child: const Text('Get Started', style: TextStyle(fontSize: 23)),
+                      )
+                    */
                       Padding(
                         padding: const EdgeInsets.all(20),
                         child: SizedBox(
@@ -261,8 +289,8 @@ final passController = TextEditingController();
                               }
                             },
                             style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
-                              backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                              backgroundColor: MaterialStateProperty.all<Color>(orange),
                             ),
                             child: const Text("Login"),
                           )
@@ -422,12 +450,12 @@ class _AboutUs extends State<AboutUs> {
   
   get children => null;
 
-    @override
-    void dispose() {
-      emailController.dispose();
-      passController.dispose();
-      super.dispose();
-    }
+  @override
+  void dispose() {
+    emailController.dispose();
+    passController.dispose();
+    super.dispose();
+  }
 
 
 
@@ -439,7 +467,6 @@ class _AboutUs extends State<AboutUs> {
         backgroundColor: orange,foregroundColor: Colors.white,toolbarHeight: 3,
       ),
       body: Container(
-        //background
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
@@ -450,158 +477,157 @@ class _AboutUs extends State<AboutUs> {
         ),
         child: Stack(
           children: [
-        Padding(
-          //White exterior box
-          padding: const EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 20),
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.white,
-              ),
-              color: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(29))
-            ),
-            //HERE IS THE PADDING THING I NEED
-            child: Padding(
-              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[ 
-                    const Image(
-                      fit: BoxFit.scaleDown,
-                      image: AssetImage('assets/images/logo.png'),
-                    ),
-                    Container(
-                      transform: Matrix4.translationValues(0.0, -35.0, 0.0),
-                      child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top:0, bottom: 10),
-                      child: Text("Our Mission", style: TextStyle(fontSize: 24, color: blue, fontFamily: 'Barlow')),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top:10, bottom: 20),
-                      child: Text(
-                        "PeakU's Mission is to mitigate domestic, and dating violence by empowering teens and young adults to build and connect to their sense of self through educational resources, workshops, and community partnerships.",
-                         style: TextStyle(fontSize: 20, color: blue,),
-                         textAlign: TextAlign.center,
-                      ),
-                    ),
-                   Padding(
-                      padding: const EdgeInsets.only(top:10, bottom: 10),
-                      child: Text("Let's set up an account.", style: TextStyle(fontSize: 25, color: blue)),
-                    ),
-                    Form(
-                      key: emailKey,
+            Padding(
+              padding: const EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 20),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white,
+                  ),
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(29))
+                ),
+                //HERE IS THE PADDING THING I NEED
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: SingleChildScrollView(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                       const Align(
-                          alignment: Alignment.bottomLeft,
-                            child: Padding(
-                            padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                            child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),),
+                      children: <Widget>[ 
+                        const Image(
+                          fit: BoxFit.scaleDown,
+                          image: AssetImage('assets/images/logo.png'),
+                        ),
+                        Container(
+                          transform: Matrix4.translationValues(0.0, -35.0, 0.0),
+                          child: Text('Relationships Elevated', style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:0, bottom: 10),
+                          child: Text("Our Mission", style: TextStyle(fontSize: 24, color: blue, fontFamily: 'Barlow')),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:10, bottom: 20),
+                          child: Text(
+                            "PeakU's Mission is to mitigate domestic, and dating violence by empowering teens and young adults to build and connect to their sense of self through educational resources, workshops, and community partnerships.",
+                            style: TextStyle(fontSize: 20, color: blue,),
+                            textAlign: TextAlign.center,
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                              child: TextFormField(
-                                decoration: const InputDecoration(labelText: 'Enter your email here'),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter a valid email.';
-                                  }
-                                  return null;
-                                },
+                        Padding(
+                          padding: const EdgeInsets.only(top:10, bottom: 10),
+                          child: Text("Let's set up an account.", style: TextStyle(fontSize: 25, color: blue)),
+                        ),
+                        Form(
+                          key: emailKey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                  child:  Text('Email', style: TextStyle(fontFamily: 'Barlow', color: blue),),
+                                ),
                               ),
-                            ),
-                         ),
-                        ],
-                      ),
-                    ),
-                    Form(
-                      key: passKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                              child:  Text('Password', 
-                              style: TextStyle(fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                  child: TextFormField(
+                                    decoration: const InputDecoration(labelText: 'Enter your email here'),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter a valid email.';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                              child: TextFormField(
-                                obscureText: true,
-                                decoration: const InputDecoration(labelText: 'Create a password here'),
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {return 'Please enter a password';}
-                                  return null;
-                                },
+                        ),
+                        Form(
+                          key: passKey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                  child:  Text('Password', 
+                                  style: TextStyle(fontFamily: 'Barlow', color: blue),
+                                  ),
+                                ),
                               ),
-                            ),
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                  child: TextFormField(
+                                    obscureText: true,
+                                    decoration: const InputDecoration(labelText: 'Create a password here'),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {return 'Please enter a password';}
+                                      return null;
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child:  ElevatedButton(
-                          onPressed: () {
-                            if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
-                            }
-                          },
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 255, 255, 255)),
-                            backgroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 232, 105, 0)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child:  TextButton(
+                              onPressed: () {
+                                if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
+                                }
+                              },
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                backgroundColor: MaterialStateProperty.all<Color>(orange),
+                              ),
+                              child: const Text("Create Account", style: TextStyle(fontSize: 23)),
+                            )
                           ),
-                          child: const Text("Login"),
                         )
-                      ),
-                    )
-                  ],
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 8, top: 8),
-          child: Container(
-            decoration: BoxDecoration(
-              color: orange,
-              borderRadius: BorderRadius.circular(13),
-            ),
-            child: IconTheme(
-              data: const IconThemeData(
-              color: Colors.white),
-              child: IconButton(
-                onPressed:() {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyHomePage()), );
-                    }, 
-                icon: const Icon(Icons.arrow_back)
+            Padding(
+              padding: const EdgeInsets.only(left: 8, top: 8),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: orange,
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                child: IconTheme(
+                  data: const IconThemeData(
+                  color: Colors.white),
+                  child: IconButton(
+                    onPressed:() {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MyHomePage()), );
+                        }, 
+                    icon: const Icon(Icons.arrow_back)
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
           ],
         ),
       )
