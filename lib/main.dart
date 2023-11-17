@@ -424,7 +424,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                             ),
                           ),
                         ),
-                        Padding(
+                        /*Padding(
                           padding: const EdgeInsets.all(20),
                           child: Container(
                             width: double.infinity,
@@ -434,8 +434,8 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               borderRadius: BorderRadius.all(Radius.circular(29))
                             ),
                           ),
-                        )
-                        /*SizedBox(
+                        )*/
+                        SizedBox(
                           height: 60,
                           child: FittedBox(
                             fit: BoxFit.fill,
@@ -456,7 +456,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               }
                             ),
                           ),
-                        ),*/
+                        ),
                       ],
                     ),
                   ),
