@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 void main() {runApp(const PeakUApp());}
-Color orange = const Color.fromARGB(255, 232, 105, 0);
+String userResponse = '';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
+Color orange = const Color.fromARGB(255, 232, 105, 0);
+final responseController = TextEditingController(text: userResponse);
 
 class PeakUApp extends StatelessWidget {
   const PeakUApp({super.key});
@@ -335,42 +337,40 @@ class DailyQuestionPage extends StatefulWidget {
 }
 
 class _DailyQuestionPage extends State<DailyQuestionPage> {
-  bool light = true;
-  @override
+  bool enabled = true;
 
+  @override
   Widget build(BuildContext context) {
-    final MaterialStateProperty<Color?> switchColor =
-      MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.selected)) {
-            return orange;
-          }
-          else {
-            return blue;
-          }
-        },
-      );
-    final MaterialStateProperty<Color?> whiteSwitch =
-      MaterialStateProperty.resolveWith<Color?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.selected)) {
-            return Colors.white;
-          }
-          if (states.contains(MaterialState.disabled)) {
-            return blue;
-          }
-          return null;
-        },
-      );
-    final MaterialStateProperty<Icon?> thumbIcon =
-      MaterialStateProperty.resolveWith<Icon?>(
-        (Set<MaterialState> states) {
-          if (states.contains(MaterialState.selected)) {
-            return const Icon(Icons.check, color: Colors.white);
-          }
-          return const Icon(Icons.close, color: Colors.white);
-        },
-      );
+    final MaterialStateProperty<Color?> switchColor = MaterialStateProperty.resolveWith<Color?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected)) {
+          return orange;
+        }
+        else {
+          return blue;
+        }
+      },
+    );
+    final MaterialStateProperty<Color?> whiteSwitch = MaterialStateProperty.resolveWith<Color?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected)) {
+          return Colors.white;
+        }
+        if (states.contains(MaterialState.disabled)) {
+          return blue;
+        }
+        return null;
+      },
+    );
+    final MaterialStateProperty<Icon?> thumbIcon = MaterialStateProperty.resolveWith<Icon?>(
+      (Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected)) {
+          return const Icon(Icons.check, color: Colors.white);
+        }
+        return const Icon(Icons.close, color: Colors.white);
+      },
+    );
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -434,9 +434,14 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               border: OutlineInputBorder(),
                               labelText: 'Answer question here'
                             ),
+                            controller: responseController,
+                            onChanged:(value){
+                              setState(() {
+                                userResponse = responseController.text;
+                              });
+                            }
                           ),
                         ),
-                        
                         Padding(
                           padding: const EdgeInsets.only(left:20, right:20, top:80),
                           child: SizedBox(
@@ -446,7 +451,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               onPressed: () {
                                 Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const LoginPage())); 
+                                  MaterialPageRoute(builder: (context) => const ResponsePage())); 
                               },
                               style: ButtonStyle(
                                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -485,15 +490,20 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                                     inactiveTrackColor: Colors.white,
                                     trackOutlineColor: switchColor,
                                     trackColor: whiteSwitch,
-                                    value: light,
+                                    value: enabled,
                                     thumbIcon: thumbIcon,
                                     overlayColor: switchColor,
                                     activeColor: orange,
                                     onChanged: (bool value) {
                                       setState(() {
-                                        light = value;
-                                        }
-                                      );
+                                        enabled = value;
+                                        if(enabled==false){
+                                          userResponse = '';
+                                        } 
+                                        else if(enabled==true){
+                                          userResponse = responseController.text;
+                                        } 
+                                      });
                                     }
                                   ),
                                 ],
@@ -501,7 +511,6 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                             ),
                           ),
                         ), 
-                        
                       ],
                     ),
                   ),
@@ -729,6 +738,88 @@ class _AboutUs extends State<AboutUs> {
           ],
         ),
       )
+    );
+  }
+}
+
+class ResponsePage extends StatefulWidget {
+  const ResponsePage({super.key});
+  @override
+  State<ResponsePage> createState() => _ResponsePage();
+}
+
+class _ResponsePage extends State<ResponsePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3
+      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white,
+                  ),
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(29))
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      //Start of children
+                      children: <Widget>[ 
+                        Text(userResponse)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),   
+            Padding(
+              padding: const EdgeInsets.only(left: 8, top: 8),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: orange,
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                child: IconTheme(
+                  data: const IconThemeData(
+                  color: Colors.white),
+                  child: IconButton(
+                    onPressed:() {
+                      setState(() {
+                        userResponse = responseController.text;
+                      });
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const DailyQuestionPage()),);
+                        }, 
+                    icon: const Icon(Icons.arrow_back)
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
