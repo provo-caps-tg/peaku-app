@@ -436,28 +436,27 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                             ),
                           ),
                         ),
-                        
-                        Padding(
-                          padding: const EdgeInsets.only(left:20, right:20, top:80),
-                          child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child:  ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => const LoginPage())); 
+                        SizedBox(
+                          height: 20,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                              surfaceTintColor: MaterialStateProperty.all<Color>(Colors.white),
+                              iconColor: MaterialStateProperty.all<Color>(Colors.white),
+                              shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
+                              backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                              overlayColor: MaterialStateProperty.all<Color>(Colors.white),
+                            ),
+                            onPressed: () {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const LoginPage())); 
                               },
-                              style: ButtonStyle(
-                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                                backgroundColor: MaterialStateProperty.all<Color>(orange),
-                              ),
-                              child: const Text("Submit", style: TextStyle(fontSize: 23)),
-                            )
+                            child: const Text("Skip", style: TextStyle(height: 0,fontSize: 17,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)))
                           ),
                         ),
+                  
                         Padding(
-                          padding: const EdgeInsets.all(20),
+                          padding: const EdgeInsets.only(left: 20, right:20, bottom: 12),
                           child: Container(
                             width: double.infinity,
                             height: 50,
@@ -501,7 +500,25 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                             ),
                           ),
                         ), 
-                        
+                        Padding(
+                          padding: const EdgeInsets.only(left:20, right:20),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child:  ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const LoginPage())); 
+                              },
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                backgroundColor: MaterialStateProperty.all<Color>(orange),
+                              ),
+                              child: const Text("Submit", style: TextStyle(fontSize: 23)),
+                            )
+                          ),
+                        ),
                       ],
                     ),
                   ),
