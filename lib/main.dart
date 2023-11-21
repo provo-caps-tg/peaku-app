@@ -1,15 +1,10 @@
-//ignore_for_file:library_private_types_in_public_api
 import 'package:flutter/material.dart';
-void main() {runApp(const MyApp());}
+void main() {runApp(const PeakUApp());}
 Color orange = const Color.fromARGB(255, 232, 105, 0);
 Color blue = const Color.fromARGB(255, 15, 49, 86);
-// ignore: prefer_const_constructors
-Color nonConstOrange = Color.fromARGB(255, 232, 105, 0);
-// ignore: prefer_const_constructors
-Color nonConstblue = Color.fromARGB(255, 15, 49, 86);
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PeakUApp extends StatelessWidget {
+  const PeakUApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +14,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: orange),
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: const HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
   @override
-  State<MyHomePage> createState() => _MyHomePageState();}
+  State<HomePage> createState() => _HomePageState();}
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
@@ -123,13 +118,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
-
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
-
+  const LoginPage({super.key});
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
@@ -322,7 +314,7 @@ final passController = TextEditingController();
                     onPressed:() {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const MyHomePage()), );
+                        MaterialPageRoute(builder: (context) => const HomePage()), );
                         }, 
                     icon: const Icon(Icons.arrow_back)
                   ),
@@ -336,13 +328,10 @@ final passController = TextEditingController();
   }
 }
 
-
-
 class DailyQuestionPage extends StatefulWidget {
-  const DailyQuestionPage({Key? key}) : super(key: key);
-
+  const DailyQuestionPage({super.key});
   @override
-  _DailyQuestionPage createState() => _DailyQuestionPage();
+  State<DailyQuestionPage> createState() => _DailyQuestionPage();
 }
 
 class _DailyQuestionPage extends State<DailyQuestionPage> {
@@ -356,6 +345,17 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
           if (states.contains(MaterialState.selected)) {
             return orange;
           }
+          else {
+            return blue;
+          }
+        },
+      );
+    final MaterialStateProperty<Color?> whiteSwitch =
+      MaterialStateProperty.resolveWith<Color?>(
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.selected)) {
+            return Colors.white;
+          }
           if (states.contains(MaterialState.disabled)) {
             return blue;
           }
@@ -366,9 +366,9 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
       MaterialStateProperty.resolveWith<Icon?>(
         (Set<MaterialState> states) {
           if (states.contains(MaterialState.selected)) {
-            return const Icon(Icons.check);
+            return const Icon(Icons.check, color: Colors.white);
           }
-          return const Icon(Icons.close);
+          return const Icon(Icons.close, color: Colors.white);
         },
       );
     return Scaffold(
@@ -464,6 +464,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                             decoration: BoxDecoration(
                               border: Border.all(
                                 color: blue,
+                                width: 2,
                               ),
                               borderRadius: const BorderRadius.all(Radius.circular(20))
                             ),
@@ -472,39 +473,35 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               child: Row(
                                 children: [
                                  const Padding(
-                                    padding: EdgeInsets.only(right: 65, left: 5),
+                                    padding: EdgeInsets.only(right: 10, left: 5, top: 0),
                                     child: Text(
-                                    'Share with others?',
-                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                                    'Share with others:',
+                                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 80,
-                                    child: FittedBox(
-                                      fit: BoxFit.fill,
-                                      child: Switch(
-                                        focusColor: Colors.white,
-                                        inactiveThumbColor: blue,
-                                        inactiveTrackColor: Colors.white,
-                                        activeTrackColor: orange,
-                                        trackOutlineColor: switchColor,
-                                        trackColor: switchColor,
-                                        value: light,
-                                        thumbIcon: thumbIcon,
-                                        onChanged: (bool value) {
-                                          setState(() {
-                                            light = value;
-                                           }
-                                         );
+                                  Switch(
+                                    focusColor: Colors.white,
+                                    inactiveThumbColor: blue,
+                                    inactiveTrackColor: Colors.white,
+                                    trackOutlineColor: switchColor,
+                                    trackColor: whiteSwitch,
+                                    value: light,
+                                    thumbIcon: thumbIcon,
+                                    overlayColor: switchColor,
+                                    activeColor: orange,
+                                    onChanged: (bool value) {
+                                      setState(() {
+                                        light = value;
                                         }
-                                      ),
-                                    ),
+                                      );
+                                    }
                                   ),
                                 ],
                               ),
                             ),
                           ),
                         ), 
+                        
                       ],
                     ),
                   ),
@@ -540,10 +537,9 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
 }
 
 class AboutUs extends StatefulWidget {
-  const AboutUs({Key? key}) : super(key: key);
-
+  const AboutUs({super.key});
   @override
-  _AboutUs createState() => _AboutUs();
+  State<AboutUs> createState() => _AboutUs();
 }
 
 class _AboutUs extends State<AboutUs> {
@@ -723,7 +719,7 @@ class _AboutUs extends State<AboutUs> {
                     onPressed:() {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const MyHomePage()), );
+                        MaterialPageRoute(builder: (context) => const HomePage()), );
                         }, 
                     icon: const Icon(Icons.arrow_back)
                   ),
