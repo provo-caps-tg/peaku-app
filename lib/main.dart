@@ -445,34 +445,44 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               ),
                               borderRadius: const BorderRadius.all(Radius.circular(20))
                             ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(5),
-                              child: Text('test'),
+                            child: Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: Row(
+                                children: [
+                                 const Padding(
+                                    padding: EdgeInsets.only(right: 65, left: 5),
+                                    child: Text(
+                                    'Share with others?',
+                                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 80,
+                                    child: FittedBox(
+                                      fit: BoxFit.fill,
+                                      child: Switch(
+                                        focusColor: Colors.white,
+                                        inactiveThumbColor: blue,
+                                        inactiveTrackColor: Colors.white,
+                                        activeTrackColor: orange,
+                                        trackOutlineColor: switchColor,
+                                        trackColor: switchColor,
+                                        value: light,
+                                        thumbIcon: thumbIcon,
+                                        onChanged: (bool value) {
+                                          setState(() {
+                                            light = value;
+                                           }
+                                         );
+                                        }
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 60,
-                          child: FittedBox(
-                            fit: BoxFit.fill,
-                            child: Switch(
-                              focusColor: Colors.white,
-                              inactiveThumbColor: blue,
-                              inactiveTrackColor: Colors.white,
-                              activeTrackColor: orange,
-                              trackOutlineColor: switchColor,
-                              trackColor: switchColor,
-                              value: light,
-                              thumbIcon: thumbIcon,
-                              onChanged: (bool value) {
-                                setState(() {
-                                  light = value;
-                                }
-                               );
-                              }
-                            ),
-                          ),
-                        ),
+                        ), 
                       ],
                     ),
                   ),
