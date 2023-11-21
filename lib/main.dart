@@ -372,6 +372,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
     );
 
     return Scaffold(
+      
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3
