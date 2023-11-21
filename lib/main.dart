@@ -456,21 +456,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(builder: (context) => const LoginPage()));},
-                            child: Padding(
-                              padding: const EdgeInsets.only(left:20, right:20, top:00),
-                              child: SizedBox(
-                                width: double.infinity,
-                                height: 50,
-                                child:  ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => const ResponsePage())); 
-                                  },
-                                  child: const Text("Skip", style: TextStyle(height: 00,fontSize: 17,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)))
-                                ),
-                              ),
-                            ),
+                            child: const Text("Skip", style: TextStyle(height: 00,fontSize: 17,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)))
                           ),
                         ),
                         Padding(
