@@ -453,9 +453,12 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               overlayColor: MaterialStateProperty.all<Color>(Colors.white),
                             ),
                             onPressed: () {
+                              setState(() {
+                                userResponse = '';
+                              });
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => const LoginPage()));},
+                                MaterialPageRoute(builder: (context) => const ResponsePage()));},
                             child: const Text("Skip", style: TextStyle(height: 00,fontSize: 17,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)))
                           ),
                         ),
