@@ -436,6 +436,26 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                             ),
                           ),
                         ),
+                        
+                        Padding(
+                          padding: const EdgeInsets.only(left:20, right:20, top:80),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child:  ElevatedButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const LoginPage())); 
+                              },
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                backgroundColor: MaterialStateProperty.all<Color>(orange),
+                              ),
+                              child: const Text("Submit", style: TextStyle(fontSize: 23)),
+                            )
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(20),
                           child: Container(
