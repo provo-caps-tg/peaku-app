@@ -428,6 +428,8 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                           child: TextFormField(
+                            maxLines: 5,
+                            minLines: 1,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: 'Answer question here'
