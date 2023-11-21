@@ -441,8 +441,9 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               });
                             }
                           ),
-                        ),                        SizedBox(
-                          height: 200,
+                        ),
+                        SizedBox(
+                          height: 50,
                           child: ElevatedButton(
                             style: ButtonStyle(
                               surfaceTintColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -452,28 +453,26 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               overlayColor: MaterialStateProperty.all<Color>(Colors.white),
                             ),
                             onPressed: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const LoginPage()));},
-                        child: Padding(
-                          padding: const EdgeInsets.only(left:20, right:20, top:80),
-                          child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child:  ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => const ResponsePage())); 
-                              },
-                            child: const Text("Skip", style: TextStyle(height: 00,fontSize: 17,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)))
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const LoginPage()));},
+                            child: Padding(
+                              padding: const EdgeInsets.only(left:20, right:20, top:00),
+                              child: SizedBox(
+                                width: double.infinity,
+                                height: 50,
+                                child:  ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const ResponsePage())); 
+                                  },
+                                  child: const Text("Skip", style: TextStyle(height: 00,fontSize: 17,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)))
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                        ),
-                          ),
-                        ),
-                    
-                  
                         Padding(
                           padding: const EdgeInsets.only(left: 20, right:20, bottom: 12),
                           child: Container(
