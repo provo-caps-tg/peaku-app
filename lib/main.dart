@@ -522,7 +522,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               onPressed: () {
                                 Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const LoginPage())); 
+                                  MaterialPageRoute(builder: (context) => const ResponsePage())); 
                               },
                               style: ButtonStyle(
                                 foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
