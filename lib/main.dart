@@ -1,6 +1,11 @@
+import 'dart:math';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 void main() {runApp(const PeakUApp());}
+final random = Random();
 String userResponse = '';
+String selectedQuestion = 'Loading...';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
 Color orange = const Color.fromARGB(255, 232, 105, 0);
 final responseController = TextEditingController(text: userResponse);
@@ -535,41 +540,39 @@ class DailyQuestionPage extends StatefulWidget {
 
 class _DailyQuestionPage extends State<DailyQuestionPage> {
   bool enabled = true;
+  _DailyQuestionPage() {_loadQuestions();}
+
+  Future<void> _loadQuestions() async {
+    final random = Random();
+    const String filePath = 'assets/textFiles/responses.txt';
+    final String fileContent = await rootBundle.loadString(filePath);
+    final List<String> questions = LineSplitter.split(fileContent).where((line) => line.isNotEmpty).toList();
+    selectedQuestion = questions.isNotEmpty ? questions[random.nextInt(questions.length)] : 'No questions available';
+    if (mounted) {setState(() {});}
+  }
 
   @override
   Widget build(BuildContext context) {
     final MaterialStateProperty<Color?> switchColor = MaterialStateProperty.resolveWith<Color?>(
       (Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
-          return orange;
-        }
-        else {
-          return blue;
-        }
+        if (states.contains(MaterialState.selected)) {return orange;}
+        else {return blue;}
       },
     );
     final MaterialStateProperty<Color?> whiteSwitch = MaterialStateProperty.resolveWith<Color?>(
       (Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
-          return Colors.white;
-        }
-        if (states.contains(MaterialState.disabled)) {
-          return blue;
-        }
+        if (states.contains(MaterialState.selected)) {return Colors.white;}
+        if (states.contains(MaterialState.disabled)) {return blue;}
         return null;
       },
     );
     final MaterialStateProperty<Icon?> thumbIcon = MaterialStateProperty.resolveWith<Icon?>(
       (Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
-          return const Icon(Icons.check, color: Colors.white);
-        }
+        if (states.contains(MaterialState.selected)) {return const Icon(Icons.check, color: Colors.white);}
         return const Icon(Icons.close, color: Colors.white);
       },
     );
-
     return Scaffold(
-      
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3
@@ -615,12 +618,12 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                             style: TextStyle(height: 0,fontSize: 40, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(top:00, bottom: 30, left: 16, right: 16),
+                        Padding(
+                          padding: const EdgeInsets.only(top:00, bottom: 30, left: 16, right: 16),
                           child: Text(
-                            'Are you the same as you were 2 years ago?  5 years ago?  What has changed, if anything?',
+                            selectedQuestion,
                             textAlign: TextAlign.center,
-                            style: TextStyle(height: 0,fontSize: 20,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)),
+                            style: const TextStyle(height: 0,fontSize: 20,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)),
                           ),
                         ),
                         Padding(
