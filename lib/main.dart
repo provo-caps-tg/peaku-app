@@ -812,31 +812,41 @@ class _ResponsePage extends State<ResponsePage> {
                       //Start of children
                       children: <Widget>[ 
                         const Center( 
-                                    child: Text(
-                                      'Other Responses',
-                                      style: TextStyle(
-                                        fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
-                                      ),
-                                    ),
-                                  ),
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Other responses to:',
+                            style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                            ),
+                          ),
+                        ),
+                        Center( 
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            selectedQuestion,
+                            style: const TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                            ),
+                          ),
+                        ),
                         Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(5),
                           child: Container(
                             width: double.infinity,
-                            height: 150,
+                            height: 125,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                color: blue,
-                                width: 2,
+                                color: const Color.fromARGB(255, 63, 63, 63),
+                                width: 1,
                               ),
-                              borderRadius: const BorderRadius.all(Radius.circular(20))
+                              borderRadius: const BorderRadius.all(Radius.circular(5))
                               ),
                               child: ListView(
                                 children: [
                                   const Padding(
                                     padding: EdgeInsets.all(3),
                                     child: Text(
-                                      'Are you the same as you were 2 years ago?  5 years ago?  What has changed, if anything?',
+                                      'Anonymous',
                                       style: TextStyle(
                                         fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
                                       ),
@@ -853,32 +863,30 @@ class _ResponsePage extends State<ResponsePage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(5),
                           child: Container(
                             width: double.infinity,
-                            height: 150,
+                            height: 125,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                color: blue,
-                                width: 2,
+                                color: const Color.fromARGB(255, 63, 63, 63),
+                                width: 1,
                               ),
-                              borderRadius: const BorderRadius.all(Radius.circular(20))
+                              borderRadius: const BorderRadius.all(Radius.circular(5))
                               ),
                               child: ListView(
-                                children: const [
-                                  Center( 
-                                    child: Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: Text(
-                                        'What is the difference between like and love? Is one more important for you?',
-                                        style: TextStyle(
-                                          fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
-                                        ),
+                                children: const [ 
+                                  Padding(
+                                    padding: EdgeInsets.all(3),
+                                    child: Text(
+                                      'Anonymous',
+                                      style: TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
                                       ),
                                     ),
                                   ),
                                  Padding(
-                                    padding: EdgeInsets.all(3),
+                                    padding: EdgeInsets.all(5),
                                     child: Text('No to me persoanlly I disagree')
                                   )
                                 ]
