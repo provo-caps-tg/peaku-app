@@ -812,25 +812,31 @@ class _ResponsePage extends State<ResponsePage> {
                       //Start of children
                       children: <Widget>[ 
                         const Center( 
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            'Other responses to:',
-                            style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                          child: Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              'Repsonse Page',
+                              style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                              ),
                             ),
                           ),
                         ),
                         Center( 
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            selectedQuestion,
-                            style: const TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                          child: Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              selectedQuestion,
+                              style: const TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                              ),
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(10),
                           child: Container(
                             width: double.infinity,
                             height: 125,
@@ -863,7 +869,7 @@ class _ResponsePage extends State<ResponsePage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(10),
                           child: Container(
                             width: double.infinity,
                             height: 125,
