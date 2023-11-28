@@ -3,12 +3,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 void main() {runApp(const PeakUApp());}
+String pass = '';
+String email = '';
+bool responded = false;
 final random = Random();
 String userResponse = '';
 String selectedQuestion = 'Loading...';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
 Color orange = const Color.fromARGB(255, 232, 105, 0);
-final responseController = TextEditingController(text: userResponse);
+TextEditingController responseController = TextEditingController(text: userResponse);
 
 class PeakUApp extends StatelessWidget {
   const PeakUApp({super.key});
@@ -134,8 +137,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 static final GlobalKey<FormState> emailKey = GlobalKey<FormState>();
 static final GlobalKey<FormState> passKey = GlobalKey<FormState>();
-final emailController = TextEditingController();
-final passController = TextEditingController();
+final emailController = TextEditingController(text: email);
+final passController = TextEditingController(text: pass);
 
   @override
   void dispose() {
@@ -147,6 +150,8 @@ final passController = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
+    responded = false;
+    responseController = TextEditingController(text: '');
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -209,11 +214,13 @@ final passController = TextEditingController();
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
                                 child: TextFormField(
+                                  controller: emailController,
                                   decoration: const InputDecoration(labelText: 'Enter your email here'),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter some text.';
                                     }
+                                    email = value;
                                     return null;
                                   },
                                 ),
@@ -241,11 +248,13 @@ final passController = TextEditingController();
                                   obscureText: true,
                                   enableSuggestions: false,
                                   autocorrect: false,
+                                  controller: passController,
                                   decoration: const InputDecoration(labelText: 'Enter your password here'),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter some text.';
                                     }
+                                    pass = value;
                                     return null;
                                   },
                                 ),
@@ -540,7 +549,9 @@ class DailyQuestionPage extends StatefulWidget {
 
 class _DailyQuestionPage extends State<DailyQuestionPage> {
   bool enabled = true;
-  _DailyQuestionPage() {_loadQuestions();}
+  _DailyQuestionPage() {
+    if(responded == false){_loadQuestions();}
+  }
 
   Future<void> _loadQuestions() async {
     final random = Random();
@@ -776,6 +787,7 @@ class ResponsePage extends StatefulWidget {
 class _ResponsePage extends State<ResponsePage> {
   @override
   Widget build(BuildContext context) {
+    responded = true;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
