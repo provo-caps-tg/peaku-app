@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 void main() {runApp(const PeakUApp());}
+String pass = '';
+String email = '';
 bool responded = false;
 final random = Random();
 String userResponse = '';
@@ -135,8 +137,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
 static final GlobalKey<FormState> emailKey = GlobalKey<FormState>();
 static final GlobalKey<FormState> passKey = GlobalKey<FormState>();
-final emailController = TextEditingController();
-final passController = TextEditingController();
+final emailController = TextEditingController(text: email);
+final passController = TextEditingController(text: pass);
 
   @override
   void dispose() {
@@ -212,11 +214,13 @@ final passController = TextEditingController();
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
                                 child: TextFormField(
+                                  controller: emailController,
                                   decoration: const InputDecoration(labelText: 'Enter your email here'),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter some text.';
                                     }
+                                    email = value;
                                     return null;
                                   },
                                 ),
@@ -244,11 +248,13 @@ final passController = TextEditingController();
                                   obscureText: true,
                                   enableSuggestions: false,
                                   autocorrect: false,
+                                  controller: passController,
                                   decoration: const InputDecoration(labelText: 'Enter your password here'),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Please enter some text.';
                                     }
+                                    pass = value;
                                     return null;
                                   },
                                 ),
