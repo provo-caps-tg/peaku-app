@@ -403,13 +403,13 @@ class _AboutUs extends State<AboutUs> {
                           padding: const EdgeInsets.only(top:10, bottom: 20, left: 16, right: 16),
                           child: Text(
                             "PeakU's Mission is to mitigate domestic, and dating violence by empowering teens and young adults to build and connect to their sense of self through educational resources, workshops, and community partnerships.",
-                            style: TextStyle(fontSize: 20, color: blue,),
+                            style: TextStyle(fontFamily: 'Barlow',fontSize: 20, color: blue,),
                             textAlign: TextAlign.center,
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top:10, bottom: 10),
-                          child: Text("Let's set up an account.", style: TextStyle(fontSize: 25, color: blue)),
+                          child: Text("Let's set up an account.", style: TextStyle(fontFamily: 'Barlow',fontSize: 27, color: blue)),
                         ),
                         Form(
                           key: emailKey,
@@ -808,7 +808,80 @@ class _ResponsePage extends State<ResponsePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       //Start of children
                       children: <Widget>[ 
-                        Text(userResponse)
+                        const Center( 
+                                    child: Text(
+                                      'Other Responses',
+                                      style: TextStyle(
+                                        fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                      ),
+                                    ),
+                                  ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            width: double.infinity,
+                            height: 150,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                color: blue,
+                                width: 2,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(20))
+                              ),
+                              child: ListView(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(3),
+                                    child: Text(
+                                      'Are you the same as you were 2 years ago?  5 years ago?  What has changed, if anything?',
+                                      style: TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                      ),
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5),
+                                      child: Text(userResponse)
+                                    )
+                                  ),
+                                ]
+                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            width: double.infinity,
+                            height: 150,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                color: blue,
+                                width: 2,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(20))
+                              ),
+                              child: ListView(
+                                children: const [
+                                  Center( 
+                                    child: Padding(
+                                      padding: EdgeInsets.all(5),
+                                      child: Text(
+                                        'What is the difference between like and love? Is one more important for you?',
+                                        style: TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                 Padding(
+                                    padding: EdgeInsets.all(3),
+                                    child: Text('No to me persoanlly I disagree')
+                                  )
+                                ]
+                             ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
