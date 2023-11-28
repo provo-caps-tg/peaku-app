@@ -818,13 +818,13 @@ class _ResponsePage extends State<ResponsePage> {
                       //Start of children
                       children: <Widget>[ 
                         const Center( 
-                                    child: Text(
-                                      'Other Responses',
-                                      style: TextStyle(
-                                        fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
-                                      ),
-                                    ),
-                                  ),
+                          child: Text(
+                            'Other Responses',
+                            style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                            ),
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Container(
