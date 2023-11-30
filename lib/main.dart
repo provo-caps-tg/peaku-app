@@ -7,6 +7,7 @@ String pass = '';
 String email = '';
 bool responded = false;
 String userResponse = '';
+bool enabled = true;
 String selectedQuestion = 'Loading...';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
 Color orange = const Color.fromARGB(255, 232, 105, 0);
@@ -588,7 +589,7 @@ class DailyQuestionPage extends StatefulWidget {
 }
 
 class _DailyQuestionPage extends State<DailyQuestionPage> {
-  bool enabled = true;
+  
   _DailyQuestionPage() {
     if(responded == false){_loadQuestions();}
   }
@@ -834,6 +835,11 @@ class ResponsePage extends StatefulWidget {
 }
 
 class _ResponsePage extends State<ResponsePage> {
+  _ResponsePage() {
+    if (userResponse==''){enabled=false;}
+  }
+
+
   @override
   Widget build(BuildContext context) {
     responded = true;
@@ -843,161 +849,154 @@ class _ResponsePage extends State<ResponsePage> {
         backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3
       ),
       body: Container(
-        constraints: const BoxConstraints.expand(),
-        color: Colors.black,
-        child: Center(
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/background.png'),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                      color: Colors.white,
-                      borderRadius: const BorderRadius.all(Radius.circular(29))
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          //Start of children
-                          children: <Widget>[ 
-                            const Center( 
-                              child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: Text(
-                                  textAlign: TextAlign.center,
-                                  'Repsonse Page',
-                                  style: TextStyle(
-                                    fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Center( 
-                              child: Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Text(
-                                  textAlign: TextAlign.center,
-                                  selectedQuestion,
-                                  style: const TextStyle(
-                                    fontSize: 17, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Container(
-                                width: double.infinity,
-                                height: 125,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                    color: const Color.fromARGB(255, 63, 63, 63),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.all(Radius.circular(5))
-                                  ),
-                                  child: ListView(
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.all(3),
-                                        child: Text(
-                                          'Anonymous',
-                                          style: TextStyle(
-                                            fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
-                                          ),
-                                        ),
-                                      ),
-                                      Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(5),
-                                          child: Text(userResponse)
-                                        )
-                                      ),
-                                    ]
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Container(
-                                width: double.infinity,
-                                height: 125,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                    color: const Color.fromARGB(255, 63, 63, 63),
-                                    width: 1,
-                                  ),
-                                  borderRadius: const BorderRadius.all(Radius.circular(5))
-                                  ),
-                                  child: ListView(
-                                    children: const [ 
-                                      Padding(
-                                        padding: EdgeInsets.all(3),
-                                        child: Text(
-                                          'Anonymous',
-                                          style: TextStyle(
-                                            fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
-                                          ),
-                                        ),
-                                      ),
-                                    Padding(
-                                        padding: EdgeInsets.all(5),
-                                        child: Text('No to me persoanlly I disagree')
-                                      )
-                                    ]
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white,
                   ),
-                ),   
-                Padding(
-                  padding: const EdgeInsets.only(left: 8, top: 8),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: orange,
-                      borderRadius: BorderRadius.circular(13),
-                    ),
-                    child: IconTheme(
-                      data: const IconThemeData(
-                      color: Colors.white),
-                      child: IconButton(
-                        onPressed:() {
-                          setState(() {
-                            userResponse = responseController.text;
-                          });
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const DailyQuestionPage()),);
-                            }, 
-                        icon: const Icon(Icons.arrow_back)
-                      ),
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(29))
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      //Start of children
+                      children: <Widget>[ 
+                        const Center( 
+                          child: Padding(
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              'Repsonse Page',
+                              style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                              ),
+                            ),
+                          ),
+                        ),
+                        Center( 
+                          child: Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              selectedQuestion,
+                              style: const TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            width: double.infinity,
+                            height: 125,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                color: const Color.fromARGB(255, 63, 63, 63),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(5))
+                              ),
+                              child: ListView(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(3),
+                                    child: Text(
+                                      'Anonymous',
+                                      style: TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                      ),
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(5),
+                                      child: Text(userResponse)
+                                    )
+                                  ),
+                                ]
+                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            width: double.infinity,
+                            height: 125,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                color: const Color.fromARGB(255, 63, 63, 63),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(5))
+                              ),
+                              child: ListView(
+                                children: const [ 
+                                  Padding(
+                                    padding: EdgeInsets.all(3),
+                                    child: Text(
+                                      'Anonymous',
+                                      style: TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                      ),
+                                    ),
+                                  ),
+                                 Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Text('No to me persoanlly I disagree')
+                                  )
+                                ]
+                             ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ],
+              ),
+            ),   
+            Padding(
+              padding: const EdgeInsets.only(left: 8, top: 8),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: orange,
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                child: IconTheme(
+                  data: const IconThemeData(
+                  color: Colors.white),
+                  child: IconButton(
+                    onPressed:() {
+                      setState(() {
+                        userResponse = responseController.text;
+                      });
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const DailyQuestionPage()),);
+                        }, 
+                    icon: const Icon(Icons.arrow_back)
+                  ),
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
