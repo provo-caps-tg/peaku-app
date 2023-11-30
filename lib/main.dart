@@ -444,10 +444,23 @@ class _AboutUs extends State<AboutUs> {
                               fit: BoxFit.scaleDown,
                               image: AssetImage('assets/images/logo.png'),
                             ),
-                            Container(
-                              transform: Matrix4.translationValues(0.0, -35.0, 0.0),
-                              child: Text('Relationships Elevated', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: blue, fontFamily: 'Barlow')),
+                          Padding(
+                            padding: const EdgeInsets.only(right:10, left: 10),
+                            child: Container(
+                              transform: Matrix4.translationValues(0.0, -25.0, 0.0),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  'Relationships Elevated', 
+                                  style: TextStyle( 
+                                    fontWeight: FontWeight.bold, 
+                                    fontSize: 26, 
+                                    color: blue, 
+                                    fontFamily: 'Barlow')
+                                ),
+                              ),
                             ),
+                          ),
                             Padding(
                               padding: const EdgeInsets.only(top:0, bottom: 10),
                               child: Text("Our Mission", style: TextStyle(fontSize: 30, color: blue, fontFamily: 'Barlow')),
