@@ -902,37 +902,40 @@ class _ResponsePage extends State<ResponsePage> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Container(
-                            width: double.infinity,
-                            height: 125,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                color: const Color.fromARGB(255, 63, 63, 63),
-                                width: 1,
-                              ),
-                              borderRadius: const BorderRadius.all(Radius.circular(5))
-                              ),
-                              child: ListView(
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(3),
-                                    child: Text(
-                                      'Anonymous',
-                                      style: TextStyle(
-                                        fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                        Visibility(
+                          visible: enabled,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Container(
+                              width: double.infinity,
+                              height: 125,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                  color: const Color.fromARGB(255, 63, 63, 63),
+                                  width: 1,
+                                ),
+                                borderRadius: const BorderRadius.all(Radius.circular(5))
+                                ),
+                                child: ListView(
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.all(3),
+                                      child: Text(
+                                        'Anonymous',
+                                        style: TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5),
-                                      child: Text(userResponse)
-                                    )
-                                  ),
-                                ]
-                             ),
+                                    Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5),
+                                        child: Text(userResponse)
+                                      )
+                                    ),
+                                  ]
+                              ),
+                            ),
                           ),
                         ),
                         Padding(
