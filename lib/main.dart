@@ -8,6 +8,7 @@ String email = '';
 bool responded = false;
 final random = Random();
 String userResponse = '';
+bool enabled = true;
 String selectedQuestion = 'Loading...';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
 Color orange = const Color.fromARGB(255, 232, 105, 0);
@@ -548,7 +549,7 @@ class DailyQuestionPage extends StatefulWidget {
 }
 
 class _DailyQuestionPage extends State<DailyQuestionPage> {
-  bool enabled = true;
+  
   _DailyQuestionPage() {
     if(responded == false){_loadQuestions();}
   }
@@ -667,7 +668,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                             ),
                             onPressed: () {
                               setState(() {
-                                userResponse = '';
+                                enabled = false;
                               });
                               Navigator.pushReplacement(
                                 context,
@@ -712,6 +713,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                                       setState(() {
                                         enabled = value;
                                         if(enabled==false){
+                                          debugPrint(userResponse);
                                           userResponse = '';
                                         } 
                                         else if(enabled==true){
@@ -785,6 +787,11 @@ class ResponsePage extends StatefulWidget {
 }
 
 class _ResponsePage extends State<ResponsePage> {
+  _ResponsePage() {
+    if (userResponse==''){enabled=false;}
+  }
+
+
   @override
   Widget build(BuildContext context) {
     responded = true;
@@ -839,7 +846,7 @@ class _ResponsePage extends State<ResponsePage> {
                           child: Padding(
                             padding: const EdgeInsets.all(5),
                             child: Text(
-                              textAlign: TextAlign.center,
+                              textAlign: TextAlign.left,
                               selectedQuestion,
                               style: const TextStyle(
                                 fontSize: 17, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
@@ -847,37 +854,38 @@ class _ResponsePage extends State<ResponsePage> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Container(
-                            width: double.infinity,
-                            height: 125,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                color: const Color.fromARGB(255, 63, 63, 63),
-                                width: 1,
-                              ),
-                              borderRadius: const BorderRadius.all(Radius.circular(5))
-                              ),
-                              child: ListView(
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(3),
-                                    child: Text(
-                                      'Anonymous',
-                                      style: TextStyle(
-                                        fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                        Visibility(
+                          visible: enabled,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Container(
+                              width: double.infinity,
+                              height: 125,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                  color: const Color.fromARGB(255, 63, 63, 63),
+                                  width: 1,
+                                ),
+                                borderRadius: const BorderRadius.all(Radius.circular(5))
+                                ),
+                                child: ListView(
+                                  children: [
+                                    const Padding(
+                                      padding: EdgeInsets.all(3),
+                                      child: Text(
+                                        'Anonymous',
+                                        style: TextStyle(
+                                          fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Center(
-                                    child: Padding(
+                                    Padding(
                                       padding: const EdgeInsets.all(5),
                                       child: Text(userResponse)
                                     )
-                                  ),
-                                ]
-                             ),
+                                  ]
+                              ),
+                            ),
                           ),
                         ),
                         Padding(
