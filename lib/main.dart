@@ -34,7 +34,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();}
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -213,12 +212,22 @@ final passController = TextEditingController(text: pass);
                             fit: BoxFit.scaleDown,
                             image: AssetImage('assets/images/logo.png'),
                           ),
-                          Container(
-                            transform: Matrix4.translationValues(0.0, -35.0, 0.0),
-                            child: Text(
-                              'Relationships Elevated', 
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: blue, fontFamily: 'Barlow'),
-                              textAlign: TextAlign.center,),
+                          Padding(
+                            padding: const EdgeInsets.only(right:10, left: 10),
+                            child: Container(
+                              transform: Matrix4.translationValues(0.0, -40.0, 0.0),
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  'Relationships Elevated', 
+                                  style: TextStyle( 
+                                    fontWeight: FontWeight.bold, 
+                                    fontSize: 26, 
+                                    color: blue, 
+                                    fontFamily: 'Barlow')
+                                ),
+                              ),
+                            ),
                           ),
                           Form(key: emailKey,
                             child: Column(
@@ -315,7 +324,7 @@ final passController = TextEditingController(text: pass);
                               textAlign: TextAlign.center,),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left:20, right:20, top:40),
+                            padding: const EdgeInsets.only(left:20, right:20, top:40, bottom: 10),
                             child: SizedBox(
                               width: double.infinity,
                               height: 50,
@@ -728,9 +737,12 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                                     children: [
                                     const Padding(
                                         padding: EdgeInsets.only(right: 10, left: 5, top: 0),
+                                        child: FittedBox(
+                                          fit: BoxFit.fitWidth,
                                         child: Text(
                                         'Share with others:',
-                                        style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                                        style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                                        ),
                                         ),
                                       ),
                                       Switch(
@@ -761,7 +773,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               ),
                             ), 
                             Padding(
-                              padding: const EdgeInsets.only(left:20, right:20),
+                              padding: const EdgeInsets.only(left:20, right:20, bottom: 10),
                               child: SizedBox(
                                 width: double.infinity,
                                 height: 50,
