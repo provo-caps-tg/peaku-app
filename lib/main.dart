@@ -667,7 +667,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               image: AssetImage('assets/images/logo.png'),
                             ),
                             Container(
-                              transform: Matrix4.translationValues(0.0, -35.0, 0.0),
+                              transform: Matrix4.translationValues(0.0, -25.0, 0.0),
                               child: const Text(
                                 'Daily Question',
                                 style: TextStyle(height: 0,fontSize: 40, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
@@ -678,7 +678,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                               child: Text(
                                 selectedQuestion,
                                 textAlign: TextAlign.center,
-                                style: const TextStyle(height: 0,fontSize: 20,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)),
+                                style: const TextStyle(fontSize: 20,  fontFamily: 'Barlow', color: Color.fromRGBO(83, 83, 83, 1)),
                               ),
                             ),
                             Padding(
@@ -736,7 +736,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                                   child: Row(
                                     children: [
                                     const Padding(
-                                        padding: EdgeInsets.only(right: 10, left: 5, top: 0),
+                                        padding: EdgeInsets.only(right: 5, left: 5, top: 0),
                                         child: FittedBox(
                                           fit: BoxFit.fitWidth,
                                         child: Text(
