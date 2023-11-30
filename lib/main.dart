@@ -6,7 +6,6 @@ void main() {runApp(const PeakUApp());}
 String pass = '';
 String email = '';
 bool responded = false;
-final random = Random();
 String userResponse = '';
 String selectedQuestion = 'Loading...';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
@@ -554,11 +553,10 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
   }
 
   Future<void> _loadQuestions() async {
-    final random = Random();
     const String filePath = 'assets/textFiles/responses.txt';
     final String fileContent = await rootBundle.loadString(filePath);
     final List<String> questions = LineSplitter.split(fileContent).where((line) => line.isNotEmpty).toList();
-    selectedQuestion = questions.isNotEmpty ? questions[random.nextInt(questions.length)] : 'No questions available';
+    selectedQuestion = questions.isNotEmpty ? questions[Random().nextInt(questions.length)] : 'No questions available';
     if (mounted) {setState(() {});}
   }
 
