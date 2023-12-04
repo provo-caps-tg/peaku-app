@@ -5,10 +5,10 @@ import 'package:flutter/services.dart' show rootBundle;
 void main() {runApp(const PeakUApp());}
 String pass = '';
 String email = '';
+bool enabled = true;
 bool responded = false;
 String holderText = 'Lorem Ispum';
 String userResponse = '';
-bool enabled = true;
 String selectedQuestion = 'Loading...';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
 Color orange = const Color.fromARGB(255, 232, 105, 0);
