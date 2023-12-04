@@ -972,11 +972,11 @@ class _ResponsePage extends State<ResponsePage> {
                                   ),
                                   borderRadius: const BorderRadius.all(Radius.circular(5))
                                   ),
-                                  child: const SingleChildScrollView (
+                                  child: SingleChildScrollView (
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [ 
-                                        Align(
+                                        const Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
                                             padding: EdgeInsets.all(3),
@@ -991,8 +991,8 @@ class _ResponsePage extends State<ResponsePage> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: Text('No to me persoanlly I disagree')
+                                              padding: const EdgeInsets.all(5),
+                                              child: Text(holderText)
                                           )
                                         ),
                                       ]
@@ -1012,11 +1012,11 @@ class _ResponsePage extends State<ResponsePage> {
                                   ),
                                   borderRadius: const BorderRadius.all(Radius.circular(5))
                                   ),
-                                  child: const SingleChildScrollView (
+                                  child: SingleChildScrollView (
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [ 
-                                        Align(
+                                        const Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
                                             padding: EdgeInsets.all(3),
@@ -1031,8 +1031,8 @@ class _ResponsePage extends State<ResponsePage> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: Text('No to me persoanlly I disagree')
+                                              padding: const EdgeInsets.all(5),
+                                              child: Text(holderText)
                                           )
                                         ),
                                       ]
@@ -1052,11 +1052,11 @@ class _ResponsePage extends State<ResponsePage> {
                                   ),
                                   borderRadius: const BorderRadius.all(Radius.circular(5))
                                   ),
-                                  child: const SingleChildScrollView (
+                                  child: SingleChildScrollView (
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [ 
-                                        Align(
+                                        const Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
                                             padding: EdgeInsets.all(3),
@@ -1071,8 +1071,8 @@ class _ResponsePage extends State<ResponsePage> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: Text('No to me persoanlly I disagree')
+                                              padding: const EdgeInsets.all(5),
+                                              child: Text(holderText)
                                           )
                                         ),
                                       ]
@@ -1092,11 +1092,11 @@ class _ResponsePage extends State<ResponsePage> {
                                   ),
                                   borderRadius: const BorderRadius.all(Radius.circular(5))
                                   ),
-                                  child: const SingleChildScrollView (
+                                  child: SingleChildScrollView (
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [ 
-                                        Align(
+                                        const Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
                                             padding: EdgeInsets.all(3),
@@ -1111,8 +1111,8 @@ class _ResponsePage extends State<ResponsePage> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: Text('No to me persoanlly I disagree')
+                                              padding: const EdgeInsets.all(5),
+                                              child: Text(holderText)
                                           )
                                         ),
                                       ]
@@ -1132,11 +1132,11 @@ class _ResponsePage extends State<ResponsePage> {
                                   ),
                                   borderRadius: const BorderRadius.all(Radius.circular(5))
                                   ),
-                                  child: const SingleChildScrollView (
+                                  child: SingleChildScrollView (
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [ 
-                                        Align(
+                                        const Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
                                             padding: EdgeInsets.all(3),
@@ -1151,8 +1151,8 @@ class _ResponsePage extends State<ResponsePage> {
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Padding(
-                                              padding: EdgeInsets.all(5),
-                                              child: Text('No to me persoanlly I disagree')
+                                              padding: const EdgeInsets.all(5),
+                                              child: Text(holderText)
                                           )
                                         ),
                                       ]
