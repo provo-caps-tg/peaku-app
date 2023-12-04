@@ -7,6 +7,7 @@ String pass = '';
 String email = '';
 bool enabled = true;
 bool responded = false;
+String holderText = 'Lorem Ispum';
 String userResponse = '';
 String selectedQuestion = 'Loading...';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
@@ -851,7 +852,6 @@ class _ResponsePage extends State<ResponsePage> {
   _ResponsePage() {
     if (userResponse==''){enabled=false;}
   }
-
 
   @override
   Widget build(BuildContext context) {
