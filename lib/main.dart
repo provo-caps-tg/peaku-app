@@ -889,7 +889,6 @@ class _ResponsePage extends State<ResponsePage> {
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      //Start of children
                       children: <Widget>[ 
                         const Center( 
                           child: Padding(
@@ -929,26 +928,73 @@ class _ResponsePage extends State<ResponsePage> {
                                 ),
                                 borderRadius: const BorderRadius.all(Radius.circular(5))
                                 ),
-                                child: ListView(
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsets.all(3),
-                                      child: Text(
-                                        'Anonymous',
-                                        style: TextStyle(
-                                          fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                child: SingleChildScrollView (
+                                  child: Column(
+                                    children: [
+                                      const Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding: EdgeInsets.all(3),
+                                          child: Text(
+                                            'Anonymous',
+                                            style: TextStyle(
+                                              fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(5),
+                                          child: Text(userResponse)
+                                        ),
+                                      ),
+                                    ]
+                                  ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        //Delete all below later
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            width: double.infinity,
+                            height: 125,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                color: const Color.fromARGB(255, 63, 63, 63),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(5))
+                              ),
+                              child: const SingleChildScrollView (
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [ 
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                        padding: EdgeInsets.all(3),
+                                        child: Text(
+                                          'Anonymous',
+                                          style: TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                          ),
                                         ),
                                       ),
                                     ),
-                                    Center(
+                                    Align(
+                                      alignment: Alignment.centerLeft,
                                       child: Padding(
-                                        padding: const EdgeInsets.all(5),
-                                        child: Text(userResponse)
+                                          padding: EdgeInsets.all(5),
+                                          child: Text('No to me persoanlly I disagree')
                                       )
                                     ),
                                   ]
-                              ),
-                            ),
+                                ),
+                             ),
                           ),
                         ),
                         Padding(
@@ -963,25 +1009,155 @@ class _ResponsePage extends State<ResponsePage> {
                               ),
                               borderRadius: const BorderRadius.all(Radius.circular(5))
                               ),
-                              child: ListView(
-                                children: const [ 
-                                  Padding(
-                                    padding: EdgeInsets.all(3),
-                                    child: Text(
-                                      'Anonymous',
-                                      style: TextStyle(
-                                        fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                              child: const SingleChildScrollView (
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [ 
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                        padding: EdgeInsets.all(3),
+                                        child: Text(
+                                          'Anonymous',
+                                          style: TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                 Padding(
-                                    padding: EdgeInsets.all(5),
-                                    child: Text('No to me persoanlly I disagree')
-                                  )
-                                ]
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: Text('No to me persoanlly I disagree')
+                                      )
+                                    ),
+                                  ]
+                                ),
                              ),
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            width: double.infinity,
+                            height: 125,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                color: const Color.fromARGB(255, 63, 63, 63),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(5))
+                              ),
+                              child: const SingleChildScrollView (
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [ 
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                        padding: EdgeInsets.all(3),
+                                        child: Text(
+                                          'Anonymous',
+                                          style: TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: Text('No to me persoanlly I disagree')
+                                      )
+                                    ),
+                                  ]
+                                ),
+                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            width: double.infinity,
+                            height: 125,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                color: const Color.fromARGB(255, 63, 63, 63),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(5))
+                              ),
+                              child: const SingleChildScrollView (
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [ 
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                        padding: EdgeInsets.all(3),
+                                        child: Text(
+                                          'Anonymous',
+                                          style: TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: Text('No to me persoanlly I disagree')
+                                      )
+                                    ),
+                                  ]
+                                ),
+                             ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Container(
+                            width: double.infinity,
+                            height: 125,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                color: const Color.fromARGB(255, 63, 63, 63),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(5))
+                              ),
+                              child: const SingleChildScrollView (
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [ 
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                        padding: EdgeInsets.all(3),
+                                        child: Text(
+                                          'Anonymous',
+                                          style: TextStyle(
+                                            fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Padding(
+                                          padding: EdgeInsets.all(5),
+                                          child: Text('No to me persoanlly I disagree')
+                                      )
+                                    ),
+                                  ]
+                                ),
+                             ),
+                          ),
+                        ),
+                        //Delete all before me later
                       ],
                     ),
                   ),
