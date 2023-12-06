@@ -68,33 +68,32 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Expanded(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          transform: Matrix4.translationValues(0.0, 100.0, 0.0),
-                          child: const Image(
-                            image: AssetImage('assets/images/logo.png'),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right:10, left: 10),
-                        child: Container(
-                          transform: Matrix4.translationValues(0.0, -40.0, 0.0),
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: Text(
-                              'Relationships Elevated', 
-                              style: TextStyle( 
-                                fontWeight: FontWeight.bold, 
-                                fontSize: 26, 
-                                color: blue, 
-                                fontFamily: 'Barlow')
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(left: 20, right: 20),
+                            child: Image(
+                              image: AssetImage('assets/images/logo.png'),
                             ),
                           ),
-                        ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20, right: 20),
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                'Relationships Elevated', 
+                                style: TextStyle( 
+                                  fontWeight: FontWeight.bold, 
+                                  fontSize: 26, 
+                                  color: blue, 
+                                  fontFamily: 'Barlow'
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Padding(
@@ -154,6 +153,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+//TODO: Login screen fix with create account button
 static final GlobalKey<FormState> emailKey = GlobalKey<FormState>();
 static final GlobalKey<FormState> passKey = GlobalKey<FormState>();
 final emailController = TextEditingController(text: email);
@@ -207,145 +207,169 @@ final passController = TextEditingController(text: pass);
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: ListView(
-                        scrollDirection: Axis.vertical,
-                        children: <Widget>[ 
-                          const Image(
-                            fit: BoxFit.scaleDown,
-                            image: AssetImage('assets/images/logo.png'),
+                      child: Column(
+                        children: [ 
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      const Padding(
+                                        padding: EdgeInsets.only(left: 20, right: 20),
+                                        child: Image(
+                                          image: AssetImage('assets/images/logo.png'),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 20, right: 20),
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            'Relationships Elevated', 
+                                            style: TextStyle( 
+                                              fontWeight: FontWeight.bold, 
+                                              fontSize: 26, 
+                                              color: blue, 
+                                              fontFamily: 'Barlow'
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 20),
+                                    ],
+                                  ),
+                                
+                                Form(key: emailKey,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.bottomLeft,
+                                          child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                          child:  Text('Email', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: blue),),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                          child: TextFormField(
+                                            controller: emailController,
+                                            decoration: const InputDecoration(labelText: 'Enter your email here'),
+                                            validator: (value) {
+                                              if (value == null || value.isEmpty) {
+                                                return 'Please enter some text.';
+                                              }
+                                              email = value;
+                                              return null;
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Form(key: passKey,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.bottomLeft,
+                                          child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                          child:  Text('Password', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: blue),),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
+                                          child: TextFormField(
+                                            obscureText: true,
+                                            enableSuggestions: false,
+                                            autocorrect: false,
+                                            controller: passController,
+                                            decoration: const InputDecoration(labelText: 'Enter your password here'),
+                                            validator: (value) {
+                                              if (value == null || value.isEmpty) {
+                                                return 'Please enter some text.';
+                                              }
+                                              pass = value;
+                                              return null;
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(20),
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    height: 50,
+                                    child:  OutlinedButton(
+                                      onPressed: () {
+                                        if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
+                                              Navigator.pushReplacement(
+                                                context,
+                                                MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
+                                        }
+                                      },
+                                      style: OutlinedButton.styleFrom(
+                                        foregroundColor: blue, 
+                                        side: BorderSide(color: blue, width: 2),
+                                        backgroundColor: Colors.white,
+                                      ),
+                                      child: const Text("Login", style: TextStyle(fontSize: 23)),
+                                    )
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right:10, left: 10),
-                            child: Container(
-                              transform: Matrix4.translationValues(0.0, -40.0, 0.0),
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Text(
-                                  'Relationships Elevated', 
-                                  style: TextStyle( 
-                                    fontWeight: FontWeight.bold, 
-                                    fontSize: 26, 
-                                    color: blue, 
-                                    fontFamily: 'Barlow')
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              const Text(
+                                  "Don't have an account?", 
+                                  style: TextStyle(
+                                    fontStyle: FontStyle.italic, 
+                                    fontSize: 20, 
+                                    color: Color.fromARGB(255, 96, 96, 96), 
+                                    fontFamily: 'Barlow'
+                                  ),
+                                  textAlign: TextAlign.center,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left:20, right:20, top:10, bottom: 10),
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  height: 50,
+                                  child:  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => const AboutUs())); 
+                                    },
+                                    style: ButtonStyle(
+                                      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                      backgroundColor: MaterialStateProperty.all<Color>(orange),
+                                    ),
+                                    child: const Text("Create Account", style: TextStyle(fontSize: 23)),
+                                  )
                                 ),
                               ),
-                            ),
-                          ),
-                          Form(key: emailKey,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Align(
-                                  alignment: Alignment.bottomLeft,
-                                    child: Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                    child:  Text('Email', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: blue),),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.topCenter,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                    child: TextFormField(
-                                      controller: emailController,
-                                      decoration: const InputDecoration(labelText: 'Enter your email here'),
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Please enter some text.';
-                                        }
-                                        email = value;
-                                        return null;
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Form(key: passKey,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Align(
-                                  alignment: Alignment.bottomLeft,
-                                    child: Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                    child:  Text('Password', style: TextStyle( fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: blue),),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.topCenter,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 16.0),
-                                    child: TextFormField(
-                                      obscureText: true,
-                                      enableSuggestions: false,
-                                      autocorrect: false,
-                                      controller: passController,
-                                      decoration: const InputDecoration(labelText: 'Enter your password here'),
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Please enter some text.';
-                                        }
-                                        pass = value;
-                                        return null;
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: SizedBox(
-                              width: double.infinity,
-                              height: 50,
-                              child:  OutlinedButton(
-                                onPressed: () {
-                                  if ((emailKey.currentState!.validate()) && (passKey.currentState!.validate())){
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => const DailyQuestionPage())); 
-                                  }
-                                },
-                                style: OutlinedButton.styleFrom(
-                                  foregroundColor: blue, 
-                                  side: BorderSide(color: blue, width: 2),
-                                  backgroundColor: Colors.white,
-                                ),
-                                child: const Text("Login", style: TextStyle(fontSize: 23)),
-                              )
-                            ),
-                          ),
-                          Container(
-                            transform: Matrix4.translationValues(0.0, 30, 0.0),
-                            child: const Text(
-                              "Don't have an account?", 
-                              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20, color: Color.fromARGB(255, 96, 96, 96), fontFamily: 'Barlow'),
-                              textAlign: TextAlign.center,),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left:20, right:20, top:40, bottom: 10),
-                            child: SizedBox(
-                              width: double.infinity,
-                              height: 50,
-                              child:  ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const AboutUs())); 
-                                },
-                                style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                                  backgroundColor: MaterialStateProperty.all<Color>(orange),
-                                ),
-                                child: const Text("Create Account", style: TextStyle(fontSize: 23)),
-                              )
-                            ),
+                            ],
                           ),
                         ],
                       ),
+                      
                     ),
                   ),
                 ),
