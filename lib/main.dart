@@ -7,7 +7,7 @@ String pass = '';
 String email = '';
 bool enabled = true;
 bool responded = false;
-String holderText = 'Lorem Ispum';
+String holderText = 'Lorem Ispum griffin = awesome flock of geese';
 String userResponse = '';
 String selectedQuestion = 'Loading...';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         color: Colors.black,
         child: Center(
           child: Container(
-            constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
+            //constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/background.png'),
@@ -181,7 +181,7 @@ final passController = TextEditingController(text: pass);
         color: Colors.black,
         child: Center(
           child: Container(
-            constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
+            //constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
             width: double.infinity,
             height: double.infinity,
             decoration: const BoxDecoration(
@@ -412,7 +412,7 @@ class _AboutUs extends State<AboutUs> {
         color: Colors.black,
         child: Center(
           child: Container(
-            constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
+            //constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
             width: double.infinity,
             height: double.infinity,
             decoration: const BoxDecoration(
@@ -647,7 +647,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
         color: Colors.black,
         child: Center(
           child: Container(
-            constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
+            //constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
             width: double.infinity,
             height: double.infinity,
             decoration: const BoxDecoration(
@@ -866,7 +866,7 @@ class _ResponsePage extends State<ResponsePage> {
         color: Colors.black,
         child: Center(
           child: Container(
-            constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
+            //constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/background.png'),
