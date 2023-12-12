@@ -10,9 +10,9 @@ String pass = '';
 String email = '';
 bool enabled = true;
 bool responded = false;
-String holderText = 'Lorem Ispum griffin = awesome flock of geese';
 String userResponse = '';
 String selectedQuestion = 'Loading...';
+String holderText = 'Lorem Ispum fake response';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
 Color orange = const Color.fromARGB(255, 232, 105, 0);
 TextEditingController responseController = TextEditingController(text: userResponse);
@@ -28,6 +28,7 @@ class PeakUApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: orange),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       home: const HomePage(),
     );
   }
@@ -209,8 +210,9 @@ final passController = TextEditingController(text: pass);
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: SingleChildScrollView(
+                      child: SingleChildScrollView(                      
                         child: Column(
+                          mainAxisSize: MainAxisSize.max,
                           children: [
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -306,7 +308,7 @@ final passController = TextEditingController(text: pass);
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.all(20),
+                              padding: const EdgeInsets.only(bottom: 20, top: 20, right: 20, left: 20),
                               child: SizedBox(
                                 width: double.infinity,
                                 height: 50,
@@ -327,38 +329,43 @@ final passController = TextEditingController(text: pass);
                                 )
                               ),
                             ),
-                            const Text(
-                                "Don't have an account?", 
-                                style: TextStyle(
-                                  fontStyle: FontStyle.italic, 
-                                  fontSize: 20, 
-                                  color: Color.fromARGB(255, 96, 96, 96), 
-                                  fontFamily: 'Barlow'
+                            
+                            Column(
+                              children: [
+                                const Text(
+                                    "Don't have an account?", 
+                                    style: TextStyle(
+                                      fontStyle: FontStyle.italic, 
+                                      fontSize: 20, 
+                                      color: Color.fromARGB(255, 96, 96, 96), 
+                                      fontFamily: 'Barlow'
+                                    ),
+                                    textAlign: TextAlign.center,
                                 ),
-                                textAlign: TextAlign.center,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left:20, right:20, top:10, bottom: 10),
-                              child: SizedBox(
-                                width: double.infinity,
-                                height: 50,
-                                child:  ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => const AboutUs())); 
-                                  },
-                                  style: ButtonStyle(
-                                    foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                                    backgroundColor: MaterialStateProperty.all<Color>(orange),
+                                Padding(
+                                  padding: const EdgeInsets.only(left:20, right:20, top:10, bottom: 10),
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    height: 50,
+                                    child:  ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => const AboutUs())); 
+                                      },
+                                      style: ButtonStyle(
+                                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                        backgroundColor: MaterialStateProperty.all<Color>(orange),
+                                      ),
+                                      child: const Text("Create Account", style: TextStyle(fontSize: 23)),
+                                    )
                                   ),
-                                  child: const Text("Create Account", style: TextStyle(fontSize: 23)),
-                                )
-                              ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ),               
+                      ),     
                     ),
                   ),
                 ),
@@ -667,7 +674,6 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
         color: Colors.black,
         child: Center(
           child: Container(
-            //constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
             width: double.infinity,
             height: double.infinity,
             decoration: const BoxDecoration(
@@ -786,17 +792,19 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(5),
                                   child: Row(
+                                    
                                     children: [
                                     const Padding(
                                         padding: EdgeInsets.only(right: 5, left: 5, top: 0),
                                         child: FittedBox(
-                                          fit: BoxFit.fitWidth,
-                                        child: Text(
-                                        'Share with others:',
-                                        style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
-                                        ),
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                          'Share with others:',
+                                          style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, fontFamily: 'Barlow', color: Color.fromRGBO(15, 49, 86, 1)),
+                                          ),
                                         ),
                                       ),
+                                      const Spacer(),
                                       Switch(
                                         focusColor: Colors.white,
                                         inactiveThumbColor: blue,
@@ -818,6 +826,7 @@ class _DailyQuestionPage extends State<DailyQuestionPage> {
                                             } 
                                           });
                                         }
+                                      
                                       ),
                                     ],
                                   ),
