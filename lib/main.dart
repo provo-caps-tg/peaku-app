@@ -2,6 +2,9 @@ import 'dart:math';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+
 void main() {runApp(const PeakUApp());}
 String pass = '';
 String email = '';
