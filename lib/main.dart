@@ -2,9 +2,6 @@ import 'dart:math';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
-
 void main() {runApp(const PeakUApp());}
 String pass = '';
 String email = '';
@@ -52,7 +49,6 @@ class _HomePageState extends State<HomePage> {
         color: Colors.black,
         child: Center(
           child: Container(
-            //constraints: const BoxConstraints(maxWidth: 355, minWidth: 355, maxHeight: 669, minHeight: 669),
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/background.png'),
