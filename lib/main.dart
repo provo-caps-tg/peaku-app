@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
+import 'global_varibles.dart';
+import 'level_one.dart'; 
+import 'level_two.dart';
+import 'level_three.dart';
+import 'level_four.dart';
 void main() {runApp(const PeakUApp());}
-String pass = '';
-String email = '';
-bool enabled = true;
-bool responded = false;
-String userResponse = '';
-String selectedQuestion = 'Loading...';
-String holderText = 'Lorem Ispum fake response';
-Color blue = const Color.fromARGB(255, 15, 49, 86);
-Color orange = const Color.fromARGB(255, 232, 105, 0);
-TextEditingController responseController = TextEditingController(text: userResponse);
 
 class PeakUApp extends StatelessWidget {
   const PeakUApp({super.key});

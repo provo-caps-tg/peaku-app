@@ -1,0 +1,11 @@
+import 'package:flutter/material.dart';
+String pass = '';
+String email = '';
+bool enabled = true;
+bool responded = false;
+String userResponse = '';
+String selectedQuestion = 'Loading...';
+String holderText = 'Lorem Ispum fake response';
+Color blue = const Color.fromARGB(255, 15, 49, 86);
+Color orange = const Color.fromARGB(255, 232, 105, 0);
+TextEditingController responseController = TextEditingController(text: userResponse);
