@@ -1,10 +1,4 @@
-import 'dart:math';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-class IgnoreErrors{
-  // ignore_for_file: unused_import
-}
 void main() {runApp(const PeakUApp());}
 String pass = '';
 String email = '';
