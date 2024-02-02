@@ -48,6 +48,11 @@ class _SurveyState extends State<Survey> {
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: const Column(
+                        children: [
+
+                        ],
+                      )
                     ),
                   ),
                 ),
