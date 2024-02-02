@@ -34,7 +34,6 @@ class _SurveyState extends State<Survey> {
             child: Stack(
               children: [
                 Padding(
-                  //White exterior box
                   padding: const EdgeInsets.all(20),
                   child: Container(
                     width: double.infinity,
@@ -49,6 +48,7 @@ class _SurveyState extends State<Survey> {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                       child: const Column(
+                        //Start of widgets//
                         children: [
 
                         ],
