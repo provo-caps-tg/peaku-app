@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_survey/flutter_survey.dart';
 import 'global_varibles.dart';
@@ -90,7 +92,27 @@ class IntroPage extends StatefulWidget {
   @override
   State<IntroPage> createState() => _IntroPageState();}
 
-class _IntroPageState extends State<IntroPage> {
+class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMixin {
+  late Animation<double> animation;            
+  late AnimationController controller;
+  @override
+  void initState() {
+    super.initState();
+    const delay = Duration(seconds: 5);
+    controller = AnimationController(duration: const Duration(milliseconds: 500) + delay, vsync: this);
+    final Animation<double> curve = CurvedAnimation(parent: controller, curve: Curves.easeInExpo);
+    animation = Tween<double>(begin: 0, end: 100).animate(curve);
+    animation.addListener(() {
+    setState(() {
+      //You can change stuff here, but we don't need to
+      });
+    });
+    Timer timer = Timer(const Duration(seconds: 0), () {
+      controller.forward();
+    });
+  }
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,8 +152,30 @@ class _IntroPageState extends State<IntroPage> {
                       child: const Column(
                         //Start of widgets//
                         children: [
-
+                          Text("Test"),
                         ],
+                      ) 
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: TextButton(
+                        style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          backgroundColor: MaterialStateProperty.all<Color>(orange.withOpacity(animation.value/100)),
+                        ),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const IntroPage())); 
+                        },
+                        child: Text('Start Survey', style: TextStyle(fontSize: animation.value/4)),
                       )
                     ),
                   ),
@@ -163,5 +207,10 @@ class _IntroPageState extends State<IntroPage> {
         ),
       ),
     );
+  }
+  @override            
+  void dispose() {            
+    controller.dispose();            
+    super.dispose();            
   }
 }

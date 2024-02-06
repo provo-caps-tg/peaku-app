@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_survey/flutter_survey.dart';
 import 'global_varibles.dart';
 import 'survey_intro.dart';
-import 'level_one.dart'; 
-import 'level_two.dart';
-import 'level_three.dart';
-import 'level_four.dart';
+
 void main() {runApp(const PeakUApp());}
 
 class PeakUApp extends StatelessWidget {
@@ -103,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                             onPressed: () {
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                                MaterialPageRoute(builder: (context) => const IntroPage())); 
                             },
                             child: const Text('Get Started', style: TextStyle(fontSize: 23)),
                         )
