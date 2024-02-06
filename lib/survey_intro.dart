@@ -425,7 +425,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const IntroPage())); 
+                            MaterialPageRoute(builder: (context) => const SurveyPage())); 
                         },
                         child: Text('Start Survey', style: TextStyle(fontSize: animation.value/4)),
                       )
