@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'global_varibles.dart';
 import 'survey_intro.dart';
-
 void main() {runApp(const PeakUApp());}
 
 class PeakUApp extends StatelessWidget {
