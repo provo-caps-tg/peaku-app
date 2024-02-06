@@ -446,7 +446,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                         onPressed:() {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const HomePage()), );
+                            MaterialPageRoute(builder: (context) => const SurveyPage()), );
                             }, 
                         icon: const Icon(Icons.arrow_back)
                       ),
