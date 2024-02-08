@@ -1,9 +1,12 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_survey/flutter_survey.dart';
 import 'global_varibles.dart';
 import 'main.dart';
+List<QuestionResult> _surveyResults = [];
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
@@ -13,13 +16,15 @@ class SurveyPage extends StatefulWidget {
 class _SurveyPageState extends State<SurveyPage> {
   final _formKey = GlobalKey<FormState>();
   // ignore: unused_field
-  List<QuestionResult> _surveyResults = [];
+  
   final List<Question> _initialData = [
+
     Question(
       isMandatory: true,
       question: "ENTRANT CODE: \n\n(First two initials first name + First two initials last name + Last 2 digits from phone number; eg. GISM05)",
     ),
     Question(
+      isMandatory: true,
       question: "Please choose one of the following two options:",
       answerChoices: const {
         "I have read the information provided in the instructions and above, and I consent to participate.": null,
@@ -27,6 +32,7 @@ class _SurveyPageState extends State<SurveyPage> {
       }
     ),
     Question(
+      isMandatory: true,
       question: "I have experienced frustration in the past week about communicating my needs",
       answerChoices: const {
         "Strongly Agree": null,
@@ -223,11 +229,11 @@ class _SurveyPageState extends State<SurveyPage> {
                           //Start of widgets//
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(top:35, left: 40, right: 40, bottom: 10),
+                              padding: const EdgeInsets.only(top:35, left: 40, right: 40, bottom: 20),
                               child: FittedBox(
                                 fit: BoxFit.scaleDown,
                                 child: Text(
-                                  "Let's start with a quick survey.", 
+                                  "Let's start with\n a quick survey.", 
                                   style: TextStyle( 
                                     fontWeight: FontWeight.bold, 
                                     fontSize: 70, 
@@ -273,14 +279,16 @@ class _SurveyPageState extends State<SurveyPage> {
                               padding: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
                               child: SizedBox(
                                 width: double.infinity,
-                                height: MediaQuery.of(context).size.height,
+                                height: double.infinity,   //TODO: Fix Height                             
                                 child: Form(
                                   key: _formKey,
                                   child: Survey(
                                     onNext: (surveyResults) {
                                       _surveyResults = surveyResults;
+                                      print(surveyResults);
                                     },
-                                    initialData: _initialData),
+                                    initialData: _initialData,
+                                  ),
                                 ),
                               ),
                             ),
@@ -295,9 +303,11 @@ class _SurveyPageState extends State<SurveyPage> {
                                       backgroundColor: MaterialStateProperty.all<Color>(orange),
                                     ),
                                     onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
                                       Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(builder: (context) => const IntroPage())); 
+                                    }
                                     },
                                     child: const Text('Submit & Continue', style: TextStyle(fontSize: 23)),
                                 )
