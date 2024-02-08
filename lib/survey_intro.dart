@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_survey/flutter_survey.dart';
 import 'global_varibles.dart';
 import 'main.dart';
+bool buttonVisibility = true;
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
@@ -359,14 +360,17 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
       //You can change stuff here, but we don't need to
       });
     });
-    Timer timer = Timer(const Duration(seconds: 0), () {
-      controller.forward();
+  Timer timer = Timer(const Duration(seconds: 5), () {
+    if (mounted) {
+        controller.forward();
+      }
     });
   }
   
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -401,34 +405,178 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: const Column(
+                      child: Column(
                         //Start of widgets//
                         children: [
-                          Text("Test"),
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "Overview of Curriculum",
+                                style: TextStyle(fontSize: 25, fontFamily: 'Barlow', color: blue, fontWeight: FontWeight.bold)
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(242, 225, 227, 1),
+                                      borderRadius: BorderRadius.all(Radius.circular(10))
+                                    ),
+                                    child: const Column(
+                                      children: [
+                                        Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Text("level 1", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
+                                        ),
+                                        Align(
+                                        alignment: Alignment.topCenter,
+                                        child: 
+                                          Padding(
+                                            padding: EdgeInsets.all(10),
+                                            child: Text(
+                                              "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
+                                              style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
+                                            ),
+                                          )
+                                        ),
+                                      ]
+                                    )
+                                  )
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(242, 225, 227, 1),
+                                      borderRadius: BorderRadius.all(Radius.circular(10))
+                                    ),
+                                    child: const Column(
+                                      children: [
+                                        Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Text("level 2", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
+                                        ),
+                                        Align(
+                                        alignment: Alignment.topCenter,
+                                        child: 
+                                          Padding(
+                                            padding: EdgeInsets.all(10),
+                                            child: Text(
+                                              "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
+                                              style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
+                                            ),
+                                          )
+                                        ),
+                                      ]
+                                    )
+                                  )
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(242, 225, 227, 1),
+                                      borderRadius: BorderRadius.all(Radius.circular(10))
+                                    ),
+                                    child: const Column(
+                                      children: [
+                                        Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Text("level 3", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
+                                        ),
+                                        Align(
+                                        alignment: Alignment.topCenter,
+                                        child: 
+                                          Padding(
+                                            padding: EdgeInsets.all(10),
+                                            child: Text(
+                                              "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
+                                              style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
+                                            ),
+                                          )
+                                        ),
+                                      ]
+                                    )
+                                  )
+                                ),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: const BoxDecoration(
+                                      color: Color.fromRGBO(242, 225, 227, 1),
+                                      borderRadius: BorderRadius.all(Radius.circular(10))
+                                    ),
+                                    child: const Column(
+                                      children: [
+                                        Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Text("level 4", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
+                                        ),
+                                        Align(
+                                        alignment: Alignment.topCenter,
+                                        child: 
+                                          Padding(
+                                            padding: EdgeInsets.all(10),
+                                            child: Text(
+                                              "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
+                                              style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
+                                            ),
+                                          )
+                                        ),
+                                      ]
+                                    )
+                                  )
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       ) 
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: TextButton(
-                        style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor: MaterialStateProperty.all<Color>(orange.withOpacity(animation.value/100)),
-                        ),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const SurveyPage())); 
-                        },
-                        child: Text('Start Survey', style: TextStyle(fontSize: animation.value/4)),
-                      )
+                Visibility(
+                  visible: buttonVisibility,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: TextButton(
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(orange.withOpacity(animation.value/100)),
+                          ),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                          },
+                          child: Text('Start Course', style: TextStyle(fontSize: animation.value/4)),
+                        )
+                      ),
                     ),
                   ),
                 ),
@@ -461,7 +609,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
     );
   }
   @override            
-  void dispose() {            
+  void dispose() {         
     controller.dispose();            
     super.dispose();            
   }
