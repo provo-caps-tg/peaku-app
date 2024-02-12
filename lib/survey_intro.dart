@@ -278,7 +278,7 @@ class _SurveyPageState extends State<SurveyPage> {
                               padding: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
                               child: SizedBox(
                                 width: double.infinity,
-                                height: , //Height of list goes here, whether it be in some equation, EX: 60000 / pow(2, MediaQuery.of(context).size.width)
+                                height:100 , //Height of list goes here, whether it be in some equation, EX: 60000 / pow(2, MediaQuery.of(context).size.width)
                                 child: Form(
                                   key: _formKey,
                                   child: Survey(
