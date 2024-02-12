@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_survey/flutter_survey.dart';
 import 'global_varibles.dart';
 import 'main.dart';
@@ -16,10 +15,8 @@ class SurveyPage extends StatefulWidget {
 
 class _SurveyPageState extends State<SurveyPage> {
   final _formKey = GlobalKey<FormState>();
-  // ignore: unused_field
   
   final List<Question> _initialData = [
-
     Question(
       isMandatory: true,
       question: "ENTRANT CODE: \n\n(First two initials first name + First two initials last name + Last 2 digits from phone number; eg. GISM05)",
@@ -197,12 +194,13 @@ class _SurveyPageState extends State<SurveyPage> {
         backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3,
       ),
       body: Container(
-        constraints: const BoxConstraints.expand(),
+        constraints: const BoxConstraints(minWidth: 260),
         color: Colors.black,
         child: Center(
           child: Container(
             width: double.infinity,
             height: double.infinity,
+            constraints: const BoxConstraints(minWidth: 260, maxWidth: 500),
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/background.png'),
@@ -280,15 +278,17 @@ class _SurveyPageState extends State<SurveyPage> {
                               padding: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
                               child: SizedBox(
                                 width: double.infinity,
-                                height: double.infinity,   //TODO: Fix Height                             
+                                height: , //Height of list goes here, whether it be in some equation, EX: 60000 / pow(2, MediaQuery.of(context).size.width)
                                 child: Form(
                                   key: _formKey,
                                   child: Survey(
                                     onNext: (surveyResults) {
                                       _surveyResults = surveyResults;
+                                      print(MediaQuery.of(context).size.width); //width of the screen, maybe useful in calculations
                                       print(surveyResults);
                                     },
                                     initialData: _initialData,
+                                    
                                   ),
                                 ),
                               ),
@@ -310,8 +310,10 @@ class _SurveyPageState extends State<SurveyPage> {
                                         MaterialPageRoute(builder: (context) => const IntroPage())); 
                                     }
                                     },
-                                    child: const Text('Submit & Continue', style: TextStyle(fontSize: 23)),
-                                )
+                                    child:const FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child:  Text('Submit & Continue', style: TextStyle(fontSize: 23)),
+                                )),
                               ),
                             ),
                           ],
