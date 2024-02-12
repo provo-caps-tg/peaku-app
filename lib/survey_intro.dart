@@ -219,7 +219,7 @@ class _SurveyPageState extends State<SurveyPage> {
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: SingleChildScrollView(
+                      
                         child: Column(
                           //Start of widgets//
                           children: [
@@ -270,18 +270,22 @@ class _SurveyPageState extends State<SurveyPage> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
+                            Expanded(
                               child: SizedBox(
-                                width: double.infinity,
-                                height: MediaQuery.of(context).size.height,
-                                child: Form(
-                                  key: _formKey,
-                                  child: Survey(
-                                    onNext: (surveyResults) {
-                                      _surveyResults = surveyResults;
-                                    },
-                                    initialData: _initialData),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    height: MediaQuery.of(context).size.height,
+                                    child: Form(
+                                      key: _formKey,
+                                      child: Survey(
+                                        onNext: (surveyResults) {
+                                          _surveyResults = surveyResults;
+                                        },
+                                        initialData: _initialData),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -306,7 +310,7 @@ class _SurveyPageState extends State<SurveyPage> {
                             ),
                           ],
                         ),
-                      ),
+                      
                     ),
                   ),
                 ),
@@ -405,152 +409,163 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: Column(
-                        //Start of widgets//
-                        children: [
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Text(
-                                "Overview of Curriculum",
-                                style: TextStyle(fontSize: 25, fontFamily: 'Barlow', color: blue, fontWeight: FontWeight.bold)
+                      child: SingleChildScrollView(
+                        child: Column(
+                          //Start of widgets//
+                          children: [
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Text(
+                                  "Overview of Curriculum",
+                                  style: TextStyle(fontSize: 25, fontFamily: 'Barlow', color: blue, fontWeight: FontWeight.bold)
+                                ),
                               ),
                             ),
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(242, 225, 227, 1),
-                                      borderRadius: BorderRadius.all(Radius.circular(10))
-                                    ),
-                                    child: const Column(
-                                      children: [
-                                        Align(
-                                        alignment: Alignment.topCenter,
-                                        child: Text("level 1", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
-                                        ),
-                                        Align(
-                                        alignment: Alignment.topCenter,
-                                        child: 
-                                          Padding(
-                                            padding: EdgeInsets.all(10),
-                                            child: Text(
-                                              "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
-                                              style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
-                                            ),
-                                          )
-                                        ),
-                                      ]
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(
+                                        color: Color.fromRGBO(242, 225, 227, 1),
+                                        borderRadius: BorderRadius.all(Radius.circular(10))
+                                      ),
+                                      child: const Column(
+                                        children: [
+                                          Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Text(
+                                            textAlign: TextAlign.center,
+                                            "Level 1 \n Mt. Timpanogos",
+                                            style: TextStyle(fontSize: 20, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
+                                          ),
+                                          Align(
+                                          alignment: Alignment.topCenter,
+                                          child: 
+                                            Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Text(
+                                                "Mt. Timpanogos is all about raising awareness on healthy and unhealthy relationships, visualization of one’s future",
+                                                style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
+                                              ),
+                                            )
+                                          ),
+                                        ]
+                                      )
                                     )
-                                  )
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(242, 225, 227, 1),
-                                      borderRadius: BorderRadius.all(Radius.circular(10))
-                                    ),
-                                    child: const Column(
-                                      children: [
-                                        Align(
-                                        alignment: Alignment.topCenter,
-                                        child: Text("level 2", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
-                                        ),
-                                        Align(
-                                        alignment: Alignment.topCenter,
-                                        child: 
-                                          Padding(
-                                            padding: EdgeInsets.all(10),
-                                            child: Text(
-                                              "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
-                                              style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
-                                            ),
-                                          )
-                                        ),
-                                      ]
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(
+                                        color: Color.fromRGBO(242, 225, 227, 1),
+                                        borderRadius: BorderRadius.all(Radius.circular(10))
+                                      ),
+                                      child: const Column(
+                                        children: [
+                                          Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Text(
+                                            textAlign: TextAlign.center,
+                                            "Level 2 \n Mt Whitney",
+                                             style: TextStyle(fontSize: 20, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
+                                          ),
+                                          Align(
+                                          alignment: Alignment.topCenter,
+                                          child: 
+                                            Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Text(
+                                                "Mt.Whitney focuses on tools for actualizing healthy relationships based on personal values, mindfulness and acceptance; prioritizes a relationship with one’s self",
+                                                style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
+                                              ),
+                                            )
+                                          ),
+                                        ]
+                                      )
                                     )
-                                  )
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(242, 225, 227, 1),
-                                      borderRadius: BorderRadius.all(Radius.circular(10))
-                                    ),
-                                    child: const Column(
-                                      children: [
-                                        Align(
-                                        alignment: Alignment.topCenter,
-                                        child: Text("level 3", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
-                                        ),
-                                        Align(
-                                        alignment: Alignment.topCenter,
-                                        child: 
-                                          Padding(
-                                            padding: EdgeInsets.all(10),
-                                            child: Text(
-                                              "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
-                                              style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
-                                            ),
-                                          )
-                                        ),
-                                      ]
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(
+                                        color: Color.fromRGBO(242, 225, 227, 1),
+                                        borderRadius: BorderRadius.all(Radius.circular(10))
+                                      ),
+                                      child: const Column(
+                                        children: [
+                                          Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Text(
+                                            
+                                            "Level 3\n",
+                                             style: TextStyle(fontSize: 20, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
+                                          ),
+                                          Align(
+                                          alignment: Alignment.topCenter,
+                                          child: 
+                                            Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Text(
+                                                "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
+                                                style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
+                                              ),
+                                            )
+                                          ),
+                                        ]
+                                      )
                                     )
-                                  )
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: const BoxDecoration(
-                                      color: Color.fromRGBO(242, 225, 227, 1),
-                                      borderRadius: BorderRadius.all(Radius.circular(10))
-                                    ),
-                                    child: const Column(
-                                      children: [
-                                        Align(
-                                        alignment: Alignment.topCenter,
-                                        child: Text("level 4", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
-                                        ),
-                                        Align(
-                                        alignment: Alignment.topCenter,
-                                        child: 
-                                          Padding(
-                                            padding: EdgeInsets.all(10),
-                                            child: Text(
-                                              "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
-                                              style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
-                                            ),
-                                          )
-                                        ),
-                                      ]
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(
+                                        color: Color.fromRGBO(242, 225, 227, 1),
+                                        borderRadius: BorderRadius.all(Radius.circular(10))
+                                      ),
+                                      child: const Column(
+                                        children: [
+                                          Align(
+                                          alignment: Alignment.topCenter,
+                                          child: Text("level 4", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
+                                          ),
+                                          Align(
+                                          alignment: Alignment.topCenter,
+                                          child: 
+                                            Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Text(
+                                                "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
+                                                style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
+                                              ),
+                                            )
+                                          ),
+                                        ]
+                                      )
                                     )
-                                  )
+                                  ),
                                 ),
-                              ),
-                            ],
-                          )
-                        ],
+                              ],
+                            )
+                          ],
+                        ),
                       ) 
                     ),
                   ),
