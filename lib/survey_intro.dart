@@ -401,6 +401,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
         color: Colors.black,
         child: Center(
           child: Container(
+            constraints: const BoxConstraints(minWidth: 260, maxWidth: 500),
             width: double.infinity,
             height: double.infinity,
             decoration: const BoxDecoration(
