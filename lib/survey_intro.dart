@@ -284,10 +284,11 @@ class _SurveyPageState extends State<SurveyPage> {
                                     width: double.infinity,
                                     height: MediaQuery.of(context).size.height,
                                     child: Form(
-   //Activate when require questions key: _formKey, 
+                                      key: _formKey, 
                                       child: Survey(
                                         onNext: (surveyResults) {
                                           surveyResults = surveyResults;
+                                          print(surveyResults);
                                         },
                                         
                                         initialData: _initialData),
