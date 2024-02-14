@@ -221,7 +221,7 @@ class _SurveyPageState extends State<SurveyPage> {
                         //Start of widgets//
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top:35, left: 40, right: 40, bottom: 20),
+                            padding: const EdgeInsets.only(top:35, left: 25, right: 25, bottom: 20),
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
@@ -236,7 +236,7 @@ class _SurveyPageState extends State<SurveyPage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top:0, left: 40, right: 40, bottom: 00),
+                            padding: const EdgeInsets.only(top:0, left: 25, right: 25, bottom: 00),
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
@@ -252,7 +252,7 @@ class _SurveyPageState extends State<SurveyPage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top:5, left: 40, right: 40, bottom: 10),
+                            padding: const EdgeInsets.only(top:5, left: 25, right: 25, bottom: 10),
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
@@ -269,7 +269,7 @@ class _SurveyPageState extends State<SurveyPage> {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 40, right: 40, bottom: 0),
+                              padding: const EdgeInsets.only(left: 25, right: 25, bottom: 0),
                                 child: Container(
                                 decoration: BoxDecoration(
                                   border: Border.all(
@@ -293,7 +293,7 @@ class _SurveyPageState extends State<SurveyPage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top:10, left: 40, right: 40, bottom: 20),
+                            padding: const EdgeInsets.only(top:10, left: 25, right: 25, bottom: 20),
                             child: SizedBox(
                               width: double.infinity,
                               height: 50,
