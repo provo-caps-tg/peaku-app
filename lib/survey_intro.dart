@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_survey/flutter_survey.dart';
 import 'global_varibles.dart';
 import 'main.dart';
-bool buttonVisibility = true;
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
