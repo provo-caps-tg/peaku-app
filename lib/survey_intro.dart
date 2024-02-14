@@ -356,8 +356,8 @@ class IntroPage extends StatefulWidget {
   State<IntroPage> createState() => _IntroPageState();}
 
 class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMixin {
+  int animationNumber = 0;
   Timer? timer;
-  int animationNumber = 1;
   late Animation<double> animation;            
   late AnimationController controller;
   @override
@@ -372,34 +372,14 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
       //You can change stuff here, but we don't need to
       });
     });
-    
-    resetAnimation();
-  }
-
-  void resetAnimation() {
-    controller.reset();
-    animationNumber += 1;
-    Timer timer = Timer(const Duration(seconds: 5), () {
-      if (mounted) {
-        controller.forward();        
-      }
-    });
-  }
-
-  bool animationVisuality(int count) {
-    if (count == animationNumber && animation.value >= 100) {
-      resetAnimation();
-      return true;
-    } else {
-      return false;
+    if (mounted) {
+      controller.forward(); 
     }
   }
-  
-  
 
   @override
   Widget build(BuildContext context) {
-    
+    animationNumber = 0;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -422,7 +402,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
             child: Stack(
               children: [
               Visibility(
-                visible: animationVisuality(1),
+                visible: true,
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
@@ -433,14 +413,14 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                       child: TextButton(
                         style: ButtonStyle(
                           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor: MaterialStateProperty.all<Color>(orange),
+                          backgroundColor: MaterialStateProperty.all<Color>(orange.withOpacity(animation.value/100)),
                         ),
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => const SurveyPage())); 
                         },
-                        child: const Text('Start Course', style: TextStyle(fontSize: 35)),
+                        child: const Text('Start Course', style: TextStyle(fontSize: 35,)),
                       )
                     ),
                   ),
