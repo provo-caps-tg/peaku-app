@@ -34,10 +34,11 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: orange, toolbarHeight: 3,
       ),
       body: Container(
-        constraints: const BoxConstraints.expand(),
+        constraints: const BoxConstraints(minWidth: 260),
         color: Colors.black,
         child: Center(
           child: Container(
+            constraints: const BoxConstraints(minWidth: 260, maxWidth: 500),
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/background.png'),
