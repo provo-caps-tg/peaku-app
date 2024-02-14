@@ -362,6 +362,7 @@ class IntroPage extends StatefulWidget {
   State<IntroPage> createState() => _IntroPageState();}
 
 class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMixin {
+  int animationNumber = 1;
   late Animation<double> animation;            
   late AnimationController controller;
   @override
@@ -378,8 +379,16 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
     });
   Timer timer = Timer(const Duration(seconds: 5), () {
     if (mounted) {
-        controller.forward();
+        
       }
+    });
+  }
+
+  void resetAnimation() {
+    controller.reset();
+    animationNumber += 1;
+    Timer timer = Timer(const Duration(seconds: 5), () {
+      controller.forward();
     });
   }
   
@@ -408,203 +417,26 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
             ),
             child: Stack(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                      color: Colors.white,
-                      borderRadius: const BorderRadius.all(Radius.circular(29))
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          //Start of widgets//
-                          children: [
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Text(
-                                  "Overview of Curriculum",
-                                  style: TextStyle(fontSize: 25, fontFamily: 'Barlow', color: blue, fontWeight: FontWeight.bold)
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: const BoxDecoration(
-                                        color: Color.fromRGBO(242, 225, 227, 1),
-                                        borderRadius: BorderRadius.all(Radius.circular(10))
-                                      ),
-                                      child: const Column(
-                                        children: [
-                                          Align(
-                                          alignment: Alignment.topCenter,
-                                          child: Text(
-                                            textAlign: TextAlign.center,
-                                            "Level 1 \n Mt. Timpanogos",
-                                            style: TextStyle(fontSize: 20, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
-                                          ),
-                                          Align(
-                                          alignment: Alignment.topCenter,
-                                          child: 
-                                            Padding(
-                                              padding: EdgeInsets.all(10),
-                                              child: Text(
-                                                "Mt. Timpanogos is all about raising awareness on healthy and unhealthy relationships, visualization of one’s future",
-                                                style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
-                                              ),
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    )
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: const BoxDecoration(
-                                        color: Color.fromRGBO(242, 225, 227, 1),
-                                        borderRadius: BorderRadius.all(Radius.circular(10))
-                                      ),
-                                      child: const Column(
-                                        children: [
-                                          Align(
-                                          alignment: Alignment.topCenter,
-                                          child: Text(
-                                            textAlign: TextAlign.center,
-                                            "Level 2 \n Mt Whitney",
-                                             style: TextStyle(fontSize: 20, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
-                                          ),
-                                          Align(
-                                          alignment: Alignment.topCenter,
-                                          child: 
-                                            Padding(
-                                              padding: EdgeInsets.all(10),
-                                              child: Text(
-                                                "Mt.Whitney focuses on tools for actualizing healthy relationships based on personal values, mindfulness and acceptance; prioritizes a relationship with one’s self",
-                                                style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
-                                              ),
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    )
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: const BoxDecoration(
-                                        color: Color.fromRGBO(242, 225, 227, 1),
-                                        borderRadius: BorderRadius.all(Radius.circular(10))
-                                      ),
-                                      child: const Column(
-                                        children: [
-                                          Align(
-                                          alignment: Alignment.topCenter,
-                                          child: Text(
-                                            
-                                            "Level 3\n",
-                                             style: TextStyle(fontSize: 20, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
-                                          ),
-                                          Align(
-                                          alignment: Alignment.topCenter,
-                                          child: 
-                                            Padding(
-                                              padding: EdgeInsets.all(10),
-                                              child: Text(
-                                                "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
-                                                style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
-                                              ),
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    )
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: const BoxDecoration(
-                                        color: Color.fromRGBO(242, 225, 227, 1),
-                                        borderRadius: BorderRadius.all(Radius.circular(10))
-                                      ),
-                                      child: const Column(
-                                        children: [
-                                          Align(
-                                          alignment: Alignment.topCenter,
-                                          child: Text("level 4", style: TextStyle(fontSize: 25, fontFamily: 'Barlow', fontWeight: FontWeight.bold)),
-                                          ),
-                                          Align(
-                                          alignment: Alignment.topCenter,
-                                          child: 
-                                            Padding(
-                                              padding: EdgeInsets.all(10),
-                                              child: Text(
-                                                "Blabhabla bhlablahblahblabha lhb laolfdsofdsaljd lkfajk alkaasjlkwsafjlk  dwsahdsakjhksajhskjf  ahlkfdsj",
-                                                style: TextStyle(fontSize: 15, fontFamily: 'Barlow'),
-                                              ),
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    )
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
+
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: TextButton(
+                        style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                          backgroundColor: MaterialStateProperty.all<Color>(orange.withOpacity(animation.value/100)),
                         ),
-                      ) 
-                    ),
-                  ),
-                ),
-                Visibility(
-                  visible: buttonVisibility,
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: TextButton(
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                            backgroundColor: MaterialStateProperty.all<Color>(orange.withOpacity(animation.value/100)),
-                          ),
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => const SurveyPage())); 
-                          },
-                          child: Text('Start Course', style: TextStyle(fontSize: animation.value/4)),
-                        )
-                      ),
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                        },
+                        child: Text('Start Course', style: TextStyle(fontSize: animation.value/4)),
+                      )
                     ),
                   ),
                 ),
