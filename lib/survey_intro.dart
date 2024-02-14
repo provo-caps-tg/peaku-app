@@ -356,6 +356,7 @@ class IntroPage extends StatefulWidget {
   State<IntroPage> createState() => _IntroPageState();}
 
 class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMixin {
+  Timer? timer;
   int animationNumber = 1;
   late Animation<double> animation;            
   late AnimationController controller;
@@ -371,6 +372,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
       //You can change stuff here, but we don't need to
       });
     });
+    
     resetAnimation();
   }
 
@@ -444,7 +446,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                   ),
                 ),
               ),
-                /*
+                
                 Padding(
                   padding: const EdgeInsets.only(left: 8, top: 8),
                   child: Container(
@@ -466,7 +468,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                     ),
                   ),
                 ),
-                */
+                
               ],
             ),
           ),
@@ -477,6 +479,6 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
   @override            
   void dispose() {         
     controller.dispose();            
-    super.dispose();            
+    super.dispose();         
   }
 }
