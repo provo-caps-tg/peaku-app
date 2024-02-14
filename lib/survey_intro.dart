@@ -443,6 +443,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                     ),
                   ),
                 ),
+              ),
                 /*
                 Padding(
                   padding: const EdgeInsets.only(left: 8, top: 8),
