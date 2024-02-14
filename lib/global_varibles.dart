@@ -1,6 +1,6 @@
 import 'package:flutter_survey/flutter_survey.dart';
 import 'package:flutter/material.dart';
-List<QuestionResult> surveyResults = [];
+List<QuestionResult> lastSurveyResults = [];
 String pass = '';
 String email = '';
 bool enabled = true;
