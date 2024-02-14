@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'global_varibles.dart';
 import 'dart:async';
 import 'main.dart';
+//TODO: Fix text
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
