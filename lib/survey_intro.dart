@@ -1,11 +1,8 @@
 import 'dart:async';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_survey/flutter_survey.dart';
 import 'global_varibles.dart';
 import 'main.dart';
-List<QuestionResult> _surveyResults = [];
 bool buttonVisibility = true;
 
 class SurveyPage extends StatefulWidget {
@@ -259,7 +256,7 @@ class _SurveyPageState extends State<SurveyPage> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top:5, left: 40, right: 40, bottom: 30),
+                              padding: const EdgeInsets.only(top:5, left: 40, right: 40, bottom: 10),
                               child: FittedBox(
                                 fit: BoxFit.scaleDown,
                                 child: Text(
@@ -275,18 +272,25 @@ class _SurveyPageState extends State<SurveyPage> {
                               ),
                             ),
                             Expanded(
-                              child: SizedBox(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 25, right: 25, bottom: 10),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 40, right: 40, bottom: 0),
+                                  child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: blue,
+                                      width: 3,
+                                  ),
+                                  borderRadius: const BorderRadius.all(Radius.circular(18)),),
                                   child: SizedBox(
                                     width: double.infinity,
                                     height: MediaQuery.of(context).size.height,
                                     child: Form(
-                                      key: _formKey,
+   //Activate when require questions key: _formKey, 
                                       child: Survey(
                                         onNext: (surveyResults) {
-                                          _surveyResults = surveyResults;
+                                          surveyResults = surveyResults;
                                         },
+                                        
                                         initialData: _initialData),
                                     ),
                                   ),
@@ -294,7 +298,7 @@ class _SurveyPageState extends State<SurveyPage> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top:10, left: 40, right: 40, bottom: 30),
+                              padding: const EdgeInsets.only(top:10, left: 40, right: 40, bottom: 20),
                               child: SizedBox(
                                 width: double.infinity,
                                 height: 50,
