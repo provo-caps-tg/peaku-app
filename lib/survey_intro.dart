@@ -389,6 +389,16 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
       }
     });
   }
+
+  bool animationVisuality(int count) {
+    if (count == animationNumber && animation.value >= 100) {
+      resetAnimation();
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
   
 
   @override
@@ -415,8 +425,9 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
             ),
             child: Stack(
               children: [
-
-                Align(
+              Visibility(
+                visible: animationVisuality(1),
+                child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
                     padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
@@ -426,34 +437,35 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                       child: TextButton(
                         style: ButtonStyle(
                           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor: MaterialStateProperty.all<Color>(orange.withOpacity(animation.value/100)),
+                          backgroundColor: MaterialStateProperty.all<Color>(orange),
                         ),
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => const SurveyPage())); 
                         },
-                        child: Text('Start Course', style: TextStyle(fontSize: animation.value/4)),
+                        child: const Text('Start Course', style: TextStyle(fontSize: 35)),
                       )
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8, top: 8),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: orange,
-                      borderRadius: BorderRadius.circular(13),
-                    ),
-                    child: IconTheme(
-                      data: const IconThemeData(
-                      color: Colors.white),
-                      child: IconButton(
-                        onPressed:() {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const SurveyPage()), );
-                            }, 
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 8, top: 8),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: orange,
+                    borderRadius: BorderRadius.circular(13),
+                  ),
+                  child: IconTheme(
+                    data: const IconThemeData(
+                    color: Colors.white),
+                    child: IconButton(
+                      onPressed:() {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SurveyPage()), );
+                          }, 
                         icon: const Icon(Icons.arrow_back)
                       ),
                     ),
