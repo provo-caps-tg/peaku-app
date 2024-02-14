@@ -371,18 +371,16 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
       //You can change stuff here, but we don't need to
       });
     });
-  Timer timer = Timer(const Duration(seconds: 5), () {
-    if (mounted) {
-        
-      }
-    });
+    resetAnimation();
   }
 
   void resetAnimation() {
     controller.reset();
     animationNumber += 1;
     Timer timer = Timer(const Duration(seconds: 5), () {
-      controller.forward();
+      if (mounted) {
+        controller.forward();        
+      }
     });
   }
   
