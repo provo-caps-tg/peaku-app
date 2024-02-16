@@ -228,7 +228,7 @@ class _SurveyPageState extends State<SurveyPage> {
                               child: Text(
                                 "Let's start with\n a quick survey.", 
                                 style: TextStyle( 
-                                  fontWeight: FontWeight.bold, 
+                                  //fontWeight: FontWeight.bold, 
                                   fontSize: 40, 
                                   color: blue, 
                                   fontFamily: 'Barlow'
@@ -244,6 +244,7 @@ class _SurveyPageState extends State<SurveyPage> {
                                 "PeakU uses this data to measure and improve the impact of our\n curriculum and may be used to publish a study of our methodology. \nThis information is collected anonymously and is not resold.", 
                                 textAlign: TextAlign.center,
                                 style: TextStyle( 
+                                  fontStyle: FontStyle.italic,
                                   fontSize: 50, 
                                   color: blue, 
                                   fontFamily: 'Barlow'
