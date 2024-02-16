@@ -241,22 +241,7 @@ class _SurveyPageState extends State<SurveyPage> {
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                "*PeakU uses this data to measure and improve\n the impact of our curriculum and may be\n used to publish a study of our methodology.", 
-                                textAlign: TextAlign.center,
-                                style: TextStyle( 
-                                  fontSize: 50, 
-                                  color: blue, 
-                                  fontFamily: 'Barlow'
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top:5, left: 25, right: 25, bottom: 10),
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                "This information is collected \nanonymously and is not resold.", 
+                                "*PeakU uses this data to measure and improve\n the impact of our curriculum and may be\n used to publish a study of our methodology. \nThis information is collected anonymously\n and is not resold.", 
                                 textAlign: TextAlign.center,
                                 style: TextStyle( 
                                   fontSize: 50, 
