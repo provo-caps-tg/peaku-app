@@ -222,14 +222,14 @@ class _SurveyPageState extends State<SurveyPage> {
                         //Start of widgets//
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top:10, left: 25, right: 25, bottom: 10),
+                            padding: const EdgeInsets.only(top:10, left: 25, right: 25, bottom: 0),
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
                                 "Let's start with\n a quick survey.", 
                                 style: TextStyle( 
                                   fontWeight: FontWeight.bold, 
-                                  fontSize: 70, 
+                                  fontSize: 40, 
                                   color: blue, 
                                   fontFamily: 'Barlow'
                                 ),
@@ -237,11 +237,11 @@ class _SurveyPageState extends State<SurveyPage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top:0, left: 25, right: 25, bottom: 00),
+                            padding: const EdgeInsets.only(top:5, left: 25, right: 25, bottom: 10),
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                "*PeakU uses this data to measure and improve\n the impact of our curriculum and may be\n used to publish a study of our methodology. \nThis information is collected anonymously\n and is not resold.", 
+                                "PeakU uses this data to measure and improve the impact of our\n curriculum and may be used to publish a study of our methodology. \nThis information is collected anonymously and is not resold.", 
                                 textAlign: TextAlign.center,
                                 style: TextStyle( 
                                   fontSize: 50, 
