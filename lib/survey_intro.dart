@@ -216,16 +216,6 @@ class _SurveyPageState extends State<SurveyPage> {
                       color: Colors.white,
                       borderRadius: const BorderRadius.all(Radius.circular(29))
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: SingleChildScrollView(
-                        physics: const NeverScrollableScrollPhysics(),
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxWidth: MediaQuery.of(context).size.width,
-                            maxHeight: (MediaQuery.of(context).size.height - 65),
-                          ),
-                                  child: IntrinsicHeight(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         //Start of widgets//
@@ -311,10 +301,6 @@ class _SurveyPageState extends State<SurveyPage> {
                           ),
                         ],
                       ),
-                        ),
-                        ),
-                      ),
-                    ),
                   ),
                 ),
                 Padding(
