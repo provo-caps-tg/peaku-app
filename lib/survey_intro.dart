@@ -357,6 +357,7 @@ class IntroPage extends StatefulWidget {
   State<IntroPage> createState() => _IntroPageState();}
 
 class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMixin {
+  List<bool> visibilityList = [false, false, false, false,false];
   int animationNumber = 0;
   Timer? timer;
   late Animation<double> animation;            
@@ -365,18 +366,26 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
   void initState() {
     super.initState();
     const delay = Duration(seconds: 5);
-    controller = AnimationController(duration: const Duration(milliseconds: 500) + delay, vsync: this);
+    controller = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
     final Animation<double> curve = CurvedAnimation(parent: controller, curve: Curves.easeInExpo);
     animation = Tween<double>(begin: 0, end: 100).animate(curve);
     animation.addListener(() {
     setState(() {
-      //You can change stuff here, but we don't need to
+     
+      if (controller.isCompleted) {
+        animationNumber++;
+        visibilityList[animationNumber] = true;
+        controller.repeat();
+        }
       });
     });
+
     if (mounted) {
       controller.forward(); 
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -400,34 +409,35 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                 fit: BoxFit.cover,
               ),
             ),
-            child: Stack(
-              children: [
-              Visibility(
-                visible: true,
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: TextButton(
-                        style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor: MaterialStateProperty.all<Color>(orange.withOpacity(animation.value/100)),
-                        ),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const SurveyPage())); 
-                        },
-                        child: const Text('Start Course', style: TextStyle(fontSize: 35,)),
-                      )
+            child: SingleChildScrollView (
+              child: Stack(
+                children: [
+                Visibility(
+                  visible: true,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: TextButton(
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(orange),
+                          ),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                          },
+                          child:  const Text('Start Course', style: TextStyle(fontSize: 35)),
+                        )
+                      ),
                     ),
                   ),
                 ),
-              ),
-                
+               
                 Padding(
                   padding: const EdgeInsets.only(left: 8, top: 8),
                   child: Container(
@@ -445,13 +455,13 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                             MaterialPageRoute(builder: (context) => const SurveyPage()), );
                             }, 
                         icon: const Icon(Icons.arrow_back)
+                        ),
                       ),
                     ),
                   ),
-                ),
-                
-              ],
-            ),
+                ],
+              ),
+            ),  
           ),
         ),
       ),
@@ -459,7 +469,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
   }
   @override            
   void dispose() {         
-    controller.dispose();            
+    controller.dispose();    
     super.dispose();         
   }
 }
