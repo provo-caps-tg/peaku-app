@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'global_varibles.dart';
 import 'dart:async';
 import 'main.dart';
-//TODO: Fix text
+//TODO: Fix disclaimer text, text response
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
@@ -222,7 +222,7 @@ class _SurveyPageState extends State<SurveyPage> {
                         //Start of widgets//
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top:35, left: 25, right: 25, bottom: 20),
+                            padding: const EdgeInsets.only(top:10, left: 25, right: 25, bottom: 10),
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
@@ -241,10 +241,9 @@ class _SurveyPageState extends State<SurveyPage> {
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                "*PeakU uses this data to measure and improve the impact of our\n curriculum and may be used to publish a study of our methodology.", 
+                                "*PeakU uses this data to measure and improve\n the impact of our curriculum and may be\n used to publish a study of our methodology.", 
                                 textAlign: TextAlign.center,
                                 style: TextStyle( 
-                                  fontWeight: FontWeight.bold, 
                                   fontSize: 50, 
                                   color: blue, 
                                   fontFamily: 'Barlow'
@@ -257,10 +256,9 @@ class _SurveyPageState extends State<SurveyPage> {
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                "This information is collected anonymously and is not resold.", 
+                                "This information is collected \nanonymously and is not resold.", 
                                 textAlign: TextAlign.center,
                                 style: TextStyle( 
-                                  fontWeight: FontWeight.bold, 
                                   fontSize: 50, 
                                   color: blue, 
                                   fontFamily: 'Barlow'
