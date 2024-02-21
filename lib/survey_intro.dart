@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'global_varibles.dart';
 import 'dart:async';
 import 'main.dart';
-//TODO: Fix text
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
@@ -186,9 +185,7 @@ class _SurveyPageState extends State<SurveyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3,
-      ),
+      appBar: AppBar(backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3),
       body: Container(
         color: Colors.black,
         child: Center(
@@ -216,108 +213,90 @@ class _SurveyPageState extends State<SurveyPage> {
                       color: Colors.white,
                       borderRadius: const BorderRadius.all(Radius.circular(29))
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: Column(
-                        //Start of widgets//
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top:35, left: 25, right: 25, bottom: 20),
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                "Let's start with\n a quick survey.", 
-                                style: TextStyle( 
-                                  fontWeight: FontWeight.bold, 
-                                  fontSize: 70, 
-                                  color: blue, 
-                                  fontFamily: 'Barlow'
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      //Start of widgets//
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top:10, left: 25, right: 25, bottom: 0),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              "Let's start with\n a quick survey.", 
+                              style: TextStyle( 
+                                //fontWeight: FontWeight.bold, 
+                                fontSize: 40, 
+                                color: blue, 
+                                fontFamily: 'Barlow'
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:5, left: 25, right: 25, bottom: 10),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              "PeakU uses this data to measure and improve the impact of our\n curriculum and may be used to publish a study of our methodology. \nThis information is collected anonymously and is not resold.", 
+                              textAlign: TextAlign.center,
+                              style: TextStyle( 
+                                fontStyle: FontStyle.italic,
+                                fontSize: 50, 
+                                color: blue, 
+                                fontFamily: 'Barlow'
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 25, right: 25, bottom: 0),
+                              child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: blue,
+                                  width: 3,
+                              ),
+                              borderRadius: const BorderRadius.all(Radius.circular(18)),),
+                              child: SizedBox(
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height,
+                                child: Form(
+                                  key: _formKey, 
+                                  child: Survey(
+                                    onNext: (surveyResults) {
+                                      surveyResults = lastSurveyResults;
+                                    },
+                                    initialData: _initialData),
                                 ),
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top:0, left: 25, right: 25, bottom: 00),
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                "*PeakU uses this data to measure and improve the impact of our\n curriculum and may be used to publish a study of our methodology.", 
-                                textAlign: TextAlign.center,
-                                style: TextStyle( 
-                                  fontWeight: FontWeight.bold, 
-                                  fontSize: 50, 
-                                  color: blue, 
-                                  fontFamily: 'Barlow'
-                                ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top:10, left: 25, right: 25, bottom: 20),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                backgroundColor: MaterialStateProperty.all<Color>(orange),
                               ),
-                            ),
+                              onPressed: () {
+                                //if (_formKey.currentState!.validate()) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const IntroPage())); 
+                              //}
+                              },
+                              child: const FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child:  Text('Submit & Continue', style: TextStyle(fontSize: 23)),
+                              )),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top:5, left: 25, right: 25, bottom: 10),
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                "This information is collected anonymously and is not resold.", 
-                                textAlign: TextAlign.center,
-                                style: TextStyle( 
-                                  fontWeight: FontWeight.bold, 
-                                  fontSize: 50, 
-                                  color: blue, 
-                                  fontFamily: 'Barlow'
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 25, right: 25, bottom: 0),
-                                child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: blue,
-                                    width: 3,
-                                ),
-                                borderRadius: const BorderRadius.all(Radius.circular(18)),),
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  height: MediaQuery.of(context).size.height,
-                                  child: Form(
-                                    key: _formKey, 
-                                    child: Survey(
-                                      onNext: (surveyResults) {
-                                        surveyResults = lastSurveyResults;
-                                      },
-                                      initialData: _initialData),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top:10, left: 25, right: 25, bottom: 20),
-                            child: SizedBox(
-                              width: double.infinity,
-                              height: 50,
-                              child: TextButton(
-                                style: ButtonStyle(
-                                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                                  backgroundColor: MaterialStateProperty.all<Color>(orange),
-                                ),
-                                onPressed: () {
-                                  //if (_formKey.currentState!.validate()) {
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const IntroPage())); 
-                                //}
-                                },
-                                child: const FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child:  Text('Submit & Continue', style: TextStyle(fontSize: 23)),
-                                )),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
