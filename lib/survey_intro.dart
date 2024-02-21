@@ -410,53 +410,34 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
               ),
             ),
             child: SingleChildScrollView (
-              child: Stack(
+              child: Column(
                 children: [
-                Visibility(
-                  visible: true,
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
+                  const Align(
+                    alignment: Alignment.topCenter,
                     child: Padding(
-                      padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: TextButton(
-                          style: ButtonStyle(
-                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                            backgroundColor: MaterialStateProperty.all<Color>(orange),
-                          ),
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => const SurveyPage())); 
-                          },
-                          child:  const Text('Start Course', style: TextStyle(fontSize: 35)),
-                        )
-                      ),
+                      padding: EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
+                      child: Text(
+                        "Place Holder Text"
+                      )
                     ),
                   ),
-                ),
-               
                 Padding(
-                  padding: const EdgeInsets.only(left: 8, top: 8),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: orange,
-                      borderRadius: BorderRadius.circular(13),
-                    ),
-                    child: IconTheme(
-                      data: const IconThemeData(
-                      color: Colors.white),
-                      child: IconButton(
-                        onPressed:() {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const SurveyPage()), );
-                            }, 
-                        icon: const Icon(Icons.arrow_back)
-                        ),
+                  padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: TextButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                        backgroundColor: MaterialStateProperty.all<Color>(orange),
                       ),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                      },
+                      child:  const Text('Start Course', style: TextStyle(fontSize: 35)),
+                      )
                     ),
                   ),
                 ],
