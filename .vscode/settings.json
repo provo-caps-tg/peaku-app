@@ -1,3 +1,4 @@
 {
-    "window.autoDetectColorScheme": false
+    "window.autoDetectColorScheme": false,
+    "cmake.configureOnOpen": false
 }
