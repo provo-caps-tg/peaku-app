@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_survey/flutter_survey.dart';
 import 'package:flutter/material.dart';
 import 'global_varibles.dart';
@@ -336,7 +337,7 @@ class IntroPage extends StatefulWidget {
   State<IntroPage> createState() => _IntroPageState();}
 
 class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMixin {
-  List<bool> visibilityList = [false, false, false, false,false];
+  bool summaryVisible = false;
   int animationNumber = 0;
   Timer? timer;
   late Animation<double> animation;            
@@ -353,18 +354,13 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
      
       if (controller.isCompleted) {
         animationNumber++;
-        visibilityList[animationNumber] = true;
         controller.repeat();
         }
       });
     });
 
-    if (mounted) {
-      controller.forward(); 
-    }
+    
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -394,14 +390,25 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                   const Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
-                      padding: EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
-                      child: Text(
-                        "Place Holder Text"
+                      padding: EdgeInsets.only(top:35, bottom: 15, left:35, right: 35),
+                      child: Column(
+                        children: [
+                          Text(
+                            "Before we Start a Quick Summary of our Cirriculm",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 35,
+                              color: Colors.white,
+                              fontFamily: 'Barlow',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       )
                     ),
                   ),
-                Padding(
-                  padding: const EdgeInsets.only(top:35, bottom: 35, left:35, right: 35),
+                  Padding(
+                  padding: const EdgeInsets.only(top:15, bottom: 0, left:35, right: 35),
                   child: SizedBox(
                     width: double.infinity,
                     height: 50,
@@ -411,12 +418,58 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                         backgroundColor: MaterialStateProperty.all<Color>(orange),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                        setState(() {
+                          summaryVisible = true;
+                        });
+                        if (mounted && !summaryVisible) {
+                          controller.forward(); 
+                        }
                       },
-                      child:  const Text('Start Course', style: TextStyle(fontSize: 35)),
+                      child:  const Text('View Summary', style: TextStyle(fontSize: 35)),
                       )
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top:0, bottom: 5, left:35, right: 35),
+                      child: CupertinoButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                        },
+                        child:  const Text('Skip Survery', style: TextStyle(fontSize: 15, color: Colors.white, decoration: TextDecoration.underline,)),
+                    )
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top:5, bottom: 15, left:35, right: 35),
+                      child: Visibility(
+                        visible: summaryVisible,
+                        child: const Column(
+                          children: [
+                            Text(
+                              "Level 1\nMt. Timpanogos",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 35,
+                                color: Colors.white,
+                                fontFamily: 'Barlow',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              "Old Lady goosgfdsajlkfdsajlfkadsjflkgfddlkfkjfsalkfjdsfdsjlkfdsjflkdsafjdlksafdjj;ldsfdslkassdagjl;adgfjlk",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontFamily: 'Barlow',
+                              ),
+                            ),
+                          ],
+                        )
+                      ),
                     ),
                   ),
                 ],
