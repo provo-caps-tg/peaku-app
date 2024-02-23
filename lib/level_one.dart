@@ -10,7 +10,7 @@ class LevelOneHome extends StatefulWidget {
 class _LevelOneHomeState extends State<LevelOneHome> {
   @override
   Widget build(BuildContext context) {
-return Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: orange, foregroundColor: Colors.white, toolbarHeight: 3,
