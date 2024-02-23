@@ -432,7 +432,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                             context,
                             MaterialPageRoute(builder: (context) => const SurveyPage())); //TODO: Put LevelOneHome instead of survey page later
                         },
-                        child:  const Text('Skip Survery', style: TextStyle(fontSize: 15, color: Colors.white, decoration: TextDecoration.underline,)),
+                        child:  const Text('Skip Summary', style: TextStyle(fontSize: 15, color: Colors.white, decoration: TextDecoration.underline,)),
                     )
                   ),
                   Align(
@@ -557,6 +557,28 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                             ),
                           ],
                         )
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: summaryVisible,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top:0, bottom: 5, left:35, right: 35),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: TextButton(
+                          style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(orange),
+                          ),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => const SurveyPage())); //TODO: Put LevelOneHome instead of survey page later
+                          },
+                          child:  const Text('Continue', style: TextStyle(fontSize: 35, color: Colors.white,)),
+                        ),
                       ),
                     ),
                   ),
