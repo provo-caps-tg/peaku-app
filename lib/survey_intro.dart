@@ -352,11 +352,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
     animation = Tween<double>(begin: 0, end: 100).animate(curve);
     animation.addListener(() {
     setState(() {
-     
-      if (controller.isCompleted) {
-        animationNumber++;
-        controller.repeat();
-        }
+      
       });
     });
 
@@ -419,14 +415,12 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                         backgroundColor: MaterialStateProperty.all<Color>(orange),
                       ),
                       onPressed: () {
+                        controller.forward(); 
                         setState(() {
                           summaryVisible = true;
                         });
-                        if (mounted && !summaryVisible) {
-                          controller.forward(); 
-                        }
                       },
-                      child:  const Text('View Summary', style: TextStyle(fontSize: 35)),
+                      child:  const Text('Explore Summary of PeakU', style: TextStyle(fontSize: 25)),
                       )
                     ),
                   ),
@@ -436,7 +430,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                            MaterialPageRoute(builder: (context) => const SurveyPage())); //TODO: Put LevelOneHome instead of survey page later
                         },
                         child:  const Text('Skip Survery', style: TextStyle(fontSize: 15, color: Colors.white, decoration: TextDecoration.underline,)),
                     )
@@ -447,20 +441,20 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                       padding: const EdgeInsets.only(top:5, bottom: 15, left:35, right: 35),
                       child: Visibility(
                         visible: summaryVisible,
-                        child: const Column(
+                        child: Column(
                           children: [
                             Text(
                               "Level 1\nMt. Timpanogos",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 35,
-                                color: Colors.white,
+                                color: Colors.white.withOpacity(animation.value/100),
                                 fontFamily: 'Barlow',
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            Text(
-                              "Old Lady goosgfdsajlkfdsajlfkadsjflkgfddlkfkjfsalkfjdsfdsjlkfdsjflkdsafjdlksafdjj;ldsfdslkassdagjl;adgfjlk",
+                            const Text(
+                              "",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 20,
