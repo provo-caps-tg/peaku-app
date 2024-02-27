@@ -44,10 +44,10 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: Column(
+                      child: const Column(
                         //Start of widgets//
                         children: [
-                          
+Text('hello')
                         ],
                       ),
                     ),
