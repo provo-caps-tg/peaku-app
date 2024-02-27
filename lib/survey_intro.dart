@@ -349,11 +349,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
     controller = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
     final Animation<double> curve = CurvedAnimation(parent: controller, curve: Curves.easeInExpo);
     animation = Tween<double>(begin: 0, end: 100).animate(curve);
-    animation.addListener(() {
-    setState(() {
-      
-      });
-    });
+
 
     
   }
