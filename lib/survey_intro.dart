@@ -338,6 +338,7 @@ class IntroPage extends StatefulWidget {
   State<IntroPage> createState() => _IntroPageState();}
 
 class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMixin {
+  bool summaryVisible = false;
   int animationNumber = 0;
   Timer? timer;
   late Animation<double> animation;            
@@ -415,7 +416,9 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                       ),
                       onPressed: () {
                         controller.forward(); 
-                        
+                        setState(() {
+                          summaryVisible = true;
+                        });
                       },
                       child:  Text('Explore Summary of PeakU', style: TextStyle(fontSize: MediaQuery.of(context).size.width/20)),
                       ),
@@ -437,7 +440,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                     child: Padding(
                       padding: const EdgeInsets.only(top:5, bottom: 15, left:35, right: 35),
                       child: Visibility(
-                        visible: true,
+                        visible: summaryVisible,
                         child: Column(
                           children: [
                             Text(
@@ -558,7 +561,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                     ),
                   ),
                   Visibility(
-                    visible: true,
+                    visible: summaryVisible,
                     child: Padding(
                       padding: const EdgeInsets.only(top:0, bottom: 5, left:35, right: 35),
                       child: SizedBox(
