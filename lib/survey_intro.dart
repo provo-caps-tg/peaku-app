@@ -421,7 +421,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                         });
                       },
                       child:  Text('Explore Summary of PeakU', style: TextStyle(fontSize: MediaQuery.of(context).size.width/20)),
-                      )
+                      ),
                     ),
                   ),
                   Padding(
@@ -433,7 +433,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                             MaterialPageRoute(builder: (context) => const SurveyPage())); //TODO: Put LevelOneHome instead of survey page later
                         },
                         child:  const Text('Skip Summary', style: TextStyle(fontSize: 15, color: Colors.white, decoration: TextDecoration.underline,)),
-                    )
+                    ),
                   ),
                   Align(
                     alignment: Alignment.topCenter,
