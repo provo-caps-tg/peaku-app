@@ -19,6 +19,7 @@ dependencies:
   flutter_keyboard_visibility: ^6.0.0
   flutter_survey: ^0.1.4
   survey_kit: ^0.2.0
+  quick_quiz_view: ^0.0.2
 
 dev_dependencies:
 
