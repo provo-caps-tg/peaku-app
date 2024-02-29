@@ -451,7 +451,10 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                               context,
                               MaterialPageRoute(builder: (context) => const LevelOneHome())); 
                           },
-                          child:  const Text('Skip Summary', style: TextStyle(fontSize: 15, color: Colors.white, decoration: TextDecoration.underline,)),
+                          child:  const FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text('Skip Summary', style: TextStyle(fontSize: 10, color: Colors.white, decoration: TextDecoration.underline,)),
+                          ),
                       ),
                     ),
                     Align(
@@ -462,39 +465,72 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                           visible: summaryVisible,
                           child: Column(
                             children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(width: 6, color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100) ),
+                                  borderRadius: BorderRadius.circular(12)
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                                  child: Column(
+                                    children: [ 
+                                      Text(
+                                        "Level 1",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 80,
+                                          color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100),
+                                          fontFamily: 'Barlow',
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Mt. Timpanogos",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 25,
+                                          color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100),
+                                          fontFamily: 'Barlow',
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Level 1 we call Mount Timpanogos, after the famous 12,000-ft peak in the Wasatch Range in Utah.  Your courage is taking you up, up, up!",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white.withOpacity(animationO.value/100),
+                                          fontFamily: 'Barlow',
+                                        ),
+                                      ),
+                                      Text(
+                                        "In this level you will:\n\u2022 begin to explore the nature of healthy relationships \n\u2022 identify how healthy (or unhealthy) behaviors\n\u2022 start to connect with your breath\n\u2022 begin to form a specific vision for your future",
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white.withOpacity(animationO.value/100),
+                                          fontFamily: 'Barlow',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                               Text(
-                                "Level 1\nMt. Timpanogos",
+                                "Level 2",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 80,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               Text(
-                                "Level 1 we call Mount Timpanogos, after the famous 12,000-ft peak in the Wasatch Range in Utah.  Your courage is taking you up, up, up!",
+                                "Mt. Whitney",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 23,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                ),
-                              ),
-                              Text(
-                                "In this level you will:\n\u2022 begin to explore the nature of healthy relationships \n\u2022 identify how healthy (or unhealthy) behaviors\n\u2022 start to connect with your breath\n\u2022 begin to form a specific vision for your future",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                ),
-                              ),
-                              Text(
-                                "Level 2\nMt. Whitney",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 25,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
                                   fontWeight: FontWeight.bold,
@@ -504,7 +540,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 "Level 2 is our Mount Whitney—you’re growing to over 14,000 feet.  Congratulations!",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 23,
+                                  fontSize: 18,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
                                 ),
@@ -513,16 +549,26 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 "In this level, you will:\n\u2022 Deepen your understanding of healthy relationships\n\u2022  Identify the qualities we look for, and bring, to relationships\n\u2022  Determine your core values\n\u2022 Start listening for the core values in others\n\u2022 Understand the significance of values\n\u2022 Practice a moving meditation\n\u2022 Continue working on your future vision\n\u2022 Practice being recognized for your core values",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
                                 ),
                               ),
                               Text(
-                                "Level 3\nThe Himalayas",
+                                "Level 3",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 80,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "The Himalayas",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 25,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
                                   fontWeight: FontWeight.bold,
@@ -532,7 +578,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 "Level 3 is all the way to The Himalayas, where the air is thin, but your strength prevails!",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 23,
+                                  fontSize: 18,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
                                 ),
@@ -541,16 +587,26 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 "In this level, you will:\n\u2022 Further deepen your understanding of healthy relationships\n\u2022 Explore the importance of emotions in relationships\n\u2022 Understand Emotional Regulation\n\u2022 Learn effective strategies for managing any scenario\n\u2022 Apply those strategies in real time\n\u2022 Learn valuable communication skills for nourishing all relationships\n\u2022 Practice active listening scenarios\n\u2022 Further your future vision with specific goals and steps",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
                                 ),
                               ),
                               Text(
-                                "Level 4\nPeakU",
+                                "Level 4",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 80,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "PeakU",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 25,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
                                   fontWeight: FontWeight.bold,
@@ -560,7 +616,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 "Level 4 is, of course, PeakU!  You are off and running, my friend.  Seriously, take a breath and appreciate yourself for taking this on, and so successfully.",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 23,
+                                  fontSize: 18,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
                                 ),
@@ -569,40 +625,40 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 "In this level, you will:\n\u2022 See the peak signs of healthy relationships\n\u2022 Examine timing of relationship events\n\u2022 Explore flexibility and expectations in relationships\n\u2022 Experience the dance of intimacy, inside the dynamics of space and pressure\n\u2022 Chisel your future vision from dream into reality\n\u2022 Get resources for your needs\n\u2022 Live at PeakU",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.white.withOpacity(animationO.value/100),
                                   fontFamily: 'Barlow',
-                                ),
+                                 ),
+                               ),
+                             ],
+                            )
+                         ),
+                        ),
+                      ),
+                      Visibility(
+                        visible: summaryVisible,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top:0, bottom: 30, left:35, right: 35),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: TextButton(
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                backgroundColor: MaterialStateProperty.all<Color>(orange),
                               ),
-                            ],
-                          )
-                        ),
-                      ),
-                    ),
-                    Visibility(
-                      visible: summaryVisible,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top:0, bottom: 5, left:35, right: 35),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: 50,
-                          child: TextButton(
-                            style: ButtonStyle(
-                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                              backgroundColor: MaterialStateProperty.all<Color>(orange),
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const LevelOneHome())); 
+                              },
+                              child:  const Text('Continue', style: TextStyle(fontSize: 35, color: Colors.white,)),
                             ),
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(builder: (context) => const LevelOneHome())); 
-                            },
-                            child:  const Text('Continue', style: TextStyle(fontSize: 35, color: Colors.white,)),
-                          ),
-                        ),
-                      ),
+                         ),
+                       ),
                     ),
                   ],
-                ),
+                )
               ),
             ),  
           ),
