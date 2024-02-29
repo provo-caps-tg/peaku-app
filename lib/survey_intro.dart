@@ -337,32 +337,48 @@ class IntroPage extends StatefulWidget {
   @override
   State<IntroPage> createState() => _IntroPageState();}
 
-class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMixin {
-  int animationNumber = 0;
-  Timer? timer;
-  late Animation<double> animation;            
-  late AnimationController controller;
+class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
+  bool summaryVisible = false;
+  late Animation<Offset> animationSlide;
+  late AnimationController slideController;
+  late Animation<double> animationO;            
+  late AnimationController controllerO;
   @override
   void initState() {
     super.initState();
-    // ignore: unused_local_variable
-    const delay = Duration(seconds: 5);
-    controller = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
-    final Animation<double> curve = CurvedAnimation(parent: controller, curve: Curves.easeInExpo);
-    animation = Tween<double>(begin: 0, end: 100).animate(curve);
-
-    animation.addListener(() {
+    //Code for the opactiy animation.
+    controllerO = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
+    final Animation<double> curveO = CurvedAnimation(parent: controllerO, curve: Curves.easeInExpo);
+    animationO = Tween<double>(begin: 0, end: 100).animate(curveO);
+    animationO.addListener(() {
     setState(() {
-      
       });
     });
+    //Ends here, now code for slide transtion animation starts
+    slideController = AnimationController(
+      duration: const Duration(milliseconds: 1000),
+      vsync: this //Reminder to myself, vsync always goes last.
+    );
+    CurvedAnimation curveSlide = CurvedAnimation(parent: slideController, curve: Curves.easeIn); //Not too sure on this line of code, could be trouble later
+    animationSlide = Tween<Offset>(
+      begin: const Offset(0, 0.2),
+      end: Offset.zero
+    ).animate(curveSlide);
+    animationSlide.addListener(() {
+    setState(() {
+      });
+    });
+  }
 
-    
+  @override            
+  void dispose() {         
+    controllerO.dispose();  
+    slideController.dispose();  
+    super.dispose();         
   }
 
   @override
   Widget build(BuildContext context) {
-    animationNumber = 0;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -382,187 +398,32 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                 fit: BoxFit.cover,
               ),
             ),
-            child: SingleChildScrollView (
-              child: Column(
-                children: [
-                  const Align(
-                    alignment: Alignment.topCenter,
-                    child: Padding(
-                      padding: EdgeInsets.only(top:35, bottom: 15, left:35, right: 35),
-                      child: Column(
-                        children: [
-                          Text(
-                            "Before we Start a Quick Summary of our Cirriculm",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 35,
-                              color: Colors.white,
-                              fontFamily: 'Barlow',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      )
-                    ),
-                  ),
-                  Padding(
-                  padding: const EdgeInsets.only(top:15, bottom: 0, left:35, right: 35),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: TextButton(
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                        backgroundColor: MaterialStateProperty.all<Color>(orange),
-                      ),
-                      onPressed: () {
-                        controller.forward(); 
-                        
-                      },
-                      child:  Text('Explore Summary of PeakU', style: TextStyle(fontSize: MediaQuery.of(context).size.width/20)),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top:0, bottom: 5, left:35, right: 35),
-                      child: CupertinoButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const LevelOneHome()));
-                        },
-                        child:  const Text('Skip Summary', style: TextStyle(fontSize: 15, color: Colors.white, decoration: TextDecoration.underline,)),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top:5, bottom: 15, left:35, right: 35),
-                      child: Visibility(
-                        visible: true,
+            child: SlideTransition(position: animationSlide,
+              child: SingleChildScrollView (
+                child: Column(
+                  children: [
+                    const Align(
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: EdgeInsets.only(top:35, bottom: 15, left:35, right: 35),
                         child: Column(
                           children: [
                             Text(
-                              "Level 1\nMt. Timpanogos",
+                              "Before we Start a Quick Summary of our Cirriculm",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.white.withOpacity(animation.value/100),
+                                fontSize: 35,
+                                color: Colors.white,
                                 fontFamily: 'Barlow',
                                 fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              "Level 1 we call Mount Timpanogos, after the famous 12,000-ft peak in the Wasatch Range in Utah.  Your courage is taking you up, up, up!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                              ),
-                            ),
-                            Text(
-                              "In this level you will:\n\u2022 begin to explore the nature of healthy relationships \n\u2022 identify how healthy (or unhealthy) behaviors\n\u2022 start to connect with your breath\n\u2022 begin to form a specific vision for your future",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                              ),
-                            ),
-                            Text(
-                              "Level 2\nMt. Whitney",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              "Level 2 is our Mount Whitney—you’re growing to over 14,000 feet.  Congratulations!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                              ),
-                            ),
-                            Text(
-                              "In this level, you will:\n\u2022 Deepen your understanding of healthy relationships\n\u2022  Identify the qualities we look for, and bring, to relationships\n\u2022  Determine your core values\n\u2022 Start listening for the core values in others\n\u2022 Understand the significance of values\n\u2022 Practice a moving meditation\n\u2022 Continue working on your future vision\n\u2022 Practice being recognized for your core values",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                              ),
-                            ),
-                            Text(
-                              "Level 3\nThe Himalayas",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              "Level 3 is all the way to The Himalayas, where the air is thin, but your strength prevails!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                              ),
-                            ),
-                            Text(
-                              "In this level, you will:\n\u2022 Further deepen your understanding of healthy relationships\n\u2022 Explore the importance of emotions in relationships\n\u2022 Understand Emotional Regulation\n\u2022 Learn effective strategies for managing any scenario\n\u2022 Apply those strategies in real time\n\u2022 Learn valuable communication skills for nourishing all relationships\n\u2022 Practice active listening scenarios\n\u2022 Further your future vision with specific goals and steps",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                              ),
-                            ),
-                            Text(
-                              "Level 4\nPeakU",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              "Level 4 is, of course, PeakU!  You are off and running, my friend.  Seriously, take a breath and appreciate yourself for taking this on, and so successfully.",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
-                              ),
-                            ),
-                            Text(
-                              "In this level, you will:\n\u2022 See the peak signs of healthy relationships\n\u2022 Examine timing of relationship events\n\u2022 Explore flexibility and expectations in relationships\n\u2022 Experience the dance of intimacy, inside the dynamics of space and pressure\n\u2022 Chisel your future vision from dream into reality\n\u2022 Get resources for your needs\n\u2022 Live at PeakU",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white.withOpacity(animation.value/100),
-                                fontFamily: 'Barlow',
                               ),
                             ),
                           ],
                         )
                       ),
                     ),
-                  ),
-                  Visibility(
-                    visible: true,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top:0, bottom: 5, left:35, right: 35),
+                    Padding(
+                      padding: const EdgeInsets.only(top:15, bottom: 0, left:35, right: 35),
                       child: SizedBox(
                         width: double.infinity,
                         height: 50,
@@ -572,26 +433,181 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                             backgroundColor: MaterialStateProperty.all<Color>(orange),
                           ),
                           onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => const LevelOneHome()));
+                            controllerO.forward(); 
+                            slideController.forward();
+                            setState(() {
+                              summaryVisible = true;
+                            });
                           },
-                          child:  const Text('Continue', style: TextStyle(fontSize: 35, color: Colors.white,)),
+                          child:  Text('Explore Summary of PeakU', style: TextStyle(fontSize: MediaQuery.of(context).size.width/20)),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(top:0, bottom: 5, left:35, right: 35),
+                        child: CupertinoButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => const LevelOneHome())); 
+                          },
+                          child:  const Text('Skip Summary', style: TextStyle(fontSize: 15, color: Colors.white, decoration: TextDecoration.underline,)),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top:5, bottom: 15, left:35, right: 35),
+                        child: Visibility(
+                          visible: summaryVisible,
+                          child: Column(
+                            children: [
+                              Text(
+                                "Level 1\nMt. Timpanogos",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Level 1 we call Mount Timpanogos, after the famous 12,000-ft peak in the Wasatch Range in Utah.  Your courage is taking you up, up, up!",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 23,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                ),
+                              ),
+                              Text(
+                                "In this level you will:\n\u2022 begin to explore the nature of healthy relationships \n\u2022 identify how healthy (or unhealthy) behaviors\n\u2022 start to connect with your breath\n\u2022 begin to form a specific vision for your future",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                ),
+                              ),
+                              Text(
+                                "Level 2\nMt. Whitney",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Level 2 is our Mount Whitney—you’re growing to over 14,000 feet.  Congratulations!",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 23,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                ),
+                              ),
+                              Text(
+                                "In this level, you will:\n\u2022 Deepen your understanding of healthy relationships\n\u2022  Identify the qualities we look for, and bring, to relationships\n\u2022  Determine your core values\n\u2022 Start listening for the core values in others\n\u2022 Understand the significance of values\n\u2022 Practice a moving meditation\n\u2022 Continue working on your future vision\n\u2022 Practice being recognized for your core values",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                ),
+                              ),
+                              Text(
+                                "Level 3\nThe Himalayas",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Level 3 is all the way to The Himalayas, where the air is thin, but your strength prevails!",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 23,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                ),
+                              ),
+                              Text(
+                                "In this level, you will:\n\u2022 Further deepen your understanding of healthy relationships\n\u2022 Explore the importance of emotions in relationships\n\u2022 Understand Emotional Regulation\n\u2022 Learn effective strategies for managing any scenario\n\u2022 Apply those strategies in real time\n\u2022 Learn valuable communication skills for nourishing all relationships\n\u2022 Practice active listening scenarios\n\u2022 Further your future vision with specific goals and steps",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                ),
+                              ),
+                              Text(
+                                "Level 4\nPeakU",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "Level 4 is, of course, PeakU!  You are off and running, my friend.  Seriously, take a breath and appreciate yourself for taking this on, and so successfully.",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 23,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                ),
+                              ),
+                              Text(
+                                "In this level, you will:\n\u2022 See the peak signs of healthy relationships\n\u2022 Examine timing of relationship events\n\u2022 Explore flexibility and expectations in relationships\n\u2022 Experience the dance of intimacy, inside the dynamics of space and pressure\n\u2022 Chisel your future vision from dream into reality\n\u2022 Get resources for your needs\n\u2022 Live at PeakU",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white.withOpacity(animationO.value/100),
+                                  fontFamily: 'Barlow',
+                                ),
+                              ),
+                            ],
+                          )
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: summaryVisible,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top:0, bottom: 5, left:35, right: 35),
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: TextButton(
+                            style: ButtonStyle(
+                              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                              backgroundColor: MaterialStateProperty.all<Color>(orange),
+                            ),
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const LevelOneHome())); 
+                            },
+                            child:  const Text('Continue', style: TextStyle(fontSize: 35, color: Colors.white,)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),  
           ),
         ),
       ),
     );
-  }
-  @override            
-  void dispose() {         
-    controller.dispose();    
-    super.dispose();         
   }
 }
