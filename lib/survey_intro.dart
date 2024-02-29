@@ -345,6 +345,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
   @override
   void initState() {
     super.initState();
+    // ignore: unused_local_variable
     const delay = Duration(seconds: 5);
     controller = AnimationController(duration: const Duration(milliseconds: 1000), vsync: this);
     final Animation<double> curve = CurvedAnimation(parent: controller, curve: Curves.easeInExpo);
@@ -428,7 +429,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                         onPressed: () {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const SurveyPage())); //TODO: Put LevelOneHome instead of survey page later
+                            MaterialPageRoute(builder: (context) => const LevelOneHome()));
                         },
                         child:  const Text('Skip Summary', style: TextStyle(fontSize: 15, color: Colors.white, decoration: TextDecoration.underline,)),
                     ),
@@ -573,7 +574,7 @@ class _IntroPageState extends State<IntroPage> with SingleTickerProviderStateMix
                           onPressed: () {
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(builder: (context) => const SurveyPage())); //TODO: Put LevelOneHome instead of survey page later
+                              MaterialPageRoute(builder: (context) => const LevelOneHome()));
                           },
                           child:  const Text('Continue', style: TextStyle(fontSize: 35, color: Colors.white,)),
                         ),
