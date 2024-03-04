@@ -35,8 +35,8 @@ flutter:
     - family: Barlow
       fonts:
         - asset: assets/fonts/Barlow/Barlow-ExtraBold.ttf
-        - asset: assets/fonts/Barlow/Barlow-Italic.ttf
-          style: italic
+          weight: 700
+        - asset: assets/fonts/Barlow/Barlow-Light.ttf
         
         
 

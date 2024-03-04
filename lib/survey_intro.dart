@@ -226,7 +226,7 @@ class _SurveyPageState extends State<SurveyPage> {
                             child: Text(
                               "Let's start with\n a quick survey.", 
                               style: TextStyle( 
-                                //fontWeight: FontWeight.bold, 
+                                //fontWeight: FontWeight.w700,, 
                                 fontSize: 40, 
                                 color: blue, 
                                 fontFamily: 'Barlow'
@@ -439,7 +439,10 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                               summaryVisible = true;
                             });
                           },
-                          child:  Text('Explore Summary of PeakU', style: TextStyle(fontSize: MediaQuery.of(context).size.width/20)),
+                          child: const FittedBox(
+                            fit: BoxFit.fill,
+                            child: Text('Explore Summary of PeakU', style: TextStyle(fontSize: 20)),
+                          ) 
                         ),
                       ),
                     ),
@@ -465,170 +468,269 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                           visible: summaryVisible,
                           child: Column(
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(width: 6, color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100) ),
-                                  borderRadius: BorderRadius.circular(12)
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
-                                  child: Column(
-                                    children: [ 
-                                      Text(
-                                        "Level 1",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 80,
-                                          color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100),
-                                          fontFamily: 'Barlow',
-                                          fontWeight: FontWeight.bold,
+                              Padding(
+                                padding: const EdgeInsets.only( top: 10, bottom: 10),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(width: 6, color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100) ),
+                                    borderRadius: BorderRadius.circular(12)
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                                    child: Column(
+                                      children: [ 
+                                        FittedBox(
+                                          fit: BoxFit.fill,
+                                          child: Text(
+                                            "Level 1",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 70,
+                                              color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100),
+                                              fontFamily: 'Barlow',
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        "Mt. Timpanogos",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 25,
-                                          color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100),
-                                          fontFamily: 'Barlow',
-                                          fontWeight: FontWeight.bold,
+                                        Text(
+                                          "Mt. Timpanogos",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        "Level 1 we call Mount Timpanogos, after the famous 12,000-ft peak in the Wasatch Range in Utah.  Your courage is taking you up, up, up!",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white.withOpacity(animationO.value/100),
-                                          fontFamily: 'Barlow',
+                                        Text(
+                                          "Level 1 we call Mount Timpanogos, after the famous 12,000-ft peak in the Wasatch Range in Utah.  Your courage is taking you up, up, up!\n",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        "In this level you will:\n\u2022 begin to explore the nature of healthy relationships \n\u2022 identify how healthy (or unhealthy) behaviors\n\u2022 start to connect with your breath\n\u2022 begin to form a specific vision for your future",
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white.withOpacity(animationO.value/100),
-                                          fontFamily: 'Barlow',
+                                        Text(
+                                          "In this level you will:",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          "\u2022 Begin to explore the nature of healthy relationships \n\u2022 Identify how healthy (or unhealthy) behaviors\n\u2022 Start to connect with your breath\n\u2022 Begin to form a specific vision for your future",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                              Text(
-                                "Level 2",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 80,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                  fontWeight: FontWeight.bold,
+                              Padding(
+                                padding: const EdgeInsets.only( top: 10, bottom: 10),
+                                child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(width: 6, color: const Color.fromRGBO(124,66,81,255).withOpacity(animationO.value/100) ),
+                                  borderRadius: BorderRadius.circular(12)
+                                ),
+                                child: Padding(
+                                   padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                                    child: Column(
+                                      children: [ 
+                                        FittedBox(
+                                          fit: BoxFit.fill,
+                                          child: Text(
+                                            "Level 2",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 70,
+                                              color: const Color.fromRGBO(124,66,81,255).withOpacity(animationO.value/100),
+                                              fontFamily: 'Barlow',
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          "Mt. Whitney",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            color: const Color.fromRGBO(124,66,81,255).withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          "Level 2 is our Mount Whitney—you’re growing to over 14,000 feet.  Congratulations!\n",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "In this level you will:",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "\u2022 Deepen your understanding of healthy relationships\n\u2022  Identify the qualities we look for, and bring, to relationships\n\u2022  Determine your core values\n\u2022 Start listening for the core values in others\n\u2022 Understand the significance of values\n\u2022 Practice a moving meditation\n\u2022 Continue working on your future vision\n\u2022 Practice being recognized for your core values",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
-                              Text(
-                                "Mt. Whitney",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                  fontWeight: FontWeight.bold,
+                              Padding(
+                                padding: const EdgeInsets.only( top: 10, bottom: 10),
+                                child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(width: 6, color: const Color.fromRGBO(158,64,59,255).withOpacity(animationO.value/100) ),
+                                  borderRadius: BorderRadius.circular(12)
+                                ),
+                                child: Padding(
+                                   padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                                    child: Column(
+                                      children: [ 
+                                        FittedBox(
+                                          fit: BoxFit.fill,
+                                          child: Text(
+                                            "Level 3",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 70,
+                                              color: const Color.fromRGBO(158,64,59,255).withOpacity(animationO.value/100),
+                                              fontFamily: 'Barlow',
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          "The Himalayas",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            color: const Color.fromRGBO(158,64,59,255).withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          "Level 3 is all the way to The Himalayas, where the air is thin, but your strength prevails!\n",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "In this level you will:",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "\u2022 Further deepen your understanding of healthy relationships\n\u2022 Explore the importance of emotions in relationships\n\u2022 Understand Emotional Regulation\n\u2022 Learn effective strategies for managing any scenario\n\u2022 Apply those strategies in real time\n\u2022 Learn valuable communication skills for nourishing all relationships\n\u2022 Practice active listening scenarios\n\u2022 Further your future vision with specific goals and steps",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
-                              Text(
-                                "Level 2 is our Mount Whitney—you’re growing to over 14,000 feet.  Congratulations!",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
+                              Padding(
+                                padding: const EdgeInsets.only( top: 10, bottom: 10),
+                                child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(width: 6, color: orange.withOpacity(animationO.value/100) ),
+                                  borderRadius: BorderRadius.circular(12)
                                 ),
-                              ),
-                              Text(
-                                "In this level, you will:\n\u2022 Deepen your understanding of healthy relationships\n\u2022  Identify the qualities we look for, and bring, to relationships\n\u2022  Determine your core values\n\u2022 Start listening for the core values in others\n\u2022 Understand the significance of values\n\u2022 Practice a moving meditation\n\u2022 Continue working on your future vision\n\u2022 Practice being recognized for your core values",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
+                                child: Padding(
+                                   padding: const EdgeInsets.only(left: 15, right: 15, bottom: 20),
+                                    child: Column(
+                                      children: [ 
+                                        FittedBox(
+                                          fit: BoxFit.fill,
+                                          child: Text(
+                                            "Level 4",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 70,
+                                              color: orange.withOpacity(animationO.value/100),
+                                              fontFamily: 'Barlow',
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          "PeakU",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 25,
+                                            color: orange.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          "Level 4 is, of course, PeakU!  You are off and running, my friend.  Seriously, take a breath and appreciate yourself for taking this on, and so successfully.\n",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "In this level you will:",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "\u2022 See the peak signs of healthy relationships\n\u2022 Examine timing of relationship events\n\u2022 Explore flexibility and expectations in relationships\n\u2022 Experience the dance of intimacy, inside the dynamics of space and pressure\n\u2022 Chisel your future vision from dream into reality\n\u2022 Get resources for your needs\n\u2022 Live at PeakU",
+                                          textAlign: TextAlign.left,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                "Level 3",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 80,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "The Himalayas",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "Level 3 is all the way to The Himalayas, where the air is thin, but your strength prevails!",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                ),
-                              ),
-                              Text(
-                                "In this level, you will:\n\u2022 Further deepen your understanding of healthy relationships\n\u2022 Explore the importance of emotions in relationships\n\u2022 Understand Emotional Regulation\n\u2022 Learn effective strategies for managing any scenario\n\u2022 Apply those strategies in real time\n\u2022 Learn valuable communication skills for nourishing all relationships\n\u2022 Practice active listening scenarios\n\u2022 Further your future vision with specific goals and steps",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                ),
-                              ),
-                              Text(
-                                "Level 4",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 80,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "PeakU",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "Level 4 is, of course, PeakU!  You are off and running, my friend.  Seriously, take a breath and appreciate yourself for taking this on, and so successfully.",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                ),
-                              ),
-                              Text(
-                                "In this level, you will:\n\u2022 See the peak signs of healthy relationships\n\u2022 Examine timing of relationship events\n\u2022 Explore flexibility and expectations in relationships\n\u2022 Experience the dance of intimacy, inside the dynamics of space and pressure\n\u2022 Chisel your future vision from dream into reality\n\u2022 Get resources for your needs\n\u2022 Live at PeakU",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white.withOpacity(animationO.value/100),
-                                  fontFamily: 'Barlow',
-                                 ),
                                ),
                              ],
                             )
@@ -652,7 +754,10 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                   context,
                                   MaterialPageRoute(builder: (context) => const LevelOneHome())); 
                               },
-                              child:  const Text('Continue', style: TextStyle(fontSize: 35, color: Colors.white,)),
+                              child: const FittedBox(
+                                fit: BoxFit.fill,
+                                child: Text('Continue', style: TextStyle(fontSize: 20)),
+                              ),
                             ),
                          ),
                        ),
