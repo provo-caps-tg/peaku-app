@@ -226,7 +226,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       ),
     ),
     QuestionStep(
-      title: 'If my partner doesn’t look good today, I will tell them. Respectful?',
+      title: "If my partner doesn't look good today, I will tell them. Respectful?",
       isOptional: false,
       answerFormat: const SingleChoiceAnswerFormat(
         textChoices: <TextChoice>[
@@ -315,11 +315,119 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                           width: double.infinity,
                           height: MediaQuery.of(context).size.height - kToolbarHeight,
                           child: SurveyKit(
-                              onResult: (SurveyResult result) {
-                                //Read finish reason from result (result.finishReason)
-                                //and evaluate the results
-                              },
-                              task: task,
+                            onResult: (SurveyResult result) {
+                              //Read finish reason from result (result.finishReason)
+                              //and evaluate the results
+                            },
+                            task: task,
+                            themeData: Theme.of(context).copyWith(
+                              primaryColor: Colors.cyan,
+                              appBarTheme: const AppBarTheme(
+                                color: Colors.white,
+                                iconTheme: IconThemeData(
+                                  color: Colors.cyan,
+                                ),
+                                titleTextStyle: TextStyle(
+                                  color: Colors.cyan,
+                                ),
+                              ),
+                              iconTheme: const IconThemeData(
+                                color: Colors.cyan,
+                              ),
+                              textSelectionTheme: const TextSelectionThemeData(
+                                cursorColor: Colors.cyan,
+                                selectionColor: Colors.cyan,
+                                selectionHandleColor: Colors.cyan,
+                              ),
+                              outlinedButtonTheme: OutlinedButtonThemeData(
+                                style: ButtonStyle(
+                                  minimumSize: MaterialStateProperty.all(
+                                    const Size(150.0, 60.0),
+                                  ),
+                                  side: MaterialStateProperty.resolveWith(
+                                    (Set<MaterialState> state) {
+                                      if (state.contains(MaterialState.disabled)) {
+                                        return const BorderSide(
+                                          color: Colors.grey,
+                                        );
+                                      }
+                                      return const BorderSide(
+                                        color: Colors.cyan,
+                                      );
+                                    },
+                                  ),
+                                  shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                  textStyle: MaterialStateProperty.resolveWith(
+                                    (Set<MaterialState> state) {
+                                      if (state.contains(MaterialState.disabled)) {
+                                        return Theme.of(context)
+                                            .textTheme
+                                            .labelLarge
+                                            ?.copyWith(
+                                              color: Colors.grey,
+                                            );
+                                      }
+                                      return Theme.of(context)
+                                          .textTheme
+                                          .labelLarge
+                                          ?.copyWith(
+                                            color: Colors.cyan,
+                                          );
+                                    },
+                                  ),
+                                ),
+                              ),
+                              textButtonTheme: TextButtonThemeData(
+                                style: ButtonStyle(
+                                  textStyle: MaterialStateProperty.all(
+                                    Theme.of(context).textTheme.labelLarge?.copyWith(
+                                          color: Colors.cyan,
+                                        ),
+                                  ),
+                                ),
+                              ),
+                              textTheme: const TextTheme(
+                                displayMedium: TextStyle(
+                                  fontSize: 28.0,
+                                  color: Colors.black,
+                                ),
+                                headlineSmall: TextStyle(
+                                  fontSize: 24.0,
+                                  color: Colors.black,
+                                ),
+                                bodyMedium: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Colors.black,
+                                ),
+                                bodySmall: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Colors.black,
+                                ),
+                                titleMedium: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              inputDecorationTheme: const InputDecorationTheme(
+                                labelStyle: TextStyle(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              colorScheme: ColorScheme.fromSwatch(
+                                primarySwatch: Colors.blue,
+                              )
+                                  .copyWith(
+                                    onPrimary: Colors.white,
+                                  )
+                                  .copyWith(background: Colors.white),
+                            ),
+                            surveyProgressbarConfiguration: SurveyProgressConfiguration(
+                              progressbarColor: blue,
+                            ),
                           ),
                         ),
                         ],
