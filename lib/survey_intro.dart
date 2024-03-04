@@ -503,7 +503,16 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         Text(
-                                          "Level 1 we call Mount Timpanogos, after the famous 12,000-ft peak in the Wasatch Range in Utah.  Your courage is taking you up, up, up!",
+                                          "Level 1 we call Mount Timpanogos, after the famous 12,000-ft peak in the Wasatch Range in Utah.  Your courage is taking you up, up, up!\n",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "In this level you will:",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontSize: 18,
@@ -512,7 +521,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         Text(
-                                          "In this level you will:\n\u2022 begin to explore the nature of healthy relationships \n\u2022 identify how healthy (or unhealthy) behaviors\n\u2022 start to connect with your breath\n\u2022 begin to form a specific vision for your future",
+                                          "\u2022 Begin to explore the nature of healthy relationships \n\u2022 Identify how healthy (or unhealthy) behaviors\n\u2022 Start to connect with your breath\n\u2022 Begin to form a specific vision for your future",
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontSize: 18,
@@ -560,7 +569,16 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         Text(
-                                          "Level 2 is our Mount Whitney—you’re growing to over 14,000 feet.  Congratulations!",
+                                          "Level 2 is our Mount Whitney—you’re growing to over 14,000 feet.  Congratulations!\n",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "In this level you will:",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontSize: 18,
@@ -569,7 +587,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         Text(
-                                          "In this level, you will:\n\u2022 Deepen your understanding of healthy relationships\n\u2022  Identify the qualities we look for, and bring, to relationships\n\u2022  Determine your core values\n\u2022 Start listening for the core values in others\n\u2022 Understand the significance of values\n\u2022 Practice a moving meditation\n\u2022 Continue working on your future vision\n\u2022 Practice being recognized for your core values",
+                                          "\u2022 Deepen your understanding of healthy relationships\n\u2022  Identify the qualities we look for, and bring, to relationships\n\u2022  Determine your core values\n\u2022 Start listening for the core values in others\n\u2022 Understand the significance of values\n\u2022 Practice a moving meditation\n\u2022 Continue working on your future vision\n\u2022 Practice being recognized for your core values",
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontSize: 18,
@@ -617,7 +635,16 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         Text(
-                                          "Level 3 is all the way to The Himalayas, where the air is thin, but your strength prevails!",
+                                          "Level 3 is all the way to The Himalayas, where the air is thin, but your strength prevails!\n",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "In this level you will:",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontSize: 18,
@@ -626,7 +653,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         Text(
-                                          "In this level, you will:\n\u2022 Further deepen your understanding of healthy relationships\n\u2022 Explore the importance of emotions in relationships\n\u2022 Understand Emotional Regulation\n\u2022 Learn effective strategies for managing any scenario\n\u2022 Apply those strategies in real time\n\u2022 Learn valuable communication skills for nourishing all relationships\n\u2022 Practice active listening scenarios\n\u2022 Further your future vision with specific goals and steps",
+                                          "\u2022 Further deepen your understanding of healthy relationships\n\u2022 Explore the importance of emotions in relationships\n\u2022 Understand Emotional Regulation\n\u2022 Learn effective strategies for managing any scenario\n\u2022 Apply those strategies in real time\n\u2022 Learn valuable communication skills for nourishing all relationships\n\u2022 Practice active listening scenarios\n\u2022 Further your future vision with specific goals and steps",
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontSize: 18,
@@ -674,7 +701,16 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         Text(
-                                          "Level 4 is, of course, PeakU!  You are off and running, my friend.  Seriously, take a breath and appreciate yourself for taking this on, and so successfully.",
+                                          "Level 4 is, of course, PeakU!  You are off and running, my friend.  Seriously, take a breath and appreciate yourself for taking this on, and so successfully.\n",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.white.withOpacity(animationO.value/100),
+                                            fontFamily: 'Barlow',
+                                          ),
+                                        ),
+                                        Text(
+                                          "In this level you will:",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontSize: 18,
@@ -683,7 +719,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                         Text(
-                                          "In this level, you will:\n\u2022 See the peak signs of healthy relationships\n\u2022 Examine timing of relationship events\n\u2022 Explore flexibility and expectations in relationships\n\u2022 Experience the dance of intimacy, inside the dynamics of space and pressure\n\u2022 Chisel your future vision from dream into reality\n\u2022 Get resources for your needs\n\u2022 Live at PeakU",
+                                          "\u2022 See the peak signs of healthy relationships\n\u2022 Examine timing of relationship events\n\u2022 Explore flexibility and expectations in relationships\n\u2022 Experience the dance of intimacy, inside the dynamics of space and pressure\n\u2022 Chisel your future vision from dream into reality\n\u2022 Get resources for your needs\n\u2022 Live at PeakU",
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontSize: 18,
