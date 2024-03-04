@@ -2,6 +2,7 @@ import 'global_varibles.dart';
 import 'survey_intro.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
+import 'package:material_color_generator/material_color_generator.dart';
 
 
 class LevelOneHome extends StatefulWidget {
@@ -321,23 +322,23 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                             },
                             task: task,
                             themeData: Theme.of(context).copyWith(
-                              primaryColor: Colors.cyan,
-                              appBarTheme: const AppBarTheme(
+                              primaryColor: generateMaterialColor(color: blue),
+                              appBarTheme: AppBarTheme(
                                 color: Colors.white,
                                 iconTheme: IconThemeData(
-                                  color: Colors.cyan,
+                                  color: blue,
                                 ),
                                 titleTextStyle: TextStyle(
-                                  color: Colors.cyan,
+                                  color: generateMaterialColor(color: blue),
                                 ),
                               ),
-                              iconTheme: const IconThemeData(
-                                color: Colors.cyan,
+                              iconTheme: IconThemeData(
+                                color: blue,
                               ),
-                              textSelectionTheme: const TextSelectionThemeData(
-                                cursorColor: Colors.cyan,
-                                selectionColor: Colors.cyan,
-                                selectionHandleColor: Colors.cyan,
+                              textSelectionTheme: TextSelectionThemeData(
+                                cursorColor: blue,
+                                selectionColor: generateMaterialColor(color: blue),
+                                selectionHandleColor: generateMaterialColor(color: blue),
                               ),
                               outlinedButtonTheme: OutlinedButtonThemeData(
                                 style: ButtonStyle(
@@ -351,8 +352,8 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                           color: Colors.grey,
                                         );
                                       }
-                                      return const BorderSide(
-                                        color: Colors.cyan,
+                                      return BorderSide(
+                                        color: blue,
                                       );
                                     },
                                   ),
@@ -375,7 +376,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                           .textTheme
                                           .labelLarge
                                           ?.copyWith(
-                                            color: Colors.cyan,
+                                            color: generateMaterialColor(color: blue),
                                           );
                                     },
                                   ),
@@ -385,7 +386,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                 style: ButtonStyle(
                                   textStyle: MaterialStateProperty.all(
                                     Theme.of(context).textTheme.labelLarge?.copyWith(
-                                          color: Colors.cyan,
+                                          color: generateMaterialColor(color: blue),
                                         ),
                                   ),
                                 ),
@@ -418,7 +419,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                 ),
                               ),
                               colorScheme: ColorScheme.fromSwatch(
-                                primarySwatch: Colors.blue,
+                                primarySwatch: generateMaterialColor(color: blue),
                               )
                                   .copyWith(
                                     onPrimary: Colors.white,
@@ -543,26 +544,26 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                       'next': 'Next',
                     },
                     themeData: Theme.of(context).copyWith(
-                      primaryColor: Colors.cyan,
+                      primaryColor: generateMaterialColor(color: blue),
                       appBarTheme: const AppBarTheme(
                         color: Colors.white,
                         iconTheme: IconThemeData(
-                          color: Colors.cyan,
+                          color: generateMaterialColor(color: blue),
                         ),
                         titleTextStyle: TextStyle(
-                          color: Colors.cyan,
+                          color: generateMaterialColor(color: blue),
                         ),
                       ),
                       iconTheme: const IconThemeData(
-                        color: Colors.cyan,
+                        color: generateMaterialColor(color: blue),
                       ),
                       textSelectionTheme: const TextSelectionThemeData(
-                        cursorColor: Colors.cyan,
-                        selectionColor: Colors.cyan,
-                        selectionHandleColor: Colors.cyan,
+                        cursorColor: generateMaterialColor(color: blue),
+                        selectionColor: generateMaterialColor(color: blue),
+                        selectionHandleColor: generateMaterialColor(color: blue),
                       ),
                       cupertinoOverrideTheme: const CupertinoThemeData(
-                        primaryColor: Colors.cyan,
+                        primaryColor: generateMaterialColor(color: blue),
                       ),
                       outlinedButtonTheme: OutlinedButtonThemeData(
                         style: ButtonStyle(
@@ -577,7 +578,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                 );
                               }
                               return const BorderSide(
-                                color: Colors.cyan,
+                                color: generateMaterialColor(color: blue),
                               );
                             },
                           ),
@@ -600,7 +601,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                   .textTheme
                                   .labelLarge
                                   ?.copyWith(
-                                    color: Colors.cyan,
+                                    color: generateMaterialColor(color: blue),
                                   );
                             },
                           ),
@@ -610,7 +611,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                         style: ButtonStyle(
                           textStyle: MaterialStateProperty.all(
                             Theme.of(context).textTheme.labelLarge?.copyWith(
-                                  color: Colors.cyan,
+                                  color: generateMaterialColor(color: blue),
                                 ),
                           ),
                         ),
@@ -643,7 +644,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                         ),
                       ),
                       colorScheme: ColorScheme.fromSwatch(
-                        primarySwatch: Colors.cyan,
+                        primarySwatch: generateMaterialColor(color: blue),
                       )
                           .copyWith(
                             onPrimary: Colors.white,

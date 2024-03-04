@@ -10,5 +10,4 @@ String selectedQuestion = 'Loading...';
 String holderText = 'Lorem Ispum fake response';
 Color blue = const Color.fromARGB(255, 15, 49, 86);
 Color orange = const Color.fromARGB(255, 232, 105, 0);
-//MaterialColor material = MaterialColorGenerator.from(blue);
 TextEditingController responseController = TextEditingController(text: userResponse);
