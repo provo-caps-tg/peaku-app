@@ -5,12 +5,20 @@ import 'package:survey_kit/survey_kit.dart';
 import  'dart:async';
  
 class CustomResult extends QuestionResult<String> {
-  late final String customData;
-  late final Identifier identifier;
-  late final String value;
-  CustomResult({required super.id, required super.startDate, required super.endDate, required super.valueIdentifier, required super.result});
 
+  CustomResult({
+    required super.id,
+    required super.startDate,
+    required super.endDate,
+    required String super.valueIdentifier,
+    required String super.result,
+  });
+
+  @override
+  List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
 }
+
+
 
 class CustomStep extends Step {
   final String title;
@@ -24,33 +32,28 @@ class CustomStep extends Step {
   });
 
   @override
-  noSuchMethod(Invocation i) => super.noSuchMethod(i); //not sure what htis does but it fixes it.
+  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation); //not sure what htis does but it fixes it.
   
   @override
   Widget createView({required QuestionResult? questionResult}) {
-    return StepView(
-      controller: SurveyController(
-        onNextStep: , 
-      ),
-      step: QuestionStep(
-        answerFormat: const TextAnswerFormat(
-          maxLines: 5,
-        )
-      ), //Add your view here
-      title: const Text('Title'),
-      resultFunction: () => CustomResult(
-          id: Identifier(id: "12312"),
-          startDate: DateTime.now(),
-          endDate: DateTime.now(),
-          valueIdentifier: 'custom',//Identification for NavigableTask
-          result: 'custom_result',
-      ), 
-      
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Image.asset('assets/images/background.png'),
-      )    
-    );
+      return StepView(
+            step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")), //TODO find out on this 
+            controller: SurveyController(),
+            title: const Text('Title!'),
+            resultFunction: () => CustomResult(
+                id: Identifier(id: "12312"),
+                startDate: DateTime.now(),
+                endDate: DateTime.now(),
+                valueIdentifier: 'custom',//Identification for NavigableTask
+                result: 'custom_result',
+              ),
+            
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset('assets/images/background.png'),
+            ),
+          
+        );
   }
 }
 
