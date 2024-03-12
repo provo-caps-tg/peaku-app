@@ -34,24 +34,28 @@ class CustomStep extends Step {
   
   @override
   Widget createView({required QuestionResult? questionResult}) {
-      return StepView(
-            step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")), //TODO find out on this 
-            controller: SurveyController(),
-            title: const Text('Title!'),
-            resultFunction: () => CustomResult(
-                id: Identifier(id: "12312"),
-                startDate: DateTime.now(),
-                endDate: DateTime.now(),
-                valueIdentifier: 'custom',//Identification for NavigableTask
-                result: 'custom_result',
-              ),
-            
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset('assets/images/background.png'),
-            ),
-          
-        );
+    return StepView(
+      step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")), //TODO find out on this 
+      controller: SurveyController(),
+      title: const Text('Title!'),
+      resultFunction: () => CustomResult(
+          id: Identifier(id: "12312"),
+          startDate: DateTime.now(),
+          endDate: DateTime.now(),
+          valueIdentifier: 'custom',//Identification for NavigableTask
+          result: 'custom_result',
+        ),
+      
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset('assets/images/background.png'),
+          ),
+        ],
+      ),
+    
+  );
   }
 }
 
