@@ -2,7 +2,6 @@ import 'global_varibles.dart';
 import 'survey_intro.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
-import  'dart:async';
 import 'package:material_color_generator/material_color_generator.dart';
  
 class CustomResult extends QuestionResult<String> {
@@ -402,7 +401,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                               outlinedButtonTheme: OutlinedButtonThemeData(
                                 style: ButtonStyle(
                                   minimumSize: MaterialStateProperty.all(
-                                    const Size(0, 60.0),
+                                    const Size(0, 61.0),
                                   ),
                                   side: MaterialStateProperty.resolveWith(
                                     (Set<MaterialState> state) {
