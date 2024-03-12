@@ -18,8 +18,6 @@ class CustomResult extends QuestionResult<String> {
   List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
 }
 
-
-
 class CustomStep extends Step {
   final String title;
   final String text;
