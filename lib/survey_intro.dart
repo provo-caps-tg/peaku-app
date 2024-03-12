@@ -3,7 +3,6 @@ import 'package:flutter_survey/flutter_survey.dart';
 import 'package:flutter/material.dart';
 import 'global_varibles.dart';
 import 'level_one.dart';
-import 'dart:async';
 import 'main.dart';
 
 class SurveyPage extends StatefulWidget {
