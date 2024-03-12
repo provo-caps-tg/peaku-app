@@ -5,7 +5,6 @@ import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
  
 class CustomResult extends QuestionResult<String> {
-
   CustomResult({
     required super.id,
     required super.startDate,
@@ -13,7 +12,6 @@ class CustomResult extends QuestionResult<String> {
     required String super.valueIdentifier,
     required String super.result,
   });
-
   @override
   List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
 }
@@ -21,7 +19,6 @@ class CustomResult extends QuestionResult<String> {
 class CustomStep extends Step {
   final String title;
   final String text;
-
   CustomStep({
     bool isOptional = false,
     String buttonText = 'Next',
@@ -30,12 +27,12 @@ class CustomStep extends Step {
   });
 
   @override
-  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation); //not sure what htis does but it fixes it.
+  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
   
   @override
   Widget createView({required QuestionResult? questionResult}) {
     return StepView(
-      step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")), //TODO find out on this 
+      step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
       controller: SurveyController(),
       title: const Text('Title!'),
       resultFunction: () => CustomResult(
@@ -45,17 +42,11 @@ class CustomStep extends Step {
           valueIdentifier: 'custom',//Identification for NavigableTask
           result: 'custom_result',
         ),
-      
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset('assets/images/background.png'),
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Image.asset('assets/images/background.png'),
       ),
-    
-  );
+    );
   }
 }
 
