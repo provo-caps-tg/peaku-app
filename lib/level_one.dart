@@ -2,7 +2,59 @@ import 'global_varibles.dart';
 import 'survey_intro.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
+import  'dart:async';
+ 
+class CustomResult extends QuestionResult<String> {
+  late final String customData;
+  late final Identifier identifier;
+  late final String value;
+  CustomResult({required super.id, required super.startDate, required super.endDate, required super.valueIdentifier, required super.result});
 
+  @override
+  noSuchMethod(Invocation i) => super.noSuchMethod(i);
+}
+
+class CustomStep extends Step {
+  final String title;
+  final String text;
+
+  CustomStep({
+    bool isOptional = false,
+    String buttonText = 'Next',
+    required this.title,
+    required this.text,
+  });
+
+  @override
+  noSuchMethod(Invocation i) => super.noSuchMethod(i); //not sure what htis does but it fixes it.
+  
+  @override
+  Widget createView({required QuestionResult? questionResult}) {
+      return StepView(
+            step: QuestionStep(answerFormat: const TextAnswerFormat(
+              maxLines: 5,
+            )), //TODO find out on this 
+     
+            title: const Text('Title'),
+            resultFunction: () => CustomResult(
+                id: Identifier(id: "12312"),
+                startDate: DateTime.now(),
+                endDate: DateTime.now(),
+                valueIdentifier: 'custom',//Identification for NavigableTask
+                result: 'custom_result',
+              ),
+            
+            child: Container(
+              decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/background.png'),
+                fit: BoxFit.cover,
+                ),
+              ),
+            ), //Add your view here
+        );
+  }
+}
 
 class LevelOneHome extends StatefulWidget {
   const LevelOneHome({super.key});
@@ -13,6 +65,10 @@ class LevelOneHome extends StatefulWidget {
 
 class _LevelOneHomeState extends State<LevelOneHome> {
   var stepss = [
+    CustomStep(
+      text: "bingbong",
+      title: 'f'
+    ), 
     QuestionStep(
       title: 'What Makes for a Healthy Relationship?',
       text: 'Select the top 5 qualities from the group below that make for healthy relationships:',
