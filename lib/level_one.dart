@@ -3,7 +3,6 @@ import 'survey_intro.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
-import  'dart:async';
  
 class CustomResult extends QuestionResult<String> {
 
