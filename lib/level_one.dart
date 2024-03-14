@@ -31,10 +31,11 @@ class BoxesStep extends Step {
   
   @override
   Widget createView({required QuestionResult? questionResult}) {
+    String boxText = '';
     return StepView(
       step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
       controller: SurveyController(),
-      title: const Text('Title!'),
+      title: const Text(''),
       resultFunction: () => BoxesResult(
           id: Identifier(id: "12312"),
           startDate: DateTime.now(),
@@ -42,10 +43,133 @@ class BoxesStep extends Step {
           valueIdentifier: 'custom',//Identification for NavigableTask
           result: 'custom_result',
         ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Image.asset('assets/images/background.png'),
-      ),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                height: 300,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: orange, width: 2),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: blue, width: 2),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Draggable<String>(
+                        data: 'hello',
+                        feedback: SizedBox(
+                          width: 150,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.black, width: 1),
+                              color: const Color.fromARGB(255, 236, 236, 236),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                              child: Text(
+                                'Hello',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.normal, color: Colors.black, fontSize: 35, decoration: TextDecoration.none),
+                              ),
+                            ),
+                          ),
+                        ),
+                        childWhenDragging: SizedBox(
+                          child: Container(
+                            width: 0,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                          child: SizedBox(
+                            width: 90,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.black, width: 1),
+                                color: const Color.fromARGB(255, 236, 236, 236),
+                              ),
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                                child: Text(
+                                  'Hello',
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Draggable<String>(
+                        data: 'there',
+                        feedback: SizedBox(
+                          width: 150,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.black, width: 1),
+                              color: const Color.fromARGB(255, 236, 236, 236),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                              child: Text(
+                                'there',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.normal, color: Colors.black, fontSize: 35, decoration: TextDecoration.none),
+                              ),
+                            ),
+                          ),
+                        ),
+                        childWhenDragging: SizedBox(
+                          child: Container(
+                            width: 0,
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                          child: SizedBox(
+                            width: 90,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.black, width: 1),
+                                color: const Color.fromARGB(255, 236, 236, 236),
+                              ),
+                              child: const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                                child: Text(
+                                  'there',
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      )
     );
   }
 }
@@ -60,8 +184,8 @@ class LevelOneHome extends StatefulWidget {
 class _LevelOneHomeState extends State<LevelOneHome> {
   var stepss = [
     BoxesStep(
-      text: "bingbong",
-      title: 'f'
+      text: "",
+      title: ''
     ), 
     QuestionStep(
       title: 'What Makes for a Healthy Relationship?',
