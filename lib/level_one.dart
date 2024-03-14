@@ -4,8 +4,8 @@ import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
  
-class CustomResult extends QuestionResult<String> {
-  CustomResult({
+class BoxesResult extends QuestionResult<String> {
+  BoxesResult({
     required super.id,
     required super.startDate,
     required super.endDate,
@@ -16,10 +16,10 @@ class CustomResult extends QuestionResult<String> {
   List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
 }
 
-class CustomStep extends Step {
+class BoxesStep extends Step {
   final String title;
   final String text;
-  CustomStep({
+  BoxesStep({
     bool isOptional = false,
     String buttonText = 'Next',
     required this.title,
@@ -35,7 +35,7 @@ class CustomStep extends Step {
       step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
       controller: SurveyController(),
       title: const Text('Title!'),
-      resultFunction: () => CustomResult(
+      resultFunction: () => BoxesResult(
           id: Identifier(id: "12312"),
           startDate: DateTime.now(),
           endDate: DateTime.now(),
@@ -59,7 +59,7 @@ class LevelOneHome extends StatefulWidget {
 
 class _LevelOneHomeState extends State<LevelOneHome> {
   var stepss = [
-    CustomStep(
+    BoxesStep(
       text: "bingbong",
       title: 'f'
     ), 
