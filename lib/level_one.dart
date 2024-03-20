@@ -211,7 +211,6 @@ class _LevelOneHomeState extends State<LevelOneHome> {
           TextChoice(text: 'Intelligence', value: 'Intelligence'),
           TextChoice(text: 'Acceptance', value: 'Acceptance'),
           TextChoice(text: 'Educating Them When They are Wrong', value: 'Educating Them When They are Wrong'),
-          TextChoice(text: 'Loyalty', value: 'Loyalty'),
           TextChoice(text: 'Sharing Values', value: 'Sharing Values'),
           TextChoice(text: 'Spontaneity', value: 'Spontaneity'),
         ],
