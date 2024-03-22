@@ -4,6 +4,50 @@ import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
  
+class InfoDumpResult extends QuestionResult<String> {
+  InfoDumpResult({
+    required super.id,
+    required super.startDate,
+    required super.endDate,
+    required String super.valueIdentifier,
+    required String super.result,
+  });
+  @override
+  List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
+}
+
+class InfoDumpStep extends Step {
+
+  final String title;
+  final String text;
+  InfoDumpStep({
+    bool isOptional = false,
+    String buttonText = 'Next',
+    required this.title,
+    required this.text,
+  });
+  
+
+  @override
+  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+  
+  @override
+  Widget createView({required QuestionResult? questionResult}) {
+    return StepView(
+      step: QuestionStep(answerFormat: const BooleanAnswerFormat(positiveAnswer: "wa", negativeAnswer: "we")),
+      title: const Text(''),
+      resultFunction: () => InfoDumpResult(
+        id: Identifier(id: "124912"), 
+        startDate: DateTime.now(),
+        endDate: DateTime.now(), 
+        valueIdentifier: 'custom',//Identification for NavigableTask
+        result: 'custom_result',
+      ),
+      child: Container(),
+    );
+  }
+}
+
 class BoxesResult extends QuestionResult<String> {
   BoxesResult({
     required super.id,
