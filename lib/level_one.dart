@@ -126,6 +126,7 @@ class _BoxesStepState extends State<BoxesStepState> {
         feedback: SizedBox(
           child: Flexible(
             child: Container(
+                height: 55,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black, width: 1),
@@ -157,6 +158,7 @@ class _BoxesStepState extends State<BoxesStepState> {
           child: SizedBox(
             child: Expanded(
               child: Container(
+                height: 40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.black, width: 1),
