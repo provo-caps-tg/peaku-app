@@ -17,7 +17,6 @@ class InfoDumpResult extends QuestionResult<String> {
 }
 
 class InfoDumpStep extends Step {
-
   final String title;
   final String text;
   InfoDumpStep({
@@ -26,7 +25,6 @@ class InfoDumpStep extends Step {
     required this.title,
     required this.text,
   });
-  
 
   @override
   noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
@@ -63,12 +61,10 @@ class BoxesResult extends QuestionResult<String> {
 class CustomStep extends Step {
   final String title;
   final String text;
-
   CustomStep({
     required this.title,
     required this.text,
   });
-
   @override
   Widget createView({required QuestionResult? questionResult}) {
     return BoxesStepState(
@@ -76,7 +72,6 @@ class CustomStep extends Step {
       text: text,
     );
   }
-  
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
@@ -84,19 +79,16 @@ class CustomStep extends Step {
 class BoxesStepState extends StatefulWidget {
   final String title;
   final String text;
-
   const BoxesStepState({
     super.key,
     required this.title,
     required this.text,
   });
-
   @override
   State<BoxesStepState> createState() => _BoxesStepState();
 }
 
 class _BoxesStepState extends State<BoxesStepState> {
-
   @override
   void initState() {
     super.initState();
