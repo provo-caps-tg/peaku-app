@@ -3,7 +3,7 @@ import 'survey_intro.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
- 
+
 class BoxesResult extends QuestionResult<String> {
   BoxesResult({
     required super.id,
@@ -13,140 +13,182 @@ class BoxesResult extends QuestionResult<String> {
     required String super.result,
   });
   @override
-  
-  
   List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
 }
 
-class BoxesStep extends Step{
-  List<Widget> secondList = [];
-  List<Widget> firstList = [
-    Draggable<String>(
-      data: 'hello',
-      feedback: SizedBox(
-        width: 150,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.black, width: 1),
-            color: const Color.fromARGB(255, 236, 236, 236),
-          ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-            child: Text(
-              'Hello',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.normal, color: Colors.black, fontSize: 35, decoration: TextDecoration.none),
-            ),
-          ),
-        ),
-      ),
-      childWhenDragging: SizedBox(
-        child: Container(
-          width: 0,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2.0),
-        child: SizedBox(
-          width: 90,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.black, width: 1),
-              color: const Color.fromARGB(255, 236, 236, 236),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-              child: Text(
-                'Hello',
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-        ),
-      ),
-    ),
-    Draggable<String>(
-      data: 'there',
-      feedback: SizedBox(
-        width: 150,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.black, width: 1),
-            color: const Color.fromARGB(255, 236, 236, 236),
-          ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-            child: Text(
-              'there',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.normal, color: Colors.black, fontSize: 35, decoration: TextDecoration.none),
-            ),
-          ),
-        ),
-      ),
-      childWhenDragging: SizedBox(
-        child: Container(
-          width: 0,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2.0),
-        child: SizedBox(
-          width: 90,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.black, width: 1),
-              color: const Color.fromARGB(255, 236, 236, 236),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-              child: Text(
-                'there',
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-        ),
-      ),
-    ),
-  ];
+class CustomStep extends Step {
   final String title;
   final String text;
-  BoxesStep({
-    bool isOptional = false,
-    String buttonText = 'Next',
+
+  CustomStep({
     required this.title,
     required this.text,
   });
 
   @override
-  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+  Widget createView({required QuestionResult? questionResult}) {
+    return BoxesStepState(
+      title: title,
+      text: text,
+    );
+  }
   
   @override
-  Widget createView({required QuestionResult? questionResult}) {
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+}
+
+class BoxesStepState extends StatefulWidget {
+  final String title;
+  final String text;
+
+  const BoxesStepState({
+    super.key,
+    required this.title,
+    required this.text,
+  });
+
+  @override
+  State<BoxesStepState> createState() => _BoxesStepState();
+}
+
+class _BoxesStepState extends State<BoxesStepState> {
+
+  @override
+  void initState() {
+    super.initState();
+    if(firstGenerate==true){
+      firstGenerate = false;
+      firstList = _generateDraggables([
+        'Respect',
+        'Love', 
+        'Kindness',
+        'Contentment', 
+        'Understanding the other person',
+        'Generosity',
+        'Care',
+        'Empathy',
+        'Mutual effort',
+        'Loyalty',
+        'Humor',
+        'Playful Teasing',
+        'Righteousness',
+        'Being in the Lead Role',
+        'Intelligence',
+        'Acceptance',
+        'Sharing Values',
+        'Spontaneity',
+        'Educating Them When They are Wrong',
+        ]
+      );
+    }
+  }
+
+  List<Widget> _generateDraggables(List<String> texts) {
+    return texts.map((text) {
+      return Draggable<String>(
+        data: text,
+        feedback: SizedBox(
+          child: Flexible(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black, width: 1),
+                color: const Color.fromARGB(255, 236, 236, 236),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    fontSize: 30,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        childWhenDragging: SizedBox(
+          child: Container(
+            width: 0,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          child: SizedBox(
+            child: Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.black, width: 1),
+                  color: const Color.fromARGB(255, 236, 236, 236),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                  child: Text(
+                    text,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }).toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return StepView(
       step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
       controller: SurveyController(),
       title: const Text(''),
       resultFunction: () => BoxesResult(
-          id: Identifier(id: "12312"),
-          startDate: DateTime.now(),
-          endDate: DateTime.now(),
-          valueIdentifier: 'custom',//Identification for NavigableTask
-          result: 'custom_result',
-        ),
+        id: Identifier(id: "12312"),
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+        valueIdentifier: 'custom', // Identification for NavigableTask
+        result: 'custom_result',
+      ),
       child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  "What makes for a\nhealthy realtionship?", 
+                  textAlign: TextAlign.center,
+                  style: TextStyle( 
+                    //fontWeight: FontWeight.w700,, 
+                    fontSize: 60, 
+                  ),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  "Select the top 5 qualities from the \ngroup below that make for healthy relationships:", 
+                  textAlign: TextAlign.center,
+                  style: TextStyle( 
+                    //fontWeight: FontWeight.w700,, 
+                    fontSize: 30, 
+                  ),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Container(
-                height: 60,
+                constraints: const BoxConstraints(minHeight: 60),
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -155,25 +197,27 @@ class BoxesStep extends Step{
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: DragTarget<String>(
-                    builder: (context, candidateData, rejectedData) {
-                      return ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: secondList.length,
-                        itemBuilder: (context, index){
-                          return secondList[index];
-                        },
-                      );
-                    },
+                  builder: (context, candidateData, rejectedData) {
+                    return Wrap(
+                      spacing: 5,
+                      runSpacing: 5,
+                      children: secondList,
+                    );
+                  },
                     onAcceptWithDetails: (details) {
-                      String? data = details.data;
-                      firstList.removeWhere((widget) {
-                        if (widget is Draggable<String> && widget.data == data) {
-                          secondList.add(widget);
-                          return true;
-                        }
-                        return false;
-                      });
-                    }
+                      if (secondList.length < 5) {
+                        setState(() {
+                          String? data = details.data;
+                          firstList.removeWhere((widget) {
+                            if (widget is Draggable<String> && widget.data == data) {
+                              secondList.add(widget);
+                              return true;
+                            }
+                            return false;
+                          });
+                        });
+                      }
+                    },
                   ),
                 ),
               ),
@@ -182,7 +226,7 @@ class BoxesStep extends Step{
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Container(
                 width: double.infinity,
-                height: 60,
+                constraints: const BoxConstraints(minHeight: 60),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: blue, width: 2),
@@ -191,31 +235,31 @@ class BoxesStep extends Step{
                   padding: const EdgeInsets.all(8.0),
                   child: DragTarget<String>(
                     builder: (context, candidateData, rejectedData) {
-                      return ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: firstList.length,
-                        itemBuilder: (context, index){
-                          return firstList[index];
-                        },
+                      return Wrap(
+                        spacing: 5,
+                        runSpacing: 5,
+                        children: firstList,
                       );
                     },
                     onAcceptWithDetails: (details) {
-                      String? data = details.data;
-                      secondList.removeWhere((widget) {
-                        if (widget is Draggable<String> && widget.data == data) {
-                          firstList.add(widget);
-                          return true;
-                        }
-                        return false;
+                      setState(() {
+                        String? data = details.data;
+                        secondList.removeWhere((widget) {
+                          if (widget is Draggable<String> && widget.data == data) {
+                            firstList.add(widget);
+                            return true;
+                          }
+                          return false;
+                        });
                       });
-                    }
+                    },
                   ),
                 ),
               ),
             ),
           ],
         ),
-      )
+      ),
     );
   }
 }
@@ -229,38 +273,9 @@ class LevelOneHome extends StatefulWidget {
 
 class _LevelOneHomeState extends State<LevelOneHome> {
   var stepss = [
-    BoxesStep(
+    CustomStep(
       text: "",
-      title: ''
-    ), 
-    QuestionStep(
-      title: 'What Makes for a Healthy Relationship?',
-      text: 'Select the top 5 qualities from the group below that make for healthy relationships:',
-      isOptional: false,
-      answerFormat: const MultipleChoiceAnswerFormat(
-        maxAnswers: 5,
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Respect', value: 'Respect'),
-          TextChoice(text: 'Love', value: 'Love'),
-          TextChoice(text: 'Kindness', value: 'Kindness'),
-          TextChoice(text: 'Contentment', value: 'Contentment'),
-          TextChoice(text: 'Understanding the other person', value: 'Understanding the other person'),
-          TextChoice(text: 'Generosity', value: 'Generosity'),
-          TextChoice(text: 'Care', value: 'Care'),
-          TextChoice(text: 'Empathy', value: 'Empathy'),
-          TextChoice(text: 'Mutual effort', value: 'Mutual effort'),
-          TextChoice(text: 'Loyalty', value: 'Loyalty'),
-          TextChoice(text: 'Humor', value: 'Humor'),
-          TextChoice(text: 'Playful Teasing', value: 'Playful Teasing'),
-          TextChoice(text: 'Righteousness', value: 'Righteousness'),
-          TextChoice(text: 'Being in the Lead Role', value: 'Being in the Lead Role'),
-          TextChoice(text: 'Intelligence', value: 'Intelligence'),
-          TextChoice(text: 'Acceptance', value: 'Acceptance'),
-          TextChoice(text: 'Educating Them When They are Wrong', value: 'Educating Them When They are Wrong'),
-          TextChoice(text: 'Sharing Values', value: 'Sharing Values'),
-          TextChoice(text: 'Spontaneity', value: 'Spontaneity'),
-        ],
-      ),
+      title: "",
     ),
     QuestionStep(
       title: 'Are the qualities you selected present in your current relationships?',
