@@ -160,10 +160,8 @@ class _BoxesStepState extends State<BoxesStepState> {
     return texts.map((text) {
       return Draggable<String>(
         data: text,
-        feedback: SizedBox(
-          child: Flexible(
-            child: Container(
-                height: 55,
+        feedback: Container(
+                height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black, width: 1),
@@ -179,12 +177,11 @@ class _BoxesStepState extends State<BoxesStepState> {
                     color: Colors.black,
                     fontSize: 30,
                     decoration: TextDecoration.none,
+                    fontFamily: 'Barlow',
                   ),
                 ),
               ),
             ),
-          ),
-        ),
         childWhenDragging: SizedBox(
           child: Container(
             width: 0,
@@ -205,6 +202,12 @@ class _BoxesStepState extends State<BoxesStepState> {
                 child: Text(
                   text,
                   textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Barlow',
+                  ),
                 ),
               ),
             ),
