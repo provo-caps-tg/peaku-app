@@ -156,20 +156,18 @@ class _BoxesStepState extends State<BoxesStepState> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 2.0),
           child: SizedBox(
-            child: Expanded(
-              child: Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.black, width: 1),
-                  color: const Color.fromARGB(255, 236, 236, 236),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-                  child: Text(
-                    text,
-                    textAlign: TextAlign.center,
-                  ),
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black, width: 1),
+                color: const Color.fromARGB(255, 236, 236, 236),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
