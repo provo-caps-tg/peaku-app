@@ -314,10 +314,6 @@ class LevelOneHome extends StatefulWidget {
 
 class _LevelOneHomeState extends State<LevelOneHome> {
   var stepss = [
-    InfoDumpStep(
-      title: "",
-      text: ""),
-    BoxesStep(
     CustomStep(
       text: "",
       title: "",
