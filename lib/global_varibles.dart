@@ -1,10 +1,13 @@
 import 'package:flutter_survey/flutter_survey.dart';
 import 'package:flutter/material.dart';
 List<QuestionResult> lastSurveyResults = [];
+List<Widget> secondList = [];
+List<Widget> firstList = [];
 String pass = '';
 String email = '';
 bool enabled = true;
 bool responded = false;
+bool firstGenerate = true;
 String userResponse = '';
 String selectedQuestion = 'Loading...';
 String holderText = 'Lorem Ispum fake response';
