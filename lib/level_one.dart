@@ -3,8 +3,10 @@ import 'survey_intro.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
-
-class InfoDumpResult extends QuestionResult<String> {
+ 
+ // ignore: must_be_immutable
+ class InfoDumpResult extends QuestionResult<String> {
+  
   InfoDumpResult({
     required super.id,
     required super.startDate,
@@ -14,6 +16,9 @@ class InfoDumpResult extends QuestionResult<String> {
   });
   @override
   List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
 
 class InfoDumpStep extends Step {
@@ -36,7 +41,7 @@ class InfoDumpStep extends Step {
       title: const Text(''),
       resultFunction: () => InfoDumpResult(
         id: Identifier(id: "124912"), 
-        startDate: DateTime.now(),
+        startDate: DateTime.now(), 
         endDate: DateTime.now(), 
         valueIdentifier: 'custom',//Identification for NavigableTask
         result: 'custom_result',
