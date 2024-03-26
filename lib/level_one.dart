@@ -129,27 +129,27 @@ class _BoxesStepState extends State<BoxesStepState> {
       return Draggable<String>(
         data: text,
         feedback: Container(
-                height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.black, width: 1),
-                color: const Color.fromARGB(255, 236, 236, 236),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-                child: Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black,
-                    fontSize: 30,
-                    decoration: TextDecoration.none,
-                    fontFamily: 'Barlow',
-                  ),
-                ),
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.black, width: 1),
+            color: const Color.fromARGB(255, 236, 236, 236),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            child: Text(
+              text,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontWeight: FontWeight.normal,
+                color: Colors.black,
+                fontSize: 30,
+                decoration: TextDecoration.none,
+                fontFamily: 'Barlow',
               ),
             ),
+          ),
+        ),
         childWhenDragging: SizedBox(
           child: Container(
             width: 0,
@@ -187,121 +187,124 @@ class _BoxesStepState extends State<BoxesStepState> {
 
   @override
   Widget build(BuildContext context) {
-    return StepView(
-      step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
-      controller: SurveyController(),
-      title: const Text(''),
-      resultFunction: () => BoxesResult(
-        id: Identifier(id: "12312"),
-        startDate: DateTime.now(),
-        endDate: DateTime.now(),
-        valueIdentifier: 'custom', // Identification for NavigableTask
-        result: 'custom_result',
-      ),
-      child: Center(
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  "What makes for a\nhealthy realtionship?", 
-                  textAlign: TextAlign.center,
-                  style: TextStyle( 
-                    //fontWeight: FontWeight.w700,, 
-                    fontSize: 60, 
+    return Container(
+      transform: Matrix4.translationValues(0.0, -60.0, 0.0),
+        child: StepView(
+        step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
+        controller: SurveyController(),
+        title: const Text(''),
+        resultFunction: () => BoxesResult(
+          id: Identifier(id: "12312"),
+          startDate: DateTime.now(),
+          endDate: DateTime.now(),
+          valueIdentifier: 'custom', // Identification for NavigableTask
+          result: 'custom_result',
+        ),
+        child: Center(
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    "What makes for a\nhealthy realtionship?", 
+                    textAlign: TextAlign.center,
+                    style: TextStyle( 
+                      //fontWeight: FontWeight.w700,, 
+                      fontSize: 60, 
+                    ),
                   ),
                 ),
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  "Select the top 5 qualities from the \ngroup below that make for healthy relationships:", 
-                  textAlign: TextAlign.center,
-                  style: TextStyle( 
-                    //fontWeight: FontWeight.w700,, 
-                    fontSize: 30, 
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    "Select & drag the top 5 qualities from the \ngroup below that make for healthy relationships:", 
+                    textAlign: TextAlign.center,
+                    style: TextStyle( 
+                      //fontWeight: FontWeight.w700,, 
+                      fontSize: 30, 
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Container(
-                constraints: const BoxConstraints(minHeight: 60),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: orange, width: 2),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Container(
+                  constraints: const BoxConstraints(minHeight: 60),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: orange, width: 2),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: DragTarget<String>(
+                    builder: (context, candidateData, rejectedData) {
+                      return Wrap(
+                        spacing: 5,
+                        runSpacing: 5,
+                        children: secondList,
+                      );
+                    },
+                      onAcceptWithDetails: (details) {
+                        if (secondList.length < 5) {
+                          setState(() {
+                            String? data = details.data;
+                            firstList.removeWhere((widget) {
+                              if (widget is Draggable<String> && widget.data == data) {
+                                secondList.add(widget);
+                                return true;
+                              }
+                              return false;
+                            });
+                          });
+                        }
+                      },
+                    ),
+                  ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DragTarget<String>(
-                  builder: (context, candidateData, rejectedData) {
-                    return Wrap(
-                      spacing: 5,
-                      runSpacing: 5,
-                      children: secondList,
-                    );
-                  },
-                    onAcceptWithDetails: (details) {
-                      if (secondList.length < 5) {
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Container(
+                  width: double.infinity,
+                  constraints: const BoxConstraints(minHeight: 60),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: blue, width: 2),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: DragTarget<String>(
+                      builder: (context, candidateData, rejectedData) {
+                        return Wrap(
+                          spacing: 5,
+                          runSpacing: 5,
+                          children: firstList,
+                        );
+                      },
+                      onAcceptWithDetails: (details) {
                         setState(() {
                           String? data = details.data;
-                          firstList.removeWhere((widget) {
+                          secondList.removeWhere((widget) {
                             if (widget is Draggable<String> && widget.data == data) {
-                              secondList.add(widget);
+                              firstList.add(widget);
                               return true;
                             }
                             return false;
                           });
                         });
-                      }
-                    },
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Container(
-                width: double.infinity,
-                constraints: const BoxConstraints(minHeight: 60),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: blue, width: 2),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DragTarget<String>(
-                    builder: (context, candidateData, rejectedData) {
-                      return Wrap(
-                        spacing: 5,
-                        runSpacing: 5,
-                        children: firstList,
-                      );
-                    },
-                    onAcceptWithDetails: (details) {
-                      setState(() {
-                        String? data = details.data;
-                        secondList.removeWhere((widget) {
-                          if (widget is Draggable<String> && widget.data == data) {
-                            firstList.add(widget);
-                            return true;
-                          }
-                          return false;
-                        });
-                      });
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
