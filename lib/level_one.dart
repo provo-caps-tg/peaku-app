@@ -129,7 +129,7 @@ class _BoxesStepState extends State<BoxesStepState> {
       return Draggable<String>(
         data: text,
         feedback: Container(
-                height: 55,
+                height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black, width: 1),
@@ -145,6 +145,7 @@ class _BoxesStepState extends State<BoxesStepState> {
                     color: Colors.black,
                     fontSize: 30,
                     decoration: TextDecoration.none,
+                    fontFamily: 'Barlow',
                   ),
                 ),
               ),
@@ -169,6 +170,12 @@ class _BoxesStepState extends State<BoxesStepState> {
                 child: Text(
                   text,
                   textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Barlow',
+                  ),
                 ),
               ),
             ),
