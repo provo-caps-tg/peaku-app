@@ -5,12 +5,12 @@ import 'global_varibles.dart';
 import 'level_one.dart';
 import 'main.dart';
 
-class SurveyPage extends StatefulWidget {
-  const SurveyPage({super.key});
+class SurveyIntroPage extends StatefulWidget {
+  const SurveyIntroPage({super.key});
   @override
-  State<SurveyPage> createState() => _SurveyPageState();}
+  State<SurveyIntroPage> createState() => _SurveyIntroPageState();}
 
-class _SurveyPageState extends State<SurveyPage> {
+class _SurveyIntroPageState extends State<SurveyIntroPage> {
   final _formKey = GlobalKey<FormState>();
   final List<Question> _initialData = [
     Question(
@@ -315,7 +315,7 @@ class _SurveyPageState extends State<SurveyPage> {
                         onPressed:() {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const HomePage()), );
+                            MaterialPageRoute(builder: (context) => const IntroPage()), );
                             }, 
                         icon: const Icon(Icons.arrow_back)
                       ),
@@ -451,7 +451,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                           onPressed: () {
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(builder: (context) => const LevelOneHome())); 
+                              MaterialPageRoute(builder: (context) => const SurveyIntroPage())); 
                           },
                           child:  const FittedBox(
                             fit: BoxFit.scaleDown,
@@ -751,7 +751,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                               onPressed: () {
                                 Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                                  MaterialPageRoute(builder: (context) => const SurveyIntroPage())); 
                               },
                               child: const FittedBox(
                                 fit: BoxFit.fill,

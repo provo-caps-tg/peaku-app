@@ -338,6 +338,234 @@ class _BoxesStepState extends State<BoxesStepState> {
   }
 }
 
+class ReflectionResult extends QuestionResult<String> {
+  ReflectionResult({
+    required super.id,
+    required super.startDate,
+    required super.endDate,
+    required String super.valueIdentifier,
+    required String super.result,
+  });
+  @override
+  List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
+}
+
+class ReflectionStep extends Step {
+  final String title;
+  final String text;
+  ReflectionStep({
+    required this.title,
+    required this.text,
+  });
+  @override
+  Widget createView({required QuestionResult? questionResult}) {
+    return ReflectionStepState(
+      title: title,
+      text: text,
+    );
+  }
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+}
+
+class ReflectionStepState extends StatefulWidget {
+  final String title;
+  final String text;
+  const ReflectionStepState({
+    super.key,
+    required this.title,
+    required this.text,
+  });
+  @override
+  State<ReflectionStepState> createState() => _ReflectionStepState();
+  
+}
+List<String> relationships = [
+  'Present in your\ncurrent relationships?',
+  'Present in your\nwork relationships?',
+  'Present in your\nfamily relationships?',
+  'Present in your\nfriend relationships?',
+  'Present in your\nintimate or romantic relationship?',
+  ' ',
+];
+int increment = 0;
+bool reflectionVisibility = false;
+bool buttonVisibility = true;
+class _ReflectionStepState extends State<ReflectionStepState> {
+  //TODO: Unique Buttons, color on selection and store, and reset on new questions (DICTIONARY METHOD)
+  String questionText = relationships[increment];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void incrementUp(){
+    setState(() {
+      if(increment<relationships.length - 1){
+        increment+=1;
+        questionText = relationships[increment];
+      }
+      if(increment>0){
+        reflectionVisibility = true;
+      }
+      if(increment==relationships.length-1){
+        buttonVisibility = false;
+      }
+    });
+  }
+  void incrementDown(){
+    setState(() {
+      if(increment>0){
+        increment-=1;
+        questionText = relationships[increment];
+      }
+      if(increment<1){
+        reflectionVisibility = false;
+      }
+      if(increment<relationships.length - 1){
+        buttonVisibility = true;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StepView(
+      step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
+      controller: SurveyController(),
+      title: const Text(''),
+      resultFunction: () => BoxesResult(
+        id: Identifier(id: "12312"),
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+        valueIdentifier: 'custom', // Identification for NavigableTask
+        result: 'custom_result',
+      ),
+      child: Center(
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  "Reflection", 
+                  textAlign: TextAlign.center,
+                  style: TextStyle( 
+                    //fontWeight: FontWeight.w700,, 
+                    fontSize: 60, 
+                  ),
+                ),
+              ),
+            ),
+            const Divider(
+              height: 20,
+              thickness: 2,
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  "These healthy relationship \nqualities you selected, are they:", 
+                  textAlign: TextAlign.center,
+                  style: TextStyle( 
+                    //fontWeight: FontWeight.w700,, 
+                    fontSize: 30, 
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  questionText, 
+                  textAlign: TextAlign.center,
+                  style: const TextStyle( 
+                    //fontWeight: FontWeight.w700,, 
+                    fontSize: 30, 
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Stack(
+                children: [
+                  Visibility(
+                    visible: reflectionVisibility,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10, top: 15),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: orange,
+                          borderRadius: BorderRadius.circular(13),
+                        ),
+                        child: IconTheme(
+                          data: const IconThemeData(
+                          color: Colors.white),
+                          child: IconButton(
+                            onPressed:() => incrementDown(),
+                            icon: const Icon(Icons.arrow_back)
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: buttonVisibility,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                            child: OutlinedButton(
+                              onPressed:() => incrementUp(),
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
+                              ),
+                              child: const Text('Yes'),
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                            child: OutlinedButton(
+                              onPressed:() => incrementUp(),
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
+                              ),
+                              child: const Text('No'),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
 class LevelOneHome extends StatefulWidget {
   const LevelOneHome({super.key});
 
@@ -352,6 +580,10 @@ class _LevelOneHomeState extends State<LevelOneHome> {
        text: '',
     ),
     BoxesStep(
+      text: "",
+      title: "",
+    ),
+    ReflectionStep(
       text: "",
       title: "",
     ),
@@ -753,7 +985,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                         onPressed:() {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const IntroPage()), );
+                            MaterialPageRoute(builder: (context) => const SurveyIntroPage()), );
                             }, 
                         icon: const Icon(Icons.arrow_back)
                       ),
