@@ -53,21 +53,45 @@ class ContentStepState extends StatefulWidget {
   State<ContentStepState> createState() => _ContentStepState();
 }
 
-class _ContentStepState extends State<ContentStepState> {
-  late Animation<Offset> animationSlide;
-  late AnimationController slideController;
+class _ContentStepState extends State<ContentStepState> with SingleTickerProviderStateMixin{
+  int sequence = 0;
+  late Animation<double> visibilityAnimation;
+  late AnimationController visibilityController;
 
   @override
   void initState() {
     super.initState();
     //TODO: Implemet Animations
+    visibilityController = AnimationController(
+      duration: const Duration(milliseconds: 2000),
+      vsync: this
+    );
+    CurvedAnimation visibilityCurve = CurvedAnimation(parent: visibilityController, curve: Curves.bounceIn);
+    visibilityAnimation = Tween<double>(begin: 0, end: 100).animate(visibilityCurve);
+    visibilityAnimation.addListener(() {
+      if (visibilityController.isCompleted) {
+          visibilityController.repeat();
+        }
+        setState(() {
+      });
+    });
+    visibilityController.forward();
   }
 
-@override
+  double whichOne() {
+    sequence += 1;
+    if (true) {
+      return visibilityAnimation.value/100;
+    } else {
+      return 1.0;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StepView(
       step: QuestionStep(answerFormat: const BooleanAnswerFormat(positiveAnswer: "wa", negativeAnswer: "we")),
-      title: const Text(''),
+      title: const Text(''), 
       resultFunction: () => ContentResult(
         id: Identifier(id: "124912"), 
         startDate: DateTime.now(), 
@@ -75,10 +99,60 @@ class _ContentStepState extends State<ContentStepState> {
         valueIdentifier: 'custom',//Identification for NavigableTask
         result: 'custom_result',
       ),
-      child: Container(),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              RotatedBox(quarterTurns: 3,
+                child: Opacity(
+                  opacity: whichOne(),
+                  child: const Image(
+                  image: AssetImage('assets/images/Arrow.png'),
+                  width: 100,
+                  height: 100,
+                  ),
+                ),
+              ),
+              RotatedBox(quarterTurns: 0,
+                child: Opacity(
+                  opacity: whichOne(),
+                  child: const Image(
+                  image: AssetImage('assets/images/Arrow.png'),
+                  width: 100,
+                  height: 100,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const Row(
+            children: [
+              RotatedBox(quarterTurns: 2,
+                child: Image(
+                  image: AssetImage('assets/images/Arrow.png'),
+                  width: 100,
+                  height: 100,
+                ),
+              ),
+              RotatedBox(quarterTurns: 1,
+                child: Image(
+                  image: AssetImage('assets/images/Arrow.png'),
+                  width: 100,
+                  height: 100,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
+  @override            
+  void dispose() {          
+    visibilityController.dispose();  
+    super.dispose();         
+  }
 }
 
 class BoxesResult extends QuestionResult<String> {

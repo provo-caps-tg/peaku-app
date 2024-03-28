@@ -46,4 +46,5 @@ flutter:
     - assets/images/logo.png
     - assets/images/logoimg.png
     - assets/images/logotxt.png
+    - assets/images/Arrow.png
     - assets/textFiles/responses.txt
