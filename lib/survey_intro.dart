@@ -288,7 +288,7 @@ class _SurveyPageState extends State<SurveyPage> {
                                 //if (_formKey.currentState!.validate()) {
                                 Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const IntroPage())); 
+                                  MaterialPageRoute(builder: (context) => const LevelOneHome())); 
                               //}
                               },
                               child: const FittedBox(
@@ -751,7 +751,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                               onPressed: () {
                                 Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const LevelOneHome())); 
+                                  MaterialPageRoute(builder: (context) => const SurveyPage())); 
                               },
                               child: const FittedBox(
                                 fit: BoxFit.fill,

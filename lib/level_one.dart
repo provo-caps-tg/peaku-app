@@ -95,10 +95,10 @@ class BoxesResult extends QuestionResult<String> {
   List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
 }
 
-class CustomStep extends Step {
+class BoxesStep extends Step {
   final String title;
   final String text;
-  CustomStep({
+  BoxesStep({
     required this.title,
     required this.text,
   });
@@ -353,7 +353,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       title: '',
        text: '',
     ),
-    CustomStep(
+    BoxesStep(
       text: "",
       title: "",
     ),

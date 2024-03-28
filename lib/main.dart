@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                             onPressed: () {
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => const SurveyPage())); 
+                                MaterialPageRoute(builder: (context) => const IntroPage())); 
                             },
                             child: const Text('Get Started', style: TextStyle(fontSize: 23)),
                         )
