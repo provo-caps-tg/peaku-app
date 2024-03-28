@@ -3,7 +3,6 @@ import 'package:flutter_survey/flutter_survey.dart';
 import 'package:flutter/material.dart';
 import 'global_varibles.dart';
 import 'level_one.dart';
-import 'main.dart';
 
 class SurveyIntroPage extends StatefulWidget {
   const SurveyIntroPage({super.key});
