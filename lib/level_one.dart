@@ -62,7 +62,7 @@ class _ContentStepState extends State<ContentStepState> {
   @override
   void initState() {
     super.initState();
-    //TODO: Implemet Animations 
+    //TODO: Implemet Animations
   }
 
 @override
@@ -95,10 +95,10 @@ class BoxesResult extends QuestionResult<String> {
   List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
 }
 
-class BoxesStep extends Step {
+class CustomStep extends Step {
   final String title;
   final String text;
-  BoxesStep({
+  CustomStep({
     required this.title,
     required this.text,
   });
@@ -161,27 +161,27 @@ class _BoxesStepState extends State<BoxesStepState> {
       return Draggable<String>(
         data: text,
         feedback: Container(
-          height: 50,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.black, width: 1),
-            color: const Color.fromARGB(255, 236, 236, 236),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-            child: Text(
-              text,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontWeight: FontWeight.normal,
-                color: Colors.black,
-                fontSize: 30,
-                decoration: TextDecoration.none,
-                fontFamily: 'Barlow',
+                height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black, width: 1),
+                color: const Color.fromARGB(255, 236, 236, 236),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    fontSize: 30,
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Barlow',
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
         childWhenDragging: SizedBox(
           child: Container(
             width: 0,
@@ -252,7 +252,7 @@ class _BoxesStepState extends State<BoxesStepState> {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  "Select & drag the top 5 qualities from the \ngroup below that make for healthy relationships:", 
+                  "Select the top 5 qualities from the \ngroup below that make for healthy relationships:", 
                   textAlign: TextAlign.center,
                   style: TextStyle( 
                     //fontWeight: FontWeight.w700,, 
@@ -353,7 +353,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       title: '',
        text: '',
     ),
-    BoxesStep(
+    CustomStep(
       text: "",
       title: "",
     ),
