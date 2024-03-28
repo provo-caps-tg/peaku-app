@@ -4,9 +4,7 @@ import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
  
- // ignore: must_be_immutable
- class ContentResult extends QuestionResult<String> {
-  
+class ContentResult extends QuestionResult<String> {
   ContentResult({
     required super.id,
     required super.startDate,
