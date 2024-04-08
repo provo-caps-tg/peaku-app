@@ -757,10 +757,6 @@ class LevelOneHome extends StatefulWidget {
 
 class _LevelOneHomeState extends State<LevelOneHome> {
   var stepss = [
-    ContentStep(
-      title: '',
-       text: '',
-    ),
     CustomStep(
       text: "",
       title: "",
@@ -768,6 +764,10 @@ class _LevelOneHomeState extends State<LevelOneHome> {
     ReflectionStep(
       text: "",
       title: "",
+    ),
+    ContentStep(
+      title: '',
+       text: '',
     ),
     QuestionStep(
       title: 'Are the qualities you selected present in your current relationships?',
