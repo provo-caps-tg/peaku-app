@@ -137,16 +137,33 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
         result: 'custom_result',
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             children: [
-              RotatedBox(quarterTurns: 3,
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Opacity(
+                  opacity: visibility(),
+                  child: const Text(
+                    "Minor conflicts,\narguments, or tension\nbegin to accumulate",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              RotatedBox(quarterTurns: 3, 
                 child: Opacity(
                   opacity: visibility(),
                   child: const Image(
                     image: AssetImage('assets/images/Arrow.png'),
                     width: 100,
                     height: 100,
+                    color: Colors.yellow,
                   ),
                 ),
               ),
@@ -157,6 +174,22 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
                     image: AssetImage('assets/images/Arrow.png'),
                     width: 100,
                     height: 100,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Opacity(
+                  opacity: visibility2(),
+                  child: const Text(
+                    "The built-up tension\nerupts into a more\nsevere episode",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -164,6 +197,21 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
           ),
           Row(
             children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Opacity(
+                  opacity: visibility3(),
+                  child: const Text(
+                    "Temporarily stability\nas tension subsides",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
               RotatedBox(quarterTurns: 2,
                 child: Opacity(
                   opacity: visibility3(),
@@ -171,6 +219,7 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
                     image: AssetImage('assets/images/Arrow.png'),
                     width: 100,
                     height: 100,
+                    color: Colors.green,
                   ),
                 ),
               ),
@@ -181,6 +230,22 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
                     image: AssetImage('assets/images/Arrow.png'),
                     width: 100,
                     height: 100,
+                    color: Colors.blue,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Opacity(
+                  opacity: visibility4(),
+                  child: const Text(
+                    "Apologies, and attempts\nto make amends",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
