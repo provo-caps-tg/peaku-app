@@ -54,8 +54,11 @@ class ContentStepState extends StatefulWidget {
 }
 
 class _ContentStepState extends State<ContentStepState> with SingleTickerProviderStateMixin{
-  int sequence = 0;
-  late Animation<double> visibilityAnimation;
+  int sequence = 1;
+  late Animation<double> opacity1;
+  late Animation<double> opacity2;
+  late Animation<double> opacity3;
+  late Animation<double> opacity4;
   late AnimationController visibilityController;
 
   @override
@@ -63,29 +66,63 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
     super.initState();
     //TODO: Implemet Animations
     visibilityController = AnimationController(
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 8000),
       vsync: this
     );
-    CurvedAnimation visibilityCurve = CurvedAnimation(parent: visibilityController, curve: Curves.bounceIn);
-    visibilityAnimation = Tween<double>(begin: 0, end: 100).animate(visibilityCurve);
-    visibilityAnimation.addListener(() {
-      if (visibilityController.isCompleted) {
-          visibilityController.repeat();
-        }
-        setState(() {
-      });
+    CurvedAnimation visibilityCurve = CurvedAnimation(parent: visibilityController, curve: Curves.linear);
+    opacity1 = Tween<double>(begin: 0, end: 400).animate(visibilityCurve);
+    opacity2 = Tween<double>(begin: 0, end: 400).animate(visibilityCurve);
+    opacity3 = Tween<double>(begin: 0, end: 400).animate(visibilityCurve);
+    opacity4 = Tween<double>(begin: 0, end: 400).animate(visibilityCurve);
+    opacity1.addListener(() {
+      setState(() { });
+    });
+    opacity2.addListener(() {
+      setState(() { });
+    });
+    opacity3.addListener(() {
+      setState(() { });
+    });
+    opacity4.addListener(() {
+      setState(() { });
     });
     visibilityController.forward();
-  }
-
-  double whichOne() {
-    sequence += 1;
-    if (true) {
-      return visibilityAnimation.value/100;
+  } 
+  double visibility() {
+    if (opacity1.value<=100) {
+      return opacity1.value/100;
+    } else if (opacity1.value>=100) {
+      return 1;
     } else {
-      return 1.0;
+      return 0;
     }
   }
+   double visibility2() {
+    if (opacity2.value>=100 && opacity2.value<=200) {
+      return (opacity2.value/100)-1;
+    } else if (opacity2.value>=200) {
+      return 1;
+    } else {
+      return 0;
+    }
+   }
+   double visibility4() {
+    if (opacity4.value>=200 && opacity4.value<=300) {
+      return (opacity4.value/100)-2;
+    } else if (opacity4.value>=300) {
+      return 1;
+    } else {
+      return 0;
+    }
+   }
+   double visibility3() {
+    if (opacity3.value>=300) {
+      return (opacity3.value/100)-3;
+    } else {
+     return 0;
+    }
+   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -100,45 +137,116 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
         result: 'custom_result',
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             children: [
-              RotatedBox(quarterTurns: 3,
+              Padding(
+                padding: EdgeInsets.all(10),
                 child: Opacity(
-                  opacity: whichOne(),
+                  opacity: visibility(),
+                  child: const Text(
+                    "Minor conflicts,\narguments, or tension\nbegin to accumulate",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              RotatedBox(quarterTurns: 3, 
+                child: Opacity(
+                  opacity: visibility(),
                   child: const Image(
-                  image: AssetImage('assets/images/Arrow.png'),
-                  width: 100,
-                  height: 100,
+                    image: AssetImage('assets/images/Arrow.png'),
+                    width: 100,
+                    height: 100,
+                    color: Colors.yellow,
                   ),
                 ),
               ),
               RotatedBox(quarterTurns: 0,
                 child: Opacity(
-                  opacity: whichOne(),
+                  opacity: visibility2(),
                   child: const Image(
-                  image: AssetImage('assets/images/Arrow.png'),
-                  width: 100,
-                  height: 100,
+                    image: AssetImage('assets/images/Arrow.png'),
+                    width: 100,
+                    height: 100,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Opacity(
+                  opacity: visibility2(),
+                  child: const Text(
+                    "The built-up tension\nerupts into a more\nsevere episode",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-          const Row(
+          Row(
             children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Opacity(
+                  opacity: visibility3(),
+                  child: const Text(
+                    "Temporarily stability\nas tension subsides",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
               RotatedBox(quarterTurns: 2,
-                child: Image(
-                  image: AssetImage('assets/images/Arrow.png'),
-                  width: 100,
-                  height: 100,
+                child: Opacity(
+                  opacity: visibility3(),
+                  child: const Image(
+                    image: AssetImage('assets/images/Arrow.png'),
+                    width: 100,
+                    height: 100,
+                    color: Colors.green,
+                  ),
                 ),
               ),
               RotatedBox(quarterTurns: 1,
-                child: Image(
-                  image: AssetImage('assets/images/Arrow.png'),
-                  width: 100,
-                  height: 100,
+                child: Opacity(
+                  opacity: visibility4(),
+                  child: const Image(
+                    image: AssetImage('assets/images/Arrow.png'),
+                    width: 100,
+                    height: 100,
+                    color: Colors.blue,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Opacity(
+                  opacity: visibility4(),
+                  child: const Text(
+                    "Apologies, and attempts\nto make amends",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontFamily: 'Barlow',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ],
