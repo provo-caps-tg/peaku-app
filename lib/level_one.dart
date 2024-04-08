@@ -192,6 +192,7 @@ class BoxesStepState extends StatefulWidget {
     super.key,
     required this.title,
     required this.text,
+    bool isOptional = false,
   });
   @override
   State<BoxesStepState> createState() => _BoxesStepState();
@@ -460,13 +461,23 @@ List<String> relationships = [
   'Present in your\nfamily relationships?',
   'Present in your\nfriend relationships?',
   'Present in your\nintimate or romantic relationship?',
+];
+List<String> answerResultRelationships = [
+  ' ',
+  ' ',
+  ' ',
+  ' ',
   ' ',
 ];
+String reflectionStringResult = '';
+Color textColorYes = orange;
+Color bgColorYes = Colors.white;
+Color textColorNo = orange;
+Color bgColorNo = Colors.white;
 int increment = 0;
 bool reflectionVisibility = false;
 bool buttonVisibility = true;
 class _ReflectionStepState extends State<ReflectionStepState> {
-  //TODO: Unique Buttons, color on selection and store, and reset on new questions (DICTIONARY METHOD)
   String questionText = relationships[increment];
 
   @override
@@ -480,29 +491,59 @@ class _ReflectionStepState extends State<ReflectionStepState> {
 
   void incrementUp(){
     setState(() {
+      answerResultRelationships[increment] = reflectionStringResult;
+      if(increment<4){
+        if(answerResultRelationships[increment+1]=='Yes'){
+          bgColorYes = orange;
+          textColorYes = Colors.white;
+          textColorNo = orange;
+          bgColorNo = Colors.white;
+        }
+        else if(answerResultRelationships[increment+1]=='No'){
+          bgColorNo = orange;
+          textColorNo = Colors.white;
+          textColorYes = orange;
+          bgColorYes = Colors.white;
+        }
+        else{
+          textColorYes = orange;
+          bgColorYes = Colors.white;
+          textColorNo = orange;
+          bgColorNo = Colors.white;
+        }
+      }
       if(increment<relationships.length - 1){
+        answerResultRelationships[increment] = reflectionStringResult;
         increment+=1;
-        questionText = relationships[increment];
+        if(increment<5){
+          questionText = relationships[increment];
+        }
       }
       if(increment>0){
         reflectionVisibility = true;
-      }
-      if(increment==relationships.length-1){
-        buttonVisibility = false;
       }
     });
   }
   void incrementDown(){
     setState(() {
+      if(answerResultRelationships[increment-1]=='Yes'){
+        bgColorYes = orange;
+        textColorYes = Colors.white;
+        textColorNo = orange;
+        bgColorNo = Colors.white;
+      }
+      else if(answerResultRelationships[increment-1]=='No'){
+        bgColorNo = orange;
+        textColorNo = Colors.white;
+        textColorYes = orange;
+        bgColorYes = Colors.white;
+      }
       if(increment>0){
         increment-=1;
         questionText = relationships[increment];
       }
-      if(increment<1){
-        reflectionVisibility = false;
-      }
-      if(increment<relationships.length - 1){
-        buttonVisibility = true;
+      if(increment==0){
+        reflectionVisibility=false;
       }
     });
   }
@@ -575,23 +616,23 @@ class _ReflectionStepState extends State<ReflectionStepState> {
             Center(
               child: Stack(
                 children: [
-                  Visibility(
-                    visible: reflectionVisibility,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 15),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: orange,
-                          borderRadius: BorderRadius.circular(13),
-                        ),
-                        child: IconTheme(
-                          data: const IconThemeData(
-                          color: Colors.white),
-                          child: IconButton(
-                            onPressed:() => incrementDown(),
-                            icon: const Icon(Icons.arrow_back)
+                  Padding(
+                    padding:const EdgeInsets.only(left: 10, top:16),
+                    child: Visibility(
+                      visible: reflectionVisibility,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: orange,
+                            borderRadius: BorderRadius.circular(13),
                           ),
-                        ),
+                          child: IconTheme(
+                            data: const IconThemeData(
+                            color: Colors.white),
+                            child: IconButton(
+                              onPressed:() => incrementDown(),
+                              icon: const Icon(Icons.arrow_back)
+                            ),
+                          ),
                       ),
                     ),
                   ),
@@ -604,10 +645,22 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                             child: OutlinedButton(
-                              onPressed:() => incrementUp(),
+                              onPressed:() {
+                                setState(() {
+                                  reflectionStringResult = 'Yes';
+                                  bgColorYes = orange;
+                                  textColorYes = Colors.white;
+                                  textColorNo = orange;
+                                  bgColorNo = Colors.white;
+                                });
+                                incrementUp();
+                              },
                               style: ButtonStyle(
                                 shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
+                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+                                ),
+                                foregroundColor: MaterialStateProperty.all(textColorYes), // Change text color
+                                backgroundColor: MaterialStateProperty.all(bgColorYes), // Change background color
                               ),
                               child: const Text('Yes'),
                             ),
@@ -617,10 +670,22 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                             child: OutlinedButton(
-                              onPressed:() => incrementUp(),
+                              onPressed:() {
+                                setState(() {
+                                  reflectionStringResult = 'No';
+                                  bgColorNo = orange;
+                                  textColorNo = Colors.white;
+                                  textColorYes = orange;
+                                  bgColorYes = Colors.white;
+                                });
+                                incrementUp();
+                              },
                               style: ButtonStyle(
                                 shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
+                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+                                ),
+                                foregroundColor: MaterialStateProperty.all(textColorNo), // Change text color
+                                backgroundColor: MaterialStateProperty.all(bgColorNo), // Change background color
                               ),
                               child: const Text('No'),
                             ),
@@ -661,68 +726,13 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: "",
     ),
-    QuestionStep(
-      title: 'Are the qualities you selected present in your current relationships?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'Somewhat', value: 'Somewhat'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'Are the qualities you selected present in your work relationships?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'Somewhat', value: 'Somewhat'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'Are the qualities you selected present in your family relationships?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'Somewhat', value: 'Somewhat'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'Are the qualities you selected present in your friend relationships?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'Somewhat', value: 'Somewhat'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'Are the qualities you selected present in your intimate or romantic relationship?',
-      isOptional: false,
-      buttonText: "Let's go a little deeper.",
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'Somewhat', value: 'Somewhat'),
-          TextChoice(text: 'No', value: 'No'),
-          TextChoice(text: 'Not applicable', value: 'Not applicable'),
-        ],
-      ),
-    ),
+    /*
     InstructionStep(
       title: 'What does respect look like to you?',
       text: '(Choose from the following examples whether they are YES Respectful or NO Not Respectful)',
       buttonText: 'Let\'s go!',
     ),
+    */
     QuestionStep(
       title: 'My partner makes my lunch every day. Respectful?',
       isOptional: false,
