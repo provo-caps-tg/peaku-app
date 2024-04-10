@@ -603,7 +603,6 @@ class _ReflectionStepState extends State<ReflectionStepState> {
     bgColorNo = Colors.white;
   }
 
-  //TODO: Fix stinky logic, reflectionStringResult is catching previous values, get better string reset method
   void incrementUp(){
     setState(() {
       if(increment<4){
