@@ -3,13 +3,14 @@ import 'package:flutter_survey/flutter_survey.dart';
 import 'package:flutter/material.dart';
 import 'global_varibles.dart';
 import 'level_one.dart';
+import 'main.dart';
 
-class SurveyIntroPage extends StatefulWidget {
-  const SurveyIntroPage({super.key});
+class SurveyPage extends StatefulWidget {
+  const SurveyPage({super.key});
   @override
-  State<SurveyIntroPage> createState() => _SurveyIntroPageState();}
+  State<SurveyPage> createState() => _SurveyPageState();}
 
-class _SurveyIntroPageState extends State<SurveyIntroPage> {
+class _SurveyPageState extends State<SurveyPage> {
   final _formKey = GlobalKey<FormState>();
   final List<Question> _initialData = [
     Question(
@@ -287,7 +288,7 @@ class _SurveyIntroPageState extends State<SurveyIntroPage> {
                                 //if (_formKey.currentState!.validate()) {
                                 Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const LevelOneHome())); 
+                                  MaterialPageRoute(builder: (context) => const IntroPage())); 
                               //}
                               },
                               child: const FittedBox(
@@ -314,7 +315,7 @@ class _SurveyIntroPageState extends State<SurveyIntroPage> {
                         onPressed:() {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const IntroPage()), );
+                            MaterialPageRoute(builder: (context) => const HomePage()), );
                             }, 
                         icon: const Icon(Icons.arrow_back)
                       ),
@@ -450,7 +451,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                           onPressed: () {
                             Navigator.pushReplacement(
                               context,
-                              MaterialPageRoute(builder: (context) => const SurveyIntroPage())); 
+                              MaterialPageRoute(builder: (context) => const LevelOneHome())); 
                           },
                           child:  const FittedBox(
                             fit: BoxFit.scaleDown,
@@ -750,7 +751,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                               onPressed: () {
                                 Navigator.pushReplacement(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const SurveyIntroPage())); 
+                                  MaterialPageRoute(builder: (context) => const LevelOneHome())); 
                               },
                               child: const FittedBox(
                                 fit: BoxFit.fill,
