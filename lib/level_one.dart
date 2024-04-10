@@ -139,117 +139,104 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Opacity(
-                  opacity: visibility(),
-                  child: const Text(
-                    "Minor conflicts,\narguments, or tension\nbegin to accumulate",
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.black,
-                      fontFamily: 'Barlow',
-                      fontWeight: FontWeight.bold,
+          const Text("Woah"),
+          SizedBox(
+            width: 300,
+            child: Row(
+              children: [
+                Stack(
+                  fit: StackFit.loose,
+                  children: [
+                    RotatedBox(quarterTurns: 3,
+                      child: Opacity(
+                        opacity: visibility(),
+                        child: const Image(
+                          image: AssetImage('assets/images/Arrow.png'),
+                          width: 150,
+                          height: 150,
+                          color: Color.fromARGB(255, 255, 218, 54),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      width: 75,
+                      height: 50,
+                      top: 45,
+                      left:5,
+                      child: Opacity(
+                        opacity: visibility3(),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(color: const Color.fromARGB(255, 255, 218, 54), borderRadius: BorderRadius.circular(12)),
+                          child: const Center(child: Text("Tension\nBuilding", style: TextStyle(fontSize: 16, color: Colors.white),))
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                RotatedBox(quarterTurns: 0,
+                  child: Opacity(
+                    opacity: visibility2(),
+                    child: const Image(
+                      image: AssetImage('assets/images/Arrow.png'),
+                      width: 150,
+                      height: 150,
+                      color: Colors.red,
                     ),
                   ),
                 ),
-              ),
-              RotatedBox(quarterTurns: 3, 
-                child: Opacity(
-                  opacity: visibility(),
-                  child: const Image(
-                    image: AssetImage('assets/images/Arrow.png'),
-                    width: 100,
-                    height: 100,
-                    color: Colors.yellow,
-                  ),
-                ),
-              ),
-              RotatedBox(quarterTurns: 0,
-                child: Opacity(
-                  opacity: visibility2(),
-                  child: const Image(
-                    image: AssetImage('assets/images/Arrow.png'),
-                    width: 100,
-                    height: 100,
-                    color: Colors.red,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Opacity(
-                  opacity: visibility2(),
-                  child: const Text(
-                    "The built-up tension\nerupts into a more\nsevere episode",
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.black,
-                      fontFamily: 'Barlow',
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Opacity(
-                  opacity: visibility3(),
-                  child: const Text(
-                    "Temporarily stability\nas tension subsides",
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.black,
-                      fontFamily: 'Barlow',
-                      fontWeight: FontWeight.bold,
+          SizedBox(
+            width: 300,
+            child: Row(
+              children: [
+                Stack(
+                  fit: StackFit.loose,
+                  children: [
+                    RotatedBox(quarterTurns: 2,
+                      child: Opacity(
+                        opacity: visibility3(),
+                        child: const Image(
+                          image: AssetImage('assets/images/Arrow.png'),
+                          width: 150,
+                          height: 150,
+                          color: Colors.green,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              RotatedBox(quarterTurns: 2,
-                child: Opacity(
-                  opacity: visibility3(),
-                  child: const Image(
-                    image: AssetImage('assets/images/Arrow.png'),
-                    width: 100,
-                    height: 100,
-                    color: Colors.green,
-                  ),
-                ),
-              ),
-              RotatedBox(quarterTurns: 1,
-                child: Opacity(
-                  opacity: visibility4(),
-                  child: const Image(
-                    image: AssetImage('assets/images/Arrow.png'),
-                    width: 100,
-                    height: 100,
-                    color: Colors.blue,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Opacity(
-                  opacity: visibility4(),
-                  child: const Text(
-                    "Apologies, and attempts\nto make amends",
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.black,
-                      fontFamily: 'Barlow',
-                      fontWeight: FontWeight.bold,
+                    Positioned(
+                      width: 60,
+                      height: 50,
+                      top: 75,
+                      left: 35,
+                      child: Opacity(
+                        opacity: visibility3(),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(12)),
+                          child: const Center(child: Text("Calm\nPhase", style: TextStyle(fontSize: 16, color: Colors.white),))
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ),
-            ],
+                Stack(
+                  children: [
+                    RotatedBox(quarterTurns: 1,
+                      child: Opacity(
+                        opacity: visibility4(),
+                        child: const Image(
+                          image: AssetImage('assets/images/Arrow.png'),
+                          width: 150,
+                          height: 150,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -837,6 +824,10 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       buttonText: 'Let\'s go!',
     ),
     */
+    ContentStep(
+      text: "",
+      title: "",
+    ),
     QuestionStep(
       title: 'My partner makes my lunch every day. Respectful?',
       isOptional: false,
@@ -1173,7 +1164,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                         onPressed:() {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => const SurveyIntroPage()), );
+                            MaterialPageRoute(builder: (context) => const IntroPage()), );
                             }, 
                         icon: const Icon(Icons.arrow_back)
                       ),
