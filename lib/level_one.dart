@@ -635,6 +635,20 @@ class _ReflectionStepState extends State<ReflectionStepState> {
         increment+=1;
         questionText = relationships[increment];
       }
+      else{
+        if(answerResultRelationships[increment]=='Yes'){
+          reflectionStringResult = 'Yes';
+          filledYes();
+        }
+        else if(answerResultRelationships[increment]=='No'){
+          reflectionStringResult = 'No';
+          filledNo();
+        }
+        else{
+          reflectionStringResult = '';
+          filledEmpty();
+        }
+      }
     });
   }
   void incrementDown(){
@@ -655,7 +669,20 @@ class _ReflectionStepState extends State<ReflectionStepState> {
         increment-=1;
         questionText = relationships[increment];
       }
-
+      else{
+        if(answerResultRelationships[increment]=='Yes'){
+          reflectionStringResult = 'Yes';
+          filledYes();
+        }
+        else if(answerResultRelationships[increment]=='No'){
+          reflectionStringResult = 'No';
+          filledNo();
+        }
+        else{
+          reflectionStringResult = '';
+          filledEmpty();
+        }
+      }
     });
   }
 
