@@ -597,35 +597,43 @@ class _ReflectionStepState extends State<ReflectionStepState> {
     super.dispose();
   }
 
+  void filledYes(){
+    bgColorYes = orange;
+    textColorYes = Colors.white;
+    textColorNo = orange;
+    bgColorNo = Colors.white;
+  }
+  void filledNo(){
+    bgColorNo = orange;
+    textColorNo = Colors.white;
+    textColorYes = orange;
+    bgColorYes = Colors.white;
+  }
+  void filledEmpty(){
+    textColorYes = orange;
+    bgColorYes = Colors.white;
+    textColorNo = orange;
+    bgColorNo = Colors.white;
+  }
+
   //TODO: Fix stinky logic, reflectionStringResult is catching previous values, get better string reset method
   void incrementUp(){
     setState(() {
       if(increment<4){
         if(answerResultRelationships[increment+1]=='Yes'){
           reflectionStringResult = 'Yes';
-          bgColorYes = orange;
-          textColorYes = Colors.white;
-          textColorNo = orange;
-          bgColorNo = Colors.white;
+          filledYes();
         }
         else if(answerResultRelationships[increment+1]=='No'){
           reflectionStringResult = 'No';
-          bgColorNo = orange;
-          textColorNo = Colors.white;
-          textColorYes = orange;
-          bgColorYes = Colors.white;
+          filledNo();
         }
         else{
           reflectionStringResult = '';
-          textColorYes = orange;
-          bgColorYes = Colors.white;
-          textColorNo = orange;
-          bgColorNo = Colors.white;
+          filledEmpty();
         }
         increment+=1;
-        if(increment<5){
-          questionText = relationships[increment];
-        }
+        questionText = relationships[increment];
       }
     });
   }
@@ -634,24 +642,15 @@ class _ReflectionStepState extends State<ReflectionStepState> {
       if(increment>0){
         if(answerResultRelationships[increment-1]=='Yes'){
           reflectionStringResult = 'Yes';
-          bgColorYes = orange;
-          textColorYes = Colors.white;
-          textColorNo = orange;
-          bgColorNo = Colors.white;
+          filledYes();
         }
         else if(answerResultRelationships[increment-1]=='No'){
-          reflectionStringResult = 'Yes';
-          bgColorNo = orange;
-          textColorNo = Colors.white;
-          textColorYes = orange;
-          bgColorYes = Colors.white;
+          reflectionStringResult = 'No';
+          filledNo();
         }
         else{
           reflectionStringResult = '';
-          textColorYes = orange;
-          bgColorYes = Colors.white;
-          textColorNo = orange;
-          bgColorNo = Colors.white;
+          filledEmpty();
         }
         increment-=1;
         questionText = relationships[increment];
@@ -766,10 +765,7 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                               onPressed:() {
                                 setState(() {
                                   reflectionStringResult = 'Yes';
-                                  bgColorYes = orange;
-                                  textColorYes = Colors.white;
-                                  textColorNo = orange;
-                                  bgColorNo = Colors.white;
+                                  filledYes();
                                 });
                                 //incrementUp();
                               },
@@ -791,10 +787,7 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                               onPressed:() {
                                 setState(() {
                                   reflectionStringResult = 'No';
-                                  bgColorNo = orange;
-                                  textColorNo = Colors.white;
-                                  textColorYes = orange;
-                                  bgColorYes = Colors.white;
+                                  filledNo();
                                 });
                                 //incrementUp();
                               },
