@@ -597,62 +597,66 @@ class _ReflectionStepState extends State<ReflectionStepState> {
     super.dispose();
   }
 
+  //TODO: Fix stinky logic, reflectionStringResult is catching previous values, get better string reset method
   void incrementUp(){
     setState(() {
-      answerResultRelationships[increment] = reflectionStringResult;
       if(increment<4){
         if(answerResultRelationships[increment+1]=='Yes'){
+          reflectionStringResult = 'Yes';
           bgColorYes = orange;
           textColorYes = Colors.white;
           textColorNo = orange;
           bgColorNo = Colors.white;
         }
         else if(answerResultRelationships[increment+1]=='No'){
+          reflectionStringResult = 'No';
           bgColorNo = orange;
           textColorNo = Colors.white;
           textColorYes = orange;
           bgColorYes = Colors.white;
         }
         else{
+          reflectionStringResult = '';
           textColorYes = orange;
           bgColorYes = Colors.white;
           textColorNo = orange;
           bgColorNo = Colors.white;
         }
-      }
-      if(increment<relationships.length - 1){
-        answerResultRelationships[increment] = reflectionStringResult;
         increment+=1;
         if(increment<5){
           questionText = relationships[increment];
         }
       }
-      if(increment>0){
-        reflectionVisibility = true;
-      }
     });
   }
   void incrementDown(){
     setState(() {
-      if(answerResultRelationships[increment-1]=='Yes'){
-        bgColorYes = orange;
-        textColorYes = Colors.white;
-        textColorNo = orange;
-        bgColorNo = Colors.white;
-      }
-      else if(answerResultRelationships[increment-1]=='No'){
-        bgColorNo = orange;
-        textColorNo = Colors.white;
-        textColorYes = orange;
-        bgColorYes = Colors.white;
-      }
       if(increment>0){
+        if(answerResultRelationships[increment-1]=='Yes'){
+          reflectionStringResult = 'Yes';
+          bgColorYes = orange;
+          textColorYes = Colors.white;
+          textColorNo = orange;
+          bgColorNo = Colors.white;
+        }
+        else if(answerResultRelationships[increment-1]=='No'){
+          reflectionStringResult = 'Yes';
+          bgColorNo = orange;
+          textColorNo = Colors.white;
+          textColorYes = orange;
+          bgColorYes = Colors.white;
+        }
+        else{
+          reflectionStringResult = '';
+          textColorYes = orange;
+          bgColorYes = Colors.white;
+          textColorNo = orange;
+          bgColorNo = Colors.white;
+        }
         increment-=1;
         questionText = relationships[increment];
       }
-      if(increment==0){
-        reflectionVisibility=false;
-      }
+
     });
   }
 
@@ -724,31 +728,37 @@ class _ReflectionStepState extends State<ReflectionStepState> {
             Center(
               child: Stack(
                 children: [
-                  Padding(
-                    padding:const EdgeInsets.only(left: 10, top:16),
-                    child: Visibility(
-                      visible: reflectionVisibility,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: orange,
-                            borderRadius: BorderRadius.circular(13),
-                          ),
-                          child: IconTheme(
-                            data: const IconThemeData(
-                            color: Colors.white),
-                            child: IconButton(
-                              onPressed:() => incrementDown(),
-                              icon: const Icon(Icons.arrow_back)
-                            ),
-                          ),
-                      ),
-                    ),
-                  ),
                   Visibility(
                     visible: buttonVisibility,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Padding(
+                          padding:const EdgeInsets.only(right: 10),
+                          child: Visibility(
+                            visible: true,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(color: orange),
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: IconTheme(
+                                  data: IconThemeData(
+                                  color: orange),
+                                  child: IconButton(
+                                    onPressed:() {
+                                      answerResultRelationships[increment] = reflectionStringResult;
+                                      reflectionStringResult = '';
+                                      print(answerResultRelationships);
+                                      incrementDown();
+                                    },
+                                    icon: const Icon(Icons.arrow_back)
+                                  ),
+                                ),
+                            ),
+                          ),
+                        ),
                         Center(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
@@ -761,7 +771,7 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                                   textColorNo = orange;
                                   bgColorNo = Colors.white;
                                 });
-                                incrementUp();
+                                //incrementUp();
                               },
                               style: ButtonStyle(
                                 shape: MaterialStateProperty.all(
@@ -786,7 +796,7 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                                   textColorYes = orange;
                                   bgColorYes = Colors.white;
                                 });
-                                incrementUp();
+                                //incrementUp();
                               },
                               style: ButtonStyle(
                                 shape: MaterialStateProperty.all(
@@ -796,6 +806,32 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                                 backgroundColor: MaterialStateProperty.all(bgColorNo), // Change background color
                               ),
                               child: const Text('No'),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:const EdgeInsets.only(left: 10),
+                          child: Visibility(
+                            visible: true,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  border: Border.all(color: orange),
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: IconTheme(
+                                  data: IconThemeData(
+                                  color: orange),
+                                  child: IconButton(
+                                    onPressed:() {
+                                      answerResultRelationships[increment] = reflectionStringResult;
+                                      reflectionStringResult = '';
+                                      print(answerResultRelationships);
+                                      incrementUp();
+                                    },
+                                    icon: const Icon(Icons.arrow_forward)
+                                  ),
+                                ),
                             ),
                           ),
                         ),
