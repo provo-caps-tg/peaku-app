@@ -1009,7 +1009,6 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                                     onPressed:() {
                                       answerResultRelationships[increment] = reflectionStringResult;
                                       reflectionStringResult = '';
-                                      print(answerResultRelationships);
                                       incrementDown();
                                     },
                                     icon: const Icon(Icons.arrow_back)
@@ -1079,7 +1078,6 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                                     onPressed:() {
                                       answerResultRelationships[increment] = reflectionStringResult;
                                       reflectionStringResult = '';
-                                      print(answerResultRelationships);
                                       incrementUp();
                                     },
                                     icon: const Icon(Icons.arrow_forward)
@@ -1101,7 +1099,427 @@ class _ReflectionStepState extends State<ReflectionStepState> {
   }
 }
 
+class ScenariosResult extends QuestionResult<String> {
+  ScenariosResult({
+    required super.id,
+    required super.startDate,
+    required super.endDate,
+    required String super.valueIdentifier,
+    required String super.result,
+  });
+  @override
+  List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
+}
 
+class Scenarios extends Step {
+  final String title;
+  final String text;
+  Scenarios({
+    required this.title,
+    required this.text,
+  });
+  @override
+  Widget createView({required QuestionResult? questionResult}) {
+    return ScenariosState(
+      title: title,
+      text: text,
+    );
+  }
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+}
+
+class ScenariosState extends StatefulWidget {
+  final String title;
+  final String text;
+  const ScenariosState({
+    super.key,
+    required this.title,
+    required this.text,
+    bool isOptional = false,
+  });
+  @override
+  State<ScenariosState> createState() => _ScenariosState();
+}
+int scenariosIncrement = 0;
+List<String> scenarios = [
+  'My partner makes my lunch every day.',
+  'My boss gave me an advance even though I did not ask for one.',
+  'My partner put a tracker app on my phone.',
+  "I'm not allowed to lock my bedroom door.",
+  "I don't always tell the truth to those close to me.",
+  "Sometimes I speak rudely to those close to me.",
+  "If I make a mess in my relationship, I always clean it up.",
+  "I take responsibility for my behavior.",
+  "I expect others to know what I need without me having to say.",
+  "My partner sometimes says no, but I keep pushing anyway.",
+  "I thank my partner / friends for what they do for me.",
+  "I acknowledge my partner for the great qualities they have.",
+  "If my partner doesn't look good today, I will tell them.",
+];
+String currentScenario = scenarios[scenariosIncrement];
+
+class _ScenariosState extends State<ScenariosState> {
+  @override
+  void initState() {
+    super.initState();
+    if(firstScenarioGenerate==true){
+      firstScenarioGenerate = false;
+      firstScenarioList = _generateDraggables([
+          scenarios[scenariosIncrement]
+        ]
+      );
+    }
+  }
+
+  void _addDraggables(String text) {
+    setState(() {
+      firstScenarioList.add(Draggable<String>(
+        data: text,
+        feedback: Container(
+                height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black, width: 1),
+                color: const Color.fromARGB(255, 236, 236, 236),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    fontSize: 30,
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Barlow',
+                  ),
+                ),
+              ),
+            ),
+        childWhenDragging: SizedBox(
+          child: Container(
+            width: 0,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          child: SizedBox(
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black, width: 1),
+                color: const Color.fromARGB(255, 236, 236, 236),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Barlow',
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      )
+    );
+    });
+  }
+
+
+  List<Widget> _generateDraggables(List<String> texts) {
+    return texts.map((text) {
+      return Draggable<String>(
+        data: text,
+        feedback: Container(
+                height: 50,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black, width: 1),
+                color: const Color.fromARGB(255, 236, 236, 236),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    fontSize: 30,
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Barlow',
+                  ),
+                ),
+              ),
+            ),
+        childWhenDragging: SizedBox(
+          child: Container(
+            width: 0,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          child: SizedBox(
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.black, width: 1),
+                color: const Color.fromARGB(255, 236, 236, 236),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    decoration: TextDecoration.none,
+                    fontFamily: 'Barlow',
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }).toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StepView(
+      step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
+      controller: SurveyController(),
+      title: const Text(''),
+      resultFunction: () => BoxesResult(
+        id: Identifier(id: "12312"),
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+        valueIdentifier: 'custom', // Identification for NavigableTask
+        result: 'custom_result',
+      ),
+      child: Center(
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  "What does respect \nlook like to you?", 
+                  textAlign: TextAlign.center,
+                  style: TextStyle( 
+                    //fontWeight: FontWeight.w700,, 
+                    fontSize: 60, 
+                  ),
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  "Choose from the following examples whether\n they are NO Not Respectful or YES Respectful", 
+                  textAlign: TextAlign.center,
+                  style: TextStyle( 
+                    //fontWeight: FontWeight.w700,, 
+                    fontSize: 30, 
+                  ),
+                ),
+              ),
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      "No", 
+                      textAlign: TextAlign.center,
+                      style: TextStyle( 
+                        //fontWeight: FontWeight.w700,, 
+                        fontSize: 60, 
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(right:15),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "Yes", 
+                        textAlign: TextAlign.center,
+                        style: TextStyle( 
+                          //fontWeight: FontWeight.w700,, 
+                          fontSize: 60, 
+                          color: Colors.green,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, right:5),
+                    child: Container(
+                      constraints: const BoxConstraints(minHeight: 60,),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(50, 244, 67, 54),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.red, width: 2),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DragTarget<String>(
+                          builder: (context, candidateData, rejectedData) {
+                            return Wrap(
+                              spacing: 5,
+                              runSpacing: 5,
+                              children: secondScenarioList,
+                            );
+                          },
+                          onAcceptWithDetails: (details) {
+                              bool found = false;
+                              setState(() {
+                                String? data = details.data;
+                                firstScenarioList.removeWhere((widget) {
+                                  if (widget is Draggable<String> && widget.data == data) {
+                                    secondScenarioList.add(widget);
+                                    found = true;
+                                    return true;
+                                  }
+                                  return false;
+                                });
+                                if (found==true){
+                                  if(scenariosIncrement<scenarios.length-1){
+                                    scenariosIncrement+=1;
+                                    _addDraggables(scenarios[scenariosIncrement]);
+                                  }
+                                  found = false;
+                                }
+                                thirdScenarioList.removeWhere((widget) {
+                                  if (widget is Draggable<String> && widget.data == data) {
+                                    secondScenarioList.add(widget);
+                                    return true;
+                                  }
+                                  return false;
+                                });
+                              });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 10, left:5),
+                    child: Container(
+                      constraints: const BoxConstraints(minHeight: 60),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(50, 76, 175, 79),
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.green, width: 2),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DragTarget<String>(
+                        builder: (context, candidateData, rejectedData) {
+                          return Wrap(
+                            spacing: 5,
+                            runSpacing: 5,
+                            children: thirdScenarioList,
+                          );
+                        },
+                          onAcceptWithDetails: (details) {
+                              bool found = false;
+                              setState(() {
+                                String? data = details.data;
+                                firstScenarioList.removeWhere((widget) {
+                                  if (widget is Draggable<String> && widget.data == data) {
+                                    secondScenarioList.add(widget);
+                                    found = true;
+                                    return true;
+                                  }
+                                  return false;
+                                });
+                                if (found==true){
+                                  if(scenariosIncrement<scenarios.length-1){
+                                    scenariosIncrement+=1;
+                                    _addDraggables(scenarios[scenariosIncrement]);
+                                  }
+                                  found = false;
+                                }
+                                secondScenarioList.removeWhere((widget) {
+                                  if (widget is Draggable<String> && widget.data == data) {
+                                    thirdScenarioList.add(widget);
+                                    return true;
+                                  }
+                                  return false;
+                                });
+                              });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Container(
+                width: double.infinity,
+                constraints: const BoxConstraints(minHeight: 60),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: blue, width: 2),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: DragTarget<String>(
+                      builder: (context, candidateData, rejectedData) {
+                        return Wrap(
+                          spacing: 5,
+                          runSpacing: 5,
+                          children: firstScenarioList,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 class LevelOneHome extends StatefulWidget {
   const LevelOneHome({super.key});
 
@@ -1119,6 +1537,10 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: "",
     ),
+    Scenarios(
+      text: "",
+      title: "",
+    ),
     /*
     InstructionStep(
       title: 'What does respect look like to you?',
@@ -1129,166 +1551,6 @@ class _LevelOneHomeState extends State<LevelOneHome> {
     ContentStep(
       text: "",
       title: "",
-    ),
-    QuestionStep(
-      title: 'My partner makes my lunch every day. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'My boss gave me an advance even though I did not ask for one. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'My partner put a tracker app on my phone. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: "I'm not allowed to lock my bedroom door. Respectful?",
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: "I don't always tell the truth to those close to me. Respectful?",
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'Sometimes I speak rudely to those close to me. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'If I make a mess in my relationship, I always clean it up. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'I take responsibility for my behavior. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'I expect others to know what I need without me having to say. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'My partner sometimes says no, but I keep pushing anyway. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'I thank my partner / friends for what they do for me. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'I acknowledge my partner for the great qualities they have. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'If my partner doesn’t look good today, I will tell them. Respectful?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'Would you and another person agree on what respect is?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'Would everyone define LOVE in the same way?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
-    ),
-    QuestionStep(
-      title: 'Would everyone agree with you on what respect looks like?',
-      isOptional: false,
-      answerFormat: const SingleChoiceAnswerFormat(
-        textChoices: <TextChoice>[
-          TextChoice(text: 'Yes', value: 'Yes'),
-          TextChoice(text: 'No', value: 'No'),
-        ],
-      ),
     ),
   ];
 
