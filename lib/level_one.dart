@@ -4,6 +4,7 @@ import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
  
+ 
 class ContentResult extends QuestionResult<String> {
   ContentResult({
     required super.id,
