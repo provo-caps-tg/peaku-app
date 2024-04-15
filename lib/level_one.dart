@@ -66,7 +66,7 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
     super.initState();
     //TODO: Implemet Animations
     visibilityController = AnimationController(
-      duration: const Duration(milliseconds: 8000),
+      duration: const Duration(milliseconds: 5000),
       vsync: this
     );
     CurvedAnimation visibilityCurve = CurvedAnimation(parent: visibilityController, curve: Curves.linear);
@@ -139,7 +139,16 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Woah"),
+          Text(
+            "Cycle of Abuse", 
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 40,
+              color: blue,
+              fontFamily: 'Barlow',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           SizedBox(
             width: 300,
             child: Row(
@@ -164,7 +173,7 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
                       top: 45,
                       left:5,
                       child: Opacity(
-                        opacity: visibility3(),
+                        opacity: visibility(),
                         child: DecoratedBox(
                           decoration: BoxDecoration(color: const Color.fromARGB(255, 255, 218, 54), borderRadius: BorderRadius.circular(12)),
                           child: const Center(child: Text("Tension\nBuilding", style: TextStyle(fontSize: 16, color: Colors.white),))
@@ -173,16 +182,34 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
                     ),
                   ],
                 ),
-                RotatedBox(quarterTurns: 0,
-                  child: Opacity(
-                    opacity: visibility2(),
-                    child: const Image(
-                      image: AssetImage('assets/images/Arrow.png'),
-                      width: 150,
-                      height: 150,
-                      color: Colors.red,
+                Stack(
+                  fit: StackFit.loose,
+                  children: [
+                    RotatedBox(quarterTurns: 0,
+                      child: Opacity(
+                        opacity: visibility2(),
+                        child: const Image(
+                          image: AssetImage('assets/images/Arrow.png'),
+                          width: 150,
+                          height: 150,
+                          color: Colors.red,
+                        ),
+                      ),
                     ),
-                  ),
+                    Positioned(
+                      width: 75,
+                      height: 25,
+                      top: 35,
+                      left: 45,
+                      child: Opacity(
+                        opacity: visibility2(),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(12)),
+                          child: const Center(child: Text("Explosion", style: TextStyle(fontSize: 16, color: Colors.white),))
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -221,6 +248,7 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
                   ],
                 ),
                 Stack(
+                  fit: StackFit.loose,
                   children: [
                     RotatedBox(quarterTurns: 1,
                       child: Opacity(
@@ -233,9 +261,228 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
                         ),
                       ),
                     ),
+                    Positioned(
+                      width: 120,
+                      height: 25,
+                      top: 55,
+                      left: 35,
+                      child: Opacity(
+                        opacity: visibility4(),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(12)),
+                          child: const Center(child: Text('Reconciliation', style: TextStyle(fontSize: 16, color: Colors.white),))
+                        ),
+                      ),
+                    ),
                   ],
                 ),
+                
               ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 6, color: const Color.fromARGB(255, 255, 218, 54) ),
+                borderRadius: BorderRadius.circular(12)
+              ),
+              child: Padding(
+                padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                child: Column(
+                  children: [ 
+                    const FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text(
+                        "Tension Building",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Color.fromARGB(255, 255, 218, 54),
+                          fontFamily: 'Barlow',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "In this stage, we might see more fighting and more stress. The biggest clue though, is the feeling of walking on eggshells.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: blue,
+                        fontFamily: 'Barlow',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 6, color: Colors.red ),
+                borderRadius: BorderRadius.circular(12)
+              ),
+              child: Padding(
+                padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                child: Column(
+                  children: [ 
+                    const FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text(
+                        "Explosion",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.red,
+                          fontFamily: 'Barlow',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "Tension has built and ultimately bursts out like an explosion. If physical abuse is part of the relationship, this is often when it is most likely to occur. It's a big, intense moment. Sometimes this explosion is blamed on the other person. They might say, “If you hadn’t done that, I wouldn’t have gotten mad.” ",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: blue,
+                        fontFamily: 'Barlow',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 6, color: Colors.blue ),
+                borderRadius: BorderRadius.circular(12)
+              ),
+              child: Padding(
+                padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                child: Column(
+                  children: [ 
+                    const FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text(
+                        "Reconciliation",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.blue,
+                          fontFamily: 'Barlow',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "The person who did the hurting might say sorry and try to make things right. They promise not to do it again. They might also use minimization or denial to justify their actions. They may even shower their partner with gifts to try to prove that they’ve changed. This is typically the shortest part of the cycle.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: blue,
+                        fontFamily: 'Barlow',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(width: 6, color: Colors.green ),
+                borderRadius: BorderRadius.circular(12)
+              ),
+              child: Padding(
+                padding: EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                child: Column(
+                  children: [ 
+                    const FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text(
+                        "Calm Phase",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 40,
+                          color: Colors.green,
+                          fontFamily: 'Barlow',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "Things seem peaceful, and the tension goes away. People in the relationship feel like things are okay again. But, this calm doesn't stick around. It goes back to the first part, and the cycle starts over.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: blue,
+                        fontFamily: 'Barlow',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Text(
+            "Reminder", 
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 30,
+              color: blue,
+              fontFamily: 'Barlow',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Text.rich(
+              textAlign: TextAlign.center,
+                TextSpan(
+                  style: TextStyle(
+                  fontSize: 17,
+                  color: blue,
+                  fontFamily: 'Barlow',
+                ),
+                text: 'This is an example of what ', 
+                children: const <TextSpan>[
+                  TextSpan(text: "can", style: TextStyle(decoration: TextDecoration.underline)),
+                  TextSpan(text: " happen in a relationship. It does not always look like this, but it is important to recognize this cycle when present. \n\nSome relationships exhibit this cycle, others are quite random.  It is important to recognize signs of abuse in relationships, and understand that when they are random, or unpredictable, we might have a tendency to dismiss them as a phase, or tell ourselves it will get better. Or we tell ourselves that the good outweighs the bad.\n\nNo amount of abuse in a relationship is acceptable."),
+                ]
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: Text(
+              "Don't Forget!", 
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30,
+                color: blue,
+                fontFamily: 'Barlow',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Text(
+              "Healthy relationships leave you trusting yourself more, not less.", 
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                color: blue,
+                fontFamily: 'Barlow',
+              ),
             ),
           ),
         ],
