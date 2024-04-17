@@ -5,6 +5,7 @@ import 'global_varibles.dart';
 import 'level_one.dart';
 import 'main.dart';
 
+/*
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
   @override
@@ -330,6 +331,7 @@ class _SurveyPageState extends State<SurveyPage> {
     );
   }
 }
+*/
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
