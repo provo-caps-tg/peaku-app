@@ -4,6 +4,11 @@ publish_to: 'none'
 
 version: 1.0.0+1
 
+charts_flutter:
+  git:
+    url: git://github.com/google/charts.git
+    path: charts_flutter
+
 environment:
   sdk: '>=3.1.5 <4.0.0'
 dependencies:
