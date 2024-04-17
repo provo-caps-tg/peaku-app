@@ -13,6 +13,11 @@ class PeakUApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: orange),
         useMaterial3: true,
+        textTheme: const TextTheme(
+          // ignore: deprecated_member_use
+          bodyText1: TextStyle(fontSize: 16.0, color: Colors.black),
+          // Define other text styles as needed
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
