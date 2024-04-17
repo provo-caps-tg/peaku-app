@@ -1669,6 +1669,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                   ),
                                 ),
                               ),
+                              /*
                               textButtonTheme: TextButtonThemeData(
                                 style: ButtonStyle(
                                   textStyle: MaterialStateProperty.all(
@@ -1678,6 +1679,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                   ),
                                 ),
                               ),
+                              */
                               textTheme: const TextTheme(
                                 displayMedium: TextStyle(
                                   fontSize: 35.0,
