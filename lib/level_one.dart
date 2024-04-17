@@ -65,6 +65,7 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
   void initState() {
     super.initState();
     //TODO: Implemet Animations
+    //WOAH I WROTE THIS WITH A BOUNCY BALL
     visibilityController = AnimationController(
       duration: const Duration(milliseconds: 5000),
       vsync: this
