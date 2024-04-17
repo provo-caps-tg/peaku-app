@@ -1,6 +1,5 @@
-import 'package:flutter_survey/flutter_survey.dart';
 import 'package:flutter/material.dart';
-List<QuestionResult> lastSurveyResults = [];
+//List<QuestionResult> lastSurveyResults = [];
 List<Widget> secondList = [];
 List<Widget> firstList = [];
 List<Widget> secondScenarioList = [];
