@@ -1381,6 +1381,31 @@ class _ScenariosState extends State<ScenariosState> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Container(
+                width: double.infinity,
+                constraints: const BoxConstraints(minHeight: 60),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: blue, width: 2),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: DragTarget<String>(
+                      builder: (context, candidateData, rejectedData) {
+                        return Wrap(
+                          spacing: 5,
+                          runSpacing: 5,
+                          children: firstScenarioList,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -1529,31 +1554,6 @@ class _ScenariosState extends State<ScenariosState> {
                   ),
                 ),
               ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Container(
-                width: double.infinity,
-                constraints: const BoxConstraints(minHeight: 60),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: blue, width: 2),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: DragTarget<String>(
-                      builder: (context, candidateData, rejectedData) {
-                        return Wrap(
-                          spacing: 5,
-                          runSpacing: 5,
-                          children: firstScenarioList,
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ),
             ),
           ],
         ),
