@@ -532,7 +532,28 @@ class HealthyRelationshipStepState extends StatefulWidget {
 }
 
 class _HealthyRelationshipStepState extends State<HealthyRelationshipStepState> with SingleTickerProviderStateMixin{
+  Color textColorYes = orange;
+  Color bgColorYes = Colors.white;
+  Color textColorNo = orange;
+  Color bgColorNo = Colors.white;
   
+  void filledYes(){
+    setState(() {
+      bgColorYes = orange;
+      textColorYes = Colors.white;
+      textColorNo = orange;
+      bgColorNo = Colors.white;
+    });
+  }
+  void filledNo(){
+    setState(() {
+      bgColorNo = orange;
+      textColorNo = Colors.white;
+      textColorYes = orange;
+      bgColorYes = Colors.white;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return StepView(
@@ -545,19 +566,74 @@ class _HealthyRelationshipStepState extends State<HealthyRelationshipStepState> 
         valueIdentifier: 'custom',//Identification for NavigableTask
         result: 'custom_result',
       ),
-      child: const Padding(
-        padding: EdgeInsets.all(5),
-        child: Center(
+      child: //Copied thomas code here.
+        Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-             Text("Testing")
-            ],
-          ),
+             Text(
+                "Healthy Relationships", 
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 40,
+                  color: blue,
+                  fontFamily: 'Barlow',
+                  fontWeight: FontWeight.bold,
+                ),
+             ),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [   
+                    Text(
+                      "In your current relationship, \ndo you trust yourself more?", 
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: blue,
+                        fontFamily: 'Barlow',
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                      child: OutlinedButton(
+                        onPressed:() {
+                          filledYes();
+                        },
+                        style: ButtonStyle(
+                          shape: WidgetStateProperty.all(
+                            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+                          ),
+                          foregroundColor: WidgetStateProperty.all(textColorYes), // Change text color
+                          backgroundColor: WidgetStateProperty.all(bgColorYes), // Change background color
+                        ),
+                        child: const Text('Yes'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                      child: OutlinedButton(
+                        onPressed:() {
+                          filledNo();
+                        },
+                        style: ButtonStyle(
+                          shape: WidgetStateProperty.all(
+                            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+                          ),
+                          foregroundColor: WidgetStateProperty.all(textColorNo), // Change text color
+                          backgroundColor: WidgetStateProperty.all(bgColorNo), // Change background color
+                        ),
+                        child: const Text('No'),
+                      ),
+                    ), 
+                  ],
+                ),
+            ),
+          ],
         ),
       )
     );
   }
-
 }
 
 class BoxesResult extends QuestionResult<String> {
@@ -1629,7 +1705,6 @@ class LevelOneHome extends StatefulWidget {
   @override
   State<LevelOneHome> createState() => _LevelOneHomeState();
 }
-//TODO: Marker for me
 class _LevelOneHomeState extends State<LevelOneHome> {
   var stepss = [
     CustomStep(
