@@ -18,11 +18,10 @@ class ContentResult extends QuestionResult<String> {
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }
-//TODO: please work
-class ContentStep extends Step {
+class CycleOfAbuseStep extends Step {
   final String title;
   final String text;
-  ContentStep({
+  CycleOfAbuseStep({
     bool isOptional = false,
     String buttonText = 'Next',
     required this.title,
@@ -34,26 +33,26 @@ class ContentStep extends Step {
 
   @override
   Widget createView({required QuestionResult? questionResult}) {
-    return ContentStepState(
+    return CycleOfAbuseStepState(
       title: title,
       text: text,
     );
   }
 }
 
-class ContentStepState extends StatefulWidget {
+class CycleOfAbuseStepState extends StatefulWidget {
   final String title;
   final String text;
-  const ContentStepState({
+  const CycleOfAbuseStepState({
     super.key,
     required this.title,
     required this.text,
   });
   @override
-  State<ContentStepState> createState() => _ContentStepState();
+  State<CycleOfAbuseStepState> createState() => _CycleOfAbuseStepState();
 }
 
-class _ContentStepState extends State<ContentStepState> with SingleTickerProviderStateMixin{
+class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTickerProviderStateMixin{
   int sequence = 1;
   late Animation<double> opacity1;
   late Animation<double> opacity2;
@@ -64,7 +63,6 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
   @override
   void initState() {
     super.initState();
-    //TODO: Implemet Animations
     //WOAH I WROTE THIS WITH A BOUNCY BALL
     visibilityController = AnimationController(
       duration: const Duration(milliseconds: 5000),
@@ -456,7 +454,8 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
                 text: 'This is an example of what ', 
                 children: const <TextSpan>[
                   TextSpan(text: "can", style: TextStyle(decoration: TextDecoration.underline)),
-                  TextSpan(text: " happen in a relationship. It does not always look like this, but it is important to recognize this cycle when present. \n\nSome relationships exhibit this cycle, others are quite random.  It is important to recognize signs of abuse in relationships, and understand that when they are random, or unpredictable, we might have a tendency to dismiss them as a phase, or tell ourselves it will get better. Or we tell ourselves that the good outweighs the bad.\n\nNo amount of abuse in a relationship is acceptable."),
+                  TextSpan(text: " happen in a relationship. It does not always look like this, but it is important to recognize this cycle when present. \n\nSome relationships exhibit this cycle, others are quite random.  It is important to recognize signs of abuse in relationships, and understand that when they are random, or unpredictable.\n\n We sometimes have a tendency to dismiss them as a phase, or tell ourselves it will get better. Or we tell ourselves that the good outweighs the bad."),
+                  TextSpan(text: "\n\nNo amount of abuse in a relationship is acceptable.", style: TextStyle(fontSize: 20, decoration: TextDecoration.underline))
                 ]
               ),
             ),
@@ -495,6 +494,145 @@ class _ContentStepState extends State<ContentStepState> with SingleTickerProvide
   void dispose() {          
     visibilityController.dispose();  
     super.dispose();         
+  }
+}
+
+class HealthyRelationshipStep extends Step {
+  final String title;
+  final String text;
+  HealthyRelationshipStep({
+    bool isOptional = false,
+    String buttonText = 'Next',
+    required this.title,
+    required this.text,
+  });
+
+  @override
+  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+
+  @override
+  Widget createView({required QuestionResult? questionResult}) {
+    return HealthyRelationshipStepState(
+      title: title,
+      text: text,
+    );
+  }
+}
+
+class HealthyRelationshipStepState extends StatefulWidget {
+  final String title;
+  final String text;
+  const HealthyRelationshipStepState({
+    super.key,
+    required this.title,
+    required this.text,
+  });
+  @override
+  State<HealthyRelationshipStepState> createState() => _HealthyRelationshipStepState();
+}
+
+class _HealthyRelationshipStepState extends State<HealthyRelationshipStepState> with SingleTickerProviderStateMixin{
+  Color textColorYes = orange;
+  Color bgColorYes = Colors.white;
+  Color textColorNo = orange;
+  Color bgColorNo = Colors.white;
+  
+  void filledYes(){
+    setState(() {
+      bgColorYes = orange;
+      textColorYes = Colors.white;
+      textColorNo = orange;
+      bgColorNo = Colors.white;
+    });
+  }
+  void filledNo(){
+    setState(() {
+      bgColorNo = orange;
+      textColorNo = Colors.white;
+      textColorYes = orange;
+      bgColorYes = Colors.white;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StepView(
+      step: QuestionStep(answerFormat: const BooleanAnswerFormat(positiveAnswer: "wa", negativeAnswer: "we")),
+      title: const Text(''), 
+      resultFunction: () => ContentResult(
+        id: Identifier(id: "124913"), 
+        startDate: DateTime.now(), 
+        endDate: DateTime.now(), 
+        valueIdentifier: 'custom',//Identification for NavigableTask
+        result: 'custom_result',
+      ),
+      child: //Copied thomas code here.
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+             Text(
+                "Healthy Relationships", 
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 40,
+                  color: blue,
+                  fontFamily: 'Barlow',
+                  fontWeight: FontWeight.bold,
+                ),
+             ),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [   
+                    Text(
+                      "In your current relationship, \ndo you trust yourself more?", 
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: blue,
+                        fontFamily: 'Barlow',
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                      child: OutlinedButton(
+                        onPressed:() {
+                          filledYes();
+                        },
+                        style: ButtonStyle(
+                          shape: WidgetStateProperty.all(
+                            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+                          ),
+                          foregroundColor: WidgetStateProperty.all(textColorYes), // Change text color
+                          backgroundColor: WidgetStateProperty.all(bgColorYes), // Change background color
+                        ),
+                        child: const Text('Yes'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                      child: OutlinedButton(
+                        onPressed:() {
+                          filledNo();
+                        },
+                        style: ButtonStyle(
+                          shape: WidgetStateProperty.all(
+                            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+                          ),
+                          foregroundColor: WidgetStateProperty.all(textColorNo), // Change text color
+                          backgroundColor: WidgetStateProperty.all(bgColorNo), // Change background color
+                        ),
+                        child: const Text('No'),
+                      ),
+                    ), 
+                  ],
+                ),
+            ),
+          ],
+        ),
+      )
+    );
   }
 }
 
@@ -1029,11 +1167,11 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                                 //incrementUp();
                               },
                               style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
+                                shape: WidgetStateProperty.all(
                                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
                                 ),
-                                foregroundColor: MaterialStateProperty.all(textColorYes), // Change text color
-                                backgroundColor: MaterialStateProperty.all(bgColorYes), // Change background color
+                                foregroundColor: WidgetStateProperty.all(textColorYes), // Change text color
+                                backgroundColor: WidgetStateProperty.all(bgColorYes), // Change background color
                               ),
                               child: const Text('Yes'),
                             ),
@@ -1051,11 +1189,11 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                                 //incrementUp();
                               },
                               style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
+                                shape: WidgetStateProperty.all(
                                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
                                 ),
-                                foregroundColor: MaterialStateProperty.all(textColorNo), // Change text color
-                                backgroundColor: MaterialStateProperty.all(bgColorNo), // Change background color
+                                foregroundColor: WidgetStateProperty.all(textColorNo), // Change text color
+                                backgroundColor: WidgetStateProperty.all(bgColorNo), // Change background color
                               ),
                               child: const Text('No'),
                             ),
@@ -1576,7 +1714,6 @@ class LevelOneHome extends StatefulWidget {
   @override
   State<LevelOneHome> createState() => _LevelOneHomeState();
 }
-
 class _LevelOneHomeState extends State<LevelOneHome> {
   var stepss = [
     CustomStep(
@@ -1598,9 +1735,13 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       buttonText: 'Let\'s go!',
     ),
     */
-    ContentStep(
+    CycleOfAbuseStep(
       text: "",
       title: "",
+    ),
+    HealthyRelationshipStep(
+      title: "",
+      text: ""
     ),
   ];
 
@@ -1678,12 +1819,12 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                               ),
                               outlinedButtonTheme: OutlinedButtonThemeData(
                                 style: ButtonStyle(
-                                  minimumSize: MaterialStateProperty.all(
+                                  minimumSize: WidgetStateProperty.all(
                                     const Size(0, 61.0),
                                   ),
-                                  side: MaterialStateProperty.resolveWith(
-                                    (Set<MaterialState> state) {
-                                      if (state.contains(MaterialState.disabled)) {
+                                  side: WidgetStateProperty.resolveWith(
+                                    (Set<WidgetState> state) {
+                                      if (state.contains(WidgetState.disabled)) {
                                         return const BorderSide(
                                           color: Colors.grey,
                                         );
@@ -1693,14 +1834,14 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                       );
                                     },
                                   ),
-                                  shape: MaterialStateProperty.all(
+                                  shape: WidgetStateProperty.all(
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                   ),
-                                  textStyle: MaterialStateProperty.resolveWith(
-                                    (Set<MaterialState> state) {
-                                      if (state.contains(MaterialState.disabled)) {
+                                  textStyle: WidgetStateProperty.resolveWith(
+                                    (Set<WidgetState> state) {
+                                      if (state.contains(WidgetState.disabled)) {
                                         return Theme.of(context)
                                             .textTheme
                                             .labelLarge
@@ -1720,7 +1861,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                               ),
                               textButtonTheme: TextButtonThemeData(
                                 style: ButtonStyle(
-                                  textStyle: MaterialStateProperty.all(
+                                  textStyle: WidgetStateProperty.all(
                                     Theme.of(context).textTheme.labelLarge?.copyWith(
                                           color: generateMaterialColor(color: orange),
                                         ),
