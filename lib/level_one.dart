@@ -1240,37 +1240,55 @@ class _ScenariosState extends State<ScenariosState> {
       firstScenarioList.add(Draggable<String>(
         data: text,
         feedback: Container(
-                height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.black, width: 1),
-                color: const Color.fromARGB(255, 236, 236, 236),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: const Color.fromARGB(125, 0, 0, 0), width: 1),
+            color: const Color.fromARGB(175, 236, 236, 236),
+          ),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            child: Text(
+              'Move Scenario',
+              overflow: TextOverflow.visible,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.normal,
+                color: Color.fromARGB(125, 0, 0, 0),
+                fontSize: 20,
+                decoration: TextDecoration.none,
+                fontFamily: 'Barlow',
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-                child: Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black,
-                    fontSize: 30,
-                    decoration: TextDecoration.none,
-                    fontFamily: 'Barlow',
-                  ),
+            ),
+          ),
+        ),
+        childWhenDragging: SizedBox(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: orange, width: 1),
+              color: const Color.fromARGB(255, 236, 236, 236),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+              child: Text(
+                text,
+                overflow: TextOverflow.visible,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontWeight: FontWeight.normal,
+                  color: Colors.black,
+                  decoration: TextDecoration.none,
+                  fontFamily: 'Barlow',
+                  fontSize: 16,
                 ),
               ),
             ),
-        childWhenDragging: SizedBox(
-          child: Container(
-            width: 0,
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          padding: const EdgeInsets.symmetric(horizontal: 0),
           child: SizedBox(
             child: Container(
-              height: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black, width: 1),
@@ -1280,12 +1298,14 @@ class _ScenariosState extends State<ScenariosState> {
                 padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                 child: Text(
                   text,
+                  overflow: TextOverflow.visible,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     color: Colors.black,
                     decoration: TextDecoration.none,
                     fontFamily: 'Barlow',
+                    fontSize: 16,
                   ),
                 ),
               ),
@@ -1303,37 +1323,55 @@ class _ScenariosState extends State<ScenariosState> {
       return Draggable<String>(
         data: text,
         feedback: Container(
-                height: 50,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.black, width: 1),
-                color: const Color.fromARGB(255, 236, 236, 236),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: const Color.fromARGB(125, 0, 0, 0), width: 1),
+            color: const Color.fromARGB(175, 236, 236, 236),
+          ),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            child: Text(
+              'Move Scenario',
+              overflow: TextOverflow.visible,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.normal,
+                color: Color.fromARGB(125, 0, 0, 0),
+                fontSize: 20,
+                decoration: TextDecoration.none,
+                fontFamily: 'Barlow',
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-                child: Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: Colors.black,
-                    fontSize: 30,
-                    decoration: TextDecoration.none,
-                    fontFamily: 'Barlow',
-                  ),
+            ),
+          ),
+        ),
+        childWhenDragging: SizedBox(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: orange, width: 1),
+              color: const Color.fromARGB(255, 236, 236, 236),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+              child: Text(
+                text,
+                overflow: TextOverflow.visible,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontWeight: FontWeight.normal,
+                  color: Colors.black,
+                  decoration: TextDecoration.none,
+                  fontFamily: 'Barlow',
+                  fontSize: 16,
                 ),
               ),
             ),
-        childWhenDragging: SizedBox(
-          child: Container(
-            width: 0,
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          padding: const EdgeInsets.symmetric(horizontal: 0),
           child: SizedBox(
             child: Container(
-              height: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black, width: 1),
@@ -1343,12 +1381,14 @@ class _ScenariosState extends State<ScenariosState> {
                 padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                 child: Text(
                   text,
+                  overflow: TextOverflow.visible,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     color: Colors.black,
                     decoration: TextDecoration.none,
                     fontFamily: 'Barlow',
+                    fontSize: 16,
                   ),
                 ),
               ),
@@ -1735,7 +1775,6 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                   ),
                                 ),
                               ),
-                              /*
                               textButtonTheme: TextButtonThemeData(
                                 style: ButtonStyle(
                                   textStyle: WidgetStateProperty.all(
@@ -1745,7 +1784,6 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                   ),
                                 ),
                               ),
-                              */
                               textTheme: const TextTheme(
                                 displayMedium: TextStyle(
                                   fontSize: 35.0,
