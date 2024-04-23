@@ -704,7 +704,6 @@ class _BoxesStepState extends State<BoxesStepState> {
         'Acceptance',
         'Sharing Values',
         'Spontaneity',
-        'Educating Them When They are Wrong',
         ]
       );
     }
@@ -1321,16 +1320,16 @@ class _ScenariosState extends State<ScenariosState> {
             border: Border.all(color: const Color.fromARGB(125, 0, 0, 0), width: 1),
             color: const Color.fromARGB(175, 236, 236, 236),
           ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
             child: Text(
-              'Move Scenario',
+              text,
               overflow: TextOverflow.visible,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.normal,
                 color: Color.fromARGB(125, 0, 0, 0),
-                fontSize: 20,
+                fontSize: 16,
                 decoration: TextDecoration.none,
                 fontFamily: 'Barlow',
               ),
@@ -1404,13 +1403,13 @@ class _ScenariosState extends State<ScenariosState> {
             border: Border.all(color: const Color.fromARGB(125, 0, 0, 0), width: 1),
             color: const Color.fromARGB(175, 236, 236, 236),
           ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
             child: Text(
-              'Move Scenario',
+              text,
               overflow: TextOverflow.visible,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.normal,
                 color: Color.fromARGB(125, 0, 0, 0),
                 fontSize: 20,
@@ -1505,17 +1504,22 @@ class _ScenariosState extends State<ScenariosState> {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
-                child: Text(
-                  "Choose from the following examples whether\n they are NO Not Respectful or YES Respectful", 
+                child: RichText(
                   textAlign: TextAlign.center,
-                  style: TextStyle( 
-                    //fontWeight: FontWeight.w700,, 
-                    fontSize: 30, 
-                  ),
+                  text: const TextSpan(
+                    text: "Drag & sort the following examples based on \nif they are", 
+                    style: TextStyle(fontSize: 30, color: Colors.black),
+                    children: <TextSpan>[
+                      TextSpan(text: ' NO', style: TextStyle(color: Colors.red, fontSize: 30)),
+                      TextSpan(text: ' Not Respectful or', style: TextStyle(fontSize: 30, color: Colors.black)),
+                      TextSpan(text: ' YES', style: TextStyle(color: Colors.green, fontSize: 30)),
+                      TextSpan(text: ' Respectful', style: TextStyle(fontSize: 30, color: Colors.black)),
+                    ]
+                  )
                 ),
               ),
             ),
@@ -1531,15 +1535,15 @@ class _ScenariosState extends State<ScenariosState> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
-                    child: DragTarget<String>(
-                      builder: (context, candidateData, rejectedData) {
-                        return Wrap(
-                          spacing: 5,
-                          runSpacing: 5,
-                          children: firstScenarioList,
-                        );
-                      },
-                    ),
+                    child:  DragTarget<String>(
+                        builder: (context, candidateData, rejectedData) {
+                          return Wrap(
+                            spacing: 5,
+                            runSpacing: 5,
+                            children: firstScenarioList,
+                          );
+                        },
+                      ),
                   ),
                 ),
               ),
@@ -1581,117 +1585,122 @@ class _ScenariosState extends State<ScenariosState> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10, right:5),
-                    child: Container(
-                      constraints: const BoxConstraints(minHeight: 60,),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(50, 244, 67, 54),
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.red, width: 2),
-                      ),
+            SafeArea(
+              child: IntrinsicHeight(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: DragTarget<String>(
-                          builder: (context, candidateData, rejectedData) {
-                            return Wrap(
-                              spacing: 5,
-                              runSpacing: 5,
-                              children: secondScenarioList,
-                            );
-                          },
-                          onAcceptWithDetails: (details) {
-                              bool found = false;
-                              setState(() {
-                                String? data = details.data;
-                                firstScenarioList.removeWhere((widget) {
-                                  if (widget is Draggable<String> && widget.data == data) {
-                                    secondScenarioList.add(widget);
-                                    found = true;
-                                    return true;
-                                  }
-                                  return false;
-                                });
-                                if (found==true){
-                                  if(scenariosIncrement<scenarios.length-1){
-                                    scenariosIncrement+=1;
-                                    _addDraggables(scenarios[scenariosIncrement]);
-                                  }
-                                  found = false;
-                                }
-                                thirdScenarioList.removeWhere((widget) {
-                                  if (widget is Draggable<String> && widget.data == data) {
-                                    secondScenarioList.add(widget);
-                                    return true;
-                                  }
-                                  return false;
-                                });
-                              });
-                          },
+                        padding: const EdgeInsets.only(left: 10, right:5),
+                        child: Container(
+                          constraints: const BoxConstraints(minHeight: 60,),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(50, 244, 67, 54),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.red, width: 2),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DragTarget<String>(
+                              builder: (context, candidateData, rejectedData) {
+                                return Wrap(
+                                  spacing: 5,
+                                  runSpacing: 5,
+                                  children: secondScenarioList,
+                                );
+                              },
+                              onAcceptWithDetails: (details) {
+                                  bool found = false;
+                                  setState(() {
+                                    String? data = details.data;
+                                    firstScenarioList.removeWhere((widget) {
+                                      if (widget is Draggable<String> && widget.data == data) {
+                                        secondScenarioList.add(widget);
+                                        found = true;
+                                        return true;
+                                      }
+                                      return false;
+                                    });
+                                    if (found==true){
+                                      if(scenariosIncrement<scenarios.length-1){
+                                        scenariosIncrement+=1;
+                                        _addDraggables(scenarios[scenariosIncrement]);
+                                      }
+                                      found = false;
+                                    }
+                                    thirdScenarioList.removeWhere((widget) {
+                                      if (widget is Draggable<String> && widget.data == data) {
+                                        secondScenarioList.add(widget);
+                                        return true;
+                                      }
+                                      return false;
+                                    });
+                                  });
+                              },
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 10, left:5),
-                    child: Container(
-                      constraints: const BoxConstraints(minHeight: 60),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(50, 76, 175, 79),
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.green, width: 2),
-                      ),
+                    Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: DragTarget<String>(
-                        builder: (context, candidateData, rejectedData) {
-                          return Wrap(
-                            spacing: 5,
-                            runSpacing: 5,
-                            children: thirdScenarioList,
-                          );
-                        },
-                          onAcceptWithDetails: (details) {
-                              bool found = false;
-                              setState(() {
-                                String? data = details.data;
-                                firstScenarioList.removeWhere((widget) {
-                                  if (widget is Draggable<String> && widget.data == data) {
-                                    secondScenarioList.add(widget);
-                                    found = true;
-                                    return true;
-                                  }
-                                  return false;
-                                });
-                                if (found==true){
-                                  if(scenariosIncrement<scenarios.length-1){
-                                    scenariosIncrement+=1;
-                                    _addDraggables(scenarios[scenariosIncrement]);
-                                  }
-                                  found = false;
-                                }
-                                secondScenarioList.removeWhere((widget) {
-                                  if (widget is Draggable<String> && widget.data == data) {
-                                    thirdScenarioList.add(widget);
-                                    return true;
-                                  }
-                                  return false;
-                                });
-                              });
-                          },
+                        padding: const EdgeInsets.only(right: 10, left:5),
+                        child: Container(
+                          constraints: const BoxConstraints(minHeight: 60),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(50, 76, 175, 79),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.green, width: 2),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DragTarget<String>(
+                            builder: (context, candidateData, rejectedData) {
+                              return Wrap(
+                                spacing: 5,
+                                runSpacing: 5,
+                                children: thirdScenarioList,
+                              );
+                            },
+                              onAcceptWithDetails: (details) {
+                                  bool found = false;
+                                  setState(() {
+                                    String? data = details.data;
+                                    firstScenarioList.removeWhere((widget) {
+                                      if (widget is Draggable<String> && widget.data == data) {
+                                        secondScenarioList.add(widget);
+                                        found = true;
+                                        return true;
+                                      }
+                                      return false;
+                                    });
+                                    if (found==true){
+                                      if(scenariosIncrement<scenarios.length-1){
+                                        scenariosIncrement+=1;
+                                        _addDraggables(scenarios[scenariosIncrement]);
+                                      }
+                                      found = false;
+                                    }
+                                    secondScenarioList.removeWhere((widget) {
+                                      if (widget is Draggable<String> && widget.data == data) {
+                                        thirdScenarioList.add(widget);
+                                        return true;
+                                      }
+                                      return false;
+                                    });
+                                  });
+                              },
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ],
         ),
