@@ -601,11 +601,11 @@ class _HealthyRelationshipStepState extends State<HealthyRelationshipStepState> 
                           filledYes();
                         },
                         style: ButtonStyle(
-                          shape: WidgetStateProperty.all(
+                          shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
                           ),
-                          foregroundColor: WidgetStateProperty.all(textColorYes), // Change text color
-                          backgroundColor: WidgetStateProperty.all(bgColorYes), // Change background color
+                          foregroundColor: MaterialStateProperty.all(textColorYes), // Change text color
+                          backgroundColor: MaterialStateProperty.all(bgColorYes), // Change background color
                         ),
                         child: const Text('Yes'),
                       ),
@@ -617,11 +617,11 @@ class _HealthyRelationshipStepState extends State<HealthyRelationshipStepState> 
                           filledNo();
                         },
                         style: ButtonStyle(
-                          shape: WidgetStateProperty.all(
+                          shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
                           ),
-                          foregroundColor: WidgetStateProperty.all(textColorNo), // Change text color
-                          backgroundColor: WidgetStateProperty.all(bgColorNo), // Change background color
+                          foregroundColor: MaterialStateProperty.all(textColorNo), // Change text color
+                          backgroundColor: MaterialStateProperty.all(bgColorNo), // Change background color
                         ),
                         child: const Text('No'),
                       ),
@@ -1167,11 +1167,11 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                                 //incrementUp();
                               },
                               style: ButtonStyle(
-                                shape: WidgetStateProperty.all(
+                                shape: MaterialStateProperty.all(
                                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
                                 ),
-                                foregroundColor: WidgetStateProperty.all(textColorYes), // Change text color
-                                backgroundColor: WidgetStateProperty.all(bgColorYes), // Change background color
+                                foregroundColor: MaterialStateProperty.all(textColorYes), // Change text color
+                                backgroundColor: MaterialStateProperty.all(bgColorYes), // Change background color
                               ),
                               child: const Text('Yes'),
                             ),
@@ -1189,11 +1189,11 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                                 //incrementUp();
                               },
                               style: ButtonStyle(
-                                shape: WidgetStateProperty.all(
+                                shape: MaterialStateProperty.all(
                                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
                                 ),
-                                foregroundColor: WidgetStateProperty.all(textColorNo), // Change text color
-                                backgroundColor: WidgetStateProperty.all(bgColorNo), // Change background color
+                                foregroundColor: MaterialStateProperty.all(textColorNo), // Change text color
+                                backgroundColor: MaterialStateProperty.all(bgColorNo), // Change background color
                               ),
                               child: const Text('No'),
                             ),
@@ -1819,12 +1819,12 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                               ),
                               outlinedButtonTheme: OutlinedButtonThemeData(
                                 style: ButtonStyle(
-                                  minimumSize: WidgetStateProperty.all(
+                                  minimumSize: MaterialStateProperty.all(
                                     const Size(0, 61.0),
                                   ),
-                                  side: WidgetStateProperty.resolveWith(
-                                    (Set<WidgetState> state) {
-                                      if (state.contains(WidgetState.disabled)) {
+                                  side: MaterialStateProperty.resolveWith(
+                                    (Set<MaterialState> state) {
+                                      if (state.contains(MaterialState.disabled)) {
                                         return const BorderSide(
                                           color: Colors.grey,
                                         );
@@ -1834,14 +1834,14 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                       );
                                     },
                                   ),
-                                  shape: WidgetStateProperty.all(
+                                  shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                   ),
-                                  textStyle: WidgetStateProperty.resolveWith(
-                                    (Set<WidgetState> state) {
-                                      if (state.contains(WidgetState.disabled)) {
+                                  textStyle: MaterialStateProperty.resolveWith(
+                                    (Set<MaterialState> state) {
+                                      if (state.contains(MaterialState.disabled)) {
                                         return Theme.of(context)
                                             .textTheme
                                             .labelLarge
@@ -1861,7 +1861,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                               ),
                               textButtonTheme: TextButtonThemeData(
                                 style: ButtonStyle(
-                                  textStyle: WidgetStateProperty.all(
+                                  textStyle: MaterialStateProperty.all(
                                     Theme.of(context).textTheme.labelLarge?.copyWith(
                                           color: generateMaterialColor(color: orange),
                                         ),
