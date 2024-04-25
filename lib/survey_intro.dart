@@ -80,7 +80,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                         child: Column(
                           children: [
                             Text(
-                              "Before we Start a Quick Summary of our Cirriculm",
+                              "Before we Start a Quick Summary of our Curriculum",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 35,

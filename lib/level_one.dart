@@ -454,9 +454,38 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
                 text: 'This is an example of what ', 
                 children: const <TextSpan>[
                   TextSpan(text: "can", style: TextStyle(decoration: TextDecoration.underline)),
-                  TextSpan(text: " happen in a relationship. It does not always look like this, but it is important to recognize this cycle when present. \n\nSome relationships exhibit this cycle, others are quite random.  It is important to recognize signs of abuse in relationships, and understand that when they are random, or unpredictable.\n\n We sometimes have a tendency to dismiss them as a phase, or tell ourselves it will get better. Or we tell ourselves that the good outweighs the bad."),
-                  TextSpan(text: "\n\nNo amount of abuse in a relationship is acceptable.", style: TextStyle(fontSize: 20, decoration: TextDecoration.underline))
+                  TextSpan(text: " happen in a relationship. It does not always look like this, but it is important to recognize this cycle when present. \n\nSome relationships exhibit this cycle, others are quite random.  It is important to recognize signs of abuse in relationships, and understand that when they are random, or unpredictable."),
                 ]
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Text(
+                  "We sometimes have a tendency to \ndismiss them as a phase,\n or tell ourselves it will get better.\n Or we tell ourselves that \nthe good outweighs the bad.", 
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: blue,
+                    fontFamily: 'Barlow',
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: Text(
+              "\n\nNo amount of abuse in a relationship is acceptable.", 
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                color: blue,
+                fontFamily: 'Barlow',
+                decoration: TextDecoration.underline,
               ),
             ),
           ),
@@ -634,6 +663,98 @@ class _HealthyRelationshipStepState extends State<HealthyRelationshipStepState> 
       )
     );
   }
+}
+
+class VisionsExecriseStep extends Step {
+  final String title;
+  final String text;
+  VisionsExecriseStep({
+    bool isOptional = false,
+    String buttonText = 'Next',
+    required this.title,
+    required this.text,
+  });
+  
+
+  @override
+  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+
+  @override
+  Widget createView({required QuestionResult? questionResult}) {
+    return VisionsExecriseStepState(
+      title: title,
+      text: text,
+    );
+  }
+}
+
+class VisionsExecriseStepState extends StatefulWidget {
+  final String title;
+  final String text;
+  const VisionsExecriseStepState({
+    super.key,
+    required this.title,
+    required this.text,
+  });
+  @override
+  State<VisionsExecriseStepState> createState() => _VisionsExecriseStepState();
+}
+
+class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with SingleTickerProviderStateMixin{
+  int number = 0;
+  late AnimationController visibilityController;
+  late Animation<double> opacity;
+  List<String> possibiltys = ["Do you see yourself going to college?","Joining the PeaceCorps?","The Army?","Trade school?" ,"What type of work do you see?","Will you be married?" ,"Where will you live?" ,"What do you want your relationships to look like?" ,"How do you treat each other?" ,"What do you do together?","Do you want to become a parent?","What role does your family have in your life?","What role do your friends have in your life?"];
+
+  @override
+  void initState() {
+    super.initState();
+    visibilityController = AnimationController(
+      duration: const Duration(milliseconds: 5000),
+      vsync: this
+    );
+    CurvedAnimation visibilityCurve = CurvedAnimation(parent: visibilityController, curve: Curves.easeOutExpo);
+    opacity = Tween<double>(begin: 0, end: 1).animate(visibilityCurve);
+    opacity.addListener(() {
+      setState(() {
+         if (visibilityController.isCompleted) {
+          visibilityController.reverse();
+        }
+        if(visibilityController.isDismissed){
+          visibilityController.forward();
+          if (number != 12) {
+          number++;
+          } else {
+            number = 0;
+          }
+        }
+       });
+    });
+    visibilityController.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StepView(
+      step: QuestionStep(answerFormat: const BooleanAnswerFormat(positiveAnswer: "wa", negativeAnswer: "we")),
+      title: const Text(''), 
+      resultFunction: () => ContentResult(
+        id: Identifier(id: "124914"), 
+        startDate: DateTime.now(), 
+        endDate: DateTime.now(), 
+        valueIdentifier: 'custom',//Identification for NavigableTask
+        result: 'custom_result',
+      ),
+      child: Text(possibiltys[number], style: TextStyle(color: blue.withOpacity(opacity.value) ),),
+    );
+  }
+
+  @override            
+  void dispose() {          
+    visibilityController.dispose();  
+    super.dispose();         
+  }
+
 }
 
 class BoxesResult extends QuestionResult<String> {
@@ -1727,6 +1848,10 @@ class _LevelOneHomeState extends State<LevelOneHome> {
     Scenarios(
       text: "",
       title: "",
+    ),
+    VisionsExecriseStep(
+      text: "",
+      title: ""
     ),
     /*
     InstructionStep(
