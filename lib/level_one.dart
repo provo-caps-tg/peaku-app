@@ -2041,13 +2041,13 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: "",
     ),
-    VisionsExecriseStep(
-      text: "",
-      title: ""
-    ),
     MindfulnessStep(
       text: "",
       title: "",
+    ),
+    VisionsExecriseStep(
+      text: "",
+      title: ""
     ),
     
   ];
