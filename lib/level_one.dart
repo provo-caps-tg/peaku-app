@@ -1,10 +1,9 @@
 import 'global_varibles.dart';
+import 'survey_intro.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
  
-final SurveyController surveyController = SurveyController();
-
 class ContentResult extends QuestionResult<String> {
   ContentResult({
     required super.id,
@@ -454,7 +453,7 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
                 ),
                 text: 'This is an example of what ', 
                 children: const <TextSpan>[
-                  TextSpan(text: "can", style: TextStyle(decoration: TextDecoration.underline)),
+                  TextSpan(text: "can", style: TextStyle(fontStyle: FontStyle.italic)),
                   TextSpan(text: " happen in a relationship. It does not always look like this, but it is important to recognize this cycle when present. \n\nSome relationships exhibit this cycle, others are quite random.  It is important to recognize signs of abuse in relationships, and understand that when they are random, or unpredictable."),
                 ]
               ),
@@ -711,7 +710,7 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Sin
   void initState() {
     super.initState();
     visibilityController = AnimationController(
-      duration: const Duration(milliseconds: 5000),
+      duration: const Duration(milliseconds: 3000),
       vsync: this
     );
     CurvedAnimation visibilityCurve = CurvedAnimation(parent: visibilityController, curve: Curves.easeOutExpo);
@@ -746,7 +745,35 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Sin
         valueIdentifier: 'custom',//Identification for NavigableTask
         result: 'custom_result',
       ),
-      child: Text(possibiltys[number], style: TextStyle(color: blue.withOpacity(opacity.value) ),),
+      child: Column(
+        children: [
+          Text.rich(
+            textAlign: TextAlign.center,
+              TextSpan(
+                style: TextStyle(
+                fontSize: 17,
+                color: blue,
+                fontFamily: 'Barlow',
+              ),
+              text: '', 
+              children: const <TextSpan>[
+                TextSpan(text: "Visions Exercise", style: TextStyle( fontSize: 30, fontWeight: FontWeight.w500)),
+                TextSpan(text: "\nFirst divide a paper into 3 different sections."),
+              ]
+            ),
+          ),
+          const Image(image: AssetImage("assets/images/PapelTransparent.png"), width: 100, height: 100,),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Text("Possible Ideas", style: TextStyle(color: blue, fontFamily: 'Barlow', fontWeight: FontWeight.bold), ),
+                Text(possibiltys[number], style: TextStyle(color: blue.withOpacity(opacity.value) ),),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -908,17 +935,16 @@ class _BoxesStepState extends State<BoxesStepState> {
       child: Center(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
                   "What makes for a\nhealthy realtionship?", 
                   textAlign: TextAlign.center,
                   style: TextStyle( 
-                    fontWeight: FontWeight.w700,
+                    //fontWeight: FontWeight.w700,, 
                     fontSize: 60, 
-                    color: blue,
                   ),
                 ),
               ),
@@ -1196,17 +1222,16 @@ class _ReflectionStepState extends State<ReflectionStepState> {
       child: Center(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
                   "Reflection", 
                   textAlign: TextAlign.center,
                   style: TextStyle( 
-                    fontWeight: FontWeight.w700,
+                    //fontWeight: FontWeight.w700,, 
                     fontSize: 60, 
-                    color: blue,
                   ),
                 ),
               ),
@@ -1361,138 +1386,6 @@ class _ReflectionStepState extends State<ReflectionStepState> {
   }
 }
 
-
-
-
-
-class MindfulnessResult extends QuestionResult<String> {
-  MindfulnessResult({
-    required super.id,
-    required super.startDate,
-    required super.endDate,
-    required String super.valueIdentifier,
-    required String super.result,
-  });
-  @override
-  List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
-}
-
-class MindfulnessStep extends Step {
-  final String title;
-  final String text;
-  MindfulnessStep({
-    required this.title,
-    required this.text,
-  });
-  @override
-  Widget createView({required QuestionResult? questionResult}) {
-    return MindfulnessStepState(
-      title: title,
-      text: text,
-    );
-  }
-  @override
-  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
-}
-
-class MindfulnessStepState extends StatefulWidget {
-  final String title;
-  final String text;
-  const MindfulnessStepState({
-    super.key,
-    required this.title,
-    required this.text,
-  });
-  @override
-  State<MindfulnessStepState> createState() => _MindfulnessStepState();
-  
-}
-
-class _MindfulnessStepState extends State<MindfulnessStepState> {
-
-  @override
-  void initState() {
-    super.initState();
-  }
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return StepView(
-      step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
-      controller: SurveyController(),
-      title: const Text(''),
-      resultFunction: () => BoxesResult(
-        id: Identifier(id: "12312"),
-        startDate: DateTime.now(),
-        endDate: DateTime.now(),
-        valueIdentifier: 'custom', // Identification for NavigableTask
-        result: 'custom_result',
-      ),
-      child: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  "Mindfulness Activity", 
-                  textAlign: TextAlign.center,
-                  style: TextStyle( 
-                    fontWeight: FontWeight.w700,
-                    fontSize: 60, 
-                    color: blue,
-                  ),
-                ),
-              ),
-            ),
-            const Divider(
-              height: 20,
-              thickness: 2,
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Text(
-                overflow: TextOverflow.visible,
-                "The emotions you may have felt in the past discussion can be intense. When this happens, one option is to turn to mindfulness as a way to allow the intensity of the emotions to pass.", 
-                textAlign: TextAlign.center,
-                style: TextStyle( 
-                  //fontWeight: FontWeight.w700,, 
-                  fontSize: 16, 
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: "Mindfulness", 
-                  style: TextStyle(fontSize: 17, color: orange, fontWeight: FontWeight.w700,),
-                  children: const <TextSpan>[
-                    TextSpan(text: ' is paying attention to the present moment without judgment. We can always bring our attention to our breathing, allowing us to break away from the thoughts and feelings that can cause us to be upset. ', 
-                    style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.normal)),
-                  ]
-                )
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
 class ScenariosResult extends QuestionResult<String> {
   ScenariosResult({
     required super.id,
@@ -1565,8 +1458,6 @@ class _ScenariosState extends State<ScenariosState> {
       );
     }
   }
-  
-
 
   void _addDraggables(String text) {
     setState(() {
@@ -1748,17 +1639,16 @@ class _ScenariosState extends State<ScenariosState> {
       child: Center(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
                   "What does respect \nlook like to you?", 
                   textAlign: TextAlign.center,
                   style: TextStyle( 
-                    fontWeight: FontWeight.w700,
+                    //fontWeight: FontWeight.w700,, 
                     fontSize: 60, 
-                    color: blue,
                   ),
                 ),
               ),
@@ -1770,7 +1660,7 @@ class _ScenariosState extends State<ScenariosState> {
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: const TextSpan(
-                    text: "Drag & sort each of the following examples based on \nif they are", 
+                    text: "Drag & sort the following examples based on \nif they are", 
                     style: TextStyle(fontSize: 30, color: Colors.black),
                     children: <TextSpan>[
                       TextSpan(text: ' NO', style: TextStyle(color: Colors.red, fontSize: 30)),
@@ -1785,6 +1675,7 @@ class _ScenariosState extends State<ScenariosState> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Container(
+                width: double.infinity,
                 constraints: const BoxConstraints(minHeight: 60),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -2005,13 +1896,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       title: "",
       text: ""
     ),
-    MindfulnessStep(
-      text: "",
-      title: "",
-    ),
-    
   ];
-
   //
   @override
   Widget build(BuildContext context) {
@@ -2061,8 +1946,9 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                           width: double.infinity,
                           height: MediaQuery.of(context).size.height - kToolbarHeight,
                           child: SurveyKit(
-                            surveyController: surveyController,
                             onResult: (SurveyResult result) {
+                              //Read finish reason from result (result.finishReason)
+                              //and evaluate the results
                             },
                             task: task,
                             themeData: Theme.of(context).copyWith(
@@ -2165,7 +2051,6 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                             surveyProgressbarConfiguration: SurveyProgressConfiguration(
                               progressbarColor: blue,
                             ),
-                            
                           ),
                         ),
                         ],
@@ -2173,7 +2058,6 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                     ),
                   ),
                 ),
-                /*
                 Padding(
                   padding: const EdgeInsets.only(left: 8, top: 8),
                   child: Container(
@@ -2195,7 +2079,6 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                     ),
                   ),
                 ),
-                */
               ],
           ),
         ),

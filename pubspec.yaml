@@ -36,13 +36,14 @@ flutter:
       fonts:
         - asset: assets/fonts/Barlow/Barlow-ExtraBold.ttf
           weight: 700
-        - asset: assets/fonts/Barlow/Barlow-SemiBold.ttf
-          weight: 500
+        - asset: assets/fonts/Barlow/Barlow-LightItalic.ttf
+          style: italic
         - asset: assets/fonts/Barlow/Barlow-Light.ttf
         
         
 
   assets:
+    - assets/images/PapelTransparent.png
     - assets/images/background.png
     - assets/images/logo.png
     - assets/images/logoimg.png
