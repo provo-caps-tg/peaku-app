@@ -812,7 +812,7 @@ class _BoxesStepState extends State<BoxesStepState> {
         'Love', 
         'Kindness',
         'Contentment', 
-        'Understanding the other person',
+        'Understanding',
         'Generosity',
         'Care',
         'Empathy',
@@ -938,7 +938,7 @@ class _BoxesStepState extends State<BoxesStepState> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               child: Container(
                 constraints: const BoxConstraints(minHeight: 60),
                 width: double.infinity,
@@ -975,7 +975,7 @@ class _BoxesStepState extends State<BoxesStepState> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               child: Container(
                 width: double.infinity,
                 constraints: const BoxConstraints(minHeight: 60),
@@ -1994,13 +1994,6 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: ""
     ),
-    /*
-    InstructionStep(
-      title: 'What does respect look like to you?',
-      text: '(Choose from the following examples whether they are YES Respectful or NO Not Respectful)',
-      buttonText: 'Let\'s go!',
-    ),
-    */
     HealthyRelationshipStep(
       title: "",
       text: ""
