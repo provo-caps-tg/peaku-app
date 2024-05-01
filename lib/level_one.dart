@@ -959,8 +959,8 @@ class _BoxesStepState extends State<BoxesStepState> {
       child: Center(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
@@ -969,6 +969,8 @@ class _BoxesStepState extends State<BoxesStepState> {
                   style: TextStyle( 
                     //fontWeight: FontWeight.w700,, 
                     fontSize: 60, 
+                    fontWeight: FontWeight.bold,
+                    color: blue,
                   ),
                 ),
               ),
@@ -1246,8 +1248,8 @@ class _ReflectionStepState extends State<ReflectionStepState> {
       child: Center(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
@@ -1256,6 +1258,8 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                   style: TextStyle( 
                     //fontWeight: FontWeight.w700,, 
                     fontSize: 60, 
+                    fontWeight: FontWeight.bold,
+                    color: blue,
                   ),
                 ),
               ),
@@ -1671,8 +1675,8 @@ class _ScenariosState extends State<ScenariosState> {
       child: Center(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
@@ -1680,7 +1684,9 @@ class _ScenariosState extends State<ScenariosState> {
                   textAlign: TextAlign.center,
                   style: TextStyle( 
                     //fontWeight: FontWeight.w700,, 
-                    fontSize: 60, 
+                    fontSize: 50, 
+                    fontWeight: FontWeight.bold,
+                    color: blue,
                   ),
                 ),
               ),
@@ -2212,6 +2218,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                     ),
                   ),
                 ),
+                /*
                 Padding(
                   padding: const EdgeInsets.only(left: 8, top: 8),
                   child: Container(
@@ -2233,6 +2240,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                     ),
                   ),
                 ),
+                */
               ],
           ),
         ),
