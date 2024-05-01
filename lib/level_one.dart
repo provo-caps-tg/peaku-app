@@ -431,18 +431,31 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
               ),
             ),
           ),
-          Text(
-            "Reminder", 
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 30,
-              color: blue,
-              fontFamily: 'Barlow',
-              fontWeight: FontWeight.bold,
+          Divider(
+            height: 20,
+            thickness: 2,
+            indent: 20,
+            endIndent: 20,
+            color: blue,
+          ),
+          FittedBox(
+            fit: BoxFit.fill,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 5, bottom:5, left:15, right:15),
+              child: Text(
+                "Important Notes", 
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  color: blue,
+                  fontFamily: 'Barlow',
+                  fontWeight: FontWeight.bold
+                ),
+              ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16, top:15),
             child: Text.rich(
               textAlign: TextAlign.center,
                 TextSpan(
@@ -459,35 +472,46 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: Text(
-                  "We sometimes have a tendency to \ndismiss them as a phase,\n or tell ourselves it will get better.\n Or we tell ourselves that \nthe good outweighs the bad.", 
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: blue,
-                    fontFamily: 'Barlow',
+          SizedBox(
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16,left:15, right:15),
+                  child: Text(
+                    "We sometimes have a tendency to dismiss them as a phase, or tell ourselves it will get better. Or we tell ourselves that the good outweighs the bad.", 
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.visible,
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: blue,
+                      fontFamily: 'Barlow',
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 16),
+            padding: const EdgeInsets.only(top: 1, bottom:15, left:15, right:15),
             child: Text(
-              "\n\nNo amount of abuse in a relationship is acceptable.", 
+              "\nNo amount of abuse in a relationship is acceptable.", 
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 23,
                 color: blue,
                 fontFamily: 'Barlow',
-                decoration: TextDecoration.underline,
+                fontWeight: FontWeight.bold
               ),
             ),
+          ),
+          Divider(
+            height: 20,
+            thickness: 2,
+            indent: 20,
+            endIndent: 20,
+            color: blue,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16),
@@ -839,7 +863,7 @@ class _BoxesStepState extends State<BoxesStepState> {
         'Love', 
         'Kindness',
         'Contentment', 
-        'Understanding the other person',
+        'Understanding',
         'Generosity',
         'Care',
         'Empathy',
@@ -954,7 +978,7 @@ class _BoxesStepState extends State<BoxesStepState> {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  "Select the top 5 qualities from the \ngroup below that make for healthy relationships:", 
+                  "Drag & sort the top 5 qualities from the \ngroup below that make for healthy relationships:", 
                   textAlign: TextAlign.center,
                   style: TextStyle( 
                     //fontWeight: FontWeight.w700,, 
@@ -964,7 +988,7 @@ class _BoxesStepState extends State<BoxesStepState> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               child: Container(
                 constraints: const BoxConstraints(minHeight: 60),
                 width: double.infinity,
@@ -1001,7 +1025,7 @@ class _BoxesStepState extends State<BoxesStepState> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               child: Container(
                 width: double.infinity,
                 constraints: const BoxConstraints(minHeight: 60),
@@ -1877,25 +1901,19 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: "",
     ),
-    VisionsExecriseStep(
-      text: "",
-      title: ""
-    ),
-    /*
-    InstructionStep(
-      title: 'What does respect look like to you?',
-      text: '(Choose from the following examples whether they are YES Respectful or NO Not Respectful)',
-      buttonText: 'Let\'s go!',
-    ),
-    */
     CycleOfAbuseStep(
       text: "",
       title: "",
     ),
-    HealthyRelationshipStep(
-      title: "",
-      text: ""
+    VisionsExecriseStep(
+      text: "",
+      title: ""
     ),
+    MindfulnessStep(
+      text: "",
+      title: "",
+    ),
+    
   ];
   //
   @override
