@@ -1986,6 +1986,10 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: "",
     ),
+    CycleOfAbuseStep(
+      text: "",
+      title: "",
+    ),
     VisionsExecriseStep(
       text: "",
       title: ""
@@ -1997,10 +2001,6 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       buttonText: 'Let\'s go!',
     ),
     */
-    CycleOfAbuseStep(
-      text: "",
-      title: "",
-    ),
     HealthyRelationshipStep(
       title: "",
       text: ""
