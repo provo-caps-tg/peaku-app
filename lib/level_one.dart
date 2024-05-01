@@ -1909,10 +1909,12 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: ""
     ),
+    /*
     MindfulnessStep(
       text: "",
       title: "",
     ),
+    */
     
   ];
   //
