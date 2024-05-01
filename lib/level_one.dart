@@ -1410,6 +1410,14 @@ class _ReflectionStepState extends State<ReflectionStepState> {
   }
 }
 
+
+
+
+
+
+
+
+
 class ScenariosResult extends QuestionResult<String> {
   ScenariosResult({
     required super.id,
@@ -1881,6 +1889,134 @@ class _ScenariosState extends State<ScenariosState> {
     );
   }
 }
+
+
+class MindfulnessResult extends QuestionResult<String> {
+  MindfulnessResult({
+    required super.id,
+    required super.startDate,
+    required super.endDate,
+    required String super.valueIdentifier,
+    required String super.result,
+  });
+  @override
+  List<Object?> get props => [id, startDate, endDate, valueIdentifier, result];
+}
+
+class MindfulnessStep extends Step {
+  final String title;
+  final String text;
+  MindfulnessStep({
+    required this.title,
+    required this.text,
+  });
+  @override
+  Widget createView({required QuestionResult? questionResult}) {
+    return MindfulnessStepState(
+      title: title,
+      text: text,
+    );
+  }
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+}
+
+class MindfulnessStepState extends StatefulWidget {
+  final String title;
+  final String text;
+  const MindfulnessStepState({
+    super.key,
+    required this.title,
+    required this.text,
+  });
+  @override
+  State<MindfulnessStepState> createState() => _MindfulnessStepState();
+  
+}
+
+class _MindfulnessStepState extends State<MindfulnessStepState> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StepView(
+      step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
+      controller: SurveyController(),
+      title: const Text(''),
+      resultFunction: () => BoxesResult(
+        id: Identifier(id: "12312"),
+        startDate: DateTime.now(),
+        endDate: DateTime.now(),
+        valueIdentifier: 'custom', // Identification for NavigableTask
+        result: 'custom_result',
+      ),
+      child: Center(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  "Mindfulness Activity", 
+                  textAlign: TextAlign.center,
+                  style: TextStyle( 
+                    fontWeight: FontWeight.w700,
+                    fontSize: 60, 
+                    color: blue,
+                  ),
+                ),
+              ),
+            ),
+            const Divider(
+              height: 20,
+              thickness: 2,
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: Text(
+                overflow: TextOverflow.visible,
+                "The emotions you may have felt in the past discussion can be intense. When this happens, one option is to turn to mindfulness as a way to allow the intensity of the emotions to pass.", 
+                textAlign: TextAlign.center,
+                style: TextStyle( 
+                  //fontWeight: FontWeight.w700,, 
+                  fontSize: 16, 
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  text: "Mindfulness", 
+                  style: TextStyle(fontSize: 17, color: orange, fontWeight: FontWeight.w700,),
+                  children: const <TextSpan>[
+                    TextSpan(text: ' is paying attention to the present moment without judgment. We can always bring our attention to our breathing, allowing us to break away from the thoughts and feelings that can cause us to be upset. ', 
+                    style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.normal)),
+                  ]
+                )
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
 class LevelOneHome extends StatefulWidget {
   const LevelOneHome({super.key});
 
@@ -1909,12 +2045,10 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: ""
     ),
-    /*
     MindfulnessStep(
       text: "",
       title: "",
     ),
-    */
     
   ];
   //
