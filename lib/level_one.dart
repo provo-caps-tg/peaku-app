@@ -1,5 +1,5 @@
 import 'global_varibles.dart';
-import 'survey_intro.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
@@ -1941,13 +1941,31 @@ class MindfulnessStepState extends StatefulWidget {
 }
 
 class _MindfulnessStepState extends State<MindfulnessStepState> {
+  late AudioPlayer _audioPlayer;
+  bool isPlaying = false;
+  Duration _duration = Duration();
+  final audioPath = 'assets/mindfulness.m4a';
 
   @override
   void initState() {
     super.initState();
+    _initAudioPlayer();
   }
+
+  void _initAudioPlayer() {
+    _audioPlayer = AudioPlayer();
+    _audioPlayer.onDurationChanged.listen((duration) {
+      setState(() {
+        _duration = duration;
+      });
+    });
+
+  }
+
   @override
   void dispose() {
+    _audioPlayer.release();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -2015,6 +2033,36 @@ class _MindfulnessStepState extends State<MindfulnessStepState> {
                 )
               ),
             ),
+        Slider(
+          inactiveColor: blue,
+          value: 0,
+          min: 0.0,
+          max: _duration.inSeconds.toDouble(),
+          onChanged: (double value) {
+            setState(() {
+              _audioPlayer.seek(Duration(seconds: value.toInt()));
+            });
+          },
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow),
+              onPressed: () {
+                if (isPlaying) {
+                  _audioPlayer.pause();
+                } else {
+                  _audioPlayer.play(UrlSource('https://voca.ro/1icHuC0FnGQr'));
+
+                }
+                setState(() {
+                  isPlaying = !isPlaying;
+                });
+              },
+            ),
+          ],
+        ),
           ],
         ),
       ),
