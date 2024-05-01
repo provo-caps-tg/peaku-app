@@ -432,18 +432,31 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
               ),
             ),
           ),
-          Text(
-            "Reminder", 
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 30,
-              color: blue,
-              fontFamily: 'Barlow',
-              fontWeight: FontWeight.bold,
+          Divider(
+            height: 20,
+            thickness: 2,
+            indent: 20,
+            endIndent: 20,
+            color: blue,
+          ),
+          FittedBox(
+            fit: BoxFit.fill,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 5, bottom:5, left:15, right:15),
+              child: Text(
+                "Important Notes", 
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  color: blue,
+                  fontFamily: 'Barlow',
+                  fontWeight: FontWeight.bold
+                ),
+              ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16, top:15),
             child: Text.rich(
               textAlign: TextAlign.center,
                 TextSpan(
@@ -454,41 +467,52 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
                 ),
                 text: 'This is an example of what ', 
                 children: const <TextSpan>[
-                  TextSpan(text: "can", style: TextStyle(decoration: TextDecoration.underline)),
+                  TextSpan(text: "can", style: TextStyle(fontStyle: FontStyle.italic)),
                   TextSpan(text: " happen in a relationship. It does not always look like this, but it is important to recognize this cycle when present. \n\nSome relationships exhibit this cycle, others are quite random.  It is important to recognize signs of abuse in relationships, and understand that when they are random, or unpredictable."),
                 ]
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: Text(
-                  "We sometimes have a tendency to \ndismiss them as a phase,\n or tell ourselves it will get better.\n Or we tell ourselves that \nthe good outweighs the bad.", 
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 17,
-                    color: blue,
-                    fontFamily: 'Barlow',
+          SizedBox(
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16,left:15, right:15),
+                  child: Text(
+                    "We sometimes have a tendency to dismiss them as a phase, or tell ourselves it will get better. Or we tell ourselves that the good outweighs the bad.", 
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.visible,
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: blue,
+                      fontFamily: 'Barlow',
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 16),
+            padding: const EdgeInsets.only(top: 1, bottom:15, left:15, right:15),
             child: Text(
-              "\n\nNo amount of abuse in a relationship is acceptable.", 
+              "\nNo amount of abuse in a relationship is acceptable.", 
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 23,
                 color: blue,
                 fontFamily: 'Barlow',
-                decoration: TextDecoration.underline,
+                fontWeight: FontWeight.bold
               ),
             ),
+          ),
+          Divider(
+            height: 20,
+            thickness: 2,
+            indent: 20,
+            endIndent: 20,
+            color: blue,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16),
