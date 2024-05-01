@@ -80,7 +80,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                         child: Column(
                           children: [
                             Text(
-                              "Before we Start a Quick Summary of our Curriculum",
+                              "Before we start, here is a quick summary of our curriculum",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 35,
@@ -143,6 +143,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 padding: const EdgeInsets.only( top: 10, bottom: 10),
                                 child: Container(
                                   decoration: BoxDecoration(
+                                    color: const Color.fromRGBO(4, 21, 56 ,75).withOpacity(animationO.value/450),
                                     border: Border.all(width: 6, color: const Color.fromARGB(255, 4, 21, 56).withOpacity(animationO.value/100) ),
                                     borderRadius: BorderRadius.circular(12)
                                   ),
@@ -209,6 +210,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 padding: const EdgeInsets.only( top: 10, bottom: 10),
                                 child: Container(
                                 decoration: BoxDecoration(
+                                  color: const Color.fromRGBO(124,66,81,75).withOpacity(animationO.value/450),
                                   border: Border.all(width: 6, color: const Color.fromRGBO(124,66,81,255).withOpacity(animationO.value/100) ),
                                   borderRadius: BorderRadius.circular(12)
                                 ),
@@ -275,6 +277,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 padding: const EdgeInsets.only( top: 10, bottom: 10),
                                 child: Container(
                                 decoration: BoxDecoration(
+                                  color: const Color.fromRGBO(158,64,59,75).withOpacity(animationO.value/450),
                                   border: Border.all(width: 6, color: const Color.fromRGBO(158,64,59,255).withOpacity(animationO.value/100) ),
                                   borderRadius: BorderRadius.circular(12)
                                 ),
@@ -341,6 +344,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                                 padding: const EdgeInsets.only( top: 10, bottom: 10),
                                 child: Container(
                                 decoration: BoxDecoration(
+                                  color: const Color.fromRGBO(232, 105, 0,75).withOpacity(animationO.value/450),
                                   border: Border.all(width: 6, color: orange.withOpacity(animationO.value/100) ),
                                   borderRadius: BorderRadius.circular(12)
                                 ),
@@ -427,7 +431,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
                               },
                               child: const FittedBox(
                                 fit: BoxFit.fill,
-                                child: Text('Continue', style: TextStyle(fontSize: 20)),
+                                child: Text('Continue to Level 1', style: TextStyle(fontSize: 20)),
                               ),
                             ),
                          ),

@@ -928,7 +928,7 @@ class _BoxesStepState extends State<BoxesStepState> {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  "Select the top 5 qualities from the \ngroup below that make for healthy relationships:", 
+                  "Drag & sort the top 5 qualities from the \ngroup below that make for healthy relationships:", 
                   textAlign: TextAlign.center,
                   style: TextStyle( 
                     //fontWeight: FontWeight.w700,, 
