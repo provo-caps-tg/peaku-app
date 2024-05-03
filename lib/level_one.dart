@@ -150,6 +150,7 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
           ),
           SizedBox(
             width: 300,
+            height: 150,
             child: Row(
               children: [
                 Stack(
@@ -215,6 +216,7 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
           ),
           SizedBox(
             width: 300,
+            height: 150,
             child: Row(
               children: [
                 Stack(
@@ -724,17 +726,21 @@ class VisionsExecriseStepState extends StatefulWidget {
   State<VisionsExecriseStepState> createState() => _VisionsExecriseStepState();
 }
 
-class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with SingleTickerProviderStateMixin{
+class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with TickerProviderStateMixin{
   int number = 0;
+  int number2 = 0;
   late AnimationController visibilityController;
   late Animation<double> opacity;
+  late AnimationController visibilityControllerPapel;
+  late Animation<double> opacityPapel;
   List<String> possibiltys = ["Do you see yourself going to college?","Joining the PeaceCorps?","The Army?","Trade school?" ,"What type of work do you see?","Will you be married?" ,"Where will you live?" ,"What do you want your relationships to look like?" ,"How do you treat each other?" ,"What do you do together?","Do you want to become a parent?","What role does your family have in your life?","What role do your friends have in your life?"];
+  List<String> imagesPossible = ["assets/images/NewestPapel1.png","assets/images/NewestPapel2.png","assets/images/NewestPapel3.png"];
 
   @override
   void initState() {
     super.initState();
     visibilityController = AnimationController(
-      duration: const Duration(milliseconds: 3000),
+      duration: const Duration(milliseconds: 1000),
       vsync: this
     );
     CurvedAnimation visibilityCurve = CurvedAnimation(parent: visibilityController, curve: Curves.easeOutExpo);
@@ -755,6 +761,23 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Sin
        });
     });
     visibilityController.forward();
+    visibilityControllerPapel = AnimationController(
+      duration: const Duration(milliseconds: 50),
+      vsync: this
+    );
+    opacityPapel = Tween<double>(begin: 0, end: 1).animate(visibilityCurve);
+    opacityPapel.addListener(() {
+      setState(() {
+        if (visibilityControllerPapel.isCompleted) {
+          if (number2 != 2) { 
+          print("RAAAAAAGH WTF IS A KILOMETER");
+          number2++;
+          visibilityControllerPapel.forward();
+          }
+        }
+      });
+    });
+    visibilityControllerPapel.forward();
   }
 
   @override
@@ -786,7 +809,15 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Sin
               ]
             ),
           ),
-          const Image(image: AssetImage("assets/images/PapelTransparent.png"), width: 100, height: 100,),
+          Stack(
+            children: [
+              const Image(image: AssetImage("assets/images/NewestPapel1.png"), width: 200, height: 200,),
+              Opacity(
+                opacity: opacityPapel.value,
+                child: Image(image: AssetImage(imagesPossible[number2]), width: 200, height: 200,)
+              ),
+            ],
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -804,6 +835,7 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Sin
   @override            
   void dispose() {          
     visibilityController.dispose();  
+    visibilityControllerPapel.dispose();
     super.dispose();         
   }
 
