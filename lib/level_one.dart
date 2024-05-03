@@ -148,9 +148,8 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
-            width: 300,
-            height: 150,
+          FittedBox(
+            fit: BoxFit.contain,
             child: Row(
               children: [
                 Stack(
@@ -214,9 +213,8 @@ class _CycleOfAbuseStepState extends State<CycleOfAbuseStepState> with SingleTic
               ],
             ),
           ),
-          SizedBox(
-            width: 300,
-            height: 150,
+          FittedBox(
+            fit: BoxFit.contain,
             child: Row(
               children: [
                 Stack(
