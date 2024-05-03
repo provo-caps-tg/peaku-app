@@ -44,7 +44,9 @@ flutter:
         
 
   assets:
-    - assets/images/PapelTransparent.png
+    - assets/images/NewestPapel1.png
+    - assets/images/NewestPapel2.png
+    - assets/images/NewestPapel3.PNG
     - assets/images/background.png
     - assets/images/logo.png
     - assets/images/logoimg.png
