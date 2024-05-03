@@ -1980,101 +1980,103 @@ class _MindfulnessStepState extends State<MindfulnessStepState> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                "Take-Away\nActivity", 
+                textAlign: TextAlign.center,
+                style: TextStyle( 
+                  //fontWeight: FontWeight.w700,, 
+                  fontSize: 50, 
+                  fontWeight: FontWeight.bold,
+                  color: blue,
+                ),
+              ),
+            ),
+          ),
+          const Divider(
+            height: 20,
+            thickness: 1,
+            indent: 20,
+            endIndent: 20,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16,left:15, right:15),
             child: Text(
-              "Take-Away\nActivity", 
+              "Spend 30 minutes at least twice a week adding to your vision drawing. There are no wrong directions. Just picture 1, 5 and 10 years ahead of where you are now and draw or write.", 
               textAlign: TextAlign.center,
-              style: TextStyle( 
-                //fontWeight: FontWeight.w700,, 
-                fontSize: 50, 
-                fontWeight: FontWeight.bold,
+              overflow: TextOverflow.visible,
+              style: TextStyle(
+                fontSize: 17,
                 color: blue,
+                fontFamily: 'Barlow',
               ),
             ),
           ),
-        ),
-        const Divider(
-          height: 20,
-          thickness: 1,
-          indent: 20,
-          endIndent: 20,
-          color: Colors.black,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 16,left:15, right:15),
-          child: Text(
-            "Spend 30 minutes at least twice a week adding to your vision drawing. There are no wrong directions. Just picture 1, 5 and 10 years ahead of where you are now and draw or write.", 
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.visible,
-            style: TextStyle(
-              fontSize: 17,
-              color: blue,
-              fontFamily: 'Barlow',
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 16,left:15, right:15),
-          child: Text(
-            "Show someone the vision drawing you're working on. It could be a friend, parent or partner. Ask for support and feedback.", 
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.visible,
-            style: TextStyle(
-              fontSize: 17,
-              color: blue,
-              fontFamily: 'Barlow',
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 16,left:15, right:15, bottom: 16),
-          child: Text(
-            "Upload each weekly version here so you can mark the progress in your vision!", 
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.visible,
-            style: TextStyle(
-              fontSize: 17,
-              color: blue,
-              fontFamily: 'Barlow',
-            ),
-          ),
-        ),
-        const Divider(
-          height: 20,
-          thickness: 1,
-          indent: 20,
-          endIndent: 20,
-          color: Colors.black,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top:16, bottom: 30, left:35, right: 35),
-          child: SizedBox(
-            height: 50,
-            child: TextButton(
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                backgroundColor: MaterialStateProperty.all<Color>(orange),
-              ),
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage())); 
-              },
-              child: const FittedBox(
-                fit: BoxFit.fill,
-                child: Text('  Restart Demo  ', style: TextStyle(fontSize: 20)),
+          Padding(
+            padding: const EdgeInsets.only(top: 16,left:15, right:15),
+            child: Text(
+              "Show someone the vision drawing you're working on. It could be a friend, parent or partner. Ask for support and feedback.", 
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.visible,
+              style: TextStyle(
+                fontSize: 17,
+                color: blue,
+                fontFamily: 'Barlow',
               ),
             ),
           ),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.only(top: 16,left:15, right:15, bottom: 16),
+            child: Text(
+              "Upload each weekly version here so you can mark the progress in your vision!", 
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.visible,
+              style: TextStyle(
+                fontSize: 17,
+                color: blue,
+                fontFamily: 'Barlow',
+              ),
+            ),
+          ),
+          const Divider(
+            height: 20,
+            thickness: 1,
+            indent: 20,
+            endIndent: 20,
+            color: Colors.black,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top:16, bottom: 30, left:35, right: 35),
+            child: SizedBox(
+              height: 50,
+              child: TextButton(
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                  backgroundColor: MaterialStateProperty.all<Color>(orange),
+                ),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomePage())); 
+                },
+                child: const FittedBox(
+                  fit: BoxFit.fill,
+                  child: Text('  Restart Demo  ', style: TextStyle(fontSize: 20)),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
