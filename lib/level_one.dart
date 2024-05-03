@@ -726,7 +726,6 @@ class VisionsExecriseStepState extends StatefulWidget {
 
 class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with TickerProviderStateMixin{
   int number = 0;
-  int number2 = 0;
   late AnimationController visibilityController;
   late Animation<double> opacity;
   List<String> possibiltys = ["Do you see yourself going to college?","Joining the PeaceCorps?","The Army?","Trade school?" ,"What type of work do you see?","Will you be married?" ,"Where will you live?" ,"What do you want your relationships to look like?" ,"How do you treat each other?" ,"What do you do together?","Do you want to become a parent?","What role does your family have in your life?","What role do your friends have in your life?"];
@@ -735,14 +734,24 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
   void initState() {
     super.initState();
     visibilityController = AnimationController(
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 2000),
       vsync: this
     );
     CurvedAnimation visibilityCurve = CurvedAnimation(parent: visibilityController, curve: Curves.easeOutExpo);
     opacity = Tween<double>(begin: 0, end: 1).animate(visibilityCurve);
     opacity.addListener(() {
       setState(() {
-        
+        if (visibilityController.isCompleted) {
+          visibilityController.reverse();
+        }
+        if (visibilityController.isDismissed) {
+          if (number < 12) {
+            number++;
+          } else {
+            number = 0;
+          }
+          visibilityController.forward();
+        }
        });
     });
     visibilityController.forward();
@@ -782,8 +791,8 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
                 ),
               ),
               const Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: const Image( image: AssetImage("assets/images/NewestPapel3.PNG"), height: 200, width: 200),
+                padding: EdgeInsets.all(8.0),
+                child: Image( image: AssetImage("assets/images/NewestPapel3.PNG"), height: 200, width: 200),
               ),
             ],
           ),
@@ -2095,14 +2104,15 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: "",
     ),
-    MindfulnessStep(
-      text: "",
-      title: "",
-    ),
     VisionsExecriseStep(
       text: "",
       title: ""
     ),
+    MindfulnessStep(
+      text: "",
+      title: "",
+    ),
+
     
   ];
   //
