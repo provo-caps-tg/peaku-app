@@ -1,5 +1,5 @@
 import 'global_varibles.dart';
-import 'survey_intro.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
@@ -991,8 +991,8 @@ class _BoxesStepState extends State<BoxesStepState> {
       child: Center(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
@@ -1001,6 +1001,8 @@ class _BoxesStepState extends State<BoxesStepState> {
                   style: TextStyle( 
                     //fontWeight: FontWeight.w700,, 
                     fontSize: 60, 
+                    fontWeight: FontWeight.bold,
+                    color: blue,
                   ),
                 ),
               ),
@@ -1278,8 +1280,8 @@ class _ReflectionStepState extends State<ReflectionStepState> {
       child: Center(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
@@ -1288,6 +1290,8 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                   style: TextStyle( 
                     //fontWeight: FontWeight.w700,, 
                     fontSize: 60, 
+                    fontWeight: FontWeight.bold,
+                    color: blue,
                   ),
                 ),
               ),
@@ -1703,8 +1707,8 @@ class _ScenariosState extends State<ScenariosState> {
       child: Center(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
@@ -1712,7 +1716,9 @@ class _ScenariosState extends State<ScenariosState> {
                   textAlign: TextAlign.center,
                   style: TextStyle( 
                     //fontWeight: FontWeight.w700,, 
-                    fontSize: 60, 
+                    fontSize: 50, 
+                    fontWeight: FontWeight.bold,
+                    color: blue,
                   ),
                 ),
               ),
@@ -1967,13 +1973,31 @@ class MindfulnessStepState extends StatefulWidget {
 }
 
 class _MindfulnessStepState extends State<MindfulnessStepState> {
+  late AudioPlayer _audioPlayer;
+  bool isPlaying = false;
+  Duration _duration = Duration();
+  final audioPath = 'assets/mindfulness.m4a';
 
   @override
   void initState() {
     super.initState();
+    _initAudioPlayer();
   }
+
+  void _initAudioPlayer() {
+    _audioPlayer = AudioPlayer();
+    _audioPlayer.onDurationChanged.listen((duration) {
+      setState(() {
+        _duration = duration;
+      });
+    });
+
+  }
+
   @override
   void dispose() {
+    _audioPlayer.release();
+    _audioPlayer.dispose();
     super.dispose();
   }
 
@@ -2041,6 +2065,36 @@ class _MindfulnessStepState extends State<MindfulnessStepState> {
                 )
               ),
             ),
+        Slider(
+          inactiveColor: blue,
+          value: 0,
+          min: 0.0,
+          max: _duration.inSeconds.toDouble(),
+          onChanged: (double value) {
+            setState(() {
+              _audioPlayer.seek(Duration(seconds: value.toInt()));
+            });
+          },
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow),
+              onPressed: () {
+                if (isPlaying) {
+                  _audioPlayer.pause();
+                } else {
+                  _audioPlayer.play(UrlSource('https://voca.ro/1icHuC0FnGQr'));
+
+                }
+                setState(() {
+                  isPlaying = !isPlaying;
+                });
+              },
+            ),
+          ],
+        ),
           ],
         ),
       ),
@@ -2073,13 +2127,13 @@ class _LevelOneHomeState extends State<LevelOneHome> {
       text: "",
       title: "",
     ),
-    VisionsExecriseStep(
-      text: "",
-      title: ""
-    ),
     MindfulnessStep(
       text: "",
       title: "",
+    ),
+    VisionsExecriseStep(
+      text: "",
+      title: ""
     ),
     
   ];
@@ -2244,6 +2298,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                     ),
                   ),
                 ),
+                /*
                 Padding(
                   padding: const EdgeInsets.only(left: 8, top: 8),
                   child: Container(
@@ -2265,6 +2320,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                     ),
                   ),
                 ),
+                */
               ],
           ),
         ),
