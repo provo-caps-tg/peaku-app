@@ -729,10 +729,7 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
   int number2 = 0;
   late AnimationController visibilityController;
   late Animation<double> opacity;
-  late AnimationController visibilityControllerPapel;
-  late Animation<double> opacityPapel;
   List<String> possibiltys = ["Do you see yourself going to college?","Joining the PeaceCorps?","The Army?","Trade school?" ,"What type of work do you see?","Will you be married?" ,"Where will you live?" ,"What do you want your relationships to look like?" ,"How do you treat each other?" ,"What do you do together?","Do you want to become a parent?","What role does your family have in your life?","What role do your friends have in your life?"];
-  List<String> imagesPossible = ["assets/images/NewestPapel1.png","assets/images/NewestPapel2.png","assets/images/NewestPapel3.PNG"];
 
   @override
   void initState() {
@@ -745,27 +742,10 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
     opacity = Tween<double>(begin: 0, end: 1).animate(visibilityCurve);
     opacity.addListener(() {
       setState(() {
-       
+        
        });
     });
     visibilityController.forward();
-    visibilityControllerPapel = AnimationController(
-      duration: const Duration(milliseconds: 50),
-      vsync: this
-    );
-    opacityPapel = Tween<double>(begin: 0, end: 1).animate(visibilityCurve);
-    opacityPapel.addListener(() {
-      setState(() {
-        if (visibilityControllerPapel.isCompleted) {
-          if (number2 != 2) { 
-          print("RAAAAAAGH WTF IS A KILOMETER");
-          number2++;
-          visibilityControllerPapel.forward();
-          }
-        }
-      });
-    });
-    visibilityControllerPapel.forward();
   }
 
   @override
@@ -782,27 +762,29 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
       ),
       child: Column(
         children: [
-          Text.rich(
-            textAlign: TextAlign.center,
-              TextSpan(
-                style: TextStyle(
-                fontSize: 17,
-                color: blue,
-                fontFamily: 'Barlow',
-              ),
-              text: '', 
-              children: const <TextSpan>[
-                TextSpan(text: "Visions Exercise", style: TextStyle( fontSize: 30, fontWeight: FontWeight.w500)),
-                TextSpan(text: "\nFirst divide a paper into 3 different sections."),
-              ]
-            ),
-          ),
-          Stack(
+          Text("Visions Exercise", style: TextStyle( fontSize: 50, fontWeight: FontWeight.w700, fontFamily: 'Barlow', color:blue)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-             Opacity(
-              opacity: opacityPapel.value,
-              child: Image( image: AssetImage(imagesPossible[number2]),)
-             )
+              Text.rich(
+                textAlign: TextAlign.center,
+                  TextSpan(
+                    style: TextStyle(
+                    fontSize: 17,
+                    color: blue,
+                    fontFamily: 'Barlow',
+                  ),
+                  text: '', 
+                  children: const <TextSpan>[
+                    TextSpan(text: "First divide a paper into \n3 different sections."),
+                    TextSpan(text: "\n\nThen Draw what you want \nto see in your life \n -1 year from now\n -5 years from now\n -10 years from now",),
+                  ]
+                ),
+              ),
+              const Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: const Image( image: AssetImage("assets/images/NewestPapel3.PNG"), height: 200, width: 200),
+              ),
             ],
           ),
           Padding(
@@ -810,7 +792,7 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
             child: Column(
               children: [
                 Text("Possible Ideas", style: TextStyle(color: blue, fontFamily: 'Barlow', fontWeight: FontWeight.bold), ),
-                Text(possibiltys[number], style: TextStyle(color: blue.withOpacity(opacity.value) ),),
+                Text(possibiltys[number], style: TextStyle(color: blue.withOpacity(opacity.value), fontFamily: 'Barlow' ),),
               ],
             ),
           ),
@@ -822,7 +804,6 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
   @override            
   void dispose() {          
     visibilityController.dispose();  
-    visibilityControllerPapel.dispose();
     super.dispose();         
   }
 
