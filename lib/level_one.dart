@@ -747,17 +747,7 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
     opacity = Tween<double>(begin: 0, end: 1).animate(visibilityCurve);
     opacity.addListener(() {
       setState(() {
-         if (visibilityController.isCompleted) {
-          visibilityController.reverse();
-        }
-        if(visibilityController.isDismissed){
-          visibilityController.forward();
-          if (number != 12) {
-          number++;
-          } else {
-            number = 0;
-          }
-        }
+       
        });
     });
     visibilityController.forward();
