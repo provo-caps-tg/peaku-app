@@ -804,7 +804,7 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
               const Image(image: AssetImage("assets/images/NewestPapel1.png"), width: 200, height: 200,),
               Opacity(
                 opacity: opacityPapel.value,
-                child: Image(image: AssetImage(imagesPossible[number2]), width: 200, height: 200,)
+                child: Image(image: AssetImage("assets/images/NewestPapel3.png"), width: 200, height: 200,)
               ),
             ],
           ),
