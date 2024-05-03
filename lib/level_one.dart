@@ -734,7 +734,7 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
   late AnimationController visibilityControllerPapel;
   late Animation<double> opacityPapel;
   List<String> possibiltys = ["Do you see yourself going to college?","Joining the PeaceCorps?","The Army?","Trade school?" ,"What type of work do you see?","Will you be married?" ,"Where will you live?" ,"What do you want your relationships to look like?" ,"How do you treat each other?" ,"What do you do together?","Do you want to become a parent?","What role does your family have in your life?","What role do your friends have in your life?"];
-  List<String> imagesPossible = ["assets/images/NewestPapel1.png","assets/images/NewestPapel2.png","assets/images/NewestPapel3.png"];
+  List<String> imagesPossible = ["assets/images/NewestPapel1.png","assets/images/NewestPapel2.png","assets/images/NewestPapel3.PNG"];
 
   @override
   void initState() {
