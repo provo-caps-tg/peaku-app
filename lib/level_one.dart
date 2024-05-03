@@ -1,5 +1,5 @@
 import 'global_varibles.dart';
-import 'package:audioplayers/audioplayers.dart';
+import 'main.dart';
 import 'package:flutter/material.dart' hide Step;
 import 'package:survey_kit/survey_kit.dart';
 import 'package:material_color_generator/material_color_generator.dart';
@@ -23,7 +23,7 @@ class CycleOfAbuseStep extends Step {
   final String text;
   CycleOfAbuseStep({
     bool isOptional = false,
-    String buttonText = 'Next',
+    String buttonText = 'Next Section',
     required this.title,
     required this.text,
   });
@@ -555,7 +555,7 @@ class HealthyRelationshipStep extends Step {
   final String text;
   HealthyRelationshipStep({
     bool isOptional = false,
-    String buttonText = 'Next',
+    String buttonText = 'Next Section',
     required this.title,
     required this.text,
   });
@@ -694,7 +694,7 @@ class VisionsExecriseStep extends Step {
   final String text;
   VisionsExecriseStep({
     bool isOptional = false,
-    String buttonText = 'Next',
+    String buttonText = 'Next Section',
     required this.title,
     required this.text,
   });
@@ -992,7 +992,7 @@ class _BoxesStepState extends State<BoxesStepState> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
               child: Container(
-                constraints: const BoxConstraints(minHeight: 60),
+                constraints: const BoxConstraints(minHeight: 100),
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -1299,113 +1299,125 @@ class _ReflectionStepState extends State<ReflectionStepState> {
                 ),
               ),
             ),
-            Center(
-              child: Stack(
-                children: [
-                  Visibility(
-                    visible: buttonVisibility,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding:const EdgeInsets.only(right: 10),
-                          child: Visibility(
-                            visible: true,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(color: orange),
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-                                child: IconTheme(
-                                  data: IconThemeData(
-                                  color: orange),
-                                  child: IconButton(
-                                    onPressed:() {
-                                      answerResultRelationships[increment] = reflectionStringResult;
-                                      reflectionStringResult = '';
-                                      incrementDown();
-                                    },
-                                    icon: const Icon(Icons.arrow_back)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 22),
+              child: Center(
+                child: Stack(
+                  children: [
+                    Visibility(
+                      visible: buttonVisibility,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding:const EdgeInsets.only(right: 10),
+                            child: Visibility(
+                              visible: true,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: orange),
+                                    
+                                    borderRadius: BorderRadius.circular(100),
                                   ),
-                                ),
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                            child: OutlinedButton(
-                              onPressed:() {
-                                setState(() {
-                                  reflectionStringResult = 'Yes';
-                                  filledYes();
-                                });
-                                //incrementUp();
-                              },
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
-                                ),
-                                foregroundColor: MaterialStateProperty.all(textColorYes), // Change text color
-                                backgroundColor: MaterialStateProperty.all(bgColorYes), // Change background color
-                              ),
-                              child: const Text('Yes'),
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                            child: OutlinedButton(
-                              onPressed:() {
-                                setState(() {
-                                  reflectionStringResult = 'No';
-                                  filledNo();
-                                });
-                                //incrementUp();
-                              },
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
-                                ),
-                                foregroundColor: MaterialStateProperty.all(textColorNo), // Change text color
-                                backgroundColor: MaterialStateProperty.all(bgColorNo), // Change background color
-                              ),
-                              child: const Text('No'),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding:const EdgeInsets.only(left: 10),
-                          child: Visibility(
-                            visible: true,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(color: orange),
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-                                child: IconTheme(
-                                  data: IconThemeData(
-                                  color: orange),
-                                  child: IconButton(
-                                    onPressed:() {
-                                      answerResultRelationships[increment] = reflectionStringResult;
-                                      reflectionStringResult = '';
-                                      incrementUp();
-                                    },
-                                    icon: const Icon(Icons.arrow_forward)
+                                  child: IconTheme(
+                                    data: IconThemeData(
+                                    color: orange),
+                                    child: IconButton(
+                                      onPressed:() {
+                                        answerResultRelationships[increment] = reflectionStringResult;
+                                        reflectionStringResult = '';
+                                        incrementDown();
+                                      },
+                                      icon: const Icon(Icons.arrow_back)
+                                    ),
                                   ),
-                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                              child: OutlinedButton(
+                                onPressed:() {
+                                  setState(() {
+                                    reflectionStringResult = 'Yes';
+                                    filledYes();
+                                  });
+                                  //incrementUp();
+                                },
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))
+                                  ),
+                                  foregroundColor: MaterialStateProperty.all(textColorYes), // Change text color
+                                  backgroundColor: MaterialStateProperty.all(bgColorYes), // Change background color
+                                ),
+                                child: const Text('Yes'),
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                              child: OutlinedButton(
+                                
+                                onPressed:() {
+                                  setState(() {
+                                    reflectionStringResult = 'No';
+                                    filledNo();
+                                  });
+                                  //incrementUp();
+                                },
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide())
+                                  ),
+                                  foregroundColor: MaterialStateProperty.all(textColorNo), // Change text color
+                                  backgroundColor: MaterialStateProperty.all(bgColorNo), // Change background color
+                                ),
+                                child: const Text('No'),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:const EdgeInsets.only(left: 10),
+                            child: Visibility(
+                              visible: true,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border: Border.all(color: orange),
+                                    borderRadius: BorderRadius.circular(100),
+                                  ),
+                                  child: IconTheme(
+                                    data: IconThemeData(
+                                    color: orange),
+                                    child: IconButton(
+                                      onPressed:() {
+                                        answerResultRelationships[increment] = reflectionStringResult;
+                                        reflectionStringResult = '';
+                                        incrementUp();
+                                      },
+                                      icon: const Icon(Icons.arrow_forward)
+                                    ),
+                                  ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
+            ),
+            const Divider(
+              height: 10,
+              thickness: 2,
+              indent: 20,
+              endIndent: 20,
+              color: Colors.black,
             ),
           ],
         ),
@@ -1464,6 +1476,7 @@ class ScenariosState extends StatefulWidget {
   @override
   State<ScenariosState> createState() => _ScenariosState();
 }
+bool boxVis = true;
 int scenariosIncrement = 0;
 List<String> scenarios = [
   'My partner makes my lunch every day.',
@@ -1492,6 +1505,11 @@ class _ScenariosState extends State<ScenariosState> {
           scenarios[scenariosIncrement]
         ]
       );
+    }
+    if(scenarios.isEmpty){
+      setState(() {
+        boxVis=false;
+      });
     }
   }
 
@@ -1710,27 +1728,30 @@ class _ScenariosState extends State<ScenariosState> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Container(
-                width: double.infinity,
-                constraints: const BoxConstraints(minHeight: 60),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: blue, width: 2),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child:  DragTarget<String>(
-                        builder: (context, candidateData, rejectedData) {
-                          return Wrap(
-                            spacing: 5,
-                            runSpacing: 5,
-                            children: firstScenarioList,
-                          );
-                        },
-                      ),
+            Visibility(
+              visible: boxVis,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Container(
+                  width: double.infinity,
+                  constraints: const BoxConstraints(minHeight: 60),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: blue, width: 2),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child:  DragTarget<String>(
+                          builder: (context, candidateData, rejectedData) {
+                            return Wrap(
+                              spacing: 5,
+                              runSpacing: 5,
+                              children: firstScenarioList,
+                            );
+                          },
+                        ),
+                    ),
                   ),
                 ),
               ),
@@ -1941,131 +1962,110 @@ class MindfulnessStepState extends StatefulWidget {
 }
 
 class _MindfulnessStepState extends State<MindfulnessStepState> {
-  late AudioPlayer _audioPlayer;
-  bool isPlaying = false;
-  Duration _duration = Duration();
-  final audioPath = 'assets/mindfulness.m4a';
 
   @override
   void initState() {
     super.initState();
-    _initAudioPlayer();
   }
 
-  void _initAudioPlayer() {
-    _audioPlayer = AudioPlayer();
-    _audioPlayer.onDurationChanged.listen((duration) {
-      setState(() {
-        _duration = duration;
-      });
-    });
-
-  }
-
-  @override
-  void dispose() {
-    _audioPlayer.release();
-    _audioPlayer.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return StepView(
-      step: QuestionStep(answerFormat: const TextAnswerFormat(defaultValue: "ha")),
-      controller: SurveyController(),
-      title: const Text(''),
-      resultFunction: () => BoxesResult(
-        id: Identifier(id: "12312"),
-        startDate: DateTime.now(),
-        endDate: DateTime.now(),
-        valueIdentifier: 'custom', // Identification for NavigableTask
-        result: 'custom_result',
-      ),
-      child: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                  "Mindfulness Activity", 
-                  textAlign: TextAlign.center,
-                  style: TextStyle( 
-                    fontWeight: FontWeight.w700,
-                    fontSize: 60, 
-                    color: blue,
-                  ),
-                ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              "Take-Away\nActivity", 
+              textAlign: TextAlign.center,
+              style: TextStyle( 
+                //fontWeight: FontWeight.w700,, 
+                fontSize: 50, 
+                fontWeight: FontWeight.bold,
+                color: blue,
               ),
             ),
-            const Divider(
-              height: 20,
-              thickness: 2,
-              indent: 20,
-              endIndent: 20,
-              color: Colors.black,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Text(
-                overflow: TextOverflow.visible,
-                "The emotions you may have felt in the past discussion can be intense. When this happens, one option is to turn to mindfulness as a way to allow the intensity of the emotions to pass.", 
-                textAlign: TextAlign.center,
-                style: TextStyle( 
-                  //fontWeight: FontWeight.w700,, 
-                  fontSize: 16, 
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: "Mindfulness", 
-                  style: TextStyle(fontSize: 17, color: orange, fontWeight: FontWeight.w700,),
-                  children: const <TextSpan>[
-                    TextSpan(text: ' is paying attention to the present moment without judgment. We can always bring our attention to our breathing, allowing us to break away from the thoughts and feelings that can cause us to be upset. ', 
-                    style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.normal)),
-                  ]
-                )
-              ),
-            ),
-        Slider(
-          inactiveColor: blue,
-          value: 0,
-          min: 0.0,
-          max: _duration.inSeconds.toDouble(),
-          onChanged: (double value) {
-            setState(() {
-              _audioPlayer.seek(Duration(seconds: value.toInt()));
-            });
-          },
+          ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow),
+        const Divider(
+          height: 20,
+          thickness: 1,
+          indent: 20,
+          endIndent: 20,
+          color: Colors.black,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 16,left:15, right:15),
+          child: Text(
+            "Spend 30 minutes at least twice a week adding to your vision drawing. There are no wrong directions. Just picture 1, 5 and 10 years ahead of where you are now and draw or write.", 
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.visible,
+            style: TextStyle(
+              fontSize: 17,
+              color: blue,
+              fontFamily: 'Barlow',
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 16,left:15, right:15),
+          child: Text(
+            "Show someone the vision drawing you're working on. It could be a friend, parent or partner. Ask for support and feedback.", 
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.visible,
+            style: TextStyle(
+              fontSize: 17,
+              color: blue,
+              fontFamily: 'Barlow',
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 16,left:15, right:15, bottom: 16),
+          child: Text(
+            "Upload each weekly version here so you can mark the progress in your vision!", 
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.visible,
+            style: TextStyle(
+              fontSize: 17,
+              color: blue,
+              fontFamily: 'Barlow',
+            ),
+          ),
+        ),
+        const Divider(
+          height: 20,
+          thickness: 1,
+          indent: 20,
+          endIndent: 20,
+          color: Colors.black,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top:16, bottom: 30, left:35, right: 35),
+          child: SizedBox(
+            height: 50,
+            child: TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                backgroundColor: MaterialStateProperty.all<Color>(orange),
+              ),
               onPressed: () {
-                if (isPlaying) {
-                  _audioPlayer.pause();
-                } else {
-                  _audioPlayer.play(UrlSource('https://voca.ro/1icHuC0FnGQr'));
-
-                }
-                setState(() {
-                  isPlaying = !isPlaying;
-                });
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage())); 
               },
+              child: const FittedBox(
+                fit: BoxFit.fill,
+                child: Text('  Restart Demo  ', style: TextStyle(fontSize: 20)),
+              ),
             ),
-          ],
+          ),
         ),
-          ],
-        ),
-      ),
+      ],
     );
   }
 }
@@ -2175,8 +2175,8 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                               ),
                               textSelectionTheme: TextSelectionThemeData(
                                 cursorColor: blue,
-                                selectionColor: generateMaterialColor(color: orange),
-                                selectionHandleColor: generateMaterialColor(color: orange),
+                                selectionColor: generateMaterialColor(color: Colors.black),
+                                selectionHandleColor: generateMaterialColor(color: Colors.black),
                               ),
                               outlinedButtonTheme: OutlinedButtonThemeData(
                                 style: ButtonStyle(
@@ -2224,7 +2224,7 @@ class _LevelOneHomeState extends State<LevelOneHome> {
                                 style: ButtonStyle(
                                   textStyle: MaterialStateProperty.all(
                                     Theme.of(context).textTheme.labelLarge?.copyWith(
-                                          color: generateMaterialColor(color: orange),
+                                          color: generateMaterialColor(color: Colors.white),
                                         ),
                                   ),
                                 ),
