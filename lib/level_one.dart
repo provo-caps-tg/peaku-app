@@ -770,6 +770,7 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
         result: 'custom_result',
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(child: Text("Visions Exercise", style: TextStyle( fontSize: 50, fontWeight: FontWeight.w700, fontFamily: 'Barlow', color:blue))),
           Center(
