@@ -771,30 +771,34 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
       ),
       child: Column(
         children: [
-          Text("Visions Exercise", style: TextStyle( fontSize: 50, fontWeight: FontWeight.w700, fontFamily: 'Barlow', color:blue)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text.rich(
-                textAlign: TextAlign.center,
-                  TextSpan(
-                    style: TextStyle(
-                    fontSize: 17,
-                    color: blue,
-                    fontFamily: 'Barlow',
+          Center(child: Text("Visions Exercise", style: TextStyle( fontSize: 50, fontWeight: FontWeight.w700, fontFamily: 'Barlow', color:blue))),
+          Center(
+            child: SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text.rich(
+                    textAlign: TextAlign.center,
+                      TextSpan(
+                        style: TextStyle(
+                        fontSize: 17,
+                        color: blue,
+                        fontFamily: 'Barlow',
+                      ),
+                      text: '', 
+                      children: const <TextSpan>[
+                        TextSpan(text: "First divide a paper into \n3 different sections."),
+                        TextSpan(text: "\n\nThen Draw what you want \nto see in your life \n -1 year from now\n -5 years from now\n -10 years from now",),
+                      ]
+                    ),
                   ),
-                  text: '', 
-                  children: const <TextSpan>[
-                    TextSpan(text: "First divide a paper into \n3 different sections."),
-                    TextSpan(text: "\n\nThen Draw what you want \nto see in your life \n -1 year from now\n -5 years from now\n -10 years from now",),
-                  ]
-                ),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Image( image: AssetImage("assets/images/NewestPapel3.PNG"), height: 200, width: 200),
+                  ),
+                ],
               ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Image( image: AssetImage("assets/images/NewestPapel3.PNG"), height: 200, width: 200),
-              ),
-            ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
