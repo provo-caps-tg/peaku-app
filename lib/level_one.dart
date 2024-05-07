@@ -772,26 +772,29 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text("Visions Exercise", style: TextStyle( fontSize: 50, fontWeight: FontWeight.w700, fontFamily: 'Barlow', color:blue))),
+          Center(child: Text(textAlign: TextAlign.center, "Visions Exercise", style: TextStyle( fontSize: 50, fontWeight: FontWeight.w700, fontFamily: 'Barlow', color:blue))),
           Center(
             child: FittedBox(
               fit: BoxFit.contain,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text.rich(
-                    textAlign: TextAlign.center,
-                      TextSpan(
-                        style: TextStyle(
-                        fontSize: 17,
-                        color: blue,
-                        fontFamily: 'Barlow',
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Text.rich(
+                      textAlign: TextAlign.center,
+                        TextSpan(
+                          style: TextStyle(
+                          fontSize: 17,
+                          color: blue,
+                          fontFamily: 'Barlow',
+                        ),
+                        text: '', 
+                        children: const <TextSpan>[
+                          TextSpan(text: "First divide a paper into \n3 different sections."),
+                          TextSpan(text: "\n\nThen Draw what you want \nto see in your life \n -1 year from now\n -5 years from now\n -10 years from now",),
+                        ]
                       ),
-                      text: '', 
-                      children: const <TextSpan>[
-                        TextSpan(text: "First divide a paper into \n3 different sections."),
-                        TextSpan(text: "\n\nThen Draw what you want \nto see in your life \n -1 year from now\n -5 years from now\n -10 years from now",),
-                      ]
                     ),
                   ),
                   const Padding(
