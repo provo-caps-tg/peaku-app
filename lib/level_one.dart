@@ -773,7 +773,8 @@ class _VisionsExecriseStepState extends State<VisionsExecriseStepState> with Tic
         children: [
           Center(child: Text("Visions Exercise", style: TextStyle( fontSize: 50, fontWeight: FontWeight.w700, fontFamily: 'Barlow', color:blue))),
           Center(
-            child: SizedBox(
+            child: FittedBox(
+              fit: BoxFit.contain,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
