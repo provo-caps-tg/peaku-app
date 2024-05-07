@@ -1,3 +1,0 @@
-# peaku
-
-you sp silly
