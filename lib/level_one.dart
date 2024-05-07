@@ -1182,11 +1182,11 @@ class _ReflectionStepState extends State<ReflectionStepState> {
         questionText = relationships[increment];
       }
       else{
-        if(answerResultRelationships[increment]=='Yes'){
+        if(answerResultRelationships[0]=='Yes'){
           reflectionStringResult = 'Yes';
           filledYes();
         }
-        else if(answerResultRelationships[increment]=='No'){
+        else if(answerResultRelationships[0]=='No'){
           reflectionStringResult = 'No';
           filledNo();
         }
@@ -1194,6 +1194,8 @@ class _ReflectionStepState extends State<ReflectionStepState> {
           reflectionStringResult = '';
           filledEmpty();
         }
+        increment=0;
+        questionText = relationships[increment];
       }
     });
   }
@@ -1216,11 +1218,11 @@ class _ReflectionStepState extends State<ReflectionStepState> {
         questionText = relationships[increment];
       }
       else{
-        if(answerResultRelationships[increment]=='Yes'){
+        if(answerResultRelationships[4]=='Yes'){
           reflectionStringResult = 'Yes';
           filledYes();
         }
-        else if(answerResultRelationships[increment]=='No'){
+        else if(answerResultRelationships[4]=='No'){
           reflectionStringResult = 'No';
           filledNo();
         }
@@ -1228,6 +1230,8 @@ class _ReflectionStepState extends State<ReflectionStepState> {
           reflectionStringResult = '';
           filledEmpty();
         }
+        increment=4;
+        questionText = relationships[increment];
       }
     });
   }
